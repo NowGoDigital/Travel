@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Al-Barokah Travel — Umroh & Haji Khusus Resmi Berizin Kemenag</title>
 <meta name="description" content="Travel Umroh & Haji Khusus terpercaya. Paket umroh reguler, VIP, haji furoda dengan hotel bintang 5 dekat Haram. Izin resmi PPIU Kemenag.">
-<meta property="og:title" content="Al-Barokah Travel — Umroh & Haji Resmi Kemenag">
-<meta property="og:description" content="Paket Umroh & Haji terpercaya, hotel dekat Haram, pembimbing bersertifikat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- MUAT DATA DARI CMS (Jika ada) -->
+<script src="data.js"></script>
 <style>
 /* ==================== VARIABEL & RESET ==================== */
 :root{
@@ -445,7 +445,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#home" class="logo">Al-Barokah<span> Travel</span></a>
-    <button class="hamburger" id="btnMenu">☰</button>
+    <button class="hamburger" id="btnMenu"></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Beranda</a></li>
       <li><a href="#paket">Paket</a></li>
@@ -539,7 +539,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
         <h3>Legalitas Terjamin</h3>
         <p>PPIU resmi berizin Kemenag RI, anggota asosiasi travel haji umroh nasional, dana jamaah aman.</p>
         <div class="ug-chips">
-          <span>🛂 PPIU U-123/2023</span><span>🏅 HIMPUH</span><span>🤝 AMPHURI</span><span>📜 ISO 9001:2015</span>
+          <span>🛂 PPIU U-123/2023</span><span> HIMPUH</span><span> AMPHURI</span><span> ISO 9001:2015</span>
         </div>
       </div>
       <div class="unggul-item ug-wide reveal">
@@ -760,16 +760,11 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.7-.4z"/></svg>
 </a>
 
-<!-- Muat data hasil publish dari CMS (aman walau file belum ada) -->
-<script src="data.js"></script>
-<script>
-/* ... logika website existing tetap di sini ... */
-  
 <script>
 /* ================================================================
-   📝 AREA KONTEN — UBAH SEMUA DATA WEBSITE DI SINI SAJA
+   📝 AREA KONTEN DEFAULT (Fallback jika data.js kosong)
 ================================================================ */
-const KONFIGURASI = {
+const KONFIGURASI_DEFAULT = {
   namaTravel: "Al-Barokah Travel",
   nomorWA: "6281234567890",
   pesanWADefault: "Assalamu'alaikum, saya ingin konsultasi paket umroh. 🙏",
@@ -786,7 +781,7 @@ const KONFIGURASI = {
   }
 };
 
-const SLIDES = [
+const SLIDES_DEFAULT = [
   {
     foto: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1920&q=80",
     kicker: "✨ PPIU Resmi Berizin Kemenag",
@@ -805,7 +800,7 @@ const SLIDES = [
   },
   {
     foto: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&q=80",
-    kicker: "🌙 PROMO EARLY BIRD 2026",
+    kicker: " PROMO EARLY BIRD 2026",
     judul: "Berangkat Umroh Lebih <em>Hemat & Nyaman</em>",
     sub: "Potongan hingga Rp 3 juta untuk pendaftaran rombongan keluarga. Kuota terbatas — amankan kursi Anda sekarang!",
     cta1: { teks: "Amankan Promo 🔥", href: "#daftar", style: "btn-gold" },
@@ -813,7 +808,7 @@ const SLIDES = [
   }
 ];
 
-const PAKET = [
+const PAKET_DEFAULT = [
   {
     id: 1, nama: "Umroh Reguler Ramadhan 1447H", jenis: "umroh-reguler", labelJenis: "Umroh Reguler",
     foto: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&q=80",
@@ -914,14 +909,14 @@ const PAKET = [
   }
 ];
 
-const ALUR = [
+const ALUR_DEFAULT = [
   { icon:"💬", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
   { icon:"💰", judul:"Booking & DP Ringan", ket:"Amankan kursi dengan DP mulai Rp 5 juta. Harga langsung terkunci, bebas kenaikan biaya tiba-tiba." },
   { icon:"📄", judul:"Pelunasan & Dokumen", ket:"Paspor, vaksin, visa, hingga manasik — semua dibantu tim kami sampai berkas siap berangkat." },
   { icon:"🕋", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
 ];
 
-const GALERI = [
+const GALERI_DEFAULT = [
   { foto:"https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&q=80", cap:"Masjid Nabawi — Madinah Al-Munawwarah", cls:"tall" },
   { foto:"https://images.unsplash.com/photo-1587979931372-fbb529401779?w=900&q=80", cap:"Thawaf mengelilingi Ka'bah — Masjidil Haram", cls:"wide" },
   { foto:"https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600&q=80", cap:"Manasik & pembekalan jamaah" },
@@ -930,7 +925,7 @@ const GALERI = [
   { foto:"https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&q=80", cap:"City tour & ziarah tempat bersejarah" }
 ];
 
-const TESTIMONI = [
+const TESTIMONI_DEFAULT = [
   { nama:"H. Ahmad Fauzi", kota:"Surabaya", paket:"Umroh Reguler Ramadhan", inisial:"AF",
     teks:"Alhamdulillah pelayanan sangat memuaskan. Hotel dekat sekali dengan Haram, pembimbing sabar dan ilmunya luas. Insya Allah tahun depan berangkat lagi sekeluarga." },
   { nama:"Hj. Siti Maryam", kota:"Bandung", paket:"Umroh VIP Desember", inisial:"SM",
@@ -939,7 +934,7 @@ const TESTIMONI = [
     teks:"Paket plus Turki sangat berkesan, jadwal padat tapi tidak melelahkan. Guide di Istanbul fasih berbahasa Indonesia. Recommended banget!" }
 ];
 
-const ARTIKEL = [
+const ARTIKEL_DEFAULT = [
   { emoji:"📖", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
   { emoji:"💪", kategori:"Kesehatan", judul:"Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan", tanggal:"28 Agu 2026", ringkas:"Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah." },
   { emoji:"🧳", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
@@ -948,7 +943,7 @@ const ARTIKEL = [
   { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
 ];
 
-const FAQ = [
+const FAQ_DEFAULT = [
   { q:"Apakah Al-Barokah Travel resmi dan terpercaya?",
     a:"Ya. Kami adalah PPIU resmi berizin Kementerian Agama RI No. U-123 Tahun 2023, anggota HIMPUH & AMPHURI, serta bersertifikat ISO 9001:2015. Legalitas kami dapat Anda verifikasi langsung melalui situs resmi Kemenag (simpu.kemenag.go.id)." },
   { q:"Berapa uang muka (DP) untuk mengunci kursi?",
@@ -963,26 +958,45 @@ const FAQ = [
     a:"Sangat ada. Setiap kloter didampingi pembimbing bersertifikat & tim medis. Jamaah lansia mendapat prioritas kursi, bantuan kursi roda di bandara dan area Haram, serta bimbingan manasik ekstra sebelum berangkat." }
 ];
 
-/* ===== OVERRIDE DATA HASIL PUBLISH CMS (data.js) ===== */
-if (window.SITE_DATA) {
-  const D = window.SITE_DATA;
-  if (D.KONFIGURASI) Object.assign(KONFIGURASI, D.KONFIGURASI);
-  const muatUlang = (t, s) => { if (Array.isArray(s)) { t.length = 0; s.forEach(x => t.push(x)); } };
-  muatUlang(SLIDES, D.SLIDES); muatUlang(PAKET, D.PAKET); muatUlang(ALUR, D.ALUR);
-  muatUlang(GALERI, D.GALERI); muatUlang(TESTIMONI, D.TESTIMONI);
-  muatUlang(ARTIKEL, D.ARTIKEL); muatUlang(FAQ, D.FAQ);
+/* ================================================================
+   ⚙️ LOGIKA WEBSITE — INISIALISASI DATA
+================================================================ */
+// Cek apakah ada data dari CMS (window.SITE_DATA dari data.js)
+let KONFIGURASI, SLIDES, PAKET, ALUR, GALERI, TESTIMONI, ARTIKEL, FAQ;
+
+if (window.SITE_DATA && window.SITE_DATA.KONFIGURASI) {
+  // Gunakan data dari CMS
+  KONFIGURASI = window.SITE_DATA.KONFIGURASI;
+  SLIDES = window.SITE_DATA.SLIDES || [];
+  PAKET = window.SITE_DATA.PAKET || [];
+  ALUR = window.SITE_DATA.ALUR || [];
+  GALERI = window.SITE_DATA.GALERI || [];
+  TESTIMONI = window.SITE_DATA.TESTIMONI || [];
+  ARTIKEL = window.SITE_DATA.ARTIKEL || [];
+  FAQ = window.SITE_DATA.FAQ || [];
+} else {
+  // Gunakan data Default (Hardcoded)
+  KONFIGURASI = KONFIGURASI_DEFAULT;
+  SLIDES = SLIDES_DEFAULT;
+  PAKET = PAKET_DEFAULT;
+  ALUR = ALUR_DEFAULT;
+  GALERI = GALERI_DEFAULT;
+  TESTIMONI = TESTIMONI_DEFAULT;
+  ARTIKEL = ARTIKEL_DEFAULT;
+  FAQ = FAQ_DEFAULT;
 }
 
-  
 /* ================================================================
-   ⚙️ LOGIKA WEBSITE — (tidak perlu diubah)
+   ⚙️ LOGIKA WEBSITE — FUNGSI UTILITAS & RENDER
 ================================================================ */
 const rupiah = n => "Rp " + n.toLocaleString("id-ID");
 const tanggalID = s => new Date(s).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
 const waLink = p => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURIComponent(p)}`;
+
 document.getElementById("waFloat").href = waLink(KONFIGURASI.pesanWADefault);
 document.getElementById("fdHelpWa").href = waLink("Assalamu'alaikum, saya ingin bertanya seputar paket umroh & haji. 🙏");
 
+// ── Isi konten topbar dari KONFIGURASI ───
 tbAlamat.textContent = KONFIGURASI.alamat;
 tbTelp.textContent = KONFIGURASI.telepon;
 tbTelp.href = "tel:" + KONFIGURASI.telepon;
@@ -1109,7 +1123,7 @@ function renderPaket(){
         <h3>${p.nama}</h3>
         <div class="meta-grid">
           <div class="meta-item"><span class="mi">📅</span><span class="mt">${tanggalID(p.tanggalBerangkat)}</span></div>
-          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai}</span></div>
+          <div class="meta-item"><span class="mi">️</span><span class="mt">${p.maskapai}</span></div>
           <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
           <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah.nama}</b> ⭐${p.hotelMadinah.bintang}</span></div>
         </div>
@@ -1124,7 +1138,7 @@ function renderPaket(){
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-detail" onclick="bukaModal(${p.id})">🔍 Detail Paket</button>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})"> Detail Paket</button>
         <a class="btn btn-wa-card" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">📲 Booking</a>
       </div>
     </div>`;
@@ -1168,7 +1182,7 @@ function bukaModal(id){
       <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
         <a class="btn btn-wa" style="flex:1;min-width:200px" target="_blank"
           href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
-          📲 Booking via WhatsApp</a>
+           Booking via WhatsApp</a>
         <button class="btn btn-detail" style="flex:1;min-width:200px" onclick="pilihPaketForm('${p.nama.replace(/'/g,"\\'")}')">📝 Isi Form</button>
       </div>
     </div>`;
@@ -1260,9 +1274,9 @@ function kirimWA(e){
 👤 Nama: ${inNama.value.trim()}
 📱 WA: ${inWA.value.trim()}
 🏙️ Kota: ${inKota.value.trim() || "-"}
-📦 Paket: ${inPaket.value || "Belum ditentukan"}
+ Paket: ${inPaket.value || "Belum ditentukan"}
 👥 Jumlah Jamaah: ${inJml.value} orang
-💬 Pesan: ${inPesan.value.trim() || "-"}
+ Pesan: ${inPesan.value.trim() || "-"}
 
 Mohon dibantu prosesnya. Terima kasih 🙏`;
   window.open(waLink(teks), "_blank");
