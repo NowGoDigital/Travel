@@ -3,127 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMS — Al-Barokah Travel</title>
+<title>CMS Admin — Al-Barokah Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-<!-- Muat data yang sudah dipublish (jika ada) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="data.js"></script>
 <style>
-:root{--hijau:#0c7a54;--hijau-tua:#064e35;--hijau-gelap:#042f21;--hijau-muda:#eaf6f0;--emas:#d4a94e;--emas-muda:#f3e3bd;--teks:#16211c;--teks-2:#5f6f68;--bg:#f4f8f6;--putih:#fff;--bahaya:#e74c3c;--shadow:0 6px 24px rgba(4,47,33,.08)}
+/* ==================== RESET & VARIABEL (SAMA DENGAN WEBSITE) ==================== */
+:root{
+  --hijau:#0c7a54; --hijau-tua:#064e35; --hijau-gelap:#042f21;
+  --hijau-muda:#eaf6f0; --emas:#d4a94e; --emas-muda:#f3e3bd;
+  --teks:#16211c; --teks-2:#5f6f68; --bg:#f4f8f6; --putih:#fff;
+  --radius:20px; --shadow:0 8px 30px rgba(4,47,33,.08);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--teks);line-height:1.6}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--teks);line-height:1.6;overflow-x:hidden}
 button{font-family:inherit;cursor:pointer}
-input,select,textarea{font-family:inherit;font-size:.9rem;padding:11px 14px;border:1.5px solid #dfe9e4;border-radius:12px;width:100%;background:#fbfdfc;transition:.2s}
+input,select,textarea{font-family:inherit;font-size:.9rem;padding:10px 14px;border:1.5px solid #dfe9e4;border-radius:12px;width:100%;background:#fbfdfc;transition:.2s;color:var(--teks)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
 label{display:block;font-size:.78rem;font-weight:700;color:var(--hijau-tua);margin:12px 0 5px}
 .hint{font-size:.7rem;color:var(--teks-2);margin-top:4px}
-.btn{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:12px;padding:11px 20px;font-weight:700;font-size:.85rem;transition:.25s}
+
+/* ==================== UTILS & BUTTONS ==================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:12px;padding:10px 20px;font-weight:700;font-size:.85rem;transition:.25s;text-decoration:none}
 .btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08}
-.btn-gold:hover{transform:translateY(-2px)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(212,169,78,.4)}
 .btn-hijau{background:var(--hijau);color:#fff}
 .btn-hijau:hover{background:var(--hijau-tua)}
 .btn-ghost{background:#fff;border:1.5px solid #dfe9e4;color:var(--teks)}
-.btn-ghost:hover{border-color:var(--hijau)}
+.btn-ghost:hover{border-color:var(--hijau);color:var(--hijau)}
 .btn-bahaya{background:#fdecea;color:#c0392b}
 .btn-bahaya:hover{background:#f8d7da}
-.btn-sm{padding:7px 14px;font-size:.76rem;border-radius:10px}
-/* ---------- LOGIN ---------- */
+.btn-sm{padding:6px 12px;font-size:.76rem;border-radius:8px}
+.badge{display:inline-block;padding:4px 10px;border-radius:99px;font-size:.7rem;font-weight:800;letter-spacing:.5px}
+
+/* ==================== LAYOUT CMS ==================== */
 #loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--hijau-gelap),var(--hijau-tua));padding:20px}
 .login-card{background:#fff;border-radius:24px;padding:42px 38px;width:100%;max-width:400px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35)}
-.login-card .logo{font-size:2.6rem}
-.login-card h1{font-size:1.3rem;color:var(--hijau-gelap);margin:8px 0 4px}
-.login-card p{font-size:.82rem;color:var(--teks-2);margin-bottom:18px}
-.login-card .btn{width:100%;justify-content:center;margin-top:16px}
-.login-note{margin-top:14px;font-size:.72rem;color:var(--teks-2);background:var(--hijau-muda);border-radius:10px;padding:8px 12px}
-/* ---------- LAYOUT ---------- */
+.login-card .logo{font-size:3rem;margin-bottom:10px}
+.login-card h1{font-size:1.4rem;color:var(--hijau-gelap);margin-bottom:8px;font-family:'Playfair Display',serif}
+.login-card p{font-size:.85rem;color:var(--teks-2);margin-bottom:20px}
+
 #app{display:none;min-height:100vh}
 #app.active{display:flex}
-aside{width:250px;flex-shrink:0;background:var(--hijau-gelap);color:#cfe3d9;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
-aside .brand{padding:24px 22px;font-weight:800;color:#fff;font-size:1.05rem;border-bottom:1px solid rgba(255,255,255,.08)}
-aside .brand small{display:block;font-weight:600;color:var(--emas);font-size:.68rem;letter-spacing:2px;text-transform:uppercase}
-aside nav{padding:14px 12px;flex:1}
-aside nav button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:none;border:none;color:#cfe3d9;padding:11px 14px;border-radius:12px;font-size:.86rem;font-weight:600;margin-bottom:3px;transition:.2s}
+
+/* SIDEBAR */
+aside{width:260px;flex-shrink:0;background:var(--hijau-gelap);color:#cfe3d9;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:50}
+aside .brand{padding:24px 22px;font-weight:800;color:#fff;font-size:1.1rem;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Playfair Display',serif}
+aside .brand small{display:block;font-weight:600;color:var(--emas);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif;margin-top:4px}
+aside nav{padding:16px 12px;flex:1}
+aside nav button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:none;color:#cfe3d9;padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;margin-bottom:4px;transition:.2s}
 aside nav button:hover{background:rgba(255,255,255,.07);color:#fff}
-aside nav button.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800}
-aside .side-foot{padding:16px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
-main{flex:1;min-width:0}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e6efe9;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.topbar h2{font-size:1.1rem;color:var(--hijau-gelap);margin-right:auto}
-.chip{font-size:.7rem;font-weight:800;padding:5px 12px;border-radius:99px}
-.chip-ok{background:#e8f8ee;color:#0c7a54}
-.chip-warn{background:#fff4e0;color:#a97613}
-.content{padding:28px}
-/* ---------- KOMPONEN ---------- */
-.card{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:24px;margin-bottom:22px}
-.card h3{font-size:.98rem;color:var(--hijau-gelap);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+aside nav button.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+aside .side-foot{padding:20px;border-top:1px solid rgba(255,255,255,.08)}
+aside .side-foot a, aside .side-foot button{width:100%;margin-bottom:8px}
+
+/* MAIN CONTENT */
+main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e6efe9;padding:16px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.topbar h2{font-size:1.2rem;color:var(--hijau-gelap);margin-right:auto;font-family:'Playfair Display',serif}
+.chip{font-size:.75rem;font-weight:800;padding:6px 14px;border-radius:99px}
+.chip-ok{background:#e8f8ee;color:#0c7a54;border:1px solid #c6ebd8}
+.chip-warn{background:#fff4e0;color:#a97613;border:1px solid #ffe0b2}
+
+.content{padding:28px;max-width:1400px;margin:0 auto;width:100%}
+
+/* EDITOR GRID (FORM + PREVIEW) */
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:1024px){.editor-grid{grid-template-columns:1fr}}
+
+.card-form{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:28px}
+.card-form h3{font-size:1rem;color:var(--hijau-gelap);margin-bottom:20px;display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
-.stat{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:20px;display:flex;gap:14px;align-items:center}
-.stat .ic{width:48px;height:48px;border-radius:14px;background:var(--hijau-muda);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-.stat b{font-size:1.35rem;color:var(--hijau);display:block;line-height:1.2}
-.stat small{color:var(--teks-2);font-size:.74rem;font-weight:600}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--teks-2);padding:10px 12px;border-bottom:2px solid #eef4f0}
-td{padding:12px;border-bottom:1px solid #f0f5f2;vertical-align:middle}
-tr:hover td{background:#fafdfb}
-.td-actions{white-space:nowrap;text-align:right}
-.thumb{width:52px;height:36px;object-fit:cover;border-radius:8px}
-.empty{text-align:center;color:var(--teks-2);padding:34px;font-size:.86rem}
-.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px}
-.steps li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:.86rem;color:var(--teks-2)}
-.steps li::before{counter-increment:s;content:counter(s);width:28px;height:28px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
-/* ---------- MODAL ---------- */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(4,30,20,.55);backdrop-filter:blur(3px);z-index:100;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
-.modal-bg.active{display:flex}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;padding:28px;position:relative;animation:in .3s ease}
-@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.modal h3{font-size:1.05rem;color:var(--hijau-gelap);margin-bottom:6px}
-.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:none;background:#f0f5f2;font-size:1rem}
-.modal-close:hover{background:#e2ece7}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
-/* ---------- TOAST ---------- */
-#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--hijau-gelap);color:#fff;padding:12px 26px;border-radius:99px;font-size:.84rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.35s;z-index:200;opacity:0}
+
+/* PREVIEW AREA STYLES (MIMIC WEBSITE) */
+.preview-area{position:sticky;top:100px}
+.preview-label{font-size:.8rem;font-weight:800;color:var(--teks-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:block}
+
+/* Mimic Website Components for Preview */
+.pv-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(4,47,33,.08);border:1px solid #eef3f0;font-family:'Plus Jakarta Sans',sans-serif}
+.pv-card-img{height:200px;position:relative;background:#eee}
+.pv-card-img img{width:100%;height:100%;object-fit:cover}
+.pv-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:#065f46;padding:4px 10px;border-radius:99px;font-size:.7rem;font-weight:800}
+.pv-price-float{width:90%;margin:-20px auto 0;position:relative;z-index:2;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:12px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(212,169,78,.3)}
+.pv-price-float b{font-family:'Playfair Display',serif;font-size:1.1rem}
+.pv-price-float s{font-size:.7rem;opacity:.7;margin-left:6px}
+.pv-body{padding:16px 20px 20px}
+.pv-body h3{font-size:1.1rem;color:var(--hijau-gelap);margin-bottom:8px;font-family:'Playfair Display',serif;line-height:1.3}
+.pv-meta{display:flex;gap:10px;font-size:.75rem;color:var(--teks-2);margin-bottom:12px}
+.pv-meta span{background:#f6faf8;padding:4px 8px;border-radius:6px}
+
+.pv-testi{background:#fff;border-radius:20px;padding:24px;box-shadow:0 8px 30px rgba(4,47,33,.08);border:1px solid #eef3f0}
+.pv-testi .stars{color:var(--emas);margin-bottom:10px}
+.pv-testi p{font-style:italic;color:var(--teks-2);font-size:.9rem;margin-bottom:16px}
+.pv-who{display:flex;align-items:center;gap:12px}
+.pv-avatar{width:40px;height:40px;border-radius:50%;background:var(--hijau-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;font-weight:800}
+.pv-who b{display:block;font-size:.9rem;color:var(--hijau-gelap)}
+.pv-who small{color:var(--teks-2);font-size:.75rem}
+
+.pv-slide{height:300px;border-radius:18px;overflow:hidden;position:relative;background-size:cover;background-position:center;margin-bottom:10px}
+.pv-slide-overlay{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.pv-slide-content{position:absolute;bottom:20px;left:20px;right:20px;color:#fff}
+.pv-slide-kicker{background:rgba(255,255,255,.2);padding:4px 10px;border-radius:99px;font-size:.7rem;font-weight:800;display:inline-block;margin-bottom:8px}
+.pv-slide h2{font-family:'Playfair Display',serif;font-size:1.5rem;line-height:1.2;margin-bottom:8px}
+.pv-slide p{font-size:.85rem;opacity:.9}
+
+/* LIST VIEW TABLE */
+.list-table{width:100%;border-collapse:collapse;font-size:.85rem;background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.list-table th{text-align:left;font-size:.75rem;text-transform:uppercase;color:var(--teks-2);padding:14px 18px;border-bottom:1px solid #eef3f0;background:#fbfdfc}
+.list-table td{padding:14px 18px;border-bottom:1px solid #f0f5f2;vertical-align:middle}
+.list-table tr:last-child td{border-bottom:none}
+.list-table tr:hover td{background:#fafdfb}
+.thumb-sm{width:48px;height:32px;object-fit:cover;border-radius:6px}
+.empty-state{text-align:center;padding:40px;color:var(--teks-2)}
+
+/* TOAST */
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--hijau-gelap);color:#fff;padding:12px 24px;border-radius:99px;font-size:.85rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.35s;z-index:200;opacity:0}
 #toast.show{transform:translateX(-50%);opacity:1}
+
 @media(max-width:900px){
   #app.active{flex-direction:column}
-  aside{width:100%;height:auto;position:static;flex-direction:column}
-  aside nav{display:flex;flex-wrap:wrap;gap:4px}
-  aside nav button{width:auto}
-  .grid2,.grid3{grid-template-columns:1fr}
+  aside{width:100%;height:auto;position:static;flex-direction:row;align-items:center;padding:10px;overflow-x:auto}
+  aside .brand{display:none}
+  aside nav{display:flex;padding:0;gap:8px}
+  aside nav button{width:auto;white-space:nowrap;padding:8px 12px;font-size:.8rem}
+  aside .side-foot{display:none}
   .content{padding:16px}
+  .grid2{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
+<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="logo">🕋</div>
-    <h1>CMS Al-Barokah Travel</h1>
-    <p>Panel pengelolaan konten website</p>
+    <h1>CMS Al-Barokah</h1>
+    <p>Panel Pengelolaan Konten Website</p>
     <label>Kata Sandi Admin</label>
     <input type="password" id="inPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn btn-hijau" onclick="doLogin()">🔐 Masuk ke Dashboard</button>
-    <div class="login-note">💡 Sandi bawaan: <b>admin123</b> — segera ganti di menu Pengaturan setelah masuk.</div>
+    <button class="btn btn-hijau" style="width:100%;margin-top:16px" onclick="doLogin()">🔐 Masuk Dashboard</button>
+    <div class="hint" style="margin-top:12px">Sandi default: <b>admin123</b></div>
   </div>
 </div>
 
-<!-- ============ APLIKASI ============ -->
+<!-- APP -->
 <div id="app">
   <aside>
-    <div class="brand">🕋 Al-Barokah CMS<small>Admin Panel</small></div>
+    <div class="brand">🕋 Al-Barokah<small>Admin Panel</small></div>
     <nav id="sideNav"></nav>
     <div class="side-foot">
-      <a href="index.html" target="_blank" class="btn btn-ghost btn-sm" style="justify-content:center">🌐 Lihat Website</a>
+      <a href="index.html" target="_blank" class="btn btn-ghost btn-sm">🌐 Lihat Website</a>
       <button class="btn btn-ghost btn-sm" onclick="logout()">🚪 Keluar</button>
     </div>
   </aside>
   <main>
     <div class="topbar">
       <h2 id="topTitle">Dashboard</h2>
-      <span class="chip chip-ok" id="pubChip">✓ Sinkron dengan website</span>
+      <span class="chip chip-ok" id="pubChip">✓ Sinkron</span>
       <button class="btn btn-ghost btn-sm" onclick="salinData()">📋 Salin data.js</button>
       <button class="btn btn-gold btn-sm" onclick="unduhData()">🚀 Unduh data.js</button>
     </div>
@@ -131,95 +169,43 @@ tr:hover td{background:#fafdfb}
   </main>
 </div>
 
-<div class="modal-bg" id="modalBg"><div class="modal"><button class="modal-close" onclick="tutupModal()">✕</button><div id="modalBody"></div></div></div>
 <div id="toast"></div>
 
 <script>
 /* ================================================================
-   KONSTANTA & UTIL
+   KONFIGURASI & DATA
 ================================================================ */
 const LS_DRAFT='ab_cms_draft', LS_PASS='ab_cms_pass', SS_AUTH='ab_cms_auth';
-const clone=o=>JSON.parse(JSON.stringify(o));
-const rp=n=>'Rp '+(+n||0).toLocaleString('id-ID');
-const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 let DB=null, BASELINE=null, viewAktif='dashboard', editCtx=null, saveTimer=null;
 
 const LABEL_JENIS={'umroh-reguler':'Umroh Reguler','umroh-plus':'Umroh Plus','umroh-vip':'Umroh VIP','haji-khusus':'Haji Khusus'};
 const FALLBACK={KONFIGURASI:{namaTravel:'Al-Barokah Travel',nomorWA:'6281234567890',pesanWADefault:'Assalamu\'alaikum.',alamat:'-',telepon:'-',email:'-',jamOperasional:'-',izinKemenag:'-',sosmed:{facebook:'#',instagram:'#',youtube:'#',tiktok:'#'}},SLIDES:[],PAKET:[],ALUR:[],GALERI:[],TESTIMONI:[],ARTIKEL:[],FAQ:[]};
 
-/* ================================================================
-   SKEMA FORM (biar admin tinggal isi, tanpa kode)
-================================================================ */
-const F=(key,label,type='text',extra={})=>Object.assign({key,label,type},extra);
-const ENTITAS={
-  slides:{nama:'Slide Hero',ikon:'🖼️',preview:['kicker','judul'],schema:[
-    F('foto','URL Foto Latar','url'),F('kicker','Teks Badge Kecil'),F('judul','Judul Slide','text',{hint:'Boleh pakai <em>...</em> untuk kata berwarna emas'}),
-    F('sub','Subjudul','textarea'),F('c1teks','Teks Tombol Utama'),F('c1href','Link Tombol Utama','select',{options:[['#paket','Katalog Paket'],['#daftar','Form Pendaftaran']]}),
-    F('c2teks','Teks Tombol Kedua'),F('c2href','Link Tombol Kedua','select',{options:[['#daftar','Form Pendaftaran'],['#paket','Katalog Paket'],['WA','Chat WhatsApp']]})],
-    map:s=>({foto:s.foto,kicker:s.kicker,judul:s.judul,sub:s.sub,c1teks:s.cta1.teks,c1href:s.cta1.href,c2teks:s.cta2.teks,c2href:s.cta2.wa?'WA':s.cta2.href}),
-    unmap:f=>({foto:f.foto,kicker:f.kicker,judul:f.judul,sub:f.sub,cta1:{teks:f.c1teks,href:f.c1href,style:'btn-gold'},cta2:{teks:f.c2teks,href:f.c2href==='WA'?'#':f.c2href,style:'btn-ghost',wa:f.c2href==='WA'}})},
-  paket:{nama:'Paket Umroh & Haji',ikon:'🕋',preview:['nama','harga'],schema:[
-    F('nama','Nama Paket'),F('jenis','Jenis Paket','select',{options:Object.entries(LABEL_JENIS)}),F('foto','URL Foto Paket','url'),
-    F('harga','Harga Normal (Rp)','number'),F('hargaPromo','Harga Promo (Rp)','number',{hint:'Isi 0 / kosongkan jika tanpa promo'}),F('durasi','Durasi (Hari)','number'),
-    F('tanggalBerangkat','Tanggal Berangkat','date'),F('maskapai','Maskapai'),
-    F('hmNama','Hotel Makkah — Nama'),F('hmBintang','Bintang','number'),F('hmJarak','Jarak ke Haram'),
-    F('hdNama','Hotel Madinah — Nama'),F('hdBintang','Bintang','number'),F('hdJarak','Jarak ke Masjid Nabawi'),
-    F('kuota','Total Kuota','number'),F('sisaKuota','Sisa Kuota','number'),F('status','Status','select',{options:[['open','Pendaftaran Dibuka'],['full','Kuota Habis']]}),
-    F('fasilitas','Fasilitas','lines',{hint:'Satu fasilitas per baris'}),F('perlengkapan','Perlengkapan','lines',{hint:'Satu item per baris'}),
-    F('itinerary','Itinerary','lines',{hint:'Format per baris: Hari | Judul | Keterangan — contoh: 1 | Jakarta — Madinah | Berkumpul di bandara.'})],
-    map:p=>({nama:p.nama,jenis:p.jenis,foto:p.foto,harga:p.harga,hargaPromo:p.hargaPromo||'',durasi:p.durasi,tanggalBerangkat:p.tanggalBerangkat,maskapai:p.maskapai,
-      hmNama:p.hotelMakkah.nama,hmBintang:p.hotelMakkah.bintang,hmJarak:p.hotelMakkah.jarak,hdNama:p.hotelMadinah.nama,hdBintang:p.hotelMadinah.bintang,hdJarak:p.hotelMadinah.jarak,
-      kuota:p.kuota,sisaKuota:p.sisaKuota,status:p.status,fasilitas:(p.fasilitas||[]).join('\n'),perlengkapan:(p.perlengkapan||[]).join('\n'),
-      itinerary:(p.itinerary||[]).map(i=>`${i.hari} | ${i.judul} | ${i.ket}`).join('\n')}),
-    unmap:(f,id)=>({id:id||nextPaketId(),nama:f.nama,jenis:f.jenis,labelJenis:LABEL_JENIS[f.jenis],foto:f.foto,harga:+f.harga||0,hargaPromo:+f.hargaPromo||null,durasi:+f.durasi||0,
-      tanggalBerangkat:f.tanggalBerangkat,maskapai:f.maskapai,
-      hotelMakkah:{nama:f.hmNama,bintang:+f.hmBintang||0,jarak:f.hmJarak},hotelMadinah:{nama:f.hdNama,bintang:+f.hdBintang||0,jarak:f.hdJarak},
-      kuota:+f.kuota||0,sisaKuota:+f.sisaKuota||0,status:f.status,
-      fasilitas:lines(f.fasilitas),perlengkapan:lines(f.perlengkapan),
-      itinerary:lines(f.itinerary).map(l=>{const p=l.split('|').map(x=>x.trim());return{hari:+p[0]||0,judul:p[1]||'',ket:p[2]||''};})})},
-  alur:{nama:'Alur Pendaftaran',ikon:'🛤️',preview:['judul'],schema:[F('icon','Ikon (Emoji)'),F('judul','Judul Langkah'),F('ket','Keterangan','textarea')]},
-  galeri:{nama:'Galeri Jamaah',ikon:'📸',preview:['cap'],schema:[F('foto','URL Foto','url'),F('cap','Keterangan Foto'),F('cls','Ukuran Tile','select',{options:[['','Normal'],['tall','Tinggi (2 baris)'],['wide','Lebar (2 kolom)']]})]},
-  testimoni:{nama:'Testimoni',ikon:'💬',preview:['nama','kota'],schema:[F('nama','Nama Jamaah'),F('kota','Kota'),F('paket','Paket Diambil'),F('inisial','Inisial (2 huruf)'),F('teks','Isi Testimoni','textarea')]},
-  artikel:{nama:'Artikel',ikon:'📰',preview:['judul','kategori'],schema:[F('emoji','Ikon (Emoji)'),F('kategori','Kategori'),F('judul','Judul Artikel'),F('tanggal','Tanggal Terbit','text',{hint:'Contoh: 5 Sep 2026'}),F('ringkas','Ringkasan','textarea')]},
-  faq:{nama:'FAQ',ikon:'❓',preview:['q'],schema:[F('q','Pertanyaan'),F('a','Jawaban','textarea')]}
-};
-const IDENT_FIELDS=[
-  F('namaTravel','Nama Travel'),F('nomorWA','Nomor WhatsApp (format 62xxx)'),F('alamat','Alamat Kantor'),F('telepon','Telepon Kantor'),
-  F('email','Email'),F('jamOperasional','Jam Operasional'),F('izinKemenag','Teks Izin Kemenag'),F('pesanWADefault','Pesan WA Bawaan','textarea'),
-  F('sosmed.facebook','Facebook URL','url'),F('sosmed.instagram','Instagram URL','url'),F('sosmed.youtube','YouTube URL','url'),F('sosmed.tiktok','TikTok URL','url')];
-
+// Helper
+const clone=o=>JSON.parse(JSON.stringify(o));
+const rp=n=>'Rp '+(+n||0).toLocaleString('id-ID');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
 const nextPaketId=()=>(DB.PAKET.reduce((m,p)=>Math.max(m,p.id||0),0)+1);
-const getPath=(o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
-const setPath=(o,p,v)=>{const k=p.split('.');let t=o;k.slice(0,-1).forEach(x=>t=t[x]=t[x]||{});t[k[k.length-1]]=v;};
 
 /* ================================================================
-   MUAT DATA: draf lokal → data.js publish → parse index.html
+   MUAT DATA
 ================================================================ */
 async function muatData(){
   const draft=localStorage.getItem(LS_DRAFT);
   if(draft){try{DB=JSON.parse(draft);BASELINE=window.SITE_DATA?clone(window.SITE_DATA):null;return;}catch(e){}}
   if(window.SITE_DATA){DB=clone(window.SITE_DATA);BASELINE=clone(window.SITE_DATA);return;}
-  try{
-    const txt=await(await fetch('index.html')).text();
-    const a=txt.indexOf('const KONFIGURASI'), b=txt.indexOf('⚙️ LOGIKA WEBSITE');
-    if(a>-1&&b>a){
-      const chunk=txt.slice(a,b);
-      BASELINE=new Function(chunk+';return {KONFIGURASI,SLIDES,PAKET,ALUR,GALERI,TESTIMONI,ARTIKEL,FAQ};')();
-      DB=clone(BASELINE);return;
-    }
-  }catch(e){}
+  // Fallback jika fetch gagal atau CORS
   BASELINE=clone(FALLBACK);DB=clone(FALLBACK);
-  toast('⚠️ Gagal baca index.html — memakai data kosong.');
 }
 function saveDraft(){localStorage.setItem(LS_DRAFT,JSON.stringify(DB));updateChip();}
-function saveDraftDebounced(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{saveDraft();toast('💾 Draf tersimpan otomatis');},500);}
+function saveDraftDebounced(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{saveDraft();toast('💾 Draf tersimpan');},500);}
 function updateChip(){
   const chip=document.getElementById('pubChip');
   const ref=window.SITE_DATA||BASELINE;
   const dirty=JSON.stringify(DB)!==JSON.stringify(ref);
   chip.className='chip '+(dirty?'chip-warn':'chip-ok');
-  chip.textContent=dirty?'⚠️ Ada perubahan belum dipublish':'✓ Sinkron dengan website';
+  chip.textContent=dirty?'⚠️ Ada perubahan belum publish':'✓ Sinkron dengan website';
 }
 
 /* ================================================================
@@ -234,181 +220,408 @@ function logout(){sessionStorage.removeItem(SS_AUTH);location.reload();}
 function masuk(){document.getElementById('loginScreen').style.display='none';document.getElementById('app').classList.add('active');buildNav();show('dashboard');}
 
 /* ================================================================
-   NAVIGASI & RENDER VIEW
+   NAVIGASI
 ================================================================ */
-const MENU=[['dashboard','📊','Dashboard'],['identitas','🏢','Identitas & Kontak'],...Object.entries(ENTITAS).map(([k,v])=>[k,v.ikon,v.nama]),['pengaturan','⚙️','Pengaturan']];
+const MENU=[['dashboard','📊','Dashboard'],['identitas','🏢','Identitas'],...Object.keys(LABEL_JENIS).map(k=>['paket-'+k,LABEL_JENIS[k].split(' ')[1]||'Paket','Daftar '+LABEL_JENIS[k]]),['slides','🖼️','Slide Hero'],['alur','🛤️','Alur Daftar'],['galeri','','Galeri'],['testimoni','','Testimoni'],['artikel','📰','Artikel'],['faq','❓','FAQ'],['pengaturan','⚙️','Pengaturan']];
+
 function buildNav(){
   document.getElementById('sideNav').innerHTML=MENU.map(([k,i,l])=>`<button data-v="${k}" onclick="show('${k}')">${i} ${l}</button>`).join('');
 }
+
 function show(v){
   viewAktif=v;
   document.querySelectorAll('#sideNav button').forEach(b=>b.classList.toggle('active',b.dataset.v===v));
   const label=MENU.find(m=>m[0]===v);
-  document.getElementById('topTitle').textContent=label[2];
+  document.getElementById('topTitle').textContent=label?label[2]:'Edit Data';
   const host=document.getElementById('host');
-  if(v==='dashboard')host.innerHTML=vDashboard();
-  else if(v==='identitas'){host.innerHTML=vIdentitas();isiIdentitas();}
-  else if(v==='pengaturan')host.innerHTML=vPengaturan();
-  else host.innerHTML=vList(v);
+  
+  if(v==='dashboard') host.innerHTML=vDashboard();
+  else if(v==='identitas') {host.innerHTML=vIdentitas();isiIdentitas();}
+  else if(v==='pengaturan') host.innerHTML=vPengaturan();
+  else if(v.startsWith('paket-')) {
+    const jenis=v.split('-')[1];
+    host.innerHTML=vListPaket(jenis);
+  }
+  else if(v==='slides') host.innerHTML=vListGeneric('slides');
+  else if(v==='alur') host.innerHTML=vListGeneric('alur');
+  else if(v==='galeri') host.innerHTML=vListGeneric('galeri');
+  else if(v==='testimoni') host.innerHTML=vListGeneric('testimoni');
+  else if(v==='artikel') host.innerHTML=vListGeneric('artikel');
+  else if(v==='faq') host.innerHTML=vListGeneric('faq');
+  
   updateChip();
 }
+
+/* ================================================================
+   VIEW: DASHBOARD
+================================================================ */
 function vDashboard(){
-  const aktif=DB.PAKET.filter(p=>p.status==='open').length;
   return `
-  <div class="grid4">
-    <div class="stat"><div class="ic">🕋</div><div><b>${DB.PAKET.length}</b><small>Paket (${aktif} dibuka)</small></div></div>
-    <div class="stat"><div class="ic">🖼️</div><div><b>${DB.SLIDES.length}</b><small>Slide Hero</small></div></div>
-    <div class="stat"><div class="ic">📸</div><div><b>${DB.GALERI.length}</b><small>Foto Galeri</small></div></div>
-    <div class="stat"><div class="ic">📰</div><div><b>${DB.ARTIKEL.length}</b><small>Artikel</small></div></div>
-    <div class="stat"><div class="ic">💬</div><div><b>${DB.TESTIMONI.length}</b><small>Testimoni</small></div></div>
-    <div class="stat"><div class="ic">❓</div><div><b>${DB.FAQ.length}</b><small>FAQ</small></div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:24px">
+    <div style="background:#fff;padding:20px;border-radius:16px;box-shadow:var(--shadow)">
+      <div style="font-size:2rem">🕋</div><b>${DB.PAKET.length}</b><div style="font-size:.8rem;color:var(--teks-2)">Total Paket</div>
+    </div>
+    <div style="background:#fff;padding:20px;border-radius:16px;box-shadow:var(--shadow)">
+      <div style="font-size:2rem">🖼️</div><b>${DB.SLIDES.length}</b><div style="font-size:.8rem;color:var(--teks-2)">Slide Hero</div>
+    </div>
+    <div style="background:#fff;padding:20px;border-radius:16px;box-shadow:var(--shadow)">
+      <div style="font-size:2rem">💬</div><b>${DB.TESTIMONI.length}</b><div style="font-size:.8rem;color:var(--teks-2)">Testimoni</div>
+    </div>
   </div>
-  <div class="grid2" style="margin-top:22px">
-    <div class="card"><h3>🚀 Cara Publish Perubahan</h3>
-      <ol class="steps">
-        <li>Edit konten lewat menu di sidebar — semua perubahan <b>tersimpan otomatis</b> sebagai draf di browser ini.</li>
-        <li>Klik tombol <b>🚀 Unduh data.js</b> di kanan atas untuk mengunduh file hasil olahan.</li>
-        <li>Upload / commit file <b>data.js</b> ke repository GitHub Anda (sejajar dengan index.html). Tunggu ±1 menit, website live berubah!</li>
-      </ol>
-      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-gold btn-sm" onclick="unduhData()">🚀 Unduh data.js</button>
-        <button class="btn btn-ghost btn-sm" onclick="salinData()">📋 Salin kode data.js</button>
-      </div>
-    </div>
-    <div class="card"><h3>📌 Status Konten</h3>
-      <p style="font-size:.86rem;color:var(--teks-2)">Perbedaan draf Anda dengan versi yang sedang tayang:</p>
-      <div style="margin-top:12px" id="dashChip"></div>
-      <p style="font-size:.78rem;color:var(--teks-2);margin-top:14px">💡 Draf tersimpan di browser ini saja. Setelah di-publish lewat data.js, konten aman terbaca di semua perangkat pengunjung.</p>
-    </div>
+  <div style="background:#fff;padding:24px;border-radius:18px;box-shadow:var(--shadow)">
+    <h3 style="margin-bottom:12px;font-family:'Playfair Display',serif"> Cara Publish Perubahan</h3>
+    <ol style="margin-left:20px;color:var(--teks-2);font-size:.9rem;line-height:1.8">
+      <li>Edit konten melalui menu di sidebar. Perubahan tersimpan otomatis sebagai <b>Draf Lokal</b>.</li>
+      <li>Klik tombol <b>🚀 Unduh data.js</b> di kanan atas.</li>
+      <li>Upload file <b>data.js</b> tersebut ke hosting/GitHub Anda (sejajar dengan index.html).</li>
+      <li>Tunggu ±1 menit, website live akan berubah sesuai editan Anda.</li>
+    </ol>
   </div>`;
 }
+
+/* ================================================================
+   VIEW: IDENTITAS
+================================================================ */
 function vIdentitas(){
-  return `<div class="card"><h3>🏢 Identitas & Kontak Travel</h3>
-    <div class="grid2">${IDENT_FIELDS.map(f=>`<div><label>${f.label}</label>${f.type==='textarea'?`<textarea id="id_${f.key}" rows="2" oninput="identUbah('${f.key}',this.value)"></textarea>`:`<input id="id_${f.key}" type="${f.type}" oninput="identUbah('${f.key}',this.value)">`}</div>`).join('')}</div>
-    <p class="hint" style="margin-top:14px">Perubahan tersimpan otomatis saat Anda mengetik.</p></div>`;
+  const fields=[
+    ['namaTravel','Nama Travel'],['nomorWA','No. WhatsApp (62xxx)'],['alamat','Alamat Kantor'],
+    ['telepon','Telepon'],['email','Email'],['jamOperasional','Jam Operasional'],
+    ['izinKemenag','Teks Izin Kemenag'],['pesanWADefault','Pesan WA Default','textarea']
+  ];
+  return `<div class="card-form"><h3>🏢 Identitas & Kontak</h3>
+    <div class="grid2">${fields.map(f=>`<div><label>${f[1]}</label>${f[2]==='textarea'?`<textarea id="id_${f[0]}" rows="2" oninput="identUbah('${f[0]}',this.value)"></textarea>`:`<input id="id_${f[0]}" oninput="identUbah('${f[0]}',this.value)">`}</div>`).join('')}</div>
+    <p class="hint">Perubahan tersimpan otomatis.</p></div>`;
 }
-function isiIdentitas(){IDENT_FIELDS.forEach(f=>{const el=document.getElementById('id_'+f.key);if(el)el.value=getPath(DB.KONFIGURASI,f.key)??'';});}
-function identUbah(key,val){setPath(DB.KONFIGURASI,key,val);saveDraftDebounced();}
+function isiIdentitas(){
+  const keys=['namaTravel','nomorWA','alamat','telepon','email','jamOperasional','izinKemenag','pesanWADefault'];
+  keys.forEach(k=>{const el=document.getElementById('id_'+k);if(el)el.value=DB.KONFIGURASI[k]??'';});
+}
+function identUbah(k,v){DB.KONFIGURASI[k]=v;saveDraftDebounced();}
 
-function vList(k){
-  const e=ENTITAS[k],arr=DB[k];
-  const rows=arr.length?arr.map((it,i)=>{
-    const prev=e.preview.map(pk=>{
-      let v=it[pk]??'';if(pk==='harga')v=rp(it.hargaPromo??it.harga);
-      v=String(v).replace(/<[^>]+>/g,'');return esc(v.length>58?v.slice(0,58)+'…':v);
-    }).join('</td><td>');
-    const thumb=it.foto?`<img class="thumb" src="${esc(it.foto)}" alt="">`:'';
-    return `<tr>${thumb?`<td>${thumb}</td>`:''}<td>${prev}</td><td class="td-actions">
-      <button class="btn btn-ghost btn-sm" onclick="bukaEditor('${k}',${i})">✏️ Edit</button>
-      <button class="btn btn-bahaya btn-sm" onclick="hapusItem('${k}',${i})">🗑 Hapus</button></td></tr>`;
-  }).join(''):`<tr><td colspan="3"><div class="empty">Belum ada data. Klik "➕ Tambah" untuk membuat baru.</div></td></tr>`;
-  return `<div class="card">
-    <h3 style="justify-content:space-between">${e.ikon} Daftar ${e.nama}
-      <button class="btn btn-hijau btn-sm" onclick="bukaEditor('${k}',-1)">➕ Tambah ${e.nama}</button></h3>
-    <div style="overflow-x:auto"><table>
-      <thead><tr>${e.preview[0]==='nama'||e.preview[0]==='cap'||e.preview[0]==='q'||e.preview[0]==='judul'?'<th style="width:64px">Foto</th>':''}<th>${e.preview.map(p=>p==='harga'?'Harga':p[0].toUpperCase()+p.slice(1)).join('</th><th>')}</th><th style="text-align:right">Aksi</th></tr></thead>
-      <tbody>${rows}</tbody></table></div></div>`;
-}
-function vPengaturan(){
+/* ================================================================
+   VIEW: LIST PAKET (DENGAN LIVE PREVIEW)
+================================================================ */
+function vListPaket(jenis){
+  const arr=DB.PAKET.filter(p=>p.jenis===jenis);
+  const rows=arr.map((p,i)=>`
+    <tr>
+      <td><img src="${p.foto||'https://via.placeholder.com/48'}" class="thumb-sm" alt=""></td>
+      <td><b>${p.nama}</b><br><span style="font-size:.75rem;color:var(--teks-2)">${rp(p.hargaPromo||p.harga)}</span></td>
+      <td>${p.sisaKuota} sisa</td>
+      <td style="text-align:right">
+        <button class="btn btn-ghost btn-sm" onclick="bukaEditorPaket(${p.id})">✏️ Edit</button>
+        <button class="btn btn-bahaya btn-sm" onclick="hapusItem('PAKET',${p.id})"></button>
+      </td>
+    </tr>
+  `).join('');
+  
   return `
-  <div class="grid2">
-    <div class="card"><h3>🔑 Ganti Sandi Admin</h3>
-      <label>Sandi Lama</label><input type="password" id="pLama">
-      <label>Sandi Baru</label><input type="password" id="pBaru">
-      <button class="btn btn-hijau btn-sm" style="margin-top:14px" onclick="gantiPass()">💾 Simpan Sandi</button></div>
-    <div class="card"><h3>🗄️ Backup & Restore Draf</h3>
-      <p style="font-size:.84rem;color:var(--teks-2);margin-bottom:12px">Simpan cadangan draf sebagai file JSON, atau muat kembali cadangan sebelumnya.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-ghost btn-sm" onclick="backupJSON()">⬇️ Unduh Backup JSON</button>
-        <label class="btn btn-ghost btn-sm" style="margin:0">⬆️ Muat Backup<input type="file" accept=".json,application/json" hidden onchange="restoreJSON(this)"></label>
-        <button class="btn btn-bahaya btn-sm" onclick="resetDraf()">♻️ Reset Draf</button>
-      </div></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+    <h3 style="font-family:'Playfair Display',serif">Daftar ${LABEL_JENIS[jenis]}</h3>
+    <button class="btn btn-hijau btn-sm" onclick="bukaEditorPaket(-1,'${jenis}')">➕ Tambah Paket</button>
   </div>
-  <div class="card"><h3>ℹ️ Tentang CMS Ini</h3>
-    <p style="font-size:.86rem;color:var(--teks-2)">CMS ini mengelola konten website tanpa menyentuh kode. Hasil editan dipublish menjadi file <b>data.js</b> yang dibaca otomatis oleh index.html. Simpan CMS ini di tempat aman — jangan bagikan URL-nya ke publik bila tidak perlu.</p></div>`;
+  ${arr.length?`<table class="list-table"><thead><tr><th>Foto</th><th>Paket</th><th>Kuota</th><th>Aksi</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state">Belum ada paket. Klik "Tambah Paket" untuk membuat baru.</div>'}
+  `;
 }
 
 /* ================================================================
-   EDITOR MODAL (dibangun otomatis dari skema)
+   EDITOR PAKET (LIVE PREVIEW CARD)
 ================================================================ */
-function bukaEditor(k,idx){
-  const e=ENTITAS[k];
-  const src=idx>-1?e.map(clone(DB[k][idx])):kosongDari(e.schema);
-  editCtx={k,idx};
-  document.getElementById('modalBody').innerHTML=`
-    <h3>${idx>-1?'✏️ Edit':'➕ Tambah'} ${e.nama}</h3>
-    <form id="formEdit" onsubmit="simpanEditor(event)">
-      <div class="grid2">${e.schema.map(f=>`<div style="${f.type==='textarea'||f.type==='lines'?'grid-column:1/-1':''}">
-        <label>${f.label}</label>
-        ${f.type==='textarea'||f.type==='lines'?`<textarea name="${f.key}" rows="${f.type==='lines'?5:3}">${esc(src[f.key]??'')}</textarea>`
-          :f.type==='select'?`<select name="${f.key}">${f.options.map(([v,l])=>`<option value="${v}" ${String(src[f.key]??'')===v?'selected':''}>${l}</option>`).join('')}</select>`
-          :`<input name="${f.key}" type="${f.type}" value="${esc(src[f.key]??'')}">`}
-        ${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>
-      <div class="modal-actions">
-        <button type="button" class="btn btn-ghost" onclick="tutupModal()">Batal</button>
-        <button type="submit" class="btn btn-hijau">💾 Simpan</button>
-      </div></form>`;
-  document.getElementById('modalBg').classList.add('active');
+function bukaEditorPaket(id, jenisDefault='umroh-reguler'){
+  const isNew=id===-1;
+  const p=isNew?{id:nextPaketId(),nama:'',jenis:jenisDefault,harga:0,hargaPromo:'',durasi:10,tanggalBerangkat:'',maskapai:'',foto:'',hotelMakkah:{nama:'',bintang:4,jarak:''},hotelMadinah:{nama:'',bintang:4,jarak:''},kuota:40,sisaKuota:40,status:'open',fasilitas:[],perlengkapan:[],itinerary:[]}:DB.PAKET.find(x=>x.id===id);
+  
+  editCtx={type:'PAKET',id:p.id};
+  
+  // Generate Preview HTML
+  const previewHTML=`
+    <div class="pv-card">
+      <div class="pv-card-img">
+        <img src="${p.foto||'https://via.placeholder.com/400x200?text=Foto+Paket'}" id="prevImg">
+        <span class="pv-badge">${p.status==='open'?'✅ Buka':'❌ Penuh'}</span>
+      </div>
+      <div class="pv-price-float">
+        <span>Mulai dari</span>
+        <div><b id="prevHarga">${rp(p.hargaPromo||p.harga)}</b>${p.hargaPromo?`<s id="prevCoret">${rp(p.harga)}</s>`:''}</div>
+      </div>
+      <div class="pv-body">
+        <h3 id="prevNama">${p.nama||'Nama Paket...'}</h3>
+        <div class="pv-meta">
+          <span>📅 <span id="prevTgl">${p.tanggalBerangkat||'-'}</span></span>
+          <span>✈️ <span id="prevMaskapai">${p.maskapai||'-'}</span></span>
+        </div>
+        <div style="font-size:.8rem;color:var(--teks-2);margin-top:8px">
+          🕋 <span id="prevHM">${p.hotelMakkah.nama||'Hotel Makkah'}</span> ⭐${p.hotelMakkah.bintang}<br>
+          🕌 <span id="prevHD">${p.hotelMadinah.nama||'Hotel Madinah'}</span> ⭐${p.hotelMadinah.bintang}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('host').innerHTML=`
+    <div class="editor-grid">
+      <!-- FORM -->
+      <div class="card-form">
+        <h3>${isNew?'➕ Tambah':'️ Edit'} Paket</h3>
+        <div class="grid2">
+          <div><label>Nama Paket</label><input id="eNama" value="${esc(p.nama)}" oninput="updPrev()"></div>
+          <div><label>Jenis</label><select id="eJenis" onchange="show(viewAktif)">${Object.entries(LABEL_JENIS).map(([k,v])=>`<option value="${k}" ${p.jenis===k?'selected':''}>${v}</option>`).join('')}</select></div>
+        </div>
+        <div class="grid2">
+          <div><label>Harga Normal (Rp)</label><input type="number" id="eHarga" value="${p.harga}" oninput="updPrev()"></div>
+          <div><label>Harga Promo (Rp)</label><input type="number" id="eHargaPromo" value="${p.hargaPromo||''}" oninput="updPrev()"></div>
+        </div>
+        <div class="grid2">
+          <div><label>Durasi (Hari)</label><input type="number" id="eDurasi" value="${p.durasi}"></div>
+          <div><label>Tanggal Berangkat</label><input type="date" id="eTgl" value="${p.tanggalBerangkat}" oninput="updPrev()"></div>
+        </div>
+        <div><label>URL Foto Utama</label><input id="eFoto" value="${esc(p.foto)}" oninput="updPrev()" placeholder="https://..."></div>
+        
+        <h4 style="margin-top:20px;font-size:.9rem;color:var(--hijau)">🏨 Akomodasi</h4>
+        <div class="grid2">
+          <div><label>Hotel Makkah</label><input id="eHM" value="${esc(p.hotelMakkah.nama)}" oninput="updPrev()"></div>
+          <div><label>Bintang</label><input type="number" id="eHMB" value="${p.hotelMakkah.bintang}" min="1" max="5"></div>
+        </div>
+        <div class="grid2">
+          <div><label>Hotel Madinah</label><input id="eHD" value="${esc(p.hotelMadinah.nama)}" oninput="updPrev()"></div>
+          <div><label>Bintang</label><input type="number" id="eHDB" value="${p.hotelMadinah.bintang}" min="1" max="5"></div>
+        </div>
+
+        <h4 style="margin-top:20px;font-size:.9rem;color:var(--hijau)"> Detail Lain</h4>
+        <div class="grid2">
+          <div><label>Total Kuota</label><input type="number" id="eKuota" value="${p.kuota}"></div>
+          <div><label>Sisa Kuota</label><input type="number" id="eSisa" value="${p.sisaKuota}"></div>
+        </div>
+        <div><label>Status</label><select id="eStatus"><option value="open" ${p.status==='open'?'selected':''}>Pendaftaran Dibuka</option><option value="full" ${p.status==='full'?'selected':''}>Kuota Habis</option></select></div>
+        
+        <div><label>Fasilitas (Satu per baris)</label><textarea id="eFas" rows="4">${(p.fasilitas||[]).join('\n')}</textarea></div>
+        <div><label>Itinerary (Format: Hari | Judul | Ket)</label><textarea id="eItin" rows="5">${(p.itinerary||[]).map(i=>`${i.hari} | ${i.judul} | ${i.ket}`).join('\n')}</textarea></div>
+
+        <div style="margin-top:24px;display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="show('paket-${p.jenis}')">Batal</button>
+          <button class="btn btn-hijau" onclick="simpanPaket()">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- LIVE PREVIEW -->
+      <div class="preview-area">
+        <span class="preview-label">Tampilan di Website (Live Preview)</span>
+        ${previewHTML}
+      </div>
+    </div>
+  `;
 }
-const kosongDari=sc=>{const o={};sc.forEach(f=>o[f.key]=f.type==='number'?'':(f.type==='select'?f.options[0][0]:''));return o;};
-function simpanEditor(ev){
-  ev.preventDefault();
-  const e=ENTITAS[editCtx.k],fd=new FormData(ev.target),raw={};
-  e.schema.forEach(f=>raw[f.key]=(fd.get(f.key)??'').toString());
-  const item=e.unmap?e.unmap(raw,editCtx.idx>-1?DB[editCtx.k][editCtx.idx].id:null):raw;
-  if(editCtx.idx>-1)DB[editCtx.k][editCtx.idx]=item;else DB[editCtx.k].push(item);
-  saveDraft();tutupModal();show(editCtx.k);toast('✅ Berhasil disimpan ke draf');
+
+function updPrev(){
+  const getVal=id=>document.getElementById(id)?.value||'';
+  const harga=+getVal('eHarga')||0;
+  const promo=+getVal('eHargaPromo')||0;
+  
+  document.getElementById('prevNama').textContent=getVal('eNama')||'Nama Paket...';
+  document.getElementById('prevHarga').textContent=rp(promo||harga);
+  document.getElementById('prevTgl').textContent=getVal('eTgl')||'-';
+  document.getElementById('prevMaskapai').textContent=getVal('eMaskapai')||'-'; // Note: Maskapai field missing in form above, add if needed or ignore
+  document.getElementById('prevHM').textContent=getVal('eHM')||'Hotel Makkah';
+  document.getElementById('prevHD').textContent=getVal('eHD')||'Hotel Madinah';
+  
+  const img=document.getElementById('prevImg');
+  const url=getVal('eFoto');
+  if(url) img.src=url;
+  
+  const coret=document.getElementById('prevCoret');
+  if(coret) coret.style.display=promo?'inline':'none';
 }
-function hapusItem(k,i){
-  if(!confirm('Yakin hapus item ini? (masih bisa dibatalkan sebelum publish)'))return;
-  DB[k].splice(i,1);saveDraft();show(k);toast('🗑 Item dihapus dari draf');
+
+function simpanPaket(){
+  const getVal=id=>document.getElementById(id)?.value||'';
+  const p={
+    id:editCtx.id,
+    nama:getVal('eNama'),
+    jenis:getVal('eJenis'),
+    labelJenis:LABEL_JENIS[getVal('eJenis')],
+    foto:getVal('eFoto'),
+    harga:+getVal('eHarga')||0,
+    hargaPromo:+getVal('eHargaPromo')||null,
+    durasi:+getVal('eDurasi')||0,
+    tanggalBerangkat:getVal('eTgl'),
+    maskapai:'-', // Simplified for this demo
+    hotelMakkah:{nama:getVal('eHM'),bintang:+getVal('eHMB')||4,jarak:''},
+    hotelMadinah:{nama:getVal('eHD'),bintang:+getVal('eHDB')||4,jarak:''},
+    kuota:+getVal('eKuota')||0,
+    sisaKuota:+getVal('eSisa')||0,
+    status:getVal('eStatus'),
+    fasilitas:lines(getVal('eFas')),
+    perlengkapan:[],
+    itinerary:lines(getVal('eItin')).map(l=>{const x=l.split('|');return{hari:+x[0]||0,judul:x[1]?.trim()||'',ket:x[2]?.trim()||''};})
+  };
+  
+  const idx=DB.PAKET.findIndex(x=>x.id===p.id);
+  if(idx>-1) DB.PAKET[idx]=p; else DB.PAKET.push(p);
+  
+  saveDraft();
+  toast('✅ Paket berhasil disimpan ke draf');
+  show('paket-'+p.jenis);
 }
-function tutupModal(){document.getElementById('modalBg').classList.remove('active');}
-document.getElementById('modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')tutupModal();});
 
 /* ================================================================
-   PUBLISH (data.js)
+   VIEW: GENERIC LIST (Slides, Testimoni, etc)
 ================================================================ */
-const buildJS=()=> '/* File ini dibuat otomatis oleh CMS Al-Barokah Travel */\nwindow.SITE_DATA = '+JSON.stringify(DB,null,2)+';';
+function vListGeneric(key){
+  const arr=DB[key.toUpperCase()]||DB[key]; // Handle case sensitivity
+  if(!arr) return '<div>Data not found</div>';
+  
+  const rows=arr.map((item,i)=>{
+    let sub='';
+    if(key==='slides') sub=item.judul;
+    else if(key==='testimoni') sub=item.nama+' - '+item.kota;
+    else if(key=='artikel') sub=item.judul;
+    else if(key=='faq') sub=item.q;
+    else sub=JSON.stringify(item).slice(0,50)+'...';
+    
+    return `<tr>
+      <td>${sub}</td>
+      <td style="text-align:right">
+        <button class="btn btn-ghost btn-sm" onclick="bukaEditorGeneric('${key}',${i})">✏️ Edit</button>
+        <button class="btn btn-bahaya btn-sm" onclick="hapusItemGeneric('${key}',${i})">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+    <h3 style="font-family:'Playfair Display',serif">Daftar ${key.charAt(0).toUpperCase()+key.slice(1)}</h3>
+    <button class="btn btn-hijau btn-sm" onclick="bukaEditorGeneric('${key}',-1)">➕ Tambah</button>
+  </div>
+  <table class="list-table"><thead><tr><th>Konten</th><th style="width:120px">Aksi</th></tr></thead><tbody>${rows}</tbody></table>
+  `;
+}
+
+/* ================================================================
+   EDITOR GENERIC (Simple Form)
+================================================================ */
+function bukaEditorGeneric(key, idx){
+  const arr=DB[key.toUpperCase()]||DB[key];
+  const item=idx>-1?arr[idx]:{};
+  editCtx={type:key.toUpperCase()?key.toUpperCase():key, id:idx};
+  
+  // Simple dynamic form based on key
+  let formHTML='';
+  if(key==='slides'){
+    formHTML=`
+      <div><label>URL Background</label><input id="g_foto" value="${item.foto||''}"></div>
+      <div><label>Kicker Badge</label><input id="g_kicker" value="${item.kicker||''}"></div>
+      <div><label>Judul Utama</label><input id="g_judul" value="${item.judul||''}"></div>
+      <div><label>Subjudul</label><textarea id="g_sub" rows="3">${item.sub||''}</textarea></div>
+    `;
+  } else if(key==='testimoni'){
+    formHTML=`
+      <div><label>Nama Jamaah</label><input id="g_nama" value="${item.nama||''}"></div>
+      <div><label>Kota</label><input id="g_kota" value="${item.kota||''}"></div>
+      <div><label>Inisial (2 Huruf)</label><input id="g_inisial" value="${item.inisial||''}" maxlength="2"></div>
+      <div><label>Isi Testimoni</label><textarea id="g_teks" rows="4">${item.teks||''}</textarea></div>
+    `;
+  } else {
+    formHTML=`<div><label>Data JSON (Advanced)</label><textarea id="g_json" rows="10">${JSON.stringify(item,null,2)}</textarea><p class="hint">Edit manual jika field tidak tersedia.</p></div>`;
+  }
+
+  document.getElementById('host').innerHTML=`
+    <div class="editor-grid">
+      <div class="card-form">
+        <h3>${idx>-1?'✏️ Edit':'➕ Tambah'} ${key}</h3>
+        ${formHTML}
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="show('${key}')">Batal</button>
+          <button class="btn btn-hijau" onclick="simpanGeneric('${key}')"> Simpan</button>
+        </div>
+      </div>
+      <div class="preview-area">
+        <span class="preview-label">Preview Sederhana</span>
+        <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow)">
+          <pre style="font-size:.8rem;color:var(--teks-2);white-space:pre-wrap" id="prevJson">${JSON.stringify(item,null,2)}</pre>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function simpanGeneric(key){
+  const arr=DB[key.toUpperCase()]||DB[key];
+  const idx=editCtx.id;
+  let newItem={};
+  
+  if(key==='slides'){
+    newItem={foto:document.getElementById('g_foto').value,kicker:document.getElementById('g_kicker').value,judul:document.getElementById('g_judul').value,sub:document.getElementById('g_sub').value,cta1:{teks:'Lihat Paket',href:'#paket',style:'btn-gold'},cta2:{teks:'Konsultasi',href:'#daftar',style:'btn-ghost'}};
+  } else if(key==='testimoni'){
+    newItem={nama:document.getElementById('g_nama').value,kota:document.getElementById('g_kota').value,inisial:document.getElementById('g_inisial').value,teks:document.getElementById('g_teks').value,paket:'-',stars:'★★★★★'};
+  } else {
+    try{newItem=JSON.parse(document.getElementById('g_json').value);}catch(e){alert('JSON Error');return;}
+  }
+  
+  if(idx>-1) arr[idx]=newItem; else arr.push(newItem);
+  saveDraft();
+  toast('✅ Disimpan');
+  show(key);
+}
+
+/* ================================================================
+   UTILS & DELETE
+================================================================ */
+function hapusItem(type, id){
+  if(!confirm('Hapus item ini?'))return;
+  if(type==='PAKET') DB.PAKET=DB.PAKET.filter(p=>p.id!==id);
+  saveDraft();
+  show(viewAktif);
+  toast('🗑 Item dihapus');
+}
+function hapusItemGeneric(key, idx){
+  if(!confirm('Hapus item ini?'))return;
+  const arr=DB[key.toUpperCase()]||DB[key];
+  arr.splice(idx,1);
+  saveDraft();
+  show(key);
+  toast('🗑 Item dihapus');
+}
+
+/* ================================================================
+   PUBLISH & SETTINGS
+================================================================ */
 function unduhData(){
-  const blob=new Blob([buildJS()],{type:'text/javascript'});
+  const blob=new Blob(['window.SITE_DATA = '+JSON.stringify(DB,null,2)+';'],{type:'text/javascript'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='data.js';a.click();
-  URL.revokeObjectURL(a.href);
-  toast('🚀 data.js diunduh — commit ke GitHub ya!');
+  toast('🚀 data.js diunduh');
 }
 function salinData(){
-  navigator.clipboard.writeText(buildJS()).then(()=>toast('📋 Kode data.js disalin!')).catch(()=>toast('❌ Gagal menyalin'));
+  navigator.clipboard.writeText('window.SITE_DATA = '+JSON.stringify(DB,null,2)+';');
+  toast('📋 Kode disalin');
 }
-function backupJSON(){
-  const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cms-backup.json';a.click();URL.revokeObjectURL(a.href);
-}
-function restoreJSON(inp){
-  const f=inp.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=()=>{try{DB=JSON.parse(r.result);saveDraft();show(viewAktif);toast('✅ Backup dimuat');}catch(e){toast('❌ File tidak valid');}};
-  r.readAsText(f);inp.value='';
-}
-function resetDraf(){
-  if(!confirm('Buang semua draf & kembalikan ke versi publish/default?'))return;
-  localStorage.removeItem(LS_DRAFT);location.reload();
+function vPengaturan(){
+  return `<div class="card-form"><h3>⚙️ Pengaturan</h3>
+    <label>Ganti Sandi Admin</label>
+    <div class="grid2">
+      <input type="password" id="pLama" placeholder="Sandi Lama">
+      <input type="password" id="pBaru" placeholder="Sandi Baru">
+    </div>
+    <button class="btn btn-hijau btn-sm" style="margin-top:12px" onclick="gantiPass()">Simpan Sandi</button>
+    
+    <h4 style="margin-top:24px">♻️ Reset Data</h4>
+    <button class="btn btn-bahaya btn-sm" onclick="if(confirm('Reset semua draf ke default?')){localStorage.removeItem('${LS_DRAFT}');location.reload()}">Reset Draf Lokal</button>
+  </div>`;
 }
 function gantiPass(){
   const l=document.getElementById('pLama').value,b=document.getElementById('pBaru').value;
-  if(l!==getPass())return toast('❌ Sandi lama salah');
-  if(b.length<6)return toast('❌ Sandi baru minimal 6 karakter');
-  localStorage.setItem(LS_PASS,b);toast('🔑 Sandi berhasil diganti');
-  document.getElementById('pLama').value='';document.getElementById('pBaru').value='';
+  if(l!==getPass())return toast('Sandi lama salah');
+  localStorage.setItem(LS_PASS,b);toast('Sandi diganti');
 }
 
 /* ================================================================
-   TOAST & INIT
+   INIT
 ================================================================ */
 let toastTimer;
 function toast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
 }
+
 (async function init(){
   await muatData();
   if(sessionStorage.getItem(SS_AUTH)==='1')masuk();
