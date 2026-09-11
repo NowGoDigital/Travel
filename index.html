@@ -115,36 +115,72 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .legal-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
 .legal-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5ece8;border-radius:16px;padding:14px 22px;box-shadow:var(--shadow);font-size:.85rem;font-weight:700;color:var(--hijau-tua)}
 
-/* ==================== FILTER & PAKET ==================== */
+/* ==================== FILTER & KARTU PAKET PREMIUM ==================== */
 .filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:44px}
 .filters select{padding:13px 18px;border:1.5px solid #e2eae6;border-radius:14px;background:#fff;font-size:.88rem;font-family:inherit;font-weight:600;color:var(--teks);box-shadow:0 2px 10px rgba(0,0,0,.04);cursor:pointer}
 .filters select:focus{outline:none;border-color:var(--hijau)}
-.grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:28px}
+.grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:32px}
 
-.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;display:flex;flex-direction:column;position:relative}
-.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
-.card-img{height:220px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas))}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.card:hover .card-img img{transform:scale(1.08)}
-.card-img .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(4,47,33,.65))}
-.card-img .badge{position:absolute;z-index:2}
-.badge-open{top:14px;left:14px;background:rgba(255,255,255,.95);color:#065f46}
-.badge-full{top:14px;left:14px;background:rgba(255,255,255,.95);color:#991b1b}
-.badge-promo{top:14px;right:14px;background:linear-gradient(135deg,#ff6b6b,#ee5253);color:#fff;box-shadow:0 4px 14px rgba(238,82,83,.5)}
-.card-img .jenis-tag{position:absolute;bottom:14px;left:16px;z-index:2;color:#fff;font-weight:800;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-.card-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:12px}
-.card-body h3{font-size:1.22rem;color:var(--hijau-gelap);line-height:1.35}
-.meta{font-size:.845rem;color:var(--teks-2);display:flex;flex-direction:column;gap:7px}
-.meta span{display:flex;align-items:center;gap:8px}
-.sisa-kursi{color:#e8590c!important;font-weight:800}
-.harga{margin-top:auto;padding-top:14px;border-top:1px dashed #e2eae6;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.22,.68,0,1),box-shadow .45s;display:flex;flex-direction:column;position:relative;border:1px solid #eef3f0}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--hijau),var(--emas),var(--hijau));background-size:200% 100%;opacity:0;transition:.4s;z-index:5}
+.card:hover::before{opacity:1;animation:gradMove 2.5s linear infinite}
+@keyframes gradMove{0%{background-position:0% 0}100%{background-position:200% 0}}
+.card:hover{transform:translateY(-10px);box-shadow:0 26px 60px rgba(4,47,33,.18)}
+.card::after{content:"";position:absolute;top:0;left:-80%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-20deg);transition:left .8s ease;z-index:4;pointer-events:none}
+.card:hover::after{left:135%}
+
+.card-img{height:235px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas))}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,.68,0,1)}
+.card:hover .card-img img{transform:scale(1.1)}
+.card-img .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,47,33,.18) 0%,transparent 35%,rgba(4,47,33,.78) 100%)}
+.card-img .badge{position:absolute;z-index:3;backdrop-filter:blur(6px)}
+.badge-open{top:16px;left:16px;background:rgba(255,255,255,.93);color:#065f46;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.badge-full{top:16px;left:16px;background:rgba(255,255,255,.93);color:#991b1b;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.badge-promo{top:16px;right:16px;background:linear-gradient(135deg,#ff6b6b,#ee5253);color:#fff;box-shadow:0 4px 14px rgba(238,82,83,.5);animation:promoPulse 2s infinite}
+@keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.card-img .jenis-tag{position:absolute;bottom:16px;left:18px;z-index:3;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+
+/* Pill harga emas melayang */
+.price-float{align-self:flex-end;margin-top:-40px;position:relative;z-index:6;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:16px;padding:8px 18px 9px;box-shadow:0 12px 28px rgba(212,169,78,.5);border:1px solid rgba(255,255,255,.55);text-align:right}
+.price-float .pf-label{display:block;font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
+.price-float b{font-family:'Playfair Display',serif;font-size:1.18rem;line-height:1.15;display:block}
+.price-float s{display:block;font-size:.68rem;opacity:.7}
+.price-float small{font-size:.64rem;font-weight:800;opacity:.8}
+
+.card-body{padding:0 24px 18px;flex:1;display:flex;flex-direction:column;gap:13px}
+.card-body h3{font-size:1.24rem;color:var(--hijau-gelap);line-height:1.35;transition:.3s;margin-top:4px}
+.card:hover .card-body h3{color:var(--hijau)}
+
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.meta-item{display:flex;align-items:center;gap:8px;background:#f6faf8;border:1px solid #e8f0ec;border-radius:12px;padding:8px 10px;font-size:.74rem;color:var(--teks-2);font-weight:600;transition:.3s}
+.card:hover .meta-item{border-color:#cfe6db;background:#f0f8f4}
+.meta-item .mi{font-size:1rem;flex-shrink:0}
+.meta-item .mt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.meta-item .mt b{color:var(--hijau-tua)}
+
+/* Progress bar kuota */
+.kuota-wrap{margin-top:auto;padding-top:4px}
+.kuota-label{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;font-weight:700;color:var(--teks-2);margin-bottom:6px}
+.kuota-label .sisa{color:#e8590c}
+.kuota-label .penuh-txt{color:#c0392b}
+.kuota-bar{height:8px;background:#eef3f0;border-radius:99px;overflow:hidden}
+.kuota-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--hijau),#2ecc71);position:relative;overflow:hidden;transition:width 1.2s ease}
+.kuota-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shimmer 2.2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.kuota-fill.penuh{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+
+.card-actions{display:flex;gap:10px;padding:0 24px 24px}
+.card-actions .btn{flex:1;padding:13px;font-size:.85rem;border-radius:14px}
+.btn-detail{background:#fff;color:var(--hijau-tua);border:1.5px solid var(--hijau)}
+.btn-detail:hover{background:var(--hijau);color:#fff;transform:translateY(-2px)}
+.btn-wa-card{background:linear-gradient(135deg,#2ee06f,#1eb85a);color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.btn-wa-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.5)}
+
+/* Harga (dipakai di modal) */
+.harga{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .harga b{font-size:1.5rem;color:var(--hijau);font-family:'Playfair Display',serif}
 .harga s{font-size:.82rem;color:#a3b3ac}
 .harga small{color:var(--teks-2);font-weight:600}
-.card-actions{display:flex;gap:10px;padding:0 24px 24px}
-.card-actions .btn{flex:1;padding:13px;font-size:.85rem}
-.btn-detail{background:var(--hijau-muda);color:var(--hijau-tua)}
-.btn-detail:hover{background:var(--hijau);color:#fff}
 
 /* ==================== KEUNGGULAN ==================== */
 .keunggulan{background:linear-gradient(180deg,var(--hijau-gelap),var(--hijau-tua));color:#fff;position:relative;overflow:hidden}
@@ -269,6 +305,10 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   .akomodasi-box{grid-template-columns:1fr}
   section{padding:64px 0}
   .slider-arrows{display:none}
+}
+@media(max-width:480px){
+  .meta-grid{grid-template-columns:1fr}
+  .grid-paket{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -792,7 +832,7 @@ function hitung(el){
   requestAnimationFrame(step);
 }
 
-/* ---------- RENDER PAKET ---------- */
+/* ---------- RENDER KARTU PAKET PREMIUM ---------- */
 function renderPaket(){
   const jenis = fJenis.value, durasi = fDurasi.value, bintang = fBintang.value, harga = fHarga.value;
   let hasil = PAKET.filter(p => {
@@ -805,36 +845,51 @@ function renderPaket(){
     return true;
   });
   document.getElementById("paketKosong").style.display = hasil.length ? "none" : "block";
-  document.getElementById("gridPaket").innerHTML = hasil.map(p => `
+
+  document.getElementById("gridPaket").innerHTML = hasil.map(p => {
+    const hargaTampil = p.hargaPromo ?? p.harga;
+    const terisi  = Math.max(p.kuota - p.sisaKuota, 0);
+    const persen  = p.kuota ? Math.round((terisi / p.kuota) * 100) : 0;
+    const penuh   = p.status === "full";
+    return `
     <div class="card">
       <div class="card-img">
         <img src="${p.foto}" alt="${p.nama}" loading="lazy">
         <div class="img-overlay"></div>
-        <span class="badge ${p.status==='open'?'badge-open':'badge-full'}">
-          ${p.status==='open'?'✅ Pendaftaran Dibuka':'❌ Kuota Habis'}</span>
+        <span class="badge ${penuh?'badge-full':'badge-open'}">${penuh?'❌ Kuota Habis':'✅ Pendaftaran Dibuka'}</span>
         ${p.hargaPromo?'<span class="badge badge-promo">PROMO 🔥</span>':''}
         <span class="jenis-tag">${p.labelJenis} · ${p.durasi} Hari</span>
       </div>
       <div class="card-body">
-        <h3>${p.nama}</h3>
-        <div class="meta">
-          <span>📅 ${tanggalID(p.tanggalBerangkat)}</span>
-          <span>🕋 ${p.hotelMakkah.nama} ⭐${p.hotelMakkah.bintang} — ${p.hotelMakkah.jarak}</span>
-          <span>🕌 ${p.hotelMadinah.nama} ⭐${p.hotelMadinah.bintang} — ${p.hotelMadinah.jarak}</span>
-          <span>✈️ ${p.maskapai}</span>
-          ${p.sisaKuota>0 && p.sisaKuota<=10 ? `<span class="sisa-kursi">⚠️ Sisa ${p.sisaKuota} kursi lagi!</span>`:''}
-        </div>
-        <div class="harga">
-          <b>${rupiah(p.hargaPromo ?? p.harga)}</b>
+        <div class="price-float">
+          <span class="pf-label">Mulai dari</span>
+          <b>${rupiah(hargaTampil)}</b>
           ${p.hargaPromo?`<s>${rupiah(p.harga)}</s>`:''}
           <small>/jamaah</small>
         </div>
+        <h3>${p.nama}</h3>
+        <div class="meta-grid">
+          <div class="meta-item"><span class="mi">📅</span><span class="mt">${tanggalID(p.tanggalBerangkat)}</span></div>
+          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai}</span></div>
+          <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
+          <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah.nama}</b> ⭐${p.hotelMadinah.bintang}</span></div>
+        </div>
+        <div class="kuota-wrap">
+          <div class="kuota-label">
+            <span>Kuota terisi ${persen}%</span>
+            ${penuh ? '<span class="penuh-txt">PENUH</span>'
+                    : (p.sisaKuota<=10 ? `<span class="sisa">⚠️ Sisa ${p.sisaKuota} kursi!</span>`
+                                       : `<span>Sisa ${p.sisaKuota} kursi</span>`)}
+          </div>
+          <div class="kuota-bar"><div class="kuota-fill ${penuh?'penuh':''}" style="width:${persen}%"></div></div>
+        </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-detail" onclick="bukaModal(${p.id})">Detail Paket</button>
-        <a class="btn btn-wa" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">Booking</a>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})">🔍 Detail Paket</button>
+        <a class="btn btn-wa-card" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">📲 Booking</a>
       </div>
-    </div>`).join("");
+    </div>`;
+  }).join("");
 }
 
 /* ---------- MODAL ---------- */
