@@ -104,12 +104,12 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 /* ==================== STATS BAR ==================== */
 .stats-bar{position:relative;z-index:30;margin-top:-64px}
 .stats-inner{background:var(--putih);border-radius:24px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
-.stat-item{padding:34px 20px;text-align:center;border-right:1px solid #eef3f0;transition:.3s}
+.stat-item{padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:14px;text-align:left;border-right:1px solid #eef3f0;transition:.3s}
 .stat-item:last-child{border-right:none}
 .stat-item:hover{background:var(--hijau-muda)}
-.stat-item .icon{font-size:1.8rem;margin-bottom:6px}
-.stat-item b{display:block;font-size:1.8rem;color:var(--hijau);font-family:'Playfair Display',serif}
-.stat-item small{color:var(--teks-2);font-weight:600;font-size:.8rem}
+.stat-item .icon{font-size:1.9rem;line-height:1;flex-shrink:0}
+.stat-item b{display:block;font-size:1.6rem;color:var(--hijau);font-family:'Playfair Display',serif;line-height:1.2}
+.stat-item small{color:var(--teks-2);font-weight:600;font-size:.78rem}
 
 /* ==================== LEGALITAS ==================== */
 .legal-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
@@ -325,10 +325,12 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 <div class="stats-bar">
   <div class="container">
     <div class="stats-inner reveal">
-      <div class="stat-item"><div class="icon">🕌</div><b data-count="15">0</b><small>Tahun Pengalaman</small></div>
-      <div class="stat-item"><div class="icon">👥</div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div>
-      <div class="stat-item"><div class="icon">⭐</div><b>4.9/5</b><small>Rating Kepuasan</small></div>
-      <div class="stat-item"><div class="icon">🛂</div><b>100%</b><small>Berizin Resmi Kemenag</small></div>
+      <div class="stats-inner reveal">
+      <div class="stat-item"><div class="icon">🕌</div><div><b data-count="15">0</b><small>Tahun Pengalaman</small></div></div>
+      <div class="stat-item"><div class="icon">👥</div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
+      <div class="stat-item"><div class="icon">⭐</div><div><b>4.9/5</b><small>Rating Kepuasan</small></div></div>
+      <div class="stat-item"><div class="icon">🛂</div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
+    </div>
     </div>
     <div class="legal-row reveal">
       <div class="legal-chip">✅ Izin PPIU Kemenag No. U-123/2023</div>
