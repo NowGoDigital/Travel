@@ -30,10 +30,28 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 /* Utility: Prevent Wrapping for Specific Titles */
 .nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%}
 
-.section-title{text-align:center;max-width:900px;margin:0 auto 54px} /* Lebar container diperbesar sedikit agar muat 1 baris */
+.section-title{text-align:center;max-width:900px;margin:0 auto 54px; position:relative;}
 .section-title .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
-.section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25} /* Font size responsif agar muat 1 baris */
+.section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25} 
 .section-title p{color:var(--teks-2);margin-top:10px}
+
+/* KHUSUS SECTION ALUR: Badge di Atas Judul */
+#alur .section-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#alur .section-title .kicker {
+    margin-bottom: 12px; /* Jarak antara Badge dan Judul */
+    order: -1; /* Memaksa kicker pindah ke atas h2 secara visual jika perlu, meski struktur HTML sudah benar */
+}
+#alur .section-title h2 {
+    margin-bottom: 0; /* Hilangkan margin bawah default h2 agar jarak ke paragraf diatur via margin-top p */
+}
+#alur .section-title p {
+    margin-top: 16px; /* Jarak dari Judul ke Subjudul */
+}
+
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:99px;font-weight:800;cursor:pointer;border:none;font-size:.93rem;font-family:inherit;transition:.3s;letter-spacing:.2px}
 .btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;box-shadow:0 8px 24px rgba(212,169,78,.45)}
@@ -469,7 +487,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="stats-inner reveal">
       <div class="stat-item"><div class="icon">🕌</div><div><b data-count="15">0</b><small>Tahun Pengalaman</small></div></div>
-      <div class="stat-item"><div class="icon">👥</div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
+      <div class="stat-item"><div class="icon"></div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
       <div class="stat-item"><div class="icon">⭐</div><div><b>4.9/5</b><small>Rating Kepuasan</small></div></div>
       <div class="stat-item"><div class="icon"></div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
     </div>
@@ -593,6 +611,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 <section id="alur" style="background:#fff">
   <div class="container">
     <div class="section-title reveal">
+      <!-- BADGE DI ATAS JUDUL -->
       <span class="kicker">Cara Daftar</span>
       <!-- JUDUL 1 BARIS -->
       <h2 class="nowrap">Alur Pendaftaran Mudah & Transparan</h2>
@@ -797,7 +816,7 @@ const SLIDES = [
     kicker: "✨ PPIU Resmi Berizin Kemenag",
     judul: "Wujudkan Niat Suci ke <em>Baitullah</em>",
     sub: "Perjalanan umroh penuh kekhusyukan bersama pembimbing bersertifikat dan hotel bintang 5 langkah dari Masjidil Haram.",
-    cta1: { teks: "Lihat Paket ✈️", href: "#paket", style: "btn-gold" },
+    cta1: { teks: "Lihat Paket ️", href: "#paket", style: "btn-gold" },
     cta2: { teks: "Konsultasi Gratis", href: "#daftar", style: "btn-ghost" }
   },
   {
@@ -950,7 +969,7 @@ const ARTIKEL = [
   { emoji:"", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
   { emoji:"🕌", kategori:"Adab", judul:"Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal:"12 Agu 2026", ringkas:"Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci." },
   { emoji:"", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
-  { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
+  { emoji:"", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
 ];
 
 const FAQ = [
@@ -1112,7 +1131,7 @@ function renderPaket(){
           <div class="kuota-label">
             <span>Kuota terisi ${persen}%</span>
             ${penuh ? '<span class="penuh-txt">PENUH</span>'
-                    : (p.sisaKuota<=10 ? `<span class="sisa">⚠️ Sisa ${p.sisaKuota} kursi!</span>`
+                    : (p.sisaKuota<=10 ? `<span class="sisa">️ Sisa ${p.sisaKuota} kursi!</span>`
                                        : `<span>Sisa ${p.sisaKuota} kursi</span>`)}
           </div>
           <div class="kuota-bar"><div class="kuota-fill ${penuh?'penuh':''}" style="width:${persen}%"></div></div>
@@ -1148,7 +1167,7 @@ function bukaModal(id){
       <h4>🏨 Akomodasi</h4>
       <div class="akomodasi-box">
         <div><b>🕋 Makkah</b>${p.hotelMakkah.nama}<br>⭐${p.hotelMakkah.bintang} · ${p.hotelMakkah.jarak}</div>
-        <div><b>🕌 Madinah</b>${p.hotelMadinah.nama}<br>⭐${p.hotelMadinah.bintang} · ${p.hotelMadinah.jarak}</div>
+        <div><b> Madinah</b>${p.hotelMadinah.nama}<br>⭐${p.hotelMadinah.bintang} · ${p.hotelMadinah.jarak}</div>
       </div>
 
       <h4>📋 Itinerary Harian</h4>
@@ -1162,7 +1181,7 @@ function bukaModal(id){
 
       <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
         <a class="btn btn-wa" style="flex:1;min-width:200px" target="_blank"
-          href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
+          href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya `)}">
           📲 Booking via WhatsApp</a>
         <button class="btn btn-detail" style="flex:1;min-width:200px" onclick="pilihPaketForm('${p.nama.replace(/'/g,"\\'")}')">📝 Isi Form</button>
       </div>
@@ -1255,7 +1274,7 @@ function kirimWA(e){
 👤 Nama: ${inNama.value.trim()}
 📱 WA: ${inWA.value.trim()}
 🏙️ Kota: ${inKota.value.trim() || "-"}
-📦 Paket: ${inPaket.value || "Belum ditentukan"}
+ Paket: ${inPaket.value || "Belum ditentukan"}
  Jumlah Jamaah: ${inJml.value} orang
 💬 Pesan: ${inPesan.value.trim() || "-"}
 
