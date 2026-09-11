@@ -27,31 +27,18 @@ img{max-width:100%;display:block}
 section{padding:90px 0}
 h1,h2,h3{font-family:'Playfair Display',serif}
 
-/* Utility: Prevent Wrapping for Specific Titles */
+/* Utility: Judul 1 baris */
 .nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%}
 
-.section-title{text-align:center;max-width:900px;margin:0 auto 54px; position:relative;}
+.section-title{text-align:center;max-width:900px;margin:0 auto 54px}
 .section-title .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
-.section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25} 
+.section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25}
 .section-title p{color:var(--teks-2);margin-top:10px}
 
-/* KHUSUS SECTION ALUR: Badge di Atas Judul */
-#alur .section-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#alur .section-title .kicker {
-    margin-bottom: 12px; /* Jarak antara Badge dan Judul */
-    order: -1; /* Memaksa kicker pindah ke atas h2 secara visual jika perlu, meski struktur HTML sudah benar */
-}
-#alur .section-title h2 {
-    margin-bottom: 0; /* Hilangkan margin bawah default h2 agar jarak ke paragraf diatur via margin-top p */
-}
-#alur .section-title p {
-    margin-top: 16px; /* Jarak dari Judul ke Subjudul */
-}
-
+/* KHUSUS SECTION ALUR: Badge di atas judul */
+#alur .section-title{display:flex;flex-direction:column;align-items:center}
+#alur .section-title .kicker{margin-bottom:12px}
+#alur .section-title p{margin-top:16px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:99px;font-weight:800;cursor:pointer;border:none;font-size:.93rem;font-family:inherit;transition:.3s;letter-spacing:.2px}
 .btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;box-shadow:0 8px 24px rgba(212,169,78,.45)}
@@ -161,7 +148,7 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 @keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .card-img .jenis-tag{position:absolute;bottom:16px;left:18px;z-index:3;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.55)}
 
-/* Bar harga emas HORIZONTAL: MULAI DARI | (nominal + coret di bawahnya) | /jamaah */
+/* Bar harga emas HORIZONTAL */
 .price-float{width:100%;margin-top:-12px;position:relative;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:14px;padding:10px 18px;box-shadow:0 10px 26px rgba(212,169,78,.45);border:1px solid rgba(255,255,255,.55)}
 .price-float .pf-label{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;white-space:nowrap}
 .price-float .pf-mid{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15}
@@ -180,7 +167,6 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .meta-item .mt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
 .meta-item .mt b{color:var(--hijau-tua)}
 
-/* Progress bar kuota */
 .kuota-wrap{margin-top:auto;padding-top:4px}
 .kuota-label{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;font-weight:700;color:var(--teks-2);margin-bottom:6px}
 .kuota-label .sisa{color:#e8590c}
@@ -198,7 +184,6 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .btn-wa-card{background:linear-gradient(135deg,#2ee06f,#1eb85a);color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.35)}
 .btn-wa-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.5)}
 
-/* Harga (dipakai di modal) */
 .harga{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .harga b{font-size:1.5rem;color:var(--hijau);font-family:'Playfair Display',serif}
 .harga s{font-size:.82rem;color:#a3b3ac}
@@ -228,18 +213,15 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .unggul-item h3::after{content:"";display:block;width:34px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--emas),transparent);margin-top:10px;transition:.45s}
 .unggul-item:hover h3::after{width:70px}
 .unggul-item p{font-size:.87rem;color:rgba(255,255,255,.75)}
-/* Kartu utama (tinggi) */
 .ug-feat{grid-row:span 2;background:linear-gradient(160deg,rgba(212,169,78,.16),rgba(255,255,255,.05) 60%);border-color:rgba(212,169,78,.35)}
 .ug-feat::after{content:"🛡️";position:absolute;right:-14px;bottom:-22px;font-size:7.5rem;opacity:.09;transform:rotate(-10deg);transition:.5s}
 .ug-feat:hover::after{transform:rotate(-4deg) scale(1.06);opacity:.14}
 .ug-chips{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px}
 .ug-chips span{background:rgba(212,169,78,.14);border:1px solid rgba(212,169,78,.4);color:var(--emas-muda);font-size:.7rem;font-weight:700;padding:6px 12px;border-radius:99px}
-/* Kartu lebar (horizontal) */
 .ug-wide{grid-column:span 2;flex-direction:row;align-items:center;gap:24px}
 .ug-wide .ug-icon{margin-bottom:0;width:70px;height:70px;font-size:2rem}
 .ug-wide .ug-txt{flex:1}
 .ug-metric{flex-shrink:0;background:rgba(255,255,255,.1);border:1px dashed rgba(212,169,78,.5);color:var(--emas);font-weight:800;font-size:.8rem;padding:10px 16px;border-radius:14px;white-space:nowrap}
-/* Tile CTA emas */
 .ugg-cta{position:relative;overflow:hidden;border-radius:24px;padding:34px 30px;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;display:flex;flex-direction:column;transition:.4s cubic-bezier(.22,.68,0,1)}
 .ugg-cta::before{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5),transparent 70%)}
 .ugg-cta:hover{transform:translateY(-8px);box-shadow:0 22px 50px rgba(212,169,78,.4)}
@@ -291,8 +273,9 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .artikel-body p{font-size:.86rem;color:var(--teks-2)}
 .artikel-body .read{margin-top:14px;font-size:.83rem;font-weight:800;color:var(--hijau)}
 
-/* ==================== CTA BANNER ==================== */
-.cta-banner{background:linear-gradient(rgba(4,47,33,.85),rgba(4,47,33,.85)),url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1600&q=80') center/cover;color:#fff;text-align:center;border-radius:28px;padding:70px 30px;max-width:1100px;margin:0 auto}
+/* ==================== CTA BANNER (MEPET KIRI-KANAN) ==================== */
+.sec-cta .container{max-width:100%;padding:0 16px}
+.cta-banner{background:linear-gradient(rgba(4,47,33,.85),rgba(4,47,33,.85)),url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1600&q=80') center/cover;color:#fff;text-align:center;border-radius:28px;padding:70px 30px;max-width:none;margin:0 auto}
 .cta-banner h2{font-size:2.2rem;margin-bottom:14px}
 .cta-banner p{color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 30px}
 
@@ -419,6 +402,8 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   .ug-feat,.ug-wide,.ugg-cta{grid-column:auto}
   .ug-wide{flex-direction:column;align-items:flex-start}
   .ug-metric{align-self:flex-start}
+  .sec-cta .container{padding:0 10px}
+  .cta-banner{border-radius:20px;padding:56px 18px}
 }
 @media(max-width:560px){
   .alur-grid{grid-template-columns:1fr}
@@ -487,9 +472,9 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="stats-inner reveal">
       <div class="stat-item"><div class="icon">🕌</div><div><b data-count="15">0</b><small>Tahun Pengalaman</small></div></div>
-      <div class="stat-item"><div class="icon"></div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
+      <div class="stat-item"><div class="icon">👥</div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
       <div class="stat-item"><div class="icon">⭐</div><div><b>4.9/5</b><small>Rating Kepuasan</small></div></div>
-      <div class="stat-item"><div class="icon"></div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
+      <div class="stat-item"><div class="icon">🛂</div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
     </div>
     <div class="legal-row reveal">
       <div class="legal-chip">✅ Izin PPIU Kemenag No. U-123/2023</div>
@@ -543,13 +528,11 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="section-title reveal">
       <span class="kicker">Mengapa Kami</span>
-      <!-- JUDUL 1 BARIS -->
       <h2 class="nowrap">Komitmen Layanan Terbaik untuk Tamu Allah</h2>
       <p>Setiap detail perjalanan kami rancang agar Anda fokus beribadah</p>
-      <div class="ug-divider"><i></i><b></b><i></i></div>
+      <div class="ug-divider"><i></i><b>✦</b><i></i></div>
     </div>
     <div class="unggul-grid">
-      <!-- 01 · Kartu utama tinggi -->
       <div class="unggul-item ug-feat reveal">
         <span class="ug-no">01</span>
         <div class="ug-icon">🛡️</div>
@@ -559,7 +542,6 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
           <span>🛂 PPIU U-123/2023</span><span>🏅 HIMPUH</span><span>🤝 AMPHURI</span><span>📜 ISO 9001:2015</span>
         </div>
       </div>
-      <!-- 02 · Kartu lebar horizontal -->
       <div class="unggul-item ug-wide reveal">
         <span class="ug-no">02</span>
         <div class="ug-icon">🏨</div>
@@ -569,35 +551,30 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
         </div>
         <span class="ug-metric">📍 50–600 m</span>
       </div>
-      <!-- 03 -->
       <div class="unggul-item reveal">
         <span class="ug-no">03</span>
         <div class="ug-icon">👳</div>
         <h3>Pembimbing Bersertifikat</h3>
         <p>Muthawif berpengalaman & bersertifikat, membimbing ibadah sesuai sunnah dari manasik hingga pulang.</p>
       </div>
-      <!-- 04 -->
       <div class="unggul-item reveal">
         <span class="ug-no">04</span>
         <div class="ug-icon">🩺</div>
         <h3>Pendampingan Kesehatan</h3>
         <p>Tim medis siaga, asuransi perjalanan penuh, dan pemeriksaan kesehatan pra-keberangkatan.</p>
       </div>
-      <!-- 05 -->
       <div class="unggul-item reveal">
         <span class="ug-no">05</span>
         <div class="ug-icon">✈️</div>
         <h3>Penerbangan Nyaman</h3>
         <p>Maskapai terbaik dengan rute direct flight, bagasi memadai, dan handling bandara profesional.</p>
       </div>
-      <!-- 06 -->
       <div class="unggul-item reveal">
         <span class="ug-no">06</span>
         <div class="ug-icon">🍽️</div>
         <h3>Katering Cita Rasa Indonesia</h3>
         <p>Menu prasmanan 3x sehari yang familiar di lidah, menjaga stamina selama ibadah.</p>
       </div>
-      <!-- Tile CTA emas -->
       <div class="ugg-cta reveal">
         <h3>Masih Membandingkan Travel?</h3>
         <p>Konsultasikan kebutuhan & budget Anda secara gratis — tanpa komitmen apa pun.</p>
@@ -611,9 +588,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 <section id="alur" style="background:#fff">
   <div class="container">
     <div class="section-title reveal">
-      <!-- BADGE DI ATAS JUDUL -->
       <span class="kicker">Cara Daftar</span>
-      <!-- JUDUL 1 BARIS -->
       <h2 class="nowrap">Alur Pendaftaran Mudah & Transparan</h2>
       <p>Hanya 4 langkah sederhana dari niat hingga berangkat ke Baitullah</p>
     </div>
@@ -682,8 +657,8 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   </div>
 </section>
 
-<!-- ================= CTA BANNER ================= -->
-<section style="padding-top:0">
+<!-- ================= CTA BANNER (MEPET KIRI-KANAN) ================= -->
+<section class="sec-cta" style="padding-top:0">
   <div class="container">
     <div class="cta-banner reveal">
       <span class="badge" style="background:rgba(212,169,78,.25);color:var(--emas);margin-bottom:18px">🌙 PROMO EARLY BIRD</span>
@@ -699,12 +674,10 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="section-title reveal">
       <span class="kicker">Konsultasi & Pendaftaran</span>
-      <!-- JUDUL 1 BARIS -->
       <h2 class="nowrap">Tuntaskan Ragu, Wujudkan Berangkat</h2>
       <p>Baca jawaban instan pada FAQ di sebelah kiri, atau langsung isi form — tim kami membalas cepat pada jam kerja.</p>
     </div>
     <div class="fd-grid">
-      <!-- KOLOM KIRI: FAQ -->
       <div class="fd-left reveal">
         <div class="faq-wrap" id="faqWrap"></div>
         <div class="fd-help">
@@ -715,7 +688,6 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
           <a class="btn btn-wa" id="fdHelpWa" target="_blank" href="#">💬 Chat Sekarang</a>
         </div>
       </div>
-      <!-- KOLOM KANAN: FORM PENDAFTARAN -->
       <div class="fd-right reveal">
         <div class="form-card">
           <div class="form-head">
@@ -796,7 +768,6 @@ const KONFIGURASI = {
   namaTravel: "Al-Barokah Travel",
   nomorWA: "6281234567890",
   pesanWADefault: "Assalamu'alaikum, saya ingin konsultasi paket umroh. 🙏",
-  // ─── DATA TOPBAR (edit di sini) ───
   alamat: "Jl. Raya Ibadah No. 88, Jakarta Selatan",
   telepon: "021-1234567",
   email: "info@albarokah.travel",
@@ -816,7 +787,7 @@ const SLIDES = [
     kicker: "✨ PPIU Resmi Berizin Kemenag",
     judul: "Wujudkan Niat Suci ke <em>Baitullah</em>",
     sub: "Perjalanan umroh penuh kekhusyukan bersama pembimbing bersertifikat dan hotel bintang 5 langkah dari Masjidil Haram.",
-    cta1: { teks: "Lihat Paket ️", href: "#paket", style: "btn-gold" },
+    cta1: { teks: "Lihat Paket ✈️", href: "#paket", style: "btn-gold" },
     cta2: { teks: "Konsultasi Gratis", href: "#daftar", style: "btn-ghost" }
   },
   {
@@ -824,7 +795,7 @@ const SLIDES = [
     kicker: "🕌 Rindu Masjid Nabawi?",
     judul: "Ketenangan Beribadah di <em>Kota Nabi</em>",
     sub: "Hotel depan gerbang Masjid Nabawi, ziarah Raudhah terjadwal, dan city tour Madinah yang berkesan.",
-    cta1: { teks: "Paket Madinah ", href: "#paket", style: "btn-gold" },
+    cta1: { teks: "Paket Madinah 🕌", href: "#paket", style: "btn-gold" },
     cta2: { teks: "Chat via WhatsApp", href: "#", style: "btn-ghost", wa: true }
   },
   {
@@ -939,7 +910,7 @@ const PAKET = [
 ];
 
 const ALUR = [
-  { icon:"", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
+  { icon:"💬", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
   { icon:"💰", judul:"Booking & DP Ringan", ket:"Amankan kursi dengan DP mulai Rp 5 juta. Harga langsung terkunci, bebas kenaikan biaya tiba-tiba." },
   { icon:"📄", judul:"Pelunasan & Dokumen", ket:"Paspor, vaksin, visa, hingga manasik — semua dibantu tim kami sampai berkas siap berangkat." },
   { icon:"🕋", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
@@ -964,12 +935,12 @@ const TESTIMONI = [
 ];
 
 const ARTIKEL = [
-  { emoji:"", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
+  { emoji:"📖", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
   { emoji:"💪", kategori:"Kesehatan", judul:"Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan", tanggal:"28 Agu 2026", ringkas:"Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah." },
-  { emoji:"", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
+  { emoji:"🧳", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
   { emoji:"🕌", kategori:"Adab", judul:"Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal:"12 Agu 2026", ringkas:"Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci." },
-  { emoji:"", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
-  { emoji:"", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
+  { emoji:"💰", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
+  { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
 ];
 
 const FAQ = [
@@ -996,7 +967,6 @@ const waLink = p => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURICompon
 document.getElementById("waFloat").href = waLink(KONFIGURASI.pesanWADefault);
 document.getElementById("fdHelpWa").href = waLink("Assalamu'alaikum, saya ingin bertanya seputar paket umroh & haji. 🙏");
 
-// ─── Isi konten topbar dari KONFIGURASI ───
 tbAlamat.textContent = KONFIGURASI.alamat;
 tbTelp.textContent = KONFIGURASI.telepon;
 tbTelp.href = "tel:" + KONFIGURASI.telepon;
@@ -1123,22 +1093,22 @@ function renderPaket(){
         <h3>${p.nama}</h3>
         <div class="meta-grid">
           <div class="meta-item"><span class="mi">📅</span><span class="mt">${tanggalID(p.tanggalBerangkat)}</span></div>
-          <div class="meta-item"><span class="mi">️</span><span class="mt">${p.maskapai}</span></div>
-          <div class="meta-item"><span class="mi"></span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
+          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai}</span></div>
+          <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
           <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah.nama}</b> ⭐${p.hotelMadinah.bintang}</span></div>
         </div>
         <div class="kuota-wrap">
           <div class="kuota-label">
             <span>Kuota terisi ${persen}%</span>
             ${penuh ? '<span class="penuh-txt">PENUH</span>'
-                    : (p.sisaKuota<=10 ? `<span class="sisa">️ Sisa ${p.sisaKuota} kursi!</span>`
+                    : (p.sisaKuota<=10 ? `<span class="sisa">⚠️ Sisa ${p.sisaKuota} kursi!</span>`
                                        : `<span>Sisa ${p.sisaKuota} kursi</span>`)}
           </div>
           <div class="kuota-bar"><div class="kuota-fill ${penuh?'penuh':''}" style="width:${persen}%"></div></div>
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-detail" onclick="bukaModal(${p.id})"> Detail Paket</button>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})">🔍 Detail Paket</button>
         <a class="btn btn-wa-card" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">📲 Booking</a>
       </div>
     </div>`;
@@ -1167,7 +1137,7 @@ function bukaModal(id){
       <h4>🏨 Akomodasi</h4>
       <div class="akomodasi-box">
         <div><b>🕋 Makkah</b>${p.hotelMakkah.nama}<br>⭐${p.hotelMakkah.bintang} · ${p.hotelMakkah.jarak}</div>
-        <div><b> Madinah</b>${p.hotelMadinah.nama}<br>⭐${p.hotelMadinah.bintang} · ${p.hotelMadinah.jarak}</div>
+        <div><b>🕌 Madinah</b>${p.hotelMadinah.nama}<br>⭐${p.hotelMadinah.bintang} · ${p.hotelMadinah.jarak}</div>
       </div>
 
       <h4>📋 Itinerary Harian</h4>
@@ -1181,7 +1151,7 @@ function bukaModal(id){
 
       <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
         <a class="btn btn-wa" style="flex:1;min-width:200px" target="_blank"
-          href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya `)}">
+          href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
           📲 Booking via WhatsApp</a>
         <button class="btn btn-detail" style="flex:1;min-width:200px" onclick="pilihPaketForm('${p.nama.replace(/'/g,"\\'")}')">📝 Isi Form</button>
       </div>
@@ -1213,7 +1183,7 @@ document.getElementById("gridAlur").innerHTML = ALUR.map((s,i) => `
 document.getElementById("gridGaleri").innerHTML = GALERI.map(g => `
   <div class="galeri-item ${g.cls||''}">
     <img src="${g.foto}" alt="${g.cap}" loading="lazy">
-    <div class="cap"> ${g.cap}</div>
+    <div class="cap">📸 ${g.cap}</div>
   </div>`).join("");
 
 /* ---------- TESTIMONI & ARTIKEL ---------- */
@@ -1274,8 +1244,8 @@ function kirimWA(e){
 👤 Nama: ${inNama.value.trim()}
 📱 WA: ${inWA.value.trim()}
 🏙️ Kota: ${inKota.value.trim() || "-"}
- Paket: ${inPaket.value || "Belum ditentukan"}
- Jumlah Jamaah: ${inJml.value} orang
+📦 Paket: ${inPaket.value || "Belum ditentukan"}
+👥 Jumlah Jamaah: ${inJml.value} orang
 💬 Pesan: ${inPesan.value.trim() || "-"}
 
 Mohon dibantu prosesnya. Terima kasih 🙏`;
