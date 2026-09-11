@@ -760,6 +760,11 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.7-.4z"/></svg>
 </a>
 
+<!-- Muat data hasil publish dari CMS (aman walau file belum ada) -->
+<script src="data.js"></script>
+<script>
+/* ... logika website existing tetap di sini ... */
+  
 <script>
 /* ================================================================
    📝 AREA KONTEN — UBAH SEMUA DATA WEBSITE DI SINI SAJA
@@ -958,6 +963,17 @@ const FAQ = [
     a:"Sangat ada. Setiap kloter didampingi pembimbing bersertifikat & tim medis. Jamaah lansia mendapat prioritas kursi, bantuan kursi roda di bandara dan area Haram, serta bimbingan manasik ekstra sebelum berangkat." }
 ];
 
+/* ===== OVERRIDE DATA HASIL PUBLISH CMS (data.js) ===== */
+if (window.SITE_DATA) {
+  const D = window.SITE_DATA;
+  if (D.KONFIGURASI) Object.assign(KONFIGURASI, D.KONFIGURASI);
+  const muatUlang = (t, s) => { if (Array.isArray(s)) { t.length = 0; s.forEach(x => t.push(x)); } };
+  muatUlang(SLIDES, D.SLIDES); muatUlang(PAKET, D.PAKET); muatUlang(ALUR, D.ALUR);
+  muatUlang(GALERI, D.GALERI); muatUlang(TESTIMONI, D.TESTIMONI);
+  muatUlang(ARTIKEL, D.ARTIKEL); muatUlang(FAQ, D.FAQ);
+}
+
+  
 /* ================================================================
    ⚙️ LOGIKA WEBSITE — (tidak perlu diubah)
 ================================================================ */
