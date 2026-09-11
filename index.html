@@ -269,12 +269,26 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-a p{padding:0 24px 22px;font-size:.88rem;color:var(--teks-2)}
 
-/* ==================== FORM ==================== */
-.form-wrap{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);padding:44px;max-width:680px;margin:0 auto;position:relative;overflow:hidden}
-.form-wrap::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--hijau),var(--emas))}
-.form-wrap label{display:block;font-weight:700;font-size:.83rem;margin:16px 0 6px;color:var(--hijau-gelap)}
-.form-wrap input,.form-wrap select,.form-wrap textarea{width:100%;padding:14px 16px;border:1.5px solid #e2eae6;border-radius:14px;font-size:.92rem;font-family:inherit;background:#fbfdfc;transition:.25s}
-.form-wrap input:focus,.form-wrap select:focus,.form-wrap textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
+/* ==================== FAQ + PENDAFTARAN BERDAMPINGAN ==================== */
+.sec-faq-daftar{background:linear-gradient(180deg,#ffffff 0%,var(--hijau-muda) 100%);position:relative;overflow:hidden}
+.sec-faq-daftar::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.16),transparent 70%)}
+.fd-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;position:relative;z-index:1}
+.sec-faq-daftar .faq-wrap{max-width:none;margin:0}
+.fd-help{margin-top:20px;background:#fff;border:1.5px dashed var(--emas);border-radius:18px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:var(--shadow)}
+.fd-help b{color:var(--hijau-gelap);font-size:.95rem}
+.fd-help small{color:var(--teks-2)}
+.fd-help .btn{padding:12px 24px;font-size:.83rem}
+.form-card{background:#fff;border-radius:28px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid #eef3f0;position:sticky;top:100px}
+.form-head{background:linear-gradient(135deg,var(--hijau-gelap),var(--hijau-tua));color:#fff;padding:30px 34px 26px;position:relative;overflow:hidden}
+.form-head::before{content:"";position:absolute;top:-70px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.35),transparent 70%)}
+.form-head::after{content:"🕋";position:absolute;right:26px;bottom:-16px;font-size:4.8rem;opacity:.16}
+.form-head .fh-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(212,169,78,.18);border:1px solid rgba(212,169,78,.45);color:var(--emas);font-size:.66rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:99px;margin-bottom:12px}
+.form-head h3{font-size:1.5rem;color:#fff;margin-bottom:6px}
+.form-head p{font-size:.85rem;color:rgba(255,255,255,.75)}
+.form-card form{padding:28px 34px 34px}
+.form-card label{display:block;font-weight:700;font-size:.83rem;margin:14px 0 6px;color:var(--hijau-gelap)}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:13px 16px;border:1.5px solid #e2eae6;border-radius:14px;font-size:.92rem;font-family:inherit;background:#fbfdfc;transition:.25s}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
 .form-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
 
 /* ==================== FOOTER ==================== */
@@ -323,6 +337,10 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 .reveal.visible{opacity:1;transform:none}
 
 /* ==================== RESPONSIVE ==================== */
+@media(max-width:980px){
+  .fd-grid{grid-template-columns:1fr;gap:44px}
+  .form-card{position:static}
+}
 @media(max-width:900px){
   .nav-links{display:none;position:fixed;inset:0;background:var(--hijau-gelap);flex-direction:column;justify-content:center;gap:28px;font-size:1.1rem}
   .nav-links.open{display:flex}
@@ -348,6 +366,8 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   .grid-paket{grid-template-columns:1fr}
   .price-float{flex-wrap:wrap;justify-content:center;row-gap:2px;border-radius:18px;margin-top:-10px}
   .galeri-grid{grid-auto-rows:150px}
+  .form-card form{padding:24px 22px 28px}
+  .form-head{padding:26px 22px 22px}
 }
 </style>
 </head>
@@ -548,18 +568,6 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
-<section id="faq" style="background:#fff">
-  <div class="container">
-    <div class="section-title reveal">
-      <span class="kicker">Tanya Jawab</span>
-      <h2>Pertanyaan yang Sering Diajukan</h2>
-      <p>Jawaban jujur untuk menghilangkan keraguan sebelum Anda mendaftar</p>
-    </div>
-    <div class="faq-wrap reveal" id="faqWrap"></div>
-  </div>
-</section>
-
 <!-- ================= CTA BANNER ================= -->
 <section style="padding-top:0">
   <div class="container">
@@ -572,31 +580,52 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   </div>
 </section>
 
-<!-- ================= FORM PENDAFTARAN ================= -->
-<section id="daftar" style="padding-top:0">
+<!-- ================= FAQ + PENDAFTARAN (BERDAMPINGAN) ================= -->
+<section id="daftar" class="sec-faq-daftar">
   <div class="container">
     <div class="section-title reveal">
-      <span class="kicker">Pendaftaran</span>
-      <h2>Daftar / Konsultasi Jamaah</h2>
-      <p>Isi form berikut — data akan terkirim otomatis dan rapi via WhatsApp</p>
+      <span class="kicker">Konsultasi & Pendaftaran</span>
+      <h2>Tuntaskan Ragu, Wujudkan Berangkat</h2>
+      <p>Baca jawaban instan pada FAQ di sebelah kiri, atau langsung isi form — tim kami membalas cepat pada jam kerja.</p>
     </div>
-    <div class="form-wrap reveal">
-      <form onsubmit="return kirimWA(event)">
-        <div class="form-2col">
-          <div><label>Nama Lengkap *</label><input type="text" id="inNama" required placeholder="Nama sesuai KTP"></div>
-          <div><label>No. WhatsApp *</label><input type="tel" id="inWA" required placeholder="081234567890" pattern="(\+?62|0)8[0-9]{8,13}"></div>
+    <div class="fd-grid">
+      <!-- KOLOM KIRI: FAQ -->
+      <div class="fd-left reveal">
+        <div class="faq-wrap" id="faqWrap"></div>
+        <div class="fd-help">
+          <div>
+            <b>Masih ada pertanyaan lain?</b>
+            <small style="display:block">Tim konsultan kami siap membantu Anda setiap hari.</small>
+          </div>
+          <a class="btn btn-wa" id="fdHelpWa" target="_blank" href="#">💬 Chat Sekarang</a>
         </div>
-        <div class="form-2col">
-          <div><label>Kota Asal</label><input type="text" id="inKota" placeholder="Contoh: Surabaya"></div>
-          <div><label>Jumlah Jamaah</label><input type="number" id="inJml" min="1" max="50" value="1"></div>
+      </div>
+      <!-- KOLOM KANAN: FORM PENDAFTARAN -->
+      <div class="fd-right reveal">
+        <div class="form-card">
+          <div class="form-head">
+            <span class="fh-chip">⚡ Respon &lt; 5 Menit di Jam Kerja</span>
+            <h3>Daftar / Konsultasi Jamaah</h3>
+            <p>Data terkirim otomatis & rapi langsung ke WhatsApp kami.</p>
+          </div>
+          <form onsubmit="return kirimWA(event)">
+            <div class="form-2col">
+              <div><label>Nama Lengkap *</label><input type="text" id="inNama" required placeholder="Nama sesuai KTP"></div>
+              <div><label>No. WhatsApp *</label><input type="tel" id="inWA" required placeholder="081234567890" pattern="(\+?62|0)8[0-9]{8,13}"></div>
+            </div>
+            <div class="form-2col">
+              <div><label>Kota Asal</label><input type="text" id="inKota" placeholder="Contoh: Surabaya"></div>
+              <div><label>Jumlah Jamaah</label><input type="number" id="inJml" min="1" max="50" value="1"></div>
+            </div>
+            <label>Paket yang Diminati</label>
+            <select id="inPaket"></select>
+            <label>Pesan / Pertanyaan</label>
+            <textarea id="inPesan" rows="3" placeholder="Tuliskan pertanyaan Anda..."></textarea>
+            <button type="submit" class="btn btn-wa" style="width:100%;margin-top:24px">📲 Kirim Pendaftaran via WhatsApp</button>
+            <small style="display:block;margin-top:12px;color:var(--teks-2);text-align:center">🔒 Data Anda aman & hanya digunakan untuk keperluan pendaftaran.</small>
+          </form>
         </div>
-        <label>Paket yang Diminati</label>
-        <select id="inPaket"></select>
-        <label>Pesan / Pertanyaan</label>
-        <textarea id="inPesan" rows="3" placeholder="Tuliskan pertanyaan Anda..."></textarea>
-        <button type="submit" class="btn btn-wa" style="width:100%;margin-top:24px">📲 Kirim Pendaftaran via WhatsApp</button>
-        <small style="display:block;margin-top:12px;color:var(--teks-2);text-align:center">🔒 Data Anda aman & hanya digunakan untuk keperluan pendaftaran.</small>
-      </form>
+      </div>
     </div>
   </div>
 </section>
@@ -798,7 +827,7 @@ const ALUR = [
   { icon:"💬", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
   { icon:"💰", judul:"Booking & DP Ringan", ket:"Amankan kursi dengan DP mulai Rp 5 juta. Harga langsung terkunci, bebas kenaikan biaya tiba-tiba." },
   { icon:"📄", judul:"Pelunasan & Dokumen", ket:"Paspor, vaksin, visa, hingga manasik — semua dibantu tim kami sampai berkas siap berangkat." },
-  { icon:"", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
+  { icon:"🕋", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
 ];
 
 const GALERI = [
@@ -850,6 +879,7 @@ const rupiah = n => "Rp " + n.toLocaleString("id-ID");
 const tanggalID = s => new Date(s).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
 const waLink = p => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURIComponent(p)}`;
 document.getElementById("waFloat").href = waLink(KONFIGURASI.pesanWADefault);
+document.getElementById("fdHelpWa").href = waLink("Assalamu'alaikum, saya ingin bertanya seputar paket umroh & haji. 🙏");
 
 // ─── Isi konten topbar dari KONFIGURASI ───
 tbAlamat.textContent = KONFIGURASI.alamat;
