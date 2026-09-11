@@ -196,6 +196,16 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .unggul-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;margin-bottom:8px}
 .unggul-item p{font-size:.86rem;color:rgba(255,255,255,.75)}
 
+/* ==================== ALUR PENDAFTARAN ==================== */
+.alur-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative}
+.alur-grid::before{content:"";position:absolute;top:44px;left:11%;right:11%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--hijau),var(--emas));z-index:0}
+.alur-step{text-align:center;position:relative;z-index:1}
+.alur-num{width:88px;height:88px;margin:0 auto 18px;border-radius:50%;background:#fff;border:3px solid var(--hijau-muda);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:2.1rem;position:relative;transition:.35s}
+.alur-step:hover .alur-num{transform:translateY(-6px) scale(1.06);border-color:var(--emas);box-shadow:0 14px 34px rgba(212,169,78,.35)}
+.alur-num .step-no{position:absolute;top:-8px;right:-8px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(212,169,78,.5);font-family:'Plus Jakarta Sans',sans-serif}
+.alur-step h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;color:var(--hijau-gelap);margin-bottom:8px}
+.alur-step p{font-size:.85rem;color:var(--teks-2)}
+
 /* ==================== TESTIMONI ==================== */
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
 .testi{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);position:relative;transition:.35s}
@@ -207,6 +217,16 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .testi .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--hijau),var(--emas));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem}
 .testi .who b{display:block;font-size:.9rem;color:var(--hijau-gelap)}
 .testi .who small{color:var(--teks-2)}
+
+/* ==================== GALERI JAMAAH ==================== */
+.galeri-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:185px;gap:14px}
+.galeri-item{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow)}
+.galeri-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,.68,0,1)}
+.galeri-item:hover img{transform:scale(1.09)}
+.galeri-item .cap{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(transparent,rgba(4,47,33,.88));color:#fff;font-size:.78rem;font-weight:700;opacity:0;transform:translateY(12px);transition:.35s}
+.galeri-item:hover .cap{opacity:1;transform:none}
+.galeri-item.tall{grid-row:span 2}
+.galeri-item.wide{grid-column:span 2}
 
 /* ==================== ARTIKEL ==================== */
 .artikel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
@@ -238,6 +258,16 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .check-list{margin-top:22px;display:flex;flex-direction:column;gap:12px}
 .check-list div{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;font-weight:600}
 .check-list .c{width:24px;height:24px;border-radius:50%;background:var(--hijau-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:2px}
+
+/* ==================== FAQ ==================== */
+.faq-wrap{max-width:780px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid #e8efeb;border-radius:16px;margin-bottom:14px;overflow:hidden;transition:.3s;box-shadow:0 2px 12px rgba(4,47,33,.05)}
+.faq-item.open{border-color:var(--hijau);box-shadow:var(--shadow)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--hijau-gelap);text-align:left}
+.faq-q .faq-icon{width:30px;height:30px;border-radius:50%;background:var(--hijau-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;transition:.35s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--hijau);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 24px 22px;font-size:.88rem;color:var(--teks-2)}
 
 /* ==================== FORM ==================== */
 .form-wrap{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);padding:44px;max-width:680px;margin:0 auto;position:relative;overflow:hidden}
@@ -300,6 +330,9 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   .hamburger{display:block}
   .stats-inner{grid-template-columns:1fr 1fr}
   .stat-item:nth-child(2){border-right:none}
+  .alur-grid{grid-template-columns:1fr 1fr}
+  .alur-grid::before{display:none}
+  .galeri-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
   .tentang{grid-template-columns:1fr;gap:60px}
   .footer-grid{grid-template-columns:1fr 1fr}
   .form-2col{grid-template-columns:1fr}
@@ -307,10 +340,14 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   section{padding:64px 0}
   .slider-arrows{display:none}
 }
+@media(max-width:560px){
+  .alur-grid{grid-template-columns:1fr}
+}
 @media(max-width:480px){
   .meta-grid{grid-template-columns:1fr}
   .grid-paket{grid-template-columns:1fr}
   .price-float{flex-wrap:wrap;justify-content:center;row-gap:2px;border-radius:18px;margin-top:-10px}
+  .galeri-grid{grid-auto-rows:150px}
 }
 </style>
 </head>
@@ -438,6 +475,18 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   </div>
 </section>
 
+<!-- ================= ALUR PENDAFTARAN ================= -->
+<section id="alur" style="background:#fff">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="kicker">Cara Daftar</span>
+      <h2>Alur Pendaftaran Mudah & Transparan</h2>
+      <p>Hanya 4 langkah sederhana dari niat hingga berangkat ke Baitullah</p>
+    </div>
+    <div class="alur-grid reveal" id="gridAlur"></div>
+  </div>
+</section>
+
 <!-- ================= TESTIMONI ================= -->
 <section>
   <div class="container">
@@ -447,6 +496,18 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
       <p>Kepercayaan ribuan jamaah adalah amanah terbesar kami</p>
     </div>
     <div class="testi-grid reveal" id="gridTesti"></div>
+  </div>
+</section>
+
+<!-- ================= GALERI JAMAAH ================= -->
+<section id="galeri">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="kicker">Dokumentasi Asli</span>
+      <h2>Galeri Keberangkatan Jamaah</h2>
+      <p>Momen nyata jamaah Al-Barokah Travel di Tanah Suci — bukti amanah kami</p>
+    </div>
+    <div class="galeri-grid reveal" id="gridGaleri"></div>
   </div>
 </section>
 
@@ -484,6 +545,18 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
       </div>
       <a href="#daftar" class="btn btn-gold" style="margin-top:28px">Konsultasi Gratis →</a>
     </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="background:#fff">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="kicker">Tanya Jawab</span>
+      <h2>Pertanyaan yang Sering Diajukan</h2>
+      <p>Jawaban jujur untuk menghilangkan keraguan sebelum Anda mendaftar</p>
+    </div>
+    <div class="faq-wrap reveal" id="faqWrap"></div>
   </div>
 </section>
 
@@ -721,6 +794,22 @@ const PAKET = [
   }
 ];
 
+const ALUR = [
+  { icon:"💬", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
+  { icon:"💰", judul:"Booking & DP Ringan", ket:"Amankan kursi dengan DP mulai Rp 5 juta. Harga langsung terkunci, bebas kenaikan biaya tiba-tiba." },
+  { icon:"📄", judul:"Pelunasan & Dokumen", ket:"Paspor, vaksin, visa, hingga manasik — semua dibantu tim kami sampai berkas siap berangkat." },
+  { icon:"", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
+];
+
+const GALERI = [
+  { foto:"https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&q=80", cap:"Masjid Nabawi — Madinah Al-Munawwarah", cls:"tall" },
+  { foto:"https://images.unsplash.com/photo-1587979931372-fbb529401779?w=900&q=80", cap:"Thawaf mengelilingi Ka'bah — Masjidil Haram", cls:"wide" },
+  { foto:"https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600&q=80", cap:"Manasik & pembekalan jamaah" },
+  { foto:"https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80", cap:"Umroh Plus Turki — Istanbul" },
+  { foto:"https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&q=80", cap:"Keberangkatan kloter Ramadhan" },
+  { foto:"https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&q=80", cap:"City tour & ziarah tempat bersejarah" }
+];
+
 const TESTIMONI = [
   { nama:"H. Ahmad Fauzi", kota:"Surabaya", paket:"Umroh Reguler Ramadhan", inisial:"AF",
     teks:"Alhamdulillah pelayanan sangat memuaskan. Hotel dekat sekali dengan Haram, pembimbing sabar dan ilmunya luas. Insya Allah tahun depan berangkat lagi sekeluarga." },
@@ -737,6 +826,21 @@ const ARTIKEL = [
   { emoji:"🕌", kategori:"Adab", judul:"Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal:"12 Agu 2026", ringkas:"Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci." },
   { emoji:"💰", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
   { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
+];
+
+const FAQ = [
+  { q:"Apakah Al-Barokah Travel resmi dan terpercaya?",
+    a:"Ya. Kami adalah PPIU resmi berizin Kementerian Agama RI No. U-123 Tahun 2023, anggota HIMPUH & AMPHURI, serta bersertifikat ISO 9001:2015. Legalitas kami dapat Anda verifikasi langsung melalui situs resmi Kemenag (simpu.kemenag.go.id)." },
+  { q:"Berapa uang muka (DP) untuk mengunci kursi?",
+    a:"Cukup Rp 5.000.000 untuk paket umroh dan Rp 25.000.000 untuk haji khusus. Setelah DP masuk, harga paket terkunci — tidak akan ada kenaikan biaya meskipun harga tiket atau hotel naik." },
+  { q:"Apakah bisa membayar dengan cicilan tanpa kartu kredit?",
+    a:"Bisa. Kami bekerja sama dengan bank syariah & lembaga pembiayaan syariah untuk cicilan 3–12 bulan tanpa riba dan tanpa kartu kredit. Skema disesuaikan dengan kemampuan jamaah saat konsultasi." },
+  { q:"Bagaimana jika visa saya ditolak atau jadwal batal?",
+    a:"Dana jamaah 100% aman. Jika visa ditolak atau keberangkatan dibatalkan oleh pihak kami, Anda bebas memilih: penjadwalan ulang ke kloter berikutnya atau pengembalian dana penuh tanpa potongan." },
+  { q:"Apa saja syarat paspor untuk mendaftar umroh?",
+    a:"Paspor harus berlaku minimal 7 bulan dari tanggal berangkat dan menggunakan nama sesuai KTP (disarankan 3 suku kata). Jika belum memiliki paspor, tim kami membantu proses pembuatan hingga selesai." },
+  { q:"Apakah ada pendampingan untuk jamaah lansia atau pertama kali?",
+    a:"Sangat ada. Setiap kloter didampingi pembimbing bersertifikat & tim medis. Jamaah lansia mendapat prioritas kursi, bantuan kursi roda di bandara dan area Haram, serta bimbingan manasik ekstra sebelum berangkat." }
 ];
 
 /* ================================================================
@@ -952,6 +1056,21 @@ function pilihPaketForm(nama){
 }
 document.addEventListener("keydown", e => { if(e.key === "Escape") tutupModal(); });
 
+/* ---------- ALUR PENDAFTARAN ---------- */
+document.getElementById("gridAlur").innerHTML = ALUR.map((s,i) => `
+  <div class="alur-step">
+    <div class="alur-num">${s.icon}<span class="step-no">${i+1}</span></div>
+    <h3>${s.judul}</h3>
+    <p>${s.ket}</p>
+  </div>`).join("");
+
+/* ---------- GALERI JAMAAH ---------- */
+document.getElementById("gridGaleri").innerHTML = GALERI.map(g => `
+  <div class="galeri-item ${g.cls||''}">
+    <img src="${g.foto}" alt="${g.cap}" loading="lazy">
+    <div class="cap">📸 ${g.cap}</div>
+  </div>`).join("");
+
 /* ---------- TESTIMONI & ARTIKEL ---------- */
 document.getElementById("gridTesti").innerHTML = TESTIMONI.map(t => `
   <div class="testi">
@@ -973,6 +1092,29 @@ document.getElementById("gridArtikel").innerHTML = ARTIKEL.map(a => `
       <span class="read">Baca Selengkapnya →</span>
     </div>
   </div>`).join("");
+
+/* ---------- FAQ ACCORDION ---------- */
+document.getElementById("faqWrap").innerHTML = FAQ.map(f => `
+  <div class="faq-item">
+    <button class="faq-q">${f.q}<span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>${f.a}</p></div>
+  </div>`).join("");
+
+document.querySelectorAll(".faq-q").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector(".faq-a");
+    const isOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(o => {
+      o.classList.remove("open");
+      o.querySelector(".faq-a").style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add("open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
 
 /* ---------- FORM ---------- */
 document.getElementById("inPaket").innerHTML =
