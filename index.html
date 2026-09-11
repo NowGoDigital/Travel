@@ -27,9 +27,12 @@ img{max-width:100%;display:block}
 section{padding:90px 0}
 h1,h2,h3{font-family:'Playfair Display',serif}
 
-.section-title{text-align:center;max-width:640px;margin:0 auto 54px}
+/* Utility: Prevent Wrapping for Specific Titles */
+.nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%}
+
+.section-title{text-align:center;max-width:900px;margin:0 auto 54px} /* Lebar container diperbesar sedikit agar muat 1 baris */
 .section-title .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
-.section-title h2{font-size:2.3rem;color:var(--hijau-gelap);line-height:1.25}
+.section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25} /* Font size responsif agar muat 1 baris */
 .section-title p{color:var(--teks-2);margin-top:10px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:99px;font-weight:800;cursor:pointer;border:none;font-size:.93rem;font-family:inherit;transition:.3s;letter-spacing:.2px}
@@ -468,7 +471,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
       <div class="stat-item"><div class="icon">🕌</div><div><b data-count="15">0</b><small>Tahun Pengalaman</small></div></div>
       <div class="stat-item"><div class="icon">👥</div><div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div></div>
       <div class="stat-item"><div class="icon">⭐</div><div><b>4.9/5</b><small>Rating Kepuasan</small></div></div>
-      <div class="stat-item"><div class="icon">🛂</div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
+      <div class="stat-item"><div class="icon"></div><div><b>100%</b><small>Berizin Resmi Kemenag</small></div></div>
     </div>
     <div class="legal-row reveal">
       <div class="legal-chip">✅ Izin PPIU Kemenag No. U-123/2023</div>
@@ -522,9 +525,10 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="section-title reveal">
       <span class="kicker">Mengapa Kami</span>
-      <h2>Komitmen Layanan Terbaik untuk Tamu Allah</h2>
+      <!-- JUDUL 1 BARIS -->
+      <h2 class="nowrap">Komitmen Layanan Terbaik untuk Tamu Allah</h2>
       <p>Setiap detail perjalanan kami rancang agar Anda fokus beribadah</p>
-      <div class="ug-divider"><i></i><b>✦</b><i></i></div>
+      <div class="ug-divider"><i></i><b></b><i></i></div>
     </div>
     <div class="unggul-grid">
       <!-- 01 · Kartu utama tinggi -->
@@ -590,7 +594,8 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="section-title reveal">
       <span class="kicker">Cara Daftar</span>
-      <h2>Alur Pendaftaran Mudah & Transparan</h2>
+      <!-- JUDUL 1 BARIS -->
+      <h2 class="nowrap">Alur Pendaftaran Mudah & Transparan</h2>
       <p>Hanya 4 langkah sederhana dari niat hingga berangkat ke Baitullah</p>
     </div>
     <div class="alur-grid reveal" id="gridAlur"></div>
@@ -675,7 +680,8 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   <div class="container">
     <div class="section-title reveal">
       <span class="kicker">Konsultasi & Pendaftaran</span>
-      <h2>Tuntaskan Ragu, Wujudkan Berangkat</h2>
+      <!-- JUDUL 1 BARIS -->
+      <h2 class="nowrap">Tuntaskan Ragu, Wujudkan Berangkat</h2>
       <p>Baca jawaban instan pada FAQ di sebelah kiri, atau langsung isi form — tim kami membalas cepat pada jam kerja.</p>
     </div>
     <div class="fd-grid">
@@ -799,7 +805,7 @@ const SLIDES = [
     kicker: "🕌 Rindu Masjid Nabawi?",
     judul: "Ketenangan Beribadah di <em>Kota Nabi</em>",
     sub: "Hotel depan gerbang Masjid Nabawi, ziarah Raudhah terjadwal, dan city tour Madinah yang berkesan.",
-    cta1: { teks: "Paket Madinah 🕌", href: "#paket", style: "btn-gold" },
+    cta1: { teks: "Paket Madinah ", href: "#paket", style: "btn-gold" },
     cta2: { teks: "Chat via WhatsApp", href: "#", style: "btn-ghost", wa: true }
   },
   {
@@ -914,7 +920,7 @@ const PAKET = [
 ];
 
 const ALUR = [
-  { icon:"💬", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
+  { icon:"", judul:"Konsultasi Gratis", ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda." },
   { icon:"💰", judul:"Booking & DP Ringan", ket:"Amankan kursi dengan DP mulai Rp 5 juta. Harga langsung terkunci, bebas kenaikan biaya tiba-tiba." },
   { icon:"📄", judul:"Pelunasan & Dokumen", ket:"Paspor, vaksin, visa, hingga manasik — semua dibantu tim kami sampai berkas siap berangkat." },
   { icon:"🕋", judul:"Berangkat Ibadah", ket:"Terbang dengan tenang dan fokus beribadah. Seluruh teknis perjalanan kami yang urus." }
@@ -939,11 +945,11 @@ const TESTIMONI = [
 ];
 
 const ARTIKEL = [
-  { emoji:"📖", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
+  { emoji:"", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
   { emoji:"💪", kategori:"Kesehatan", judul:"Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan", tanggal:"28 Agu 2026", ringkas:"Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah." },
-  { emoji:"🧳", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
+  { emoji:"", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
   { emoji:"🕌", kategori:"Adab", judul:"Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal:"12 Agu 2026", ringkas:"Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci." },
-  { emoji:"💰", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
+  { emoji:"", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
   { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
 ];
 
@@ -1098,8 +1104,8 @@ function renderPaket(){
         <h3>${p.nama}</h3>
         <div class="meta-grid">
           <div class="meta-item"><span class="mi">📅</span><span class="mt">${tanggalID(p.tanggalBerangkat)}</span></div>
-          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai}</span></div>
-          <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
+          <div class="meta-item"><span class="mi">️</span><span class="mt">${p.maskapai}</span></div>
+          <div class="meta-item"><span class="mi"></span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
           <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah.nama}</b> ⭐${p.hotelMadinah.bintang}</span></div>
         </div>
         <div class="kuota-wrap">
@@ -1113,7 +1119,7 @@ function renderPaket(){
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-detail" onclick="bukaModal(${p.id})">🔍 Detail Paket</button>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})"> Detail Paket</button>
         <a class="btn btn-wa-card" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">📲 Booking</a>
       </div>
     </div>`;
@@ -1188,7 +1194,7 @@ document.getElementById("gridAlur").innerHTML = ALUR.map((s,i) => `
 document.getElementById("gridGaleri").innerHTML = GALERI.map(g => `
   <div class="galeri-item ${g.cls||''}">
     <img src="${g.foto}" alt="${g.cap}" loading="lazy">
-    <div class="cap">📸 ${g.cap}</div>
+    <div class="cap"> ${g.cap}</div>
   </div>`).join("");
 
 /* ---------- TESTIMONI & ARTIKEL ---------- */
@@ -1250,7 +1256,7 @@ function kirimWA(e){
 📱 WA: ${inWA.value.trim()}
 🏙️ Kota: ${inKota.value.trim() || "-"}
 📦 Paket: ${inPaket.value || "Belum ditentukan"}
-👥 Jumlah Jamaah: ${inJml.value} orang
+ Jumlah Jamaah: ${inJml.value} orang
 💬 Pesan: ${inPesan.value.trim() || "-"}
 
 Mohon dibantu prosesnya. Terima kasih 🙏`;
