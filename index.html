@@ -129,7 +129,7 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .card::after{content:"";position:absolute;top:0;left:-80%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-20deg);transition:left .8s ease;z-index:4;pointer-events:none}
 .card:hover::after{left:135%}
 
-.card-img{height:235px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas));padding-bottom:36px}
+.card-img{height:235px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas))}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,.68,0,1)}
 .card:hover .card-img img{transform:scale(1.1)}
 .card-img .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,47,33,.18) 0%,transparent 35%,rgba(4,47,33,.78) 100%)}
@@ -140,12 +140,12 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 @keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .card-img .jenis-tag{position:absolute;bottom:16px;left:18px;z-index:3;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.55)}
 
-/* Pill harga emas melayang (FIXED POSITION) */
-.price-float{align-self:flex-end;margin-top:-28px;position:relative;z-index:6;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:16px;padding:8px 18px 9px;box-shadow:0 12px 28px rgba(212,169,78,.5);border:1px solid rgba(255,255,255,.55);text-align:right}
-.price-float .pf-label{display:block;font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
-.price-float b{font-family:'Playfair Display',serif;font-size:1.18rem;line-height:1.15;display:block}
-.price-float s{display:block;font-size:.68rem;opacity:.7}
-.price-float small{font-size:.64rem;font-weight:800;opacity:.8}
+/* Bar harga emas HORIZONTAL: MULAI DARI | nominal | /jamaah */
+.price-float{width:100%;margin-top:-12px;position:relative;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:14px;padding:10px 18px;box-shadow:0 10px 26px rgba(212,169,78,.45);border:1px solid rgba(255,255,255,.55)}
+.price-float .pf-label{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.price-float b{font-family:'Playfair Display',serif;font-size:1.12rem;line-height:1;white-space:nowrap}
+.price-float s{font-size:.66rem;opacity:.7;white-space:nowrap}
+.price-float small{font-size:.62rem;font-weight:800;opacity:.8;white-space:nowrap}
 
 .card-body{padding:0 24px 18px;flex:1;display:flex;flex-direction:column;gap:13px}
 .card-body h3{font-size:1.24rem;color:var(--hijau-gelap);line-height:1.35;transition:.3s;margin-top:4px}
@@ -309,6 +309,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 @media(max-width:480px){
   .meta-grid{grid-template-columns:1fr}
   .grid-paket{grid-template-columns:1fr}
+  .price-float{flex-wrap:wrap;justify-content:center;row-gap:2px;border-radius:18px;margin-top:-10px}
 }
 </style>
 </head>
@@ -427,11 +428,11 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
     </div>
     <div class="unggul-grid">
       <div class="unggul-item reveal"><div class="icon">🛡️</div><h3>Legalitas Terjamin</h3><p>PPIU resmi berizin Kemenag RI, anggota asosiasi travel haji umroh nasional, dana jamaah aman.</p></div>
-      <div class="unggul-item reveal"><div class="icon"></div><h3>Hotel Dekat Haram</h3><p>Akomodasi bintang 4–5 dengan jarak tempuh jalan kaki ke Masjidil Haram & Masjid Nabawi.</p></div>
+      <div class="unggul-item reveal"><div class="icon">🏨</div><h3>Hotel Dekat Haram</h3><p>Akomodasi bintang 4–5 dengan jarak tempuh jalan kaki ke Masjidil Haram & Masjid Nabawi.</p></div>
       <div class="unggul-item reveal"><div class="icon">👳</div><h3>Pembimbing Bersertifikat</h3><p>Muthawif berpengalaman & bersertifikat, membimbing ibadah sesuai sunnah dari manasik hingga pulang.</p></div>
       <div class="unggul-item reveal"><div class="icon">🩺</div><h3>Pendampingan Kesehatan</h3><p>Tim medis siaga, asuransi perjalanan penuh, dan pemeriksaan kesehatan pra-keberangkatan.</p></div>
       <div class="unggul-item reveal"><div class="icon">✈️</div><h3>Penerbangan Nyaman</h3><p>Maskapai terbaik dengan rute direct flight, bagasi memadai, dan handling bandara profesional.</p></div>
-      <div class="unggul-item reveal"><div class="icon">️</div><h3>Katering Cita Rasa Indonesia</h3><p>Menu prasmanan 3x sehari yang familiar di lidah, menjaga stamina selama ibadah.</p></div>
+      <div class="unggul-item reveal"><div class="icon">🍽️</div><h3>Katering Cita Rasa Indonesia</h3><p>Menu prasmanan 3x sehari yang familiar di lidah, menjaga stamina selama ibadah.</p></div>
     </div>
   </div>
 </section>
@@ -537,7 +538,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
       <div>
         <h4>Kontak</h4>
         <p style="display:flex;flex-direction:column;gap:8px">
-           Jl. Raya Ibadah No. 88, Jakarta<br>📞 021-1234567<br> WA: 0812-3456-7890<br>✉️ info@albarokah.travel
+          📍 Jl. Raya Ibadah No. 88, Jakarta<br>📞 021-1234567<br>📱 WA: 0812-3456-7890<br>✉️ info@albarokah.travel
         </p>
       </div>
       <div>
@@ -576,7 +577,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 const KONFIGURASI = {
   namaTravel: "Al-Barokah Travel",
   nomorWA: "6281234567890",
-  pesanWADefault: "Assalamu'alaikum, saya ingin konsultasi paket umroh. ",
+  pesanWADefault: "Assalamu'alaikum, saya ingin konsultasi paket umroh. 🙏",
   // ─── DATA TOPBAR (edit di sini) ───
   alamat: "Jl. Raya Ibadah No. 88, Jakarta Selatan",
   telepon: "021-1234567",
@@ -605,7 +606,7 @@ const SLIDES = [
     kicker: "🕌 Rindu Masjid Nabawi?",
     judul: "Ketenangan Beribadah di <em>Kota Nabi</em>",
     sub: "Hotel depan gerbang Masjid Nabawi, ziarah Raudhah terjadwal, dan city tour Madinah yang berkesan.",
-    cta1: { teks: "Paket Madinah ", href: "#paket", style: "btn-gold" },
+    cta1: { teks: "Paket Madinah 🕌", href: "#paket", style: "btn-gold" },
     cta2: { teks: "Chat via WhatsApp", href: "#", style: "btn-ghost", wa: true }
   },
   {
@@ -909,7 +910,7 @@ function bukaModal(id){
         ${p.hargaPromo?`<s>${rupiah(p.harga)}</s>`:''}<small>/jamaah</small>
         ${p.sisaKuota>0?`<span class="badge badge-open" style="position:static;margin-left:auto">Sisa ${p.sisaKuota} kursi</span>`:''}
       </div>
-      <p style="font-size:.86rem;color:var(--teks-2);margin-top:8px">📅 Berangkat ${tanggalID(p.tanggalBerangkat)} · ️ ${p.maskapai}</p>
+      <p style="font-size:.86rem;color:var(--teks-2);margin-top:8px">📅 Berangkat ${tanggalID(p.tanggalBerangkat)} · ✈️ ${p.maskapai}</p>
 
       <h4>🏨 Akomodasi</h4>
       <div class="akomodasi-box">
@@ -923,7 +924,7 @@ function bukaModal(id){
       <h4>✅ Fasilitas Termasuk</h4>
       <div class="chips">${p.fasilitas.map(f=>`<span>${f}</span>`).join("")}</div>
 
-      <h4> Perlengkapan Jamaah</h4>
+      <h4>🧳 Perlengkapan Jamaah</h4>
       <div class="chips">${p.perlengkapan.map(f=>`<span>${f}</span>`).join("")}</div>
 
       <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
@@ -987,7 +988,7 @@ function kirimWA(e){
 👥 Jumlah Jamaah: ${inJml.value} orang
 💬 Pesan: ${inPesan.value.trim() || "-"}
 
-Mohon dibantu prosesnya. Terima kasih `;
+Mohon dibantu prosesnya. Terima kasih 🙏`;
   window.open(waLink(teks), "_blank");
   return false;
 }
