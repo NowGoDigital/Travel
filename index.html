@@ -4,174 +4,314 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Al-Barokah Travel — Umroh & Haji Khusus Resmi Berizin Kemenag</title>
-<meta name="description" content="Travel Umroh & Haji Khusus terpercaya. Paket umroh reguler, VIP, dan haji furoda dengan hotel bintang 4-5 dekat Haram. Izin resmi PPIU Kemenag.">
-<meta property="og:title" content="Al-Barokah Travel — Umroh & Haji Resmi">
+<meta name="description" content="Travel Umroh & Haji Khusus terpercaya. Paket umroh reguler, VIP, haji furoda dengan hotel bintang 5 dekat Haram. Izin resmi PPIU Kemenag.">
+<meta property="og:title" content="Al-Barokah Travel — Umroh & Haji Resmi Kemenag">
 <meta property="og:description" content="Paket Umroh & Haji terpercaya, hotel dekat Haram, pembimbing bersertifikat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* ============ VARIABEL & RESET ============ */
-  :root{
-    --hijau:#0c7a54; --hijau-tua:#075e40; --hijau-muda:#e8f5ef;
-    --emas:#c9a24b; --teks:#1e293b; --teks-2:#64748b;
-    --bg:#f8fafc; --putih:#fff; --radius:16px;
-    --shadow:0 4px 20px rgba(0,0,0,.08);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--teks);background:var(--bg);line-height:1.6}
-  img{max-width:100%;display:block}
-  a{text-decoration:none;color:inherit}
-  .container{max-width:1140px;margin:0 auto;padding:0 20px}
+/* ==================== VARIABEL & RESET ==================== */
+:root{
+  --hijau:#0c7a54; --hijau-tua:#064e35; --hijau-gelap:#042f21;
+  --hijau-muda:#eaf6f0; --emas:#d4a94e; --emas-muda:#f3e3bd;
+  --teks:#16211c; --teks-2:#5f6f68; --bg:#f7faf8; --putih:#fff;
+  --radius:20px; --shadow:0 8px 30px rgba(4,47,33,.08);
+  --shadow-lg:0 20px 50px rgba(4,47,33,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--teks);background:var(--bg);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:90px 0}
+h1,h2,h3{font-family:'Playfair Display',serif}
+
+.section-title{text-align:center;max-width:640px;margin:0 auto 54px}
+.section-title .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
+.section-title h2{font-size:2.3rem;color:var(--hijau-gelap);line-height:1.25}
+.section-title p{color:var(--teks-2);margin-top:10px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:99px;font-weight:800;cursor:pointer;border:none;font-size:.93rem;font-family:inherit;transition:.3s;letter-spacing:.2px}
+.btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;box-shadow:0 8px 24px rgba(212,169,78,.45)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(212,169,78,.6)}
+.btn-wa{background:linear-gradient(135deg,#2ee06f,#1eb85a);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.btn-wa:hover{transform:translateY(-3px)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:#fff;color:var(--hijau-tua)}
+.badge{display:inline-block;padding:5px 14px;border-radius:99px;font-size:.7rem;font-weight:800;letter-spacing:.5px}
+
+/* ==================== NAVBAR ==================== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.35s;padding:18px 0}
+nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:#fff;transition:.3s}
+.logo span{color:var(--emas)}
+nav.scrolled .logo{color:var(--hijau-gelap)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none;font-weight:700;font-size:.88rem}
+.nav-links a{color:rgba(255,255,255,.9);transition:.25s;position:relative}
+.nav-links a:not(.btn):hover{color:var(--emas)}
+.nav-links a:not(.btn)::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--emas);transition:.3s;border-radius:2px}
+.nav-links a:not(.btn):hover::after{width:100%}
+nav.scrolled .nav-links a{color:var(--teks)}
+.nav-links .btn-nav{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08!important;padding:10px 24px;border-radius:99px}
+.hamburger{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#fff;z-index:110}
+nav.scrolled .hamburger{color:var(--hijau-gelap)}
+
+/* ==================== HERO SLIDER ==================== */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.slide.active{opacity:1;pointer-events:auto}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1)}
+.slide.active .slide-bg{animation:kenburns 8s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,47,33,.55) 0%,rgba(4,47,33,.35) 40%,rgba(4,47,33,.8) 100%)}
+.slide-content{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 22px}
+.slide-content .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);padding:9px 22px;border-radius:99px;font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;opacity:0;transform:translateY(24px)}
+.slide-content h1{font-size:clamp(2rem,5vw,3.6rem);max-width:850px;line-height:1.18;text-shadow:0 4px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(30px)}
+.slide-content h1 em{font-style:normal;color:var(--emas)}
+.slide-content p{max-width:620px;margin-top:18px;font-size:1.05rem;opacity:0;transform:translateY(30px);color:rgba(255,255,255,.92)}
+.slide-content .cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(30px)}
+.slide.active .kicker{animation:riseUp .8s .2s forwards}
+.slide.active h1{animation:riseUp .8s .4s forwards}
+.slide.active p{animation:riseUp .8s .6s forwards}
+.slide.active .cta-row{animation:riseUp .8s .8s forwards}
+@keyframes riseUp{to{opacity:1;transform:translateY(0)}}
+
+/* Navigasi slider */
+.slider-arrows{position:absolute;bottom:46%;z-index:20;width:100%;display:flex;justify-content:space-between;padding:0 24px;pointer-events:none}
+.slider-arrows button{pointer-events:auto;width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.1);backdrop-filter:blur(6px);color:#fff;font-size:1.2rem;cursor:pointer;transition:.3s}
+.slider-arrows button:hover{background:var(--emas);border-color:var(--emas);color:#3d2e08}
+.slider-dots{position:absolute;bottom:120px;z-index:20;width:100%;display:flex;justify-content:center;gap:10px}
+.slider-dots button{width:12px;height:12px;border-radius:99px;border:none;background:rgba(255,255,255,.4);cursor:pointer;transition:.35s;padding:0}
+.slider-dots button.active{width:40px;background:var(--emas)}
+
+/* ==================== STATS BAR ==================== */
+.stats-bar{position:relative;z-index:30;margin-top:-64px}
+.stats-inner{background:var(--putih);border-radius:24px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+.stat-item{padding:34px 20px;text-align:center;border-right:1px solid #eef3f0;transition:.3s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:var(--hijau-muda)}
+.stat-item .icon{font-size:1.8rem;margin-bottom:6px}
+.stat-item b{display:block;font-size:1.8rem;color:var(--hijau);font-family:'Playfair Display',serif}
+.stat-item small{color:var(--teks-2);font-weight:600;font-size:.8rem}
+
+/* ==================== LEGALITAS ==================== */
+.legal-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.legal-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5ece8;border-radius:16px;padding:14px 22px;box-shadow:var(--shadow);font-size:.85rem;font-weight:700;color:var(--hijau-tua)}
+
+/* ==================== FILTER & PAKET ==================== */
+.filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:44px}
+.filters select{padding:13px 18px;border:1.5px solid #e2eae6;border-radius:14px;background:#fff;font-size:.88rem;font-family:inherit;font-weight:600;color:var(--teks);box-shadow:0 2px 10px rgba(0,0,0,.04);cursor:pointer}
+.filters select:focus{outline:none;border-color:var(--hijau)}
+.grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:28px}
+
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;display:flex;flex-direction:column;position:relative}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.card-img{height:220px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas))}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .card-img img{transform:scale(1.08)}
+.card-img .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(4,47,33,.65))}
+.card-img .badge{position:absolute;z-index:2}
+.badge-open{top:14px;left:14px;background:rgba(255,255,255,.95);color:#065f46}
+.badge-full{top:14px;left:14px;background:rgba(255,255,255,.95);color:#991b1b}
+.badge-promo{top:14px;right:14px;background:linear-gradient(135deg,#ff6b6b,#ee5253);color:#fff;box-shadow:0 4px 14px rgba(238,82,83,.5)}
+.card-img .jenis-tag{position:absolute;bottom:14px;left:16px;z-index:2;color:#fff;font-weight:800;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.card-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:12px}
+.card-body h3{font-size:1.22rem;color:var(--hijau-gelap);line-height:1.35}
+.meta{font-size:.845rem;color:var(--teks-2);display:flex;flex-direction:column;gap:7px}
+.meta span{display:flex;align-items:center;gap:8px}
+.sisa-kursi{color:#e8590c!important;font-weight:800}
+.harga{margin-top:auto;padding-top:14px;border-top:1px dashed #e2eae6;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.harga b{font-size:1.5rem;color:var(--hijau);font-family:'Playfair Display',serif}
+.harga s{font-size:.82rem;color:#a3b3ac}
+.harga small{color:var(--teks-2);font-weight:600}
+.card-actions{display:flex;gap:10px;padding:0 24px 24px}
+.card-actions .btn{flex:1;padding:13px;font-size:.85rem}
+.btn-detail{background:var(--hijau-muda);color:var(--hijau-tua)}
+.btn-detail:hover{background:var(--hijau);color:#fff}
+
+/* ==================== KEUNGGULAN ==================== */
+.keunggulan{background:linear-gradient(180deg,var(--hijau-gelap),var(--hijau-tua));color:#fff;position:relative;overflow:hidden}
+.keunggulan::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.2),transparent 70%)}
+.keunggulan .section-title h2{color:#fff}
+.keunggulan .section-title p{color:rgba(255,255,255,.75)}
+.keunggulan .section-title .kicker{background:rgba(212,169,78,.2);color:var(--emas)}
+.unggul-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.unggul-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px 26px;backdrop-filter:blur(8px);transition:.35s}
+.unggul-item:hover{transform:translateY(-6px);background:rgba(255,255,255,.12);border-color:rgba(212,169,78,.5)}
+.unggul-item .icon{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#e8c268,var(--emas));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:18px}
+.unggul-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;margin-bottom:8px}
+.unggul-item p{font-size:.86rem;color:rgba(255,255,255,.75)}
+
+/* ==================== TESTIMONI ==================== */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
+.testi{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);position:relative;transition:.35s}
+.testi:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.testi::before{content:"“";position:absolute;top:8px;right:26px;font-family:'Playfair Display',serif;font-size:5.5rem;color:var(--hijau-muda);line-height:1}
+.testi .stars{color:var(--emas);letter-spacing:3px;margin-bottom:14px;font-size:.95rem}
+.testi p{color:var(--teks-2);font-size:.92rem;font-style:italic;position:relative;z-index:2}
+.testi .who{margin-top:20px;display:flex;align-items:center;gap:14px}
+.testi .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--hijau),var(--emas));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem}
+.testi .who b{display:block;font-size:.9rem;color:var(--hijau-gelap)}
+.testi .who small{color:var(--teks-2)}
+
+/* ==================== ARTIKEL ==================== */
+.artikel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
+.artikel{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;cursor:pointer}
+.artikel:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.artikel-img{height:170px;background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));display:flex;align-items:center;justify-content:center;font-size:3.4rem;position:relative;overflow:hidden}
+.artikel-img::after{content:"";position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M30 0l30 30-30 30L0 30z" fill="rgba(255,255,255,0.04)"/></svg>')}
+.artikel-body{padding:24px}
+.artikel-body .tag{font-size:.7rem;font-weight:800;color:var(--emas);letter-spacing:1.5px;text-transform:uppercase}
+.artikel-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;margin:8px 0;color:var(--hijau-gelap);line-height:1.45}
+.artikel-body p{font-size:.86rem;color:var(--teks-2)}
+.artikel-body .read{margin-top:14px;font-size:.83rem;font-weight:800;color:var(--hijau)}
+
+/* ==================== CTA BANNER ==================== */
+.cta-banner{background:linear-gradient(rgba(4,47,33,.85),rgba(4,47,33,.85)),url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1600&q=80') center/cover;color:#fff;text-align:center;border-radius:28px;padding:70px 30px;max-width:1100px;margin:0 auto}
+.cta-banner h2{font-size:2.2rem;margin-bottom:14px}
+.cta-banner p{color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 30px}
+
+/* ==================== TENTANG ==================== */
+.tentang{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.tentang-visual{position:relative}
+.tentang-visual .main-img{border-radius:24px;height:440px;background:linear-gradient(rgba(4,47,33,.2),rgba(4,47,33,.2)),url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=900&q=80') center/cover;box-shadow:var(--shadow-lg)}
+.tentang-visual .float-card{position:absolute;bottom:-24px;right:-16px;background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);padding:20px 26px;display:flex;align-items:center;gap:14px}
+.float-card .icon{width:48px;height:48px;border-radius:14px;background:var(--hijau-muda);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.float-card b{color:var(--hijau);font-size:1.15rem}
+.float-card small{color:var(--teks-2);display:block}
+.tentang-text .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
+.tentang-text h2{font-size:2.1rem;color:var(--hijau-gelap);line-height:1.3;margin-bottom:16px}
+.tentang-text p{color:var(--teks-2);font-size:.95rem}
+.check-list{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.check-list div{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;font-weight:600}
+.check-list .c{width:24px;height:24px;border-radius:50%;background:var(--hijau-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:2px}
+
+/* ==================== FORM ==================== */
+.form-wrap{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);padding:44px;max-width:680px;margin:0 auto;position:relative;overflow:hidden}
+.form-wrap::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--hijau),var(--emas))}
+.form-wrap label{display:block;font-weight:700;font-size:.83rem;margin:16px 0 6px;color:var(--hijau-gelap)}
+.form-wrap input,.form-wrap select,.form-wrap textarea{width:100%;padding:14px 16px;border:1.5px solid #e2eae6;border-radius:14px;font-size:.92rem;font-family:inherit;background:#fbfdfc;transition:.25s}
+.form-wrap input:focus,.form-wrap select:focus,.form-wrap textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+
+/* ==================== FOOTER ==================== */
+footer{background:var(--hijau-gelap);color:#b9cfc4;padding:70px 0 0;margin-top:0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px}
+footer h4{color:#fff;margin-bottom:16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem}
+footer p,footer a{font-size:.86rem}
+footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
+.f-links{display:flex;flex-direction:column;gap:10px}
+.f-links a:hover{color:var(--emas)}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;text-align:center;font-size:.8rem;opacity:.65}
+
+/* ==================== MODAL ==================== */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(4,30,20,.7);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-bg.active{display:flex}
+.modal{background:#fff;border-radius:24px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .35s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
+.modal-hero{height:200px;border-radius:24px 24px 0 0;background-size:cover;background-position:center;position:relative}
+.modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(4,47,33,.75));border-radius:24px 24px 0 0}
+.modal-hero .judul{position:absolute;bottom:18px;left:28px;z-index:2;color:#fff}
+.modal-hero .judul h2{font-size:1.5rem;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.modal-close{position:absolute;top:14px;right:16px;z-index:5;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:1.1rem;cursor:pointer;transition:.25s}
+.modal-close:hover{background:#fff;transform:rotate(90deg)}
+.modal-body{padding:28px}
+.modal-body h4{margin:22px 0 10px;color:var(--hijau-gelap);font-size:1rem;display:flex;align-items:center;gap:8px}
+.modal-body h4:first-child{margin-top:0}
+.itin{list-style:none}
+.itin li{padding:12px 0 12px 24px;border-left:2px solid var(--hijau-muda);position:relative;font-size:.89rem;color:var(--teks-2)}
+.itin li::before{content:"";position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--emas);border:3px solid #fff;box-shadow:0 0 0 2px var(--emas-muda)}
+.itin li b{color:var(--teks);display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--hijau-muda);color:var(--hijau-tua);padding:7px 15px;border-radius:99px;font-size:.8rem;font-weight:700}
+.akomodasi-box{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.akomodasi-box>div{background:#fbfdfc;border:1px solid #e8efeb;border-radius:16px;padding:16px;font-size:.86rem;color:var(--teks-2)}
+.akomodasi-box b{display:block;color:var(--hijau-gelap);margin-bottom:4px}
+
+/* ==================== WA FLOAT ==================== */
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:150;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(37,211,102,.55);transition:.3s;background:#25d366}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+.wa-float::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #25d366;animation:pulse 2s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35);opacity:0}}
+.wa-float:hover{transform:scale(1.1)}
+
+/* ==================== SCROLL REVEAL ==================== */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ==================== RESPONSIVE ==================== */
+@media(max-width:900px){
+  .nav-links{display:none;position:fixed;inset:0;background:var(--hijau-gelap);flex-direction:column;justify-content:center;gap:28px;font-size:1.1rem}
+  .nav-links.open{display:flex}
+  .nav-links a{color:#fff!important}
+  .hamburger{display:block}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .tentang{grid-template-columns:1fr;gap:60px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .form-2col{grid-template-columns:1fr}
+  .akomodasi-box{grid-template-columns:1fr}
   section{padding:64px 0}
-  .section-title{text-align:center;margin-bottom:40px}
-  .section-title h2{font-size:1.9rem;color:var(--hijau-tua)}
-  .section-title p{color:var(--teks-2);margin-top:6px}
-  .btn{display:inline-block;padding:13px 28px;border-radius:99px;font-weight:700;cursor:pointer;border:none;font-size:.95rem;transition:.25s}
-  .btn-primary{background:var(--hijau);color:#fff}
-  .btn-primary:hover{background:var(--hijau-tua);transform:translateY(-2px)}
-  .btn-wa{background:#25d366;color:#fff}
-  .btn-wa:hover{background:#1ebe5b;transform:translateY(-2px)}
-  .badge{display:inline-block;padding:4px 12px;border-radius:99px;font-size:.72rem;font-weight:700}
-
-  /* ============ NAVBAR ============ */
-  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);box-shadow:0 1px 8px rgba(0,0,0,.06)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{font-size:1.25rem;font-weight:800;color:var(--hijau-tua)}
-  .logo span{color:var(--emas)}
-  .nav-links{display:flex;gap:26px;list-style:none;font-weight:600;font-size:.92rem}
-  .nav-links a:hover{color:var(--hijau)}
-  .hamburger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--hijau-tua)}
-
-  /* ============ HERO ============ */
-  .hero{background:linear-gradient(135deg,var(--hijau-tua) 0%,var(--hijau) 60%,#0f9968 100%);color:#fff;padding:90px 0 110px;text-align:center;position:relative;overflow:hidden}
-  .hero::after{content:"🕋";position:absolute;font-size:14rem;opacity:.07;right:-20px;bottom:-40px}
-  .hero h1{font-size:2.6rem;max-width:760px;margin:0 auto 16px;line-height:1.25}
-  .hero p{max-width:600px;margin:0 auto 32px;opacity:.92}
-  .hero .btn{margin:0 6px}
-  .btn-outline{background:transparent;color:#fff;border:2px solid #fff}
-  .btn-outline:hover{background:#fff;color:var(--hijau-tua)}
-  .legalitas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:44px}
-  .legalitas div{background:rgba(255,255,255,.14);padding:10px 18px;border-radius:12px;font-size:.82rem;font-weight:600}
-
-  /* ============ FILTER & KARTU PAKET ============ */
-  .filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
-  .filters select,.filters input{padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:10px;background:#fff;font-size:.9rem;color:var(--teks)}
-  .grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-  .card{background:var(--putih);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column}
-  .card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.13)}
-  .card-img{height:190px;background:linear-gradient(135deg,#0c7a54,#c9a24b);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
-  .card-img .badge{position:absolute;top:12px;left:12px}
-  .badge-open{background:#d1fae5;color:#065f46}
-  .badge-full{background:#fee2e2;color:#991b1b}
-  .badge-promo{background:var(--emas);color:#fff;position:absolute;top:12px;right:12px}
-  .card-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px}
-  .card-body h3{font-size:1.12rem;color:var(--teks)}
-  .meta{font-size:.85rem;color:var(--teks-2);display:flex;flex-direction:column;gap:4px}
-  .harga{margin-top:auto;display:flex;align-items:flex-end;gap:8px}
-  .harga b{font-size:1.35rem;color:var(--hijau)}
-  .harga s{font-size:.82rem;color:#94a3b8}
-  .card-actions{display:flex;gap:8px;padding:0 20px 20px}
-  .card-actions .btn{flex:1;text-align:center;padding:11px;font-size:.85rem}
-
-  /* ============ TESTIMONI ============ */
-  .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
-  .testi{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
-  .testi .stars{color:var(--emas);letter-spacing:2px;margin-bottom:10px}
-  .testi p{font-style:italic;color:var(--teks-2);font-size:.92rem}
-  .testi .who{margin-top:14px;font-weight:700;font-size:.88rem;color:var(--hijau-tua)}
-
-  /* ============ ARTIKEL ============ */
-  .artikel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
-  .artikel{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s}
-  .artikel:hover{transform:translateY(-4px)}
-  .artikel-img{height:140px;background:linear-gradient(135deg,#075e40,#0f9968);display:flex;align-items:center;justify-content:center;font-size:2.6rem}
-  .artikel-body{padding:18px}
-  .artikel-body h3{font-size:1rem;margin-bottom:6px;color:var(--teks)}
-  .artikel-body small{color:var(--teks-2)}
-
-  /* ============ FORM PENDAFTARAN ============ */
-  .form-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:36px;max-width:640px;margin:0 auto}
-  .form-wrap label{display:block;font-weight:600;font-size:.85rem;margin:14px 0 5px}
-  .form-wrap input,.form-wrap select,.form-wrap textarea{width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.92rem;font-family:inherit}
-  .form-wrap input:focus,.form-wrap select:focus,.form-wrap textarea:focus{outline:none;border-color:var(--hijau)}
-
-  /* ============ TENTANG & FOOTER ============ */
-  .tentang{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-  .tentang-visual{background:linear-gradient(135deg,var(--hijau-tua),var(--emas));border-radius:var(--radius);height:320px;display:flex;align-items:center;justify-content:center;font-size:6rem}
-  .stat-row{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
-  .stat b{font-size:1.5rem;color:var(--hijau)}
-  .stat small{display:block;color:var(--teks-2)}
-  footer{background:var(--hijau-tua);color:#d7e8df;padding:48px 0 24px;margin-top:40px}
-  footer h4{color:#fff;margin-bottom:12px}
-  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px}
-  footer a:hover{color:#fff}
-  .copy{text-align:center;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-size:.82rem;opacity:.7}
-
-  /* ============ MODAL DETAIL PAKET ============ */
-  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:20px}
-  .modal-bg.active{display:flex}
-  .modal{background:#fff;border-radius:var(--radius);max-width:680px;width:100%;max-height:88vh;overflow-y:auto;padding:32px;position:relative}
-  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--teks-2)}
-  .modal h2{color:var(--hijau-tua);margin-bottom:4px;padding-right:36px}
-  .modal h4{margin:18px 0 8px;color:var(--teks);font-size:1rem}
-  .itin li{list-style:none;padding:10px 0 10px 16px;border-left:3px solid var(--hijau-muda);position:relative;font-size:.9rem}
-  .itin li::before{content:"";position:absolute;left:-7px;top:16px;width:11px;height:11px;border-radius:50%;background:var(--hijau)}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chips span{background:var(--hijau-muda);color:var(--hijau-tua);padding:6px 13px;border-radius:99px;font-size:.8rem;font-weight:600}
-
-  /* ============ TOMBOL WA MENGAMBANG ============ */
-  .wa-float{position:fixed;bottom:24px;right:24px;z-index:150;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 6px 20px rgba(37,211,102,.5);transition:.3s}
-  .wa-float:hover{transform:scale(1.1)}
-
-  @media(max-width:820px){
-    .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;box-shadow:var(--shadow)}
-    .nav-links.open{display:flex}
-    .hamburger{display:block}
-    .hero h1{font-size:1.9rem}
-    .tentang{grid-template-columns:1fr}
-  }
+  .slider-arrows{display:none}
+}
 </style>
 </head>
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<nav>
+<nav id="navbar">
   <div class="container nav-inner">
-    <a href="#home" class="logo">Al-Barokah <span>Travel</span></a>
-    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <a href="#home" class="logo">Al-Barokah<span> Travel</span></a>
+    <button class="hamburger" id="btnMenu">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Beranda</a></li>
-      <li><a href="#paket">Paket Umroh & Haji</a></li>
-      <li><a href="#artikel">Artikel Manasik</a></li>
-      <li><a href="#tentang">Tentang Kami</a></li>
-      <li><a href="#daftar" class="btn btn-primary" style="padding:9px 20px">Daftar Sekarang</a></li>
+      <li><a href="#paket">Paket</a></li>
+      <li><a href="#keunggulan">Keunggulan</a></li>
+      <li><a href="#artikel">Artikel</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#daftar" class="btn-nav">Daftar Sekarang</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- ================= HERO SLIDER ================= -->
 <header class="hero" id="home">
+  <div id="slidesWrap"></div>
+  <div class="slider-arrows">
+    <button onclick="geserSlide(-1)" aria-label="Sebelumnya">❮</button>
+    <button onclick="geserSlide(1)" aria-label="Berikutnya">❯</button>
+  </div>
+  <div class="slider-dots" id="sliderDots"></div>
+</header>
+
+<!-- ================= STATS BAR ================= -->
+<div class="stats-bar">
   <div class="container">
-    <h1>Wujudkan Niat Suci ke Baitullah<br>Bersama Travel Amanah & Berizin Resmi</h1>
-    <p>Paket Umroh & Haji Khusus dengan hotel dekat Haram, pembimbing bersertifikat, dan pendampingan manasik hingga pulang.</p>
-    <a href="#paket" class="btn btn-primary">Lihat Paket ✈️</a>
-    <a href="#daftar" class="btn btn-outline">Konsultasi Gratis</a>
-    <div class="legalitas">
-      <div>✅ Izin PPIU Kemenag No. U-123 Tahun 2023</div>
-      <div>🏅 Member HIMPUH & AMPHURI</div>
-      <div>📜 Bersertifikat ISO 9001:2015</div>
-      <div>👥 12.000+ Jamaah Telah Berangkat</div>
+    <div class="stats-inner reveal">
+      <div class="stat-item"><div class="icon">🕌</div><b data-count="15">0</b><small>Tahun Pengalaman</small></div>
+      <div class="stat-item"><div class="icon">👥</div><b data-count="12000" data-suffix="+">0</b><small>Jamaah Berangkat</small></div>
+      <div class="stat-item"><div class="icon">⭐</div><b>4.9/5</b><small>Rating Kepuasan</small></div>
+      <div class="stat-item"><div class="icon">🛂</div><b>100%</b><small>Berizin Resmi Kemenag</small></div>
+    </div>
+    <div class="legal-row reveal">
+      <div class="legal-chip">✅ Izin PPIU Kemenag No. U-123/2023</div>
+      <div class="legal-chip">🏅 Member HIMPUH & AMPHURI</div>
+      <div class="legal-chip">📜 ISO 9001:2015 Certified</div>
     </div>
   </div>
-</header>
+</div>
 
 <!-- ================= KATALOG PAKET ================= -->
 <section id="paket">
   <div class="container">
-    <div class="section-title">
-      <h2>Katalog Paket Umroh & Haji</h2>
-      <p>Filter sesuai budget, jadwal, dan kenyamanan Anda</p>
+    <div class="section-title reveal">
+      <span class="kicker">Pilihan Terbaik</span>
+      <h2>Paket Umroh & Haji Khusus</h2>
+      <p>Temukan paket yang sesuai dengan budget, jadwal, dan kenyamanan ibadah Anda</p>
     </div>
-    <div class="filters">
+    <div class="filters reveal">
       <select id="fJenis" onchange="renderPaket()">
         <option value="">Semua Jenis</option>
         <option value="umroh-reguler">Umroh Reguler</option>
@@ -187,7 +327,7 @@
       </select>
       <select id="fBintang" onchange="renderPaket()">
         <option value="">Semua Hotel</option>
-        <option value="4">Bintang 4</option>
+        <option value="4">Bintang 4+</option>
         <option value="5">Bintang 5</option>
       </select>
       <select id="fHarga" onchange="renderPaket()">
@@ -197,73 +337,115 @@
         <option value="999000000">&gt; 45 Juta</option>
       </select>
     </div>
-    <div class="grid-paket" id="gridPaket"></div>
-    <p id="paketKosong" style="display:none;text-align:center;color:var(--teks-2);padding:30px">
-      Tidak ada paket yang cocok dengan filter. Coba ubah kriteria pencarian.</p>
+    <div class="grid-paket reveal" id="gridPaket"></div>
+    <p id="paketKosong" style="display:none;text-align:center;color:var(--teks-2);padding:40px">Tidak ada paket yang cocok. Coba ubah filter pencarian.</p>
+  </div>
+</section>
+
+<!-- ================= KEUNGGULAN ================= -->
+<section class="keunggulan" id="keunggulan">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="kicker">Mengapa Kami</span>
+      <h2>Komitmen Layanan Terbaik untuk Tamu Allah</h2>
+      <p>Setiap detail perjalanan kami rancang agar Anda fokus beribadah</p>
+    </div>
+    <div class="unggul-grid">
+      <div class="unggul-item reveal"><div class="icon">🛡️</div><h3>Legalitas Terjamin</h3><p>PPIU resmi berizin Kemenag RI, anggota asosiasi travel haji umroh nasional, dana jamaah aman.</p></div>
+      <div class="unggul-item reveal"><div class="icon">🏨</div><h3>Hotel Dekat Haram</h3><p>Akomodasi bintang 4–5 dengan jarak tempuh jalan kaki ke Masjidil Haram & Masjid Nabawi.</p></div>
+      <div class="unggul-item reveal"><div class="icon">👳</div><h3>Pembimbing Bersertifikat</h3><p>Muthawif berpengalaman & bersertifikat, membimbing ibadah sesuai sunnah dari manasik hingga pulang.</p></div>
+      <div class="unggul-item reveal"><div class="icon">🩺</div><h3>Pendampingan Kesehatan</h3><p>Tim medis siaga, asuransi perjalanan penuh, dan pemeriksaan kesehatan pra-keberangkatan.</p></div>
+      <div class="unggul-item reveal"><div class="icon">✈️</div><h3>Penerbangan Nyaman</h3><p>Maskapai terbaik dengan rute direct flight, bagasi memadai, dan handling bandara profesional.</p></div>
+      <div class="unggul-item reveal"><div class="icon">🍽️</div><h3>Katering Cita Rasa Indonesia</h3><p>Menu prasmanan 3x sehari yang familiar di lidah, menjaga stamina selama ibadah.</p></div>
+    </div>
   </div>
 </section>
 
 <!-- ================= TESTIMONI ================= -->
-<section style="background:var(--hijau-muda)">
+<section>
   <div class="container">
-    <div class="section-title">
-      <h2>Kata Jamaah Kami</h2>
-      <p>Testimoni langsung dari jamaah yang telah berangkat</p>
+    <div class="section-title reveal">
+      <span class="kicker">Testimoni</span>
+      <h2>Kata Jamaah yang Telah Berangkat</h2>
+      <p>Kepercayaan ribuan jamaah adalah amanah terbesar kami</p>
     </div>
-    <div class="testi-grid" id="gridTesti"></div>
+    <div class="testi-grid reveal" id="gridTesti"></div>
   </div>
 </section>
 
 <!-- ================= ARTIKEL ================= -->
-<section id="artikel">
+<section id="artikel" style="background:#fff">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
+      <span class="kicker">Pusat Informasi</span>
       <h2>Artikel & Panduan Manasik</h2>
-      <p>Persiapkan ibadah Anda dengan ilmu yang benar</p>
+      <p>Persiapkan ibadah Anda dengan ilmu yang benar dan terkini</p>
     </div>
-    <div class="artikel-grid" id="gridArtikel"></div>
+    <div class="artikel-grid reveal" id="gridArtikel"></div>
   </div>
 </section>
 
-<!-- ================= TENTANG KAMI ================= -->
-<section id="tentang" style="background:#fff">
+<!-- ================= TENTANG ================= -->
+<section id="tentang">
   <div class="container tentang">
-    <div class="tentang-visual">🕌</div>
-    <div>
-      <h2 style="color:var(--hijau-tua);margin-bottom:14px">Tentang Al-Barokah Travel</h2>
-      <p style="color:var(--teks-2)">Berdiri sejak 2010, Al-Barokah Travel adalah Penyelenggara Perjalanan Ibadah Umroh (PPIU) resmi berizin Kementerian Agama RI. Kami berkomitmen menghadirkan perjalanan ibadah yang khusyuk, aman, dan sesuai sunnah dengan pembimbing bersertifikat.</p>
-      <div class="stat-row">
-        <div class="stat"><b>15+</b><small>Tahun Pengalaman</small></div>
-        <div class="stat"><b>12.000+</b><small>Jamaah Berangkat</small></div>
-        <div class="stat"><b>4.9/5</b><small>Rating Kepuasan</small></div>
+    <div class="tentang-visual reveal">
+      <div class="main-img"></div>
+      <div class="float-card">
+        <div class="icon">🏅</div>
+        <div><b>15+ Tahun</b><small>Melayani Tamu Allah</small></div>
       </div>
+    </div>
+    <div class="tentang-text reveal">
+      <span class="kicker">Tentang Kami</span>
+      <h2>Perjalanan Suci Dimulai dari Kepercayaan</h2>
+      <p>Berdiri sejak 2010, <b>Al-Barokah Travel</b> adalah Penyelenggara Perjalanan Ibadah Umroh (PPIU) resmi berizin Kementerian Agama RI. Kami berkomitmen menghadirkan perjalanan ibadah yang khusyuk, aman, dan sesuai tuntunan sunnah.</p>
+      <div class="check-list">
+        <div><span class="c">✓</span> Izin resmi PPIU Kemenag & sertifikat ISO 9001:2015</div>
+        <div><span class="c">✓</span> 12.000+ jamaah telah berangkat dengan rating kepuasan 4.9/5</div>
+        <div><span class="c">✓</span> Manajemen profesional dengan transparansi biaya penuh</div>
+        <div><span class="c">✓</span> Kantor perwakilan di Jakarta, Surabaya & Madinah</div>
+      </div>
+      <a href="#daftar" class="btn btn-gold" style="margin-top:28px">Konsultasi Gratis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <span class="badge" style="background:rgba(212,169,78,.25);color:var(--emas);margin-bottom:18px">🌙 PROMO EARLY BIRD</span>
+      <h2>Wujudkan Niat Suci ke Baitullah Tahun Ini</h2>
+      <p>Kuota terbatas! Dapatkan potongan hingga Rp 3.000.000 untuk pendaftaran rombongan keluarga.</p>
+      <a href="#daftar" class="btn btn-gold">Amankan Kursi Anda ✈️</a>
     </div>
   </div>
 </section>
 
 <!-- ================= FORM PENDAFTARAN ================= -->
-<section id="daftar">
+<section id="daftar" style="padding-top:0">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
+      <span class="kicker">Pendaftaran</span>
       <h2>Daftar / Konsultasi Jamaah</h2>
-      <p>Isi form di bawah, tim kami akan menghubungi via WhatsApp</p>
+      <p>Isi form berikut — data akan terkirim otomatis dan rapi via WhatsApp</p>
     </div>
-    <div class="form-wrap">
+    <div class="form-wrap reveal">
       <form onsubmit="return kirimWA(event)">
-        <label>Nama Lengkap *</label>
-        <input type="text" id="inNama" required placeholder="Nama sesuai KTP">
-        <label>No. WhatsApp *</label>
-        <input type="tel" id="inWA" required placeholder="Contoh: 081234567890" pattern="(\+?62|0)8[0-9]{8,13}">
-        <label>Kota Asal</label>
-        <input type="text" id="inKota" placeholder="Contoh: Surabaya">
+        <div class="form-2col">
+          <div><label>Nama Lengkap *</label><input type="text" id="inNama" required placeholder="Nama sesuai KTP"></div>
+          <div><label>No. WhatsApp *</label><input type="tel" id="inWA" required placeholder="081234567890" pattern="(\+?62|0)8[0-9]{8,13}"></div>
+        </div>
+        <div class="form-2col">
+          <div><label>Kota Asal</label><input type="text" id="inKota" placeholder="Contoh: Surabaya"></div>
+          <div><label>Jumlah Jamaah</label><input type="number" id="inJml" min="1" max="50" value="1"></div>
+        </div>
         <label>Paket yang Diminati</label>
         <select id="inPaket"></select>
-        <label>Jumlah Jamaah</label>
-        <input type="number" id="inJml" min="1" max="50" value="1">
         <label>Pesan / Pertanyaan</label>
         <textarea id="inPesan" rows="3" placeholder="Tuliskan pertanyaan Anda..."></textarea>
-        <button type="submit" class="btn btn-wa" style="width:100%;margin-top:20px">📲 Kirim via WhatsApp</button>
-        <small style="display:block;margin-top:10px;color:var(--teks-2)">*Data Anda aman dan hanya digunakan untuk keperluan pendaftaran. Form akan membuka WhatsApp dengan pesan yang sudah tersusun otomatis.</small>
+        <button type="submit" class="btn btn-wa" style="width:100%;margin-top:24px">📲 Kirim Pendaftaran via WhatsApp</button>
+        <small style="display:block;margin-top:12px;color:var(--teks-2);text-align:center">🔒 Data Anda aman & hanya digunakan untuk keperluan pendaftaran.</small>
       </form>
     </div>
   </div>
@@ -274,50 +456,85 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h4>Al-Barokah Travel</h4>
-        <p style="font-size:.85rem">PPIU Resmi Kemenag No. U-123/2023.<br>Melayani Umroh, Haji Khusus & Wisata Halal sejak 2010.</p>
+        <span class="logo">Al-Barokah<span style="color:var(--emas)"> Travel</span></span>
+        <p>PPIU Resmi Kemenag No. U-123/2023. Melayani Umroh, Haji Khusus & Wisata Halal dengan amanah sejak 2010.</p>
       </div>
       <div>
         <h4>Kontak</h4>
-        <p style="font-size:.85rem">📍 Jl. Raya Ibadah No. 88, Jakarta<br>📞 021-1234567<br>📱 WA: 0812-3456-7890<br>✉️ info@albarokah.travel</p>
+        <p style="display:flex;flex-direction:column;gap:8px">
+          📍 Jl. Raya Ibadah No. 88, Jakarta<br>📞 021-1234567<br>📱 WA: 0812-3456-7890<br>✉️ info@albarokah.travel
+        </p>
       </div>
       <div>
         <h4>Navigasi</h4>
-        <p style="font-size:.85rem;display:flex;flex-direction:column;gap:6px">
-          <a href="#paket">Katalog Paket</a>
-          <a href="#artikel">Artikel Manasik</a>
-          <a href="#tentang">Tentang Kami</a>
-          <a href="#daftar">Pendaftaran</a>
-        </p>
+        <div class="f-links">
+          <a href="#paket">Katalog Paket</a><a href="#keunggulan">Keunggulan</a>
+          <a href="#artikel">Artikel Manasik</a><a href="#tentang">Tentang Kami</a>
+        </div>
+      </div>
+      <div>
+        <h4>Layanan</h4>
+        <div class="f-links">
+          <a href="#paket">Umroh Reguler</a><a href="#paket">Umroh VIP & Plus</a>
+          <a href="#paket">Haji Khusus Furoda</a><a href="#daftar">Konsultasi Gratis</a>
+        </div>
       </div>
     </div>
     <div class="copy">© 2026 Al-Barokah Travel. Seluruh hak cipta dilindungi.</div>
   </div>
 </footer>
 
-<!-- ================= MODAL DETAIL PAKET ================= -->
+<!-- ================= MODAL ================= -->
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)tutupModal()">
   <div class="modal" id="modalIsi"></div>
 </div>
 
-<!-- Tombol WA mengambang -->
-<a class="wa-float" id="waFloat" href="#" target="_blank" title="Chat WhatsApp">💬</a>
+<!-- ================= WA FLOAT ================= -->
+<a class="wa-float" id="waFloat" href="#" target="_blank" aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.7-.4z"/></svg>
+</a>
 
 <script>
 /* ================================================================
-   📝 AREA KONTEN — UBAH DATA DI SINI UNTUK UPDATE WEBSITE
-   (Tidak perlu menyentuh kode di bawah bagian ini)
+   📝 AREA KONTEN — UBAH DATA DI SINI SAJA
 ================================================================ */
 const KONFIGURASI = {
   namaTravel: "Al-Barokah Travel",
-  nomorWA: "6281234567890",        // format internasional, tanpa tanda +
+  nomorWA: "6281234567890",
   pesanWADefault: "Assalamu'alaikum, saya ingin konsultasi paket umroh. 🙏"
 };
 
+const SLIDES = [
+  {
+    foto: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1920&q=80",
+    kicker: "✨ PPIU Resmi Berizin Kemenag",
+    judul: "Wujudkan Niat Suci ke <em>Baitullah</em>",
+    sub: "Perjalanan umroh penuh kekhusyukan bersama pembimbing bersertifikat dan hotel bintang 5 langkah dari Masjidil Haram.",
+    cta1: { teks: "Lihat Paket ✈️", href: "#paket", style: "btn-gold" },
+    cta2: { teks: "Konsultasi Gratis", href: "#daftar", style: "btn-ghost" }
+  },
+  {
+    foto: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=1920&q=80",
+    kicker: "🕌 Rindu Masjid Nabawi?",
+    judul: "Ketenangan Beribadah di <em>Kota Nabi</em>",
+    sub: "Hotel depan gerbang Masjid Nabawi, ziarah Raudhah terjadwal, dan city tour Madinah yang berkesan.",
+    cta1: { teks: "Paket Madinah 🕌", href: "#paket", style: "btn-gold" },
+    cta2: { teks: "Chat via WhatsApp", href: "#", style: "btn-ghost", wa: true }
+  },
+  {
+    foto: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&q=80",
+    kicker: "🌙 PROMO EARLY BIRD 2026",
+    judul: "Berangkat Umroh Lebih <em>Hemat & Nyaman</em>",
+    sub: "Potongan hingga Rp 3 juta untuk pendaftaran rombongan keluarga. Kuota terbatas — amankan kursi Anda sekarang!",
+    cta1: { teks: "Amankan Promo 🔥", href: "#daftar", style: "btn-gold" },
+    cta2: { teks: "Syarat & Ketentuan", href: "#paket", style: "btn-ghost" }
+  }
+];
+
 const PAKET = [
   {
-    id: 1, nama: "Umroh Reguler Ramadhan 1447H", jenis: "umroh-reguler",
-    labelJenis: "Umroh Reguler", emoji: "🌙",
+    id: 1, nama: "Umroh Reguler Ramadhan 1447H", jenis: "umroh-reguler", labelJenis: "Umroh Reguler",
+    foto: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&q=80",
     harga: 32500000, hargaPromo: 29900000, durasi: 12,
     tanggalBerangkat: "2026-02-18", maskapai: "Garuda Indonesia",
     hotelMakkah: { nama: "Elaf Al Mashaer", bintang: 4, jarak: "350 m dari Masjidil Haram" },
@@ -326,23 +543,23 @@ const PAKET = [
     fasilitas: ["Tiket PP Ekonomi","Visa Umroh","Hotel + Makan 3x","Bus AC Ziarah","Muthawif & Pembimbing","Air Zamzam 5L","Perlengkapan Umroh","Asuransi Perjalanan"],
     perlengkapan: ["Koper Bagasi","Koper Kabin","Tas Paspor","Buku Doa","Kain Ihram / Mukena","Baju Batik Seragam","ID Card Jamaah"],
     itinerary: [
-      { hari: 1, judul: "Jakarta — Madinah", ket: "Berkumpul di bandara, penerbangan langsung ke Madinah." },
-      { hari: 2, judul: "Ibadah di Masjid Nabawi", ket: "Perbanyak ibadah, ziarah Raudhah (jadwal sesuai tasreh)." },
-      { hari: 3, judul: "City Tour Madinah", ket: "Masjid Quba, Jabal Uhud, Masjid Qiblatain, Kebun Kurma." },
-      { hari: 4, judul: "Madinah — Makkah", ket: "Ambil miqat di Bir Ali, dilanjutkan perjalanan ke Makkah." },
-      { hari: 5, judul: "Umroh Perdana", ket: "Pelaksanaan ibadah umroh dibimbing muthawif." },
-      { hari: 6, judul: "Ibadah di Masjidil Haram", ket: "Umroh sunnah mandiri & perbanyak ibadah." },
-      { hari: 7, judul: "City Tour Makkah", ket: "Jabal Tsur, Padang Arafah, Muzdalifah, Mina, Jabal Rahmah." },
-      { hari: 8, judul: "Ibadah & Umroh Kedua", ket: "Umroh sunnah kedua dari Tan'im / Ji'ranah." },
-      { hari: 9, judul: "Ibadah Penuh", ket: "Memperbanyak thawaf & tilawah." },
-      { hari: 10, judul: "Makkah — Madinah", ket: "Perjalanan darat kembali ke Madinah." },
-      { hari: 11, judul: "Ibadah Terakhir di Nabawi", ket: "Persiapan kepulangan." },
-      { hari: 12, judul: "Madinah — Jakarta", ket: "Penerbangan pulang, tiba di tanah air." }
+      { hari:1, judul:"Jakarta — Madinah", ket:"Berkumpul di bandara, penerbangan langsung ke Madinah." },
+      { hari:2, judul:"Ibadah di Masjid Nabawi", ket:"Perbanyak ibadah, ziarah Raudhah sesuai tasreh." },
+      { hari:3, judul:"City Tour Madinah", ket:"Masjid Quba, Jabal Uhud, Masjid Qiblatain, Kebun Kurma." },
+      { hari:4, judul:"Madinah — Makkah", ket:"Ambil miqat di Bir Ali menuju Makkah." },
+      { hari:5, judul:"Umroh Perdana", ket:"Pelaksanaan ibadah umroh dibimbing muthawif." },
+      { hari:6, judul:"Ibadah di Masjidil Haram", ket:"Umroh sunnah mandiri & perbanyak ibadah." },
+      { hari:7, judul:"City Tour Makkah", ket:"Jabal Tsur, Arafah, Muzdalifah, Mina, Jabal Rahmah." },
+      { hari:8, judul:"Umroh Kedua", ket:"Umroh sunnah dari Tan'im / Ji'ranah." },
+      { hari:9, judul:"Ibadah Penuh", ket:"Memperbanyak thawaf & tilawah." },
+      { hari:10, judul:"Makkah — Madinah", ket:"Perjalanan darat kembali ke Madinah." },
+      { hari:11, judul:"Ibadah Terakhir di Nabawi", ket:"Persiapan kepulangan." },
+      { hari:12, judul:"Madinah — Jakarta", ket:"Penerbangan pulang ke tanah air." }
     ]
   },
   {
-    id: 2, nama: "Umroh VIP Desember", jenis: "umroh-vip",
-    labelJenis: "Umroh VIP", emoji: "⭐",
+    id: 2, nama: "Umroh VIP Desember", jenis: "umroh-vip", labelJenis: "Umroh VIP",
+    foto: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=800&q=80",
     harga: 45000000, hargaPromo: null, durasi: 9,
     tanggalBerangkat: "2026-12-05", maskapai: "Saudia Airlines (Direct)",
     hotelMakkah: { nama: "Fairmont Clock Tower", bintang: 5, jarak: "50 m dari Masjidil Haram" },
@@ -351,102 +568,171 @@ const PAKET = [
     fasilitas: ["Tiket PP Business Class","Visa Umroh","Hotel Bintang 5 Dekat Haram","Makan Prasmanan Hotel","Bus VIP","Pembimbing Senior","Handling Bandara VIP","Asuransi Premium"],
     perlengkapan: ["Koper Premium","Tas Paspor Kulit","Buku Doa Eksklusif","Kain Ihram / Mukena Premium","Baju Seragam Eksklusif","ID Card Jamaah"],
     itinerary: [
-      { hari: 1, judul: "Jakarta — Madinah", ket: "Penerbangan business class, tiba Madinah, check-in hotel depan Nabawi." },
-      { hari: 2, judul: "Ibadah di Masjid Nabawi", ket: "Ibadah mandiri & ziarah Raudhah." },
-      { hari: 3, judul: "City Tour Madinah", ket: "Quba, Jabal Uhud, kebun kurma premium." },
-      { hari: 4, judul: "Madinah — Makkah", ket: "Miqat Bir Ali, tiba Makkah check-in Fairmont." },
-      { hari: 5, judul: "Umroh Perdana", ket: "Pelaksanaan umroh dengan pembimbing pribadi." },
-      { hari: 6, judul: "Ibadah di Masjidil Haram", ket: "Memperbanyak ibadah dengan view langsung Ka'bah." },
-      { hari: 7, judul: "City Tour Makkah", ket: "Ziarah tempat-tempat bersejarah." },
-      { hari: 8, judul: "Ibadah Terakhir", ket: "Thawaf wada' & persiapan pulang." },
-      { hari: 9, judul: "Makkah — Jeddah — Jakarta", ket: "Penerbangan pulang ke tanah air." }
+      { hari:1, judul:"Jakarta — Madinah", ket:"Penerbangan business class, check-in hotel depan Nabawi." },
+      { hari:2, judul:"Ibadah di Masjid Nabawi", ket:"Ibadah mandiri & ziarah Raudhah." },
+      { hari:3, judul:"City Tour Madinah", ket:"Quba, Jabal Uhud, kebun kurma premium." },
+      { hari:4, judul:"Madinah — Makkah", ket:"Miqat Bir Ali, tiba Makkah check-in Fairmont." },
+      { hari:5, judul:"Umroh Perdana", ket:"Pelaksanaan umroh dengan pembimbing pribadi." },
+      { hari:6, judul:"Ibadah di Masjidil Haram", ket:"Ibadah dengan view langsung Ka'bah." },
+      { hari:7, judul:"City Tour Makkah", ket:"Ziarah tempat-tempat bersejarah." },
+      { hari:8, judul:"Thawaf Wada'", ket:"Ibadah terakhir & persiapan pulang." },
+      { hari:9, judul:"Makkah — Jeddah — Jakarta", ket:"Penerbangan pulang ke tanah air." }
     ]
   },
   {
-    id: 3, nama: "Umroh Plus Turki 15 Hari", jenis: "umroh-plus",
-    labelJenis: "Umroh Plus", emoji: "🕌",
+    id: 3, nama: "Umroh Plus Turki 15 Hari", jenis: "umroh-plus", labelJenis: "Umroh Plus",
+    foto: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80",
     harga: 38500000, hargaPromo: 36900000, durasi: 15,
     tanggalBerangkat: "2026-11-10", maskapai: "Turkish Airlines",
     hotelMakkah: { nama: "Hilton Suites Makkah", bintang: 4, jarak: "600 m (shuttle tersedia)" },
     hotelMadinah: { nama: "Frontel Al Harithia", bintang: 4, jarak: "250 m dari Masjid Nabawi" },
     kuota: 40, sisaKuota: 22, status: "open",
-    fasilitas: ["Tiket PP Ekonomi","Visa Umroh + Visa Turki","Hotel 4 & 5","Wisata Istanbul & Bursa","Makan 3x + Kuliner Khas Turki","Muthawif Berbahasa Indonesia","City Tour Lengkap","Asuransi"],
+    fasilitas: ["Tiket PP Ekonomi","Visa Umroh + Visa Turki","Hotel 4 & 5","Wisata Istanbul & Bursa","Makan 3x + Kuliner Turki","Muthawif Bahasa Indonesia","City Tour Lengkap","Asuransi"],
     perlengkapan: ["Koper Bagasi","Koper Kabin","Buku Doa","Kain Ihram / Mukena","Baju Seragam","ID Card"],
     itinerary: [
-      { hari: 1, judul: "Jakarta — Istanbul", ket: "Penerbangan via Istanbul." },
-      { hari: 2, judul: "Wisata Istanbul", ket: "Hagia Sophia, Blue Mosque, Grand Bazaar." },
-      { hari: 3, judul: "Istanbul — Bursa", ket: "Ulu Cami, Makam Sultan, wisata alam." },
-      { hari: 4, judul: "Istanbul — Madinah", ket: "Penerbangan ke Madinah." },
-      { hari: 5, judul: "Ibadah di Nabawi", ket: "Perbanyak ibadah, ziarah Raudhah." },
-      { hari: 6, judul: "City Tour Madinah", ket: "Quba, Uhud, Qiblatain." },
-      { hari: 7, judul: "Madinah — Makkah", ket: "Miqat Bir Ali menuju Makkah." },
-      { hari: 8, judul: "Umroh Perdana", ket: "Pelaksanaan umroh." },
-      { hari: 9, judul: "Ibadah di Haram", ket: "Umroh sunnah mandiri." },
-      { hari: 10, judul: "City Tour Makkah", ket: "Arafah, Mina, Muzdalifah, Jabal Tsur." },
-      { hari: 11, judul: "Ibadah Penuh", ket: "Memperbanyak thawaf." },
-      { hari: 12, judul: "Umroh Kedua", ket: "Umroh sunnah dari Tan'im." },
-      { hari: 13, judul: "Ibadah & Belanja", ket: "Waktu bebas ibadah dan oleh-oleh." },
-      { hari: 14, judul: "Makkah — Istanbul", ket: "Transit Istanbul." },
-      { hari: 15, judul: "Istanbul — Jakarta", ket: "Tiba di tanah air." }
+      { hari:1, judul:"Jakarta — Istanbul", ket:"Penerbangan via Istanbul." },
+      { hari:2, judul:"Wisata Istanbul", ket:"Hagia Sophia, Blue Mosque, Grand Bazaar." },
+      { hari:3, judul:"Istanbul — Bursa", ket:"Ulu Cami, makam sultan, wisata alam." },
+      { hari:4, judul:"Istanbul — Madinah", ket:"Penerbangan ke Madinah." },
+      { hari:5, judul:"Ibadah di Nabawi", ket:"Perbanyak ibadah, ziarah Raudhah." },
+      { hari:6, judul:"City Tour Madinah", ket:"Quba, Uhud, Qiblatain." },
+      { hari:7, judul:"Madinah — Makkah", ket:"Miqat Bir Ali menuju Makkah." },
+      { hari:8, judul:"Umroh Perdana", ket:"Pelaksanaan umroh." },
+      { hari:9, judul:"Ibadah di Haram", ket:"Umroh sunnah mandiri." },
+      { hari:10, judul:"City Tour Makkah", ket:"Arafah, Mina, Muzdalifah, Jabal Tsur." },
+      { hari:11, judul:"Ibadah Penuh", ket:"Memperbanyak thawaf." },
+      { hari:12, judul:"Umroh Kedua", ket:"Umroh sunnah dari Tan'im." },
+      { hari:13, judul:"Ibadah & Belanja", ket:"Waktu bebas ibadah dan oleh-oleh." },
+      { hari:14, judul:"Makkah — Istanbul", ket:"Transit Istanbul." },
+      { hari:15, judul:"Istanbul — Jakarta", ket:"Tiba di tanah air." }
     ]
   },
   {
-    id: 4, nama: "Haji Khusus Furoda 2026", jenis: "haji-khusus",
-    labelJenis: "Haji Khusus", emoji: "🕋",
+    id: 4, nama: "Haji Khusus Furoda 2026", jenis: "haji-khusus", labelJenis: "Haji Khusus",
+    foto: "https://images.unsplash.com/photo-1587979931372-fbb529401779?w=800&q=80",
     harga: 275000000, hargaPromo: null, durasi: 25,
     tanggalBerangkat: "2026-05-15", maskapai: "Saudia Airlines",
     hotelMakkah: { nama: "Dar Al Tawhid Intercontinental", bintang: 5, jarak: "Depan Masjidil Haram" },
     hotelMadinah: { nama: "Dar Al Iman Intercontinental", bintang: 5, jarak: "Depan Masjid Nabawi" },
     kuota: 30, sisaKuota: 0, status: "full",
-    fasilitas: ["Tiket Business Class","Visa Furoda Resmi","Hotel Bintang 5 Depan Haram","Maktab VIP di Arafah & Mina","Katering Premium","Pembimbing Berpengalaman","Muthawif 24 Jam","Layanan Kesehatan Pribadi"],
+    fasilitas: ["Tiket Business Class","Visa Furoda Resmi","Hotel Bintang 5 Depan Haram","Maktab VIP Arafah & Mina","Katering Premium","Pembimbing Berpengalaman","Muthawif 24 Jam","Layanan Kesehatan Pribadi"],
     perlengkapan: ["Koper Premium Set","Buku Manasik Haji","Kain Ihram / Mukena Premium","Seragam Eksklusif","Kartu Identitas Haji"],
     itinerary: [
-      { hari: 1, judul: "Jakarta — Madinah", ket: "Penerbangan business class ke Madinah." },
-      { hari: 2, judul: "Manasik & Ibadah Nabawi", ket: "Pembekalan manasik haji intensif." },
-      { hari: 3, judul: "Ibadah di Nabawi", ket: "Arbain & ziarah Raudhah." },
-      { hari: 4, judul: "Madinah — Makkah", ket: "Miqat Bir Ali, check-in hotel depan Haram." },
-      { hari: 5, judul: "Persiapan Haji", ket: "Manasik praktis rangkaian haji." },
-      { hari: 6, judul: "Menuju Arafah", ket: "Check-in maktab VIP Arafah." },
-      { hari: 7, judul: "Wukuf di Arafah", ket: "Puncak ibadah haji." },
-      { hari: 8, judul: "Muzdalifah & Mina", ket: "Mabit dan lontar jumrah." },
-      { hari: 9, judul: "Thawaf Ifadhah", ket: "Rangkaian haji di Masjidil Haram." },
-      { hari: 10, judul: "Hari Tasyrik", ket: "Lontar jumrah & ibadah." }
+      { hari:1, judul:"Jakarta — Madinah", ket:"Penerbangan business class ke Madinah." },
+      { hari:2, judul:"Manasik & Ibadah Nabawi", ket:"Pembekalan manasik haji intensif." },
+      { hari:3, judul:"Ibadah di Nabawi", ket:"Arbain & ziarah Raudhah." },
+      { hari:4, judul:"Madinah — Makkah", ket:"Miqat Bir Ali, check-in hotel depan Haram." },
+      { hari:5, judul:"Persiapan Haji", ket:"Manasik praktis rangkaian haji." },
+      { hari:6, judul:"Menuju Arafah", ket:"Check-in maktab VIP Arafah." },
+      { hari:7, judul:"Wukuf di Arafah", ket:"Puncak ibadah haji." },
+      { hari:8, judul:"Muzdalifah & Mina", ket:"Mabit dan lontar jumrah." },
+      { hari:9, judul:"Thawaf Ifadhah", ket:"Rangkaian haji di Masjidil Haram." },
+      { hari:10, judul:"Hari Tasyrik", ket:"Lontar jumrah & ibadah." }
     ]
   }
 ];
 
 const TESTIMONI = [
-  { nama: "H. Ahmad Fauzi — Surabaya", paket: "Umroh Reguler Ramadhan", teks: "Alhamdulillah pelayanan sangat memuaskan. Hotel dekat sekali dengan Haram, pembimbing sabar dan ilmunya luas. Insya Allah tahun depan berangkat lagi sekeluarga." },
-  { nama: "Hj. Siti Maryam — Bandung", paket: "Umroh VIP Desember", teks: "Umroh VIP-nya benar-benar worth it. Hotel depan Masjid Nabawi, makanan enak, bus nyaman. Tim handling bandara sangat membantu jamaah lansia seperti saya." },
-  { nama: "Bpk. Ridwan Hakim — Jakarta", paket: "Umroh Plus Turki", teks: "Paket plus Turki sangat berkesan, jadwal padat tapi tidak melelahkan. Guide di Istanbul juga fasih berbahasa Indonesia. Recommended!" }
+  { nama:"H. Ahmad Fauzi", kota:"Surabaya", paket:"Umroh Reguler Ramadhan", inisial:"AF",
+    teks:"Alhamdulillah pelayanan sangat memuaskan. Hotel dekat sekali dengan Haram, pembimbing sabar dan ilmunya luas. Insya Allah tahun depan berangkat lagi sekeluarga." },
+  { nama:"Hj. Siti Maryam", kota:"Bandung", paket:"Umroh VIP Desember", inisial:"SM",
+    teks:"Umroh VIP-nya benar-benar worth it. Hotel depan Masjid Nabawi, makanan enak, bus nyaman. Tim handling bandara sangat membantu jamaah lansia seperti saya." },
+  { nama:"Bpk. Ridwan Hakim", kota:"Jakarta", paket:"Umroh Plus Turki", inisial:"RH",
+    teks:"Paket plus Turki sangat berkesan, jadwal padat tapi tidak melelahkan. Guide di Istanbul fasih berbahasa Indonesia. Recommended banget!" }
 ];
 
 const ARTIKEL = [
-  { emoji: "📖", judul: "Panduan Lengkap Manasik Umroh untuk Pemula", tanggal: "5 Sep 2026", ringkas: "Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
-  { emoji: "💪", judul: "Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan", tanggal: "28 Agu 2026", ringkas: "Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah." },
-  { emoji: "🧳", judul: "Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal: "20 Agu 2026", ringkas: "Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen yang tidak boleh tertinggal." },
-  { emoji: "🕌", judul: "Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal: "12 Agu 2026", ringkas: "Etika masuk masjid, menjaga kebersihan, dan menghindari hal yang mengurangi pahala ibadah." },
-  { emoji: "💰", judul: "Cara Cerdas Menabung untuk Biaya Umroh", tanggal: "5 Agu 2026", ringkas: "Strategi menabung bertahap dan memilih paket sesuai kemampuan tanpa tergiur harga tidak wajar." },
-  { emoji: "📰", judul: "Update Terbaru: Aturan Visa Umroh 2026 dari Saudi", tanggal: "1 Agu 2026", ringkas: "Ringkasan kebijakan visa, syarat kesehatan, dan ketentuan baru yang perlu diketahui calon jamaah." }
+  { emoji:"📖", kategori:"Manasik", judul:"Panduan Lengkap Manasik Umroh untuk Pemula", tanggal:"5 Sep 2026", ringkas:"Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah." },
+  { emoji:"💪", kategori:"Kesehatan", judul:"Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan", tanggal:"28 Agu 2026", ringkas:"Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah." },
+  { emoji:"🧳", kategori:"Persiapan", judul:"Checklist Perlengkapan Umroh yang Wajib Dibawa", tanggal:"20 Agu 2026", ringkas:"Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting." },
+  { emoji:"🕌", kategori:"Adab", judul:"Adab Beribadah di Masjidil Haram & Masjid Nabawi", tanggal:"12 Agu 2026", ringkas:"Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci." },
+  { emoji:"💰", kategori:"Finansial", judul:"Cara Cerdas Menabung untuk Biaya Umroh", tanggal:"5 Agu 2026", ringkas:"Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial." },
+  { emoji:"📰", kategori:"Berita", judul:"Update Aturan Visa Umroh 2026 dari Saudi", tanggal:"1 Agu 2026", ringkas:"Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah." }
 ];
 
 /* ================================================================
-   ⚙️ LOGIKA WEBSITE — (di bawah ini tidak perlu diubah)
+   ⚙️ LOGIKA WEBSITE
 ================================================================ */
 const rupiah = n => "Rp " + n.toLocaleString("id-ID");
 const tanggalID = s => new Date(s).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
-const waLink = (pesan) => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURIComponent(pesan)}`;
-
-// Set tombol WA mengambang
+const waLink = p => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURIComponent(p)}`;
 document.getElementById("waFloat").href = waLink(KONFIGURASI.pesanWADefault);
 
-// Render katalog paket dengan filter
-function renderPaket(){
-  const jenis  = document.getElementById("fJenis").value;
-  const durasi = document.getElementById("fDurasi").value;
-  const bintang= document.getElementById("fBintang").value;
-  const harga  = document.getElementById("fHarga").value;
+/* ---------- HERO SLIDER ---------- */
+let slideAktif = 0, timerSlide;
+const wrap = document.getElementById("slidesWrap");
+const dotsWrap = document.getElementById("sliderDots");
 
+SLIDES.forEach((s, i) => {
+  wrap.insertAdjacentHTML("beforeend", `
+    <div class="slide ${i===0?'active':''}">
+      <div class="slide-bg" style="background-image:url('${s.foto}')"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="kicker">${s.kicker}</span>
+        <h1>${s.judul}</h1>
+        <p>${s.sub}</p>
+        <div class="cta-row">
+          <a href="${s.cta1.href}" class="btn ${s.cta1.style}">${s.cta1.teks}</a>
+          <a href="${s.cta2.wa ? waLink(KONFIGURASI.pesanWADefault) : s.cta2.href}"
+             ${s.cta2.wa?'target="_blank"':''} class="btn ${s.cta2.style}">${s.cta2.teks}</a>
+        </div>
+      </div>
+    </div>`);
+  dotsWrap.insertAdjacentHTML("beforeend",
+    `<button class="${i===0?'active':''}" onclick="keSlide(${i})" aria-label="Slide ${i+1}"></button>`);
+});
+
+function keSlide(n){
+  const slides = document.querySelectorAll(".slide");
+  const dots = dotsWrap.querySelectorAll("button");
+  slides[slideAktif].classList.remove("active");
+  dots[slideAktif].classList.remove("active");
+  slideAktif = (n + slides.length) % slides.length;
+  slides[slideAktif].classList.add("active");
+  dots[slideAktif].classList.add("active");
+  resetTimer();
+}
+function geserSlide(arah){ keSlide(slideAktif + arah); }
+function resetTimer(){ clearInterval(timerSlide); timerSlide = setInterval(()=>geserSlide(1), 6000); }
+resetTimer();
+
+/* ---------- NAVBAR SCROLL ---------- */
+window.addEventListener("scroll", () => {
+  document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 60);
+});
+document.getElementById("btnMenu").onclick = () =>
+  document.getElementById("navLinks").classList.toggle("open");
+document.querySelectorAll("#navLinks a").forEach(a =>
+  a.onclick = () => document.getElementById("navLinks").classList.remove("open"));
+
+/* ---------- SCROLL REVEAL + COUNTER ---------- */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("visible");
+      e.target.querySelectorAll("[data-count]").forEach(hitung);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+function hitung(el){
+  const target = +el.dataset.count, suffix = el.dataset.suffix || "";
+  let mulai = null;
+  function step(ts){
+    if (!mulai) mulai = ts;
+    const progres = Math.min((ts - mulai) / 1600, 1);
+    el.textContent = Math.floor(progres * target).toLocaleString("id-ID") + suffix;
+    if (progres < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+/* ---------- RENDER PAKET ---------- */
+function renderPaket(){
+  const jenis = fJenis.value, durasi = fDurasi.value, bintang = fBintang.value, harga = fHarga.value;
   let hasil = PAKET.filter(p => {
     if (jenis && p.jenis !== jenis) return false;
     if (durasi === "15" && p.durasi < 15) return false;
@@ -456,70 +742,79 @@ function renderPaket(){
     if (harga && p.harga > Number(harga)) return false;
     return true;
   });
-
-  const grid = document.getElementById("gridPaket");
   document.getElementById("paketKosong").style.display = hasil.length ? "none" : "block";
-
-  grid.innerHTML = hasil.map(p => `
+  document.getElementById("gridPaket").innerHTML = hasil.map(p => `
     <div class="card">
       <div class="card-img">
-        ${p.emoji}
+        <img src="${p.foto}" alt="${p.nama}" loading="lazy">
+        <div class="img-overlay"></div>
         <span class="badge ${p.status==='open'?'badge-open':'badge-full'}">
-          ${p.status==='open'?'Pendaftaran Dibuka':'Kuota Habis'}</span>
+          ${p.status==='open'?'✅ Pendaftaran Dibuka':'❌ Kuota Habis'}</span>
         ${p.hargaPromo?'<span class="badge badge-promo">PROMO 🔥</span>':''}
+        <span class="jenis-tag">${p.labelJenis} · ${p.durasi} Hari</span>
       </div>
       <div class="card-body">
         <h3>${p.nama}</h3>
         <div class="meta">
-          <span>📅 Berangkat: ${tanggalID(p.tanggalBerangkat)} · ${p.durasi} Hari</span>
-          <span>🕋 ${p.hotelMakkah.nama} ⭐${p.hotelMakkah.bintang} (${p.hotelMakkah.jarak})</span>
-          <span>🕌 ${p.hotelMadinah.nama} ⭐${p.hotelMadinah.bintang} (${p.hotelMadinah.jarak})</span>
+          <span>📅 ${tanggalID(p.tanggalBerangkat)}</span>
+          <span>🕋 ${p.hotelMakkah.nama} ⭐${p.hotelMakkah.bintang} — ${p.hotelMakkah.jarak}</span>
+          <span>🕌 ${p.hotelMadinah.nama} ⭐${p.hotelMadinah.bintang} — ${p.hotelMadinah.jarak}</span>
           <span>✈️ ${p.maskapai}</span>
-          ${p.sisaKuota>0 && p.sisaKuota<=10 ? `<span style="color:#ea580c;font-weight:700">⚠️ Sisa ${p.sisaKuota} kursi!</span>`:''}
+          ${p.sisaKuota>0 && p.sisaKuota<=10 ? `<span class="sisa-kursi">⚠️ Sisa ${p.sisaKuota} kursi lagi!</span>`:''}
         </div>
         <div class="harga">
           <b>${rupiah(p.hargaPromo ?? p.harga)}</b>
           ${p.hargaPromo?`<s>${rupiah(p.harga)}</s>`:''}
-          <small style="color:var(--teks-2)">/jamaah</small>
+          <small>/jamaah</small>
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="bukaModal(${p.id})">Detail Paket</button>
-        <a class="btn btn-wa" href="${waLink(`Assalamu'alaikum, saya tertarik dengan paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}" target="_blank">Booking / WA</a>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})">Detail Paket</button>
+        <a class="btn btn-wa" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">Booking</a>
       </div>
     </div>`).join("");
 }
 
-// Modal detail paket
+/* ---------- MODAL ---------- */
 function bukaModal(id){
   const p = PAKET.find(x => x.id === id);
   document.getElementById("modalIsi").innerHTML = `
     <button class="modal-close" onclick="tutupModal()">✕</button>
-    <h2>${p.emoji} ${p.nama}</h2>
-    <span class="badge ${p.status==='open'?'badge-open':'badge-full'}" style="margin-bottom:10px">
-      ${p.labelJenis} · ${p.durasi} Hari · ${tanggalID(p.tanggalBerangkat)}</span>
-    <div class="harga"><b style="font-size:1.5rem">${rupiah(p.hargaPromo ?? p.harga)}</b>
-      ${p.hargaPromo?`<s>${rupiah(p.harga)}</s>`:''} <small style="color:var(--teks-2)">/jamaah</small></div>
+    <div class="modal-hero" style="background-image:url('${p.foto}')">
+      <div class="judul">
+        <span class="badge" style="background:var(--emas);color:#3d2e08;margin-bottom:8px">${p.labelJenis} · ${p.durasi} Hari</span>
+        <h2>${p.nama}</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="harga" style="border:none;padding:0">
+        <b style="font-size:1.7rem">${rupiah(p.hargaPromo ?? p.harga)}</b>
+        ${p.hargaPromo?`<s>${rupiah(p.harga)}</s>`:''}<small>/jamaah</small>
+        ${p.sisaKuota>0?`<span class="badge badge-open" style="margin-left:auto">Sisa ${p.sisaKuota} kursi</span>`:''}
+      </div>
+      <p style="font-size:.86rem;color:var(--teks-2);margin-top:8px">📅 Berangkat ${tanggalID(p.tanggalBerangkat)} · ✈️ ${p.maskapai}</p>
 
-    <h4>🏨 Akomodasi</h4>
-    <p style="font-size:.9rem;color:var(--teks-2)">
-      <b>Makkah:</b> ${p.hotelMakkah.nama} (⭐${p.hotelMakkah.bintang}) — ${p.hotelMakkah.jarak}<br>
-      <b>Madinah:</b> ${p.hotelMadinah.nama} (⭐${p.hotelMadinah.bintang}) — ${p.hotelMadinah.jarak}<br>
-      <b>Maskapai:</b> ${p.maskapai}</p>
+      <h4>🏨 Akomodasi</h4>
+      <div class="akomodasi-box">
+        <div><b>🕋 Makkah</b>${p.hotelMakkah.nama}<br>⭐${p.hotelMakkah.bintang} · ${p.hotelMakkah.jarak}</div>
+        <div><b>🕌 Madinah</b>${p.hotelMadinah.nama}<br>⭐${p.hotelMadinah.bintang} · ${p.hotelMadinah.jarak}</div>
+      </div>
 
-    <h4>📋 Itinerary Harian</h4>
-    <ul class="itin">${p.itinerary.map(i => `<li><b>Hari ${i.hari} — ${i.judul}</b><br>${i.ket}</li>`).join("")}</ul>
+      <h4>📋 Itinerary Harian</h4>
+      <ul class="itin">${p.itinerary.map(i=>`<li><b>Hari ${i.hari} — ${i.judul}</b>${i.ket}</li>`).join("")}</ul>
 
-    <h4>✅ Fasilitas Termasuk</h4>
-    <div class="chips">${p.fasilitas.map(f=>`<span>${f}</span>`).join("")}</div>
+      <h4>✅ Fasilitas Termasuk</h4>
+      <div class="chips">${p.fasilitas.map(f=>`<span>${f}</span>`).join("")}</div>
 
-    <h4>🧳 Perlengkapan Jamaah</h4>
-    <div class="chips">${p.perlengkapan.map(f=>`<span>${f}</span>`).join("")}</div>
+      <h4>🧳 Perlengkapan Jamaah</h4>
+      <div class="chips">${p.perlengkapan.map(f=>`<span>${f}</span>`).join("")}</div>
 
-    <div style="display:flex;gap:10px;margin-top:24px">
-      <a class="btn btn-wa" style="flex:1;text-align:center" target="_blank"
-        href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
-        📲 Booking via WhatsApp</a>
+      <div style="display:flex;gap:12px;margin-top:28px">
+        <a class="btn btn-wa" style="flex:1" target="_blank"
+          href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
+          📲 Booking via WhatsApp</a>
+        <a class="btn btn-detail" style="flex:1" href="#daftar" onclick="pilihPaketForm('${p.nama.replace(/'/g,"")}')">📝 Isi Form</a>
+      </div>
     </div>`;
   document.getElementById("modalBg").classList.add("active");
   document.body.style.overflow = "hidden";
@@ -528,58 +823,57 @@ function tutupModal(){
   document.getElementById("modalBg").classList.remove("active");
   document.body.style.overflow = "";
 }
-document.addEventListener("keydown", e => { if(e.key==="Escape") tutupModal(); });
+function pilihPaketForm(nama){
+  tutupModal();
+  const sel = document.getElementById("inPaket");
+  [...sel.options].forEach(o => { if(o.value === nama) sel.value = nama; });
+}
+document.addEventListener("keydown", e => { if(e.key === "Escape") tutupModal(); });
 
-// Render testimoni & artikel
+/* ---------- TESTIMONI & ARTIKEL ---------- */
 document.getElementById("gridTesti").innerHTML = TESTIMONI.map(t => `
   <div class="testi">
     <div class="stars">★★★★★</div>
     <p>"${t.teks}"</p>
-    <div class="who">${t.nama}<br><small style="color:var(--teks-2);font-weight:400">${t.paket}</small></div>
+    <div class="who">
+      <div class="avatar">${t.inisial}</div>
+      <div><b>${t.nama} — ${t.kota}</b><small>${t.paket}</small></div>
+    </div>
   </div>`).join("");
 
 document.getElementById("gridArtikel").innerHTML = ARTIKEL.map(a => `
   <div class="artikel">
     <div class="artikel-img">${a.emoji}</div>
     <div class="artikel-body">
-      <small>${a.tanggal}</small>
+      <span class="tag">${a.kategori} · ${a.tanggal}</span>
       <h3>${a.judul}</h3>
-      <p style="font-size:.87rem;color:var(--teks-2)">${a.ringkas}</p>
+      <p>${a.ringkas}</p>
+      <span class="read">Baca Selengkapnya →</span>
     </div>
   </div>`).join("");
 
-// Isi dropdown paket di form pendaftaran
+/* ---------- FORM ---------- */
 document.getElementById("inPaket").innerHTML =
   `<option value="">— Pilih Paket —</option>` +
   PAKET.map(p => `<option value="${p.nama}">${p.nama} (${rupiah(p.hargaPromo ?? p.harga)})</option>`).join("");
 
-// Form pendaftaran → buka WhatsApp dengan pesan tersusun
 function kirimWA(e){
   e.preventDefault();
-  const nama  = document.getElementById("inNama").value.trim();
-  const wa    = document.getElementById("inWA").value.trim();
-  const kota  = document.getElementById("inKota").value.trim() || "-";
-  const paket = document.getElementById("inPaket").value || "Belum ditentukan";
-  const jml   = document.getElementById("inJml").value;
-  const pesan = document.getElementById("inPesan").value.trim() || "-";
-
   const teks =
 `Assalamu'alaikum ${KONFIGURASI.namaTravel}, saya ingin mendaftar/konsultasi:
 
-👤 Nama: ${nama}
-📱 WA: ${wa}
-🏙️ Kota: ${kota}
-📦 Paket: ${paket}
-👥 Jumlah Jamaah: ${jml} orang
-💬 Pesan: ${pesan}
+👤 Nama: ${inNama.value.trim()}
+📱 WA: ${inWA.value.trim()}
+🏙️ Kota: ${inKota.value.trim() || "-"}
+📦 Paket: ${inPaket.value || "Belum ditentukan"}
+👥 Jumlah Jamaah: ${inJml.value} orang
+💬 Pesan: ${inPesan.value.trim() || "-"}
 
 Mohon dibantu prosesnya. Terima kasih 🙏`;
-
   window.open(waLink(teks), "_blank");
   return false;
 }
 
-// Inisialisasi
 renderPaket();
 </script>
 </body>
