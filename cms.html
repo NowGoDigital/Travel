@@ -1,1 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMS — Al-Barokah Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- Muat data yang sudah dipublish (jika ada) -->
+<script src="data.js"></script>
+<style>
+:root{--hijau:#0c7a54;--hijau-tua:#064e35;--hijau-gelap:#042f21;--hijau-muda:#eaf6f0;--emas:#d4a94e;--emas-muda:#f3e3bd;--teks:#16211c;--teks-2:#5f6f68;--bg:#f4f8f6;--putih:#fff;--bahaya:#e74c3c;--shadow:0 6px 24px rgba(4,47,33,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--teks);line-height:1.6}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:.9rem;padding:11px 14px;border:1.5px solid #dfe9e4;border-radius:12px;width:100%;background:#fbfdfc;transition:.2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
+label{display:block;font-size:.78rem;font-weight:700;color:var(--hijau-tua);margin:12px 0 5px}
+.hint{font-size:.7rem;color:var(--teks-2);margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:12px;padding:11px 20px;font-weight:700;font-size:.85rem;transition:.25s}
+.btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-hijau{background:var(--hijau);color:#fff}
+.btn-hijau:hover{background:var(--hijau-tua)}
+.btn-ghost{background:#fff;border:1.5px solid #dfe9e4;color:var(--teks)}
+.btn-ghost:hover{border-color:var(--hijau)}
+.btn-bahaya{background:#fdecea;color:#c0392b}
+.btn-bahaya:hover{background:#f8d7da}
+.btn-sm{padding:7px 14px;font-size:.76rem;border-radius:10px}
+/* ---------- LOGIN ---------- */
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--hijau-gelap),var(--hijau-tua));padding:20px}
+.login-card{background:#fff;border-radius:24px;padding:42px 38px;width:100%;max-width:400px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.login-card .logo{font-size:2.6rem}
+.login-card h1{font-size:1.3rem;color:var(--hijau-gelap);margin:8px 0 4px}
+.login-card p{font-size:.82rem;color:var(--teks-2);margin-bottom:18px}
+.login-card .btn{width:100%;justify-content:center;margin-top:16px}
+.login-note{margin-top:14px;font-size:.72rem;color:var(--teks-2);background:var(--hijau-muda);border-radius:10px;padding:8px 12px}
+/* ---------- LAYOUT ---------- */
+#app{display:none;min-height:100vh}
+#app.active{display:flex}
+aside{width:250px;flex-shrink:0;background:var(--hijau-gelap);color:#cfe3d9;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+aside .brand{padding:24px 22px;font-weight:800;color:#fff;font-size:1.05rem;border-bottom:1px solid rgba(255,255,255,.08)}
+aside .brand small{display:block;font-weight:600;color:var(--emas);font-size:.68rem;letter-spacing:2px;text-transform:uppercase}
+aside nav{padding:14px 12px;flex:1}
+aside nav button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:none;border:none;color:#cfe3d9;padding:11px 14px;border-radius:12px;font-size:.86rem;font-weight:600;margin-bottom:3px;transition:.2s}
+aside nav button:hover{background:rgba(255,255,255,.07);color:#fff}
+aside nav button.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800}
+aside .side-foot{padding:16px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
+main{flex:1;min-width:0}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e6efe9;padding:14px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.topbar h2{font-size:1.1rem;color:var(--hijau-gelap);margin-right:auto}
+.chip{font-size:.7rem;font-weight:800;padding:5px 12px;border-radius:99px}
+.chip-ok{background:#e8f8ee;color:#0c7a54}
+.chip-warn{background:#fff4e0;color:#a97613}
+.content{padding:28px}
+/* ---------- KOMPONEN ---------- */
+.card{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:24px;margin-bottom:22px}
+.card h3{font-size:.98rem;color:var(--hijau-gelap);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.stat{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:20px;display:flex;gap:14px;align-items:center}
+.stat .ic{width:48px;height:48px;border-radius:14px;background:var(--hijau-muda);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.stat b{font-size:1.35rem;color:var(--hijau);display:block;line-height:1.2}
+.stat small{color:var(--teks-2);font-size:.74rem;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--teks-2);padding:10px 12px;border-bottom:2px solid #eef4f0}
+td{padding:12px;border-bottom:1px solid #f0f5f2;vertical-align:middle}
+tr:hover td{background:#fafdfb}
+.td-actions{white-space:nowrap;text-align:right}
+.thumb{width:52px;height:36px;object-fit:cover;border-radius:8px}
+.empty{text-align:center;color:var(--teks-2);padding:34px;font-size:.86rem}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px}
+.steps li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:.86rem;color:var(--teks-2)}
+.steps li::before{counter-increment:s;content:counter(s);width:28px;height:28px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+/* ---------- MODAL ---------- */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(4,30,20,.55);backdrop-filter:blur(3px);z-index:100;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+.modal-bg.active{display:flex}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;padding:28px;position:relative;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.modal h3{font-size:1.05rem;color:var(--hijau-gelap);margin-bottom:6px}
+.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:none;background:#f0f5f2;font-size:1rem}
+.modal-close:hover{background:#e2ece7}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+/* ---------- TOAST ---------- */
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--hijau-gelap);color:#fff;padding:12px 26px;border-radius:99px;font-size:.84rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.35s;z-index:200;opacity:0}
+#toast.show{transform:translateX(-50%);opacity:1}
+@media(max-width:900px){
+  #app.active{flex-direction:column}
+  aside{width:100%;height:auto;position:static;flex-direction:column}
+  aside nav{display:flex;flex-wrap:wrap;gap:4px}
+  aside nav button{width:auto}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .content{padding:16px}
+}
+</style>
+</head>
+<body>
 
+<!-- ============ LOGIN ============ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="logo">🕋</div>
+    <h1>CMS Al-Barokah Travel</h1>
+    <p>Panel pengelolaan konten website</p>
+    <label>Kata Sandi Admin</label>
+    <input type="password" id="inPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn btn-hijau" onclick="doLogin()">🔐 Masuk ke Dashboard</button>
+    <div class="login-note">💡 Sandi bawaan: <b>admin123</b> — segera ganti di menu Pengaturan setelah masuk.</div>
+  </div>
+</div>
+
+<!-- ============ APLIKASI ============ -->
+<div id="app">
+  <aside>
+    <div class="brand">🕋 Al-Barokah CMS<small>Admin Panel</small></div>
+    <nav id="sideNav"></nav>
+    <div class="side-foot">
+      <a href="index.html" target="_blank" class="btn btn-ghost btn-sm" style="justify-content:center">🌐 Lihat Website</a>
+      <button class="btn btn-ghost btn-sm" onclick="logout()">🚪 Keluar</button>
+    </div>
+  </aside>
+  <main>
+    <div class="topbar">
+      <h2 id="topTitle">Dashboard</h2>
+      <span class="chip chip-ok" id="pubChip">✓ Sinkron dengan website</span>
+      <button class="btn btn-ghost btn-sm" onclick="salinData()">📋 Salin data.js</button>
+      <button class="btn btn-gold btn-sm" onclick="unduhData()">🚀 Unduh data.js</button>
+    </div>
+    <div class="content" id="host"></div>
+  </main>
+</div>
+
+<div class="modal-bg" id="modalBg"><div class="modal"><button class="modal-close" onclick="tutupModal()">✕</button><div id="modalBody"></div></div></div>
+<div id="toast"></div>
+
+<script>
+/* ================================================================
+   KONSTANTA & UTIL
+================================================================ */
+const LS_DRAFT='ab_cms_draft', LS_PASS='ab_cms_pass', SS_AUTH='ab_cms_auth';
+const clone=o=>JSON.parse(JSON.stringify(o));
+const rp=n=>'Rp '+(+n||0).toLocaleString('id-ID');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+let DB=null, BASELINE=null, viewAktif='dashboard', editCtx=null, saveTimer=null;
+
+const LABEL_JENIS={'umroh-reguler':'Umroh Reguler','umroh-plus':'Umroh Plus','umroh-vip':'Umroh VIP','haji-khusus':'Haji Khusus'};
+const FALLBACK={KONFIGURASI:{namaTravel:'Al-Barokah Travel',nomorWA:'6281234567890',pesanWADefault:'Assalamu\'alaikum.',alamat:'-',telepon:'-',email:'-',jamOperasional:'-',izinKemenag:'-',sosmed:{facebook:'#',instagram:'#',youtube:'#',tiktok:'#'}},SLIDES:[],PAKET:[],ALUR:[],GALERI:[],TESTIMONI:[],ARTIKEL:[],FAQ:[]};
+
+/* ================================================================
+   SKEMA FORM (biar admin tinggal isi, tanpa kode)
+================================================================ */
+const F=(key,label,type='text',extra={})=>Object.assign({key,label,type},extra);
+const ENTITAS={
+  slides:{nama:'Slide Hero',ikon:'🖼️',preview:['kicker','judul'],schema:[
+    F('foto','URL Foto Latar','url'),F('kicker','Teks Badge Kecil'),F('judul','Judul Slide','text',{hint:'Boleh pakai <em>...</em> untuk kata berwarna emas'}),
+    F('sub','Subjudul','textarea'),F('c1teks','Teks Tombol Utama'),F('c1href','Link Tombol Utama','select',{options:[['#paket','Katalog Paket'],['#daftar','Form Pendaftaran']]}),
+    F('c2teks','Teks Tombol Kedua'),F('c2href','Link Tombol Kedua','select',{options:[['#daftar','Form Pendaftaran'],['#paket','Katalog Paket'],['WA','Chat WhatsApp']]})],
+    map:s=>({foto:s.foto,kicker:s.kicker,judul:s.judul,sub:s.sub,c1teks:s.cta1.teks,c1href:s.cta1.href,c2teks:s.cta2.teks,c2href:s.cta2.wa?'WA':s.cta2.href}),
+    unmap:f=>({foto:f.foto,kicker:f.kicker,judul:f.judul,sub:f.sub,cta1:{teks:f.c1teks,href:f.c1href,style:'btn-gold'},cta2:{teks:f.c2teks,href:f.c2href==='WA'?'#':f.c2href,style:'btn-ghost',wa:f.c2href==='WA'}})},
+  paket:{nama:'Paket Umroh & Haji',ikon:'🕋',preview:['nama','harga'],schema:[
+    F('nama','Nama Paket'),F('jenis','Jenis Paket','select',{options:Object.entries(LABEL_JENIS)}),F('foto','URL Foto Paket','url'),
+    F('harga','Harga Normal (Rp)','number'),F('hargaPromo','Harga Promo (Rp)','number',{hint:'Isi 0 / kosongkan jika tanpa promo'}),F('durasi','Durasi (Hari)','number'),
+    F('tanggalBerangkat','Tanggal Berangkat','date'),F('maskapai','Maskapai'),
+    F('hmNama','Hotel Makkah — Nama'),F('hmBintang','Bintang','number'),F('hmJarak','Jarak ke Haram'),
+    F('hdNama','Hotel Madinah — Nama'),F('hdBintang','Bintang','number'),F('hdJarak','Jarak ke Masjid Nabawi'),
+    F('kuota','Total Kuota','number'),F('sisaKuota','Sisa Kuota','number'),F('status','Status','select',{options:[['open','Pendaftaran Dibuka'],['full','Kuota Habis']]}),
+    F('fasilitas','Fasilitas','lines',{hint:'Satu fasilitas per baris'}),F('perlengkapan','Perlengkapan','lines',{hint:'Satu item per baris'}),
+    F('itinerary','Itinerary','lines',{hint:'Format per baris: Hari | Judul | Keterangan — contoh: 1 | Jakarta — Madinah | Berkumpul di bandara.'})],
+    map:p=>({nama:p.nama,jenis:p.jenis,foto:p.foto,harga:p.harga,hargaPromo:p.hargaPromo||'',durasi:p.durasi,tanggalBerangkat:p.tanggalBerangkat,maskapai:p.maskapai,
+      hmNama:p.hotelMakkah.nama,hmBintang:p.hotelMakkah.bintang,hmJarak:p.hotelMakkah.jarak,hdNama:p.hotelMadinah.nama,hdBintang:p.hotelMadinah.bintang,hdJarak:p.hotelMadinah.jarak,
+      kuota:p.kuota,sisaKuota:p.sisaKuota,status:p.status,fasilitas:(p.fasilitas||[]).join('\n'),perlengkapan:(p.perlengkapan||[]).join('\n'),
+      itinerary:(p.itinerary||[]).map(i=>`${i.hari} | ${i.judul} | ${i.ket}`).join('\n')}),
+    unmap:(f,id)=>({id:id||nextPaketId(),nama:f.nama,jenis:f.jenis,labelJenis:LABEL_JENIS[f.jenis],foto:f.foto,harga:+f.harga||0,hargaPromo:+f.hargaPromo||null,durasi:+f.durasi||0,
+      tanggalBerangkat:f.tanggalBerangkat,maskapai:f.maskapai,
+      hotelMakkah:{nama:f.hmNama,bintang:+f.hmBintang||0,jarak:f.hmJarak},hotelMadinah:{nama:f.hdNama,bintang:+f.hdBintang||0,jarak:f.hdJarak},
+      kuota:+f.kuota||0,sisaKuota:+f.sisaKuota||0,status:f.status,
+      fasilitas:lines(f.fasilitas),perlengkapan:lines(f.perlengkapan),
+      itinerary:lines(f.itinerary).map(l=>{const p=l.split('|').map(x=>x.trim());return{hari:+p[0]||0,judul:p[1]||'',ket:p[2]||''};})})},
+  alur:{nama:'Alur Pendaftaran',ikon:'🛤️',preview:['judul'],schema:[F('icon','Ikon (Emoji)'),F('judul','Judul Langkah'),F('ket','Keterangan','textarea')]},
+  galeri:{nama:'Galeri Jamaah',ikon:'📸',preview:['cap'],schema:[F('foto','URL Foto','url'),F('cap','Keterangan Foto'),F('cls','Ukuran Tile','select',{options:[['','Normal'],['tall','Tinggi (2 baris)'],['wide','Lebar (2 kolom)']]})]},
+  testimoni:{nama:'Testimoni',ikon:'💬',preview:['nama','kota'],schema:[F('nama','Nama Jamaah'),F('kota','Kota'),F('paket','Paket Diambil'),F('inisial','Inisial (2 huruf)'),F('teks','Isi Testimoni','textarea')]},
+  artikel:{nama:'Artikel',ikon:'📰',preview:['judul','kategori'],schema:[F('emoji','Ikon (Emoji)'),F('kategori','Kategori'),F('judul','Judul Artikel'),F('tanggal','Tanggal Terbit','text',{hint:'Contoh: 5 Sep 2026'}),F('ringkas','Ringkasan','textarea')]},
+  faq:{nama:'FAQ',ikon:'❓',preview:['q'],schema:[F('q','Pertanyaan'),F('a','Jawaban','textarea')]}
+};
+const IDENT_FIELDS=[
+  F('namaTravel','Nama Travel'),F('nomorWA','Nomor WhatsApp (format 62xxx)'),F('alamat','Alamat Kantor'),F('telepon','Telepon Kantor'),
+  F('email','Email'),F('jamOperasional','Jam Operasional'),F('izinKemenag','Teks Izin Kemenag'),F('pesanWADefault','Pesan WA Bawaan','textarea'),
+  F('sosmed.facebook','Facebook URL','url'),F('sosmed.instagram','Instagram URL','url'),F('sosmed.youtube','YouTube URL','url'),F('sosmed.tiktok','TikTok URL','url')];
+
+const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const nextPaketId=()=>(DB.PAKET.reduce((m,p)=>Math.max(m,p.id||0),0)+1);
+const getPath=(o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
+const setPath=(o,p,v)=>{const k=p.split('.');let t=o;k.slice(0,-1).forEach(x=>t=t[x]=t[x]||{});t[k[k.length-1]]=v;};
+
+/* ================================================================
+   MUAT DATA: draf lokal → data.js publish → parse index.html
+================================================================ */
+async function muatData(){
+  const draft=localStorage.getItem(LS_DRAFT);
+  if(draft){try{DB=JSON.parse(draft);BASELINE=window.SITE_DATA?clone(window.SITE_DATA):null;return;}catch(e){}}
+  if(window.SITE_DATA){DB=clone(window.SITE_DATA);BASELINE=clone(window.SITE_DATA);return;}
+  try{
+    const txt=await(await fetch('index.html')).text();
+    const a=txt.indexOf('const KONFIGURASI'), b=txt.indexOf('⚙️ LOGIKA WEBSITE');
+    if(a>-1&&b>a){
+      const chunk=txt.slice(a,b);
+      BASELINE=new Function(chunk+';return {KONFIGURASI,SLIDES,PAKET,ALUR,GALERI,TESTIMONI,ARTIKEL,FAQ};')();
+      DB=clone(BASELINE);return;
+    }
+  }catch(e){}
+  BASELINE=clone(FALLBACK);DB=clone(FALLBACK);
+  toast('⚠️ Gagal baca index.html — memakai data kosong.');
+}
+function saveDraft(){localStorage.setItem(LS_DRAFT,JSON.stringify(DB));updateChip();}
+function saveDraftDebounced(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{saveDraft();toast('💾 Draf tersimpan otomatis');},500);}
+function updateChip(){
+  const chip=document.getElementById('pubChip');
+  const ref=window.SITE_DATA||BASELINE;
+  const dirty=JSON.stringify(DB)!==JSON.stringify(ref);
+  chip.className='chip '+(dirty?'chip-warn':'chip-ok');
+  chip.textContent=dirty?'⚠️ Ada perubahan belum dipublish':'✓ Sinkron dengan website';
+}
+
+/* ================================================================
+   AUTH
+================================================================ */
+const getPass=()=>localStorage.getItem(LS_PASS)||'admin123';
+function doLogin(){
+  if(document.getElementById('inPass').value===getPass()){sessionStorage.setItem(SS_AUTH,'1');masuk();}
+  else toast('❌ Sandi salah!');
+}
+function logout(){sessionStorage.removeItem(SS_AUTH);location.reload();}
+function masuk(){document.getElementById('loginScreen').style.display='none';document.getElementById('app').classList.add('active');buildNav();show('dashboard');}
+
+/* ================================================================
+   NAVIGASI & RENDER VIEW
+================================================================ */
+const MENU=[['dashboard','📊','Dashboard'],['identitas','🏢','Identitas & Kontak'],...Object.entries(ENTITAS).map(([k,v])=>[k,v.ikon,v.nama]),['pengaturan','⚙️','Pengaturan']];
+function buildNav(){
+  document.getElementById('sideNav').innerHTML=MENU.map(([k,i,l])=>`<button data-v="${k}" onclick="show('${k}')">${i} ${l}</button>`).join('');
+}
+function show(v){
+  viewAktif=v;
+  document.querySelectorAll('#sideNav button').forEach(b=>b.classList.toggle('active',b.dataset.v===v));
+  const label=MENU.find(m=>m[0]===v);
+  document.getElementById('topTitle').textContent=label[2];
+  const host=document.getElementById('host');
+  if(v==='dashboard')host.innerHTML=vDashboard();
+  else if(v==='identitas'){host.innerHTML=vIdentitas();isiIdentitas();}
+  else if(v==='pengaturan')host.innerHTML=vPengaturan();
+  else host.innerHTML=vList(v);
+  updateChip();
+}
+function vDashboard(){
+  const aktif=DB.PAKET.filter(p=>p.status==='open').length;
+  return `
+  <div class="grid4">
+    <div class="stat"><div class="ic">🕋</div><div><b>${DB.PAKET.length}</b><small>Paket (${aktif} dibuka)</small></div></div>
+    <div class="stat"><div class="ic">🖼️</div><div><b>${DB.SLIDES.length}</b><small>Slide Hero</small></div></div>
+    <div class="stat"><div class="ic">📸</div><div><b>${DB.GALERI.length}</b><small>Foto Galeri</small></div></div>
+    <div class="stat"><div class="ic">📰</div><div><b>${DB.ARTIKEL.length}</b><small>Artikel</small></div></div>
+    <div class="stat"><div class="ic">💬</div><div><b>${DB.TESTIMONI.length}</b><small>Testimoni</small></div></div>
+    <div class="stat"><div class="ic">❓</div><div><b>${DB.FAQ.length}</b><small>FAQ</small></div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px">
+    <div class="card"><h3>🚀 Cara Publish Perubahan</h3>
+      <ol class="steps">
+        <li>Edit konten lewat menu di sidebar — semua perubahan <b>tersimpan otomatis</b> sebagai draf di browser ini.</li>
+        <li>Klik tombol <b>🚀 Unduh data.js</b> di kanan atas untuk mengunduh file hasil olahan.</li>
+        <li>Upload / commit file <b>data.js</b> ke repository GitHub Anda (sejajar dengan index.html). Tunggu ±1 menit, website live berubah!</li>
+      </ol>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-gold btn-sm" onclick="unduhData()">🚀 Unduh data.js</button>
+        <button class="btn btn-ghost btn-sm" onclick="salinData()">📋 Salin kode data.js</button>
+      </div>
+    </div>
+    <div class="card"><h3>📌 Status Konten</h3>
+      <p style="font-size:.86rem;color:var(--teks-2)">Perbedaan draf Anda dengan versi yang sedang tayang:</p>
+      <div style="margin-top:12px" id="dashChip"></div>
+      <p style="font-size:.78rem;color:var(--teks-2);margin-top:14px">💡 Draf tersimpan di browser ini saja. Setelah di-publish lewat data.js, konten aman terbaca di semua perangkat pengunjung.</p>
+    </div>
+  </div>`;
+}
+function vIdentitas(){
+  return `<div class="card"><h3>🏢 Identitas & Kontak Travel</h3>
+    <div class="grid2">${IDENT_FIELDS.map(f=>`<div><label>${f.label}</label>${f.type==='textarea'?`<textarea id="id_${f.key}" rows="2" oninput="identUbah('${f.key}',this.value)"></textarea>`:`<input id="id_${f.key}" type="${f.type}" oninput="identUbah('${f.key}',this.value)">`}</div>`).join('')}</div>
+    <p class="hint" style="margin-top:14px">Perubahan tersimpan otomatis saat Anda mengetik.</p></div>`;
+}
+function isiIdentitas(){IDENT_FIELDS.forEach(f=>{const el=document.getElementById('id_'+f.key);if(el)el.value=getPath(DB.KONFIGURASI,f.key)??'';});}
+function identUbah(key,val){setPath(DB.KONFIGURASI,key,val);saveDraftDebounced();}
+
+function vList(k){
+  const e=ENTITAS[k],arr=DB[k];
+  const rows=arr.length?arr.map((it,i)=>{
+    const prev=e.preview.map(pk=>{
+      let v=it[pk]??'';if(pk==='harga')v=rp(it.hargaPromo??it.harga);
+      v=String(v).replace(/<[^>]+>/g,'');return esc(v.length>58?v.slice(0,58)+'…':v);
+    }).join('</td><td>');
+    const thumb=it.foto?`<img class="thumb" src="${esc(it.foto)}" alt="">`:'';
+    return `<tr>${thumb?`<td>${thumb}</td>`:''}<td>${prev}</td><td class="td-actions">
+      <button class="btn btn-ghost btn-sm" onclick="bukaEditor('${k}',${i})">✏️ Edit</button>
+      <button class="btn btn-bahaya btn-sm" onclick="hapusItem('${k}',${i})">🗑 Hapus</button></td></tr>`;
+  }).join(''):`<tr><td colspan="3"><div class="empty">Belum ada data. Klik "➕ Tambah" untuk membuat baru.</div></td></tr>`;
+  return `<div class="card">
+    <h3 style="justify-content:space-between">${e.ikon} Daftar ${e.nama}
+      <button class="btn btn-hijau btn-sm" onclick="bukaEditor('${k}',-1)">➕ Tambah ${e.nama}</button></h3>
+    <div style="overflow-x:auto"><table>
+      <thead><tr>${e.preview[0]==='nama'||e.preview[0]==='cap'||e.preview[0]==='q'||e.preview[0]==='judul'?'<th style="width:64px">Foto</th>':''}<th>${e.preview.map(p=>p==='harga'?'Harga':p[0].toUpperCase()+p.slice(1)).join('</th><th>')}</th><th style="text-align:right">Aksi</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+}
+function vPengaturan(){
+  return `
+  <div class="grid2">
+    <div class="card"><h3>🔑 Ganti Sandi Admin</h3>
+      <label>Sandi Lama</label><input type="password" id="pLama">
+      <label>Sandi Baru</label><input type="password" id="pBaru">
+      <button class="btn btn-hijau btn-sm" style="margin-top:14px" onclick="gantiPass()">💾 Simpan Sandi</button></div>
+    <div class="card"><h3>🗄️ Backup & Restore Draf</h3>
+      <p style="font-size:.84rem;color:var(--teks-2);margin-bottom:12px">Simpan cadangan draf sebagai file JSON, atau muat kembali cadangan sebelumnya.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="backupJSON()">⬇️ Unduh Backup JSON</button>
+        <label class="btn btn-ghost btn-sm" style="margin:0">⬆️ Muat Backup<input type="file" accept=".json,application/json" hidden onchange="restoreJSON(this)"></label>
+        <button class="btn btn-bahaya btn-sm" onclick="resetDraf()">♻️ Reset Draf</button>
+      </div></div>
+  </div>
+  <div class="card"><h3>ℹ️ Tentang CMS Ini</h3>
+    <p style="font-size:.86rem;color:var(--teks-2)">CMS ini mengelola konten website tanpa menyentuh kode. Hasil editan dipublish menjadi file <b>data.js</b> yang dibaca otomatis oleh index.html. Simpan CMS ini di tempat aman — jangan bagikan URL-nya ke publik bila tidak perlu.</p></div>`;
+}
+
+/* ================================================================
+   EDITOR MODAL (dibangun otomatis dari skema)
+================================================================ */
+function bukaEditor(k,idx){
+  const e=ENTITAS[k];
+  const src=idx>-1?e.map(clone(DB[k][idx])):kosongDari(e.schema);
+  editCtx={k,idx};
+  document.getElementById('modalBody').innerHTML=`
+    <h3>${idx>-1?'✏️ Edit':'➕ Tambah'} ${e.nama}</h3>
+    <form id="formEdit" onsubmit="simpanEditor(event)">
+      <div class="grid2">${e.schema.map(f=>`<div style="${f.type==='textarea'||f.type==='lines'?'grid-column:1/-1':''}">
+        <label>${f.label}</label>
+        ${f.type==='textarea'||f.type==='lines'?`<textarea name="${f.key}" rows="${f.type==='lines'?5:3}">${esc(src[f.key]??'')}</textarea>`
+          :f.type==='select'?`<select name="${f.key}">${f.options.map(([v,l])=>`<option value="${v}" ${String(src[f.key]??'')===v?'selected':''}>${l}</option>`).join('')}</select>`
+          :`<input name="${f.key}" type="${f.type}" value="${esc(src[f.key]??'')}">`}
+        ${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="tutupModal()">Batal</button>
+        <button type="submit" class="btn btn-hijau">💾 Simpan</button>
+      </div></form>`;
+  document.getElementById('modalBg').classList.add('active');
+}
+const kosongDari=sc=>{const o={};sc.forEach(f=>o[f.key]=f.type==='number'?'':(f.type==='select'?f.options[0][0]:''));return o;};
+function simpanEditor(ev){
+  ev.preventDefault();
+  const e=ENTITAS[editCtx.k],fd=new FormData(ev.target),raw={};
+  e.schema.forEach(f=>raw[f.key]=(fd.get(f.key)??'').toString());
+  const item=e.unmap?e.unmap(raw,editCtx.idx>-1?DB[editCtx.k][editCtx.idx].id:null):raw;
+  if(editCtx.idx>-1)DB[editCtx.k][editCtx.idx]=item;else DB[editCtx.k].push(item);
+  saveDraft();tutupModal();show(editCtx.k);toast('✅ Berhasil disimpan ke draf');
+}
+function hapusItem(k,i){
+  if(!confirm('Yakin hapus item ini? (masih bisa dibatalkan sebelum publish)'))return;
+  DB[k].splice(i,1);saveDraft();show(k);toast('🗑 Item dihapus dari draf');
+}
+function tutupModal(){document.getElementById('modalBg').classList.remove('active');}
+document.getElementById('modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')tutupModal();});
+
+/* ================================================================
+   PUBLISH (data.js)
+================================================================ */
+const buildJS=()=> '/* File ini dibuat otomatis oleh CMS Al-Barokah Travel */\nwindow.SITE_DATA = '+JSON.stringify(DB,null,2)+';';
+function unduhData(){
+  const blob=new Blob([buildJS()],{type:'text/javascript'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='data.js';a.click();
+  URL.revokeObjectURL(a.href);
+  toast('🚀 data.js diunduh — commit ke GitHub ya!');
+}
+function salinData(){
+  navigator.clipboard.writeText(buildJS()).then(()=>toast('📋 Kode data.js disalin!')).catch(()=>toast('❌ Gagal menyalin'));
+}
+function backupJSON(){
+  const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cms-backup.json';a.click();URL.revokeObjectURL(a.href);
+}
+function restoreJSON(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{try{DB=JSON.parse(r.result);saveDraft();show(viewAktif);toast('✅ Backup dimuat');}catch(e){toast('❌ File tidak valid');}};
+  r.readAsText(f);inp.value='';
+}
+function resetDraf(){
+  if(!confirm('Buang semua draf & kembalikan ke versi publish/default?'))return;
+  localStorage.removeItem(LS_DRAFT);location.reload();
+}
+function gantiPass(){
+  const l=document.getElementById('pLama').value,b=document.getElementById('pBaru').value;
+  if(l!==getPass())return toast('❌ Sandi lama salah');
+  if(b.length<6)return toast('❌ Sandi baru minimal 6 karakter');
+  localStorage.setItem(LS_PASS,b);toast('🔑 Sandi berhasil diganti');
+  document.getElementById('pLama').value='';document.getElementById('pBaru').value='';
+}
+
+/* ================================================================
+   TOAST & INIT
+================================================================ */
+let toastTimer;
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
+}
+(async function init(){
+  await muatData();
+  if(sessionStorage.getItem(SS_AUTH)==='1')masuk();
+})();
+</script>
+</body>
+</html>
