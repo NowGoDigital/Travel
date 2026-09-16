@@ -8,97 +8,200 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="data.js"></script>
 <style>
-/* ==================== RESET & VARIABEL (SAMA PERSIS DENGAN WEBSITE) ==================== */
-:root{
-  --hijau:#0c7a54; --hijau-tua:#064e35; --hijau-gelap:#042f21;
-  --hijau-muda:#eaf6f0; --emas:#d4a94e; --emas-muda:#f3e3bd;
-  --teks:#16211c; --teks-2:#5f6f68; --bg:#f7faf8; --putih:#fff;
-  --radius:20px; --shadow:0 8px 30px rgba(4,47,33,.08);
-}
+/* ============ VARIABEL & RESET (SAMA DENGAN WEBSITE) ============ */
+:root{--hijau:#0c7a54;--hijau-tua:#064e35;--hijau-gelap:#042f21;--hijau-muda:#eaf6f0;--emas:#d4a94e;--emas-muda:#f3e3bd;--teks:#16211c;--teks-2:#5f6f68;--bg:#f7faf8;--putih:#fff;--radius:20px;--shadow:0 8px 30px rgba(4,47,33,.08);--shadow-lg:0 20px 50px rgba(4,47,33,.16)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f4f2;color:var(--teks);line-height:1.6}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--teks);background:#eef3f0;line-height:1.65}
 button{font-family:inherit;cursor:pointer}
-input,select,textarea{font-family:inherit;font-size:.9rem;padding:10px 14px;border:1.5px solid #dfe9e4;border-radius:12px;width:100%;background:#fbfdfc;transition:.2s}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+input,select,textarea{font-family:inherit;font-size:.9rem;padding:11px 14px;border:1.5px solid #dfe9e4;border-radius:12px;width:100%;background:#fbfdfc;transition:.2s;color:var(--teks)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--hijau);box-shadow:0 0 0 4px rgba(12,122,84,.1)}
-label{display:block;font-size:.78rem;font-weight:700;color:var(--hijau-tua);margin:12px 0 5px}
+label{display:block;font-size:.78rem;font-weight:800;color:var(--hijau-tua);margin:14px 0 5px}
 .hint{font-size:.7rem;color:var(--teks-2);margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:12px;padding:10px 20px;font-weight:700;font-size:.85rem;transition:.25s;text-decoration:none}
-.btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08}
-.btn-hijau{background:var(--hijau);color:#fff}
-.btn-ghost{background:#fff;border:1.5px solid #dfe9e4;color:var(--teks)}
-.btn-bahaya{background:#fff;border:1.5px solid #fdecea;color:#c0392b}
-.btn-sm{padding:6px 12px;font-size:.76rem;border-radius:8px}
+/* ============ KOMPONEN WEBSITE (COPY UNTUK CANVAS) ============ */
+.section-title{text-align:center;max-width:900px;margin:0 auto 44px}
+.section-title .kicker{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:16px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.3rem);color:var(--hijau-gelap);line-height:1.25}
+.section-title p{color:var(--teks-2);margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:99px;font-weight:800;cursor:pointer;border:none;font-size:.93rem;font-family:inherit;transition:.3s}
+.btn-gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;box-shadow:0 8px 24px rgba(212,169,78,.45)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.badge{display:inline-block;padding:5px 14px;border-radius:99px;font-size:.7rem;font-weight:800}
+/* hero slide */
+.slide-prev{position:relative;height:380px;border-radius:22px;overflow:hidden;background-size:cover;background-position:center;margin-bottom:30px;box-shadow:var(--shadow-lg)}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,47,33,.55),rgba(4,47,33,.35) 40%,rgba(4,47,33,.8))}
+.slide-content{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 22px}
+.slide-content .kicker{display:inline-flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:9px 22px;border-radius:99px;font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.slide-content h1{font-size:clamp(1.6rem,3.4vw,2.8rem);max-width:850px;line-height:1.18;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.slide-content h1 em{font-style:normal;color:var(--emas)}
+.slide-content p{max-width:620px;margin-top:14px;font-size:1rem;color:rgba(255,255,255,.92)}
+.slide-content .cta-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+/* kartu paket */
+.grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:30px}
+.card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;border:1px solid #eef3f0;height:100%}
+.card-img{height:215px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hijau-tua),var(--emas))}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-img .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,47,33,.18),transparent 35%,rgba(4,47,33,.78))}
+.card-img .badge{position:absolute;z-index:3}
+.badge-open{top:14px;left:14px;background:rgba(255,255,255,.93);color:#065f46}
+.badge-full{top:14px;left:14px;background:rgba(255,255,255,.93);color:#991b1b}
+.badge-promo{top:14px;right:14px;background:linear-gradient(135deg,#ff6b6b,#ee5253);color:#fff}
+.card-img .jenis-tag{position:absolute;bottom:14px;left:16px;z-index:3;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.price-float{width:100%;margin-top:-12px;position:relative;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:14px;padding:10px 18px;box-shadow:0 10px 26px rgba(212,169,78,.45)}
+.price-float .pf-label{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.price-float .pf-mid{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15}
+.price-float b{font-family:'Playfair Display',serif;font-size:1.12rem;line-height:1;white-space:nowrap}
+.price-float s{font-size:.66rem;opacity:.7;white-space:nowrap}
+.price-float small{font-size:.62rem;font-weight:800;opacity:.8;white-space:nowrap}
+.card-body{padding:0 22px 18px;flex:1;display:flex;flex-direction:column;gap:12px}
+.card-body h3{font-size:1.2rem;color:var(--hijau-gelap);line-height:1.35;margin-top:4px}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.meta-item{display:flex;align-items:center;gap:8px;background:#f6faf8;border:1px solid #e8f0ec;border-radius:12px;padding:8px 10px;font-size:.74rem;color:var(--teks-2);font-weight:600}
+.meta-item .mi{font-size:1rem;flex-shrink:0}
+.meta-item .mt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.meta-item .mt b{color:var(--hijau-tua)}
+.kuota-wrap{margin-top:auto;padding-top:4px}
+.kuota-label{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;font-weight:700;color:var(--teks-2);margin-bottom:6px}
+.kuota-label .sisa{color:#e8590c}.kuota-label .penuh-txt{color:#c0392b}
+.kuota-bar{height:8px;background:#eef3f0;border-radius:99px;overflow:hidden}
+.kuota-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--hijau),#2ecc71)}
+.kuota-fill.penuh{background:linear-gradient(90deg,#e74c3c,#c0392b)}
+/* alur */
+.alur-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative}
+.alur-grid::before{content:"";position:absolute;top:44px;left:11%;right:11%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--hijau),var(--emas));z-index:0}
+.alur-step{text-align:center;position:relative;z-index:1}
+.alur-num{width:88px;height:88px;margin:0 auto 18px;border-radius:50%;background:#fff;border:3px solid var(--hijau-muda);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:2.1rem;position:relative}
+.alur-num .step-no{position:absolute;top:-8px;right:-8px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.alur-step h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;color:var(--hijau-gelap);margin-bottom:8px}
+.alur-step p{font-size:.85rem;color:var(--teks-2)}
+/* galeri */
+.galeri-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px}
+.galeri-item{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.galeri-item img{width:100%;height:100%;object-fit:cover}
+.galeri-item .cap{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(transparent,rgba(4,47,33,.88));color:#fff;font-size:.78rem;font-weight:700}
+.galeri-item.tall{grid-row:span 2}.galeri-item.wide{grid-column:span 2}
+/* testimoni */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.testi{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);position:relative}
+.testi::before{content:"“";position:absolute;top:8px;right:24px;font-family:'Playfair Display',serif;font-size:5rem;color:var(--hijau-muda);line-height:1}
+.testi .stars{color:var(--emas);letter-spacing:3px;margin-bottom:12px}
+.testi p{color:var(--teks-2);font-size:.9rem;font-style:italic;position:relative;z-index:2}
+.testi .who{margin-top:18px;display:flex;align-items:center;gap:12px}
+.testi .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--hijau),var(--emas));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.testi .who b{display:block;font-size:.9rem;color:var(--hijau-gelap)}
+.testi .who small{color:var(--teks-2)}
+/* artikel */
+.artikel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.artikel{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.artikel-img{height:150px;background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+.artikel-body{padding:22px}
+.artikel-body .tag{font-size:.7rem;font-weight:800;color:var(--emas);letter-spacing:1.5px;text-transform:uppercase}
+.artikel-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;margin:8px 0;color:var(--hijau-gelap);line-height:1.45}
+.artikel-body p{font-size:.85rem;color:var(--teks-2)}
+.artikel-body .read{margin-top:12px;font-size:.82rem;font-weight:800;color:var(--hijau);display:block}
+/* faq */
+.faq-wrap{max-width:780px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid #e8efeb;border-radius:16px;margin-bottom:14px;box-shadow:0 2px 12px rgba(4,47,33,.05)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;font-size:.95rem;font-weight:700;color:var(--hijau-gelap);text-align:left}
+.faq-q .faq-icon{width:30px;height:30px;border-radius:50%;background:var(--hijau-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.faq-a p{padding:0 22px 20px;font-size:.88rem;color:var(--teks-2)}
 
-/* LOGIN */
-#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--hijau-gelap),var(--hijau-tua))}
-.login-card{background:#fff;border-radius:24px;padding:40px;width:100%;max-width:400px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.login-card h1{font-family:'Playfair Display',serif;color:var(--hijau-gelap);margin-bottom:20px}
+/* ============ OVERLAY EDIT (PENSIL) ============ */
+.ed-wrap{position:relative}
+.ed-wrap:hover{outline:2px dashed var(--emas);outline-offset:6px;border-radius:10px;z-index:5}
+.ed-tools{position:absolute;top:10px;right:10px;z-index:40;display:flex;gap:6px;opacity:0;transform:translateY(-6px);transition:.25s}
+.ed-wrap:hover .ed-tools{opacity:1;transform:none}
+.ed-btn{width:38px;height:38px;border-radius:12px;border:none;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.ed-btn:hover{transform:scale(1.1);background:var(--emas)}
+.ed-btn.hapus:hover{background:#e74c3c;color:#fff}
+.ed-new{outline:2px dashed var(--hijau);outline-offset:6px;border-radius:10px}
+.ed-new .ed-tools{opacity:1;transform:none}
 
-/* APP LAYOUT */
+/* ============ LAYOUT ADMIN ============ */
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--hijau-gelap),var(--hijau-tua));padding:20px}
+.login-card{background:#fff;border-radius:24px;padding:42px 38px;width:100%;max-width:400px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.login-card .logo{font-size:2.8rem}
+.login-card h1{font-size:1.35rem;color:var(--hijau-gelap);margin:8px 0 4px}
+.login-card p{font-size:.84rem;color:var(--teks-2);margin-bottom:16px}
 #app{display:none;min-height:100vh}
 #app.active{display:flex}
-aside{width:240px;background:var(--hijau-gelap);color:#fff;position:sticky;top:0;height:100vh;flex-shrink:0;display:flex;flex-direction:column}
-aside .brand{padding:24px;font-family:'Playfair Display',serif;font-size:1.2rem;border-bottom:1px solid rgba(255,255,255,.1)}
-aside nav{padding:20px 10px;flex:1}
-aside nav button{width:100%;text-align:left;background:none;border:none;color:#cfe3d9;padding:12px 16px;border-radius:12px;margin-bottom:4px;font-size:.9rem;font-weight:600}
-aside nav button:hover{background:rgba(255,255,255,.1);color:#fff}
-aside nav button.active{background:var(--emas);color:#3d2e08;font-weight:800}
-aside .foot{padding:20px;border-top:1px solid rgba(255,255,255,.1)}
-aside .foot a{color:#fff;text-decoration:none;display:block;text-align:center;font-size:.85rem}
-
-main{flex:1;padding:0}
-.topbar{background:#fff;padding:16px 30px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.topbar h2{font-family:'Playfair Display',serif;color:var(--hijau-gelap)}
-.chip{padding:6px 12px;border-radius:99px;font-size:.75rem;font-weight:800}
-.chip-ok{background:#e8f8ee;color:#0c7a54}
-.chip-warn{background:#fff4e0;color:#a97613}
-
-.content{padding:30px;max-width:1400px;margin:0 auto}
-
-/* VISUAL CARD STYLES (MIMIC WEBSITE EXACTLY) */
-.grid-paket{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-.card-cms{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);position:relative;border:1px solid #eef3f0;transition:.3s}
-.card-cms:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(4,47,33,.15)}
-
-/* Overlay Actions for Cards */
-.card-actions-overlay{position:absolute;top:10px;right:10px;z-index:20;display:flex;gap:8px;opacity:0;transition:.3s}
-.card-cms:hover .card-actions-overlay{opacity:1}
-.act-btn{width:36px;height:36px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:.2s}
-.act-edit{background:#fff;color:var(--hijau)}
-.act-edit:hover{background:var(--hijau);color:#fff}
-.act-del{background:#fff;color:#c0392b}
-.act-del:hover{background:#c0392b;color:#fff}
-
-/* Card Inner Mimicry */
-.c-img{height:200px;position:relative;background:#eee}
-.c-img img{width:100%;height:100%;object-fit:cover}
-.c-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:#065f46;padding:4px 10px;border-radius:99px;font-size:.7rem;font-weight:800}
-.c-price{width:90%;margin:-20px auto 0;position:relative;z-index:2;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:12px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(212,169,78,.3)}
-.c-price b{font-family:'Playfair Display',serif;font-size:1.1rem}
-.c-body{padding:16px 20px 20px}
-.c-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--hijau-gelap);margin-bottom:8px;line-height:1.3}
-.c-meta{font-size:.75rem;color:var(--teks-2);display:flex;gap:8px;flex-wrap:wrap}
-.c-meta span{background:#f6faf8;padding:4px 8px;border-radius:6px}
-
-/* Generic List Grid */
-.grid-generic{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.item-generic{background:#fff;padding:20px;border-radius:16px;box-shadow:var(--shadow);position:relative;border:1px solid #eee}
-.item-generic:hover{border-color:var(--emas)}
-.item-generic .g-actions{position:absolute;top:10px;right:10px;display:flex;gap:5px}
-
-/* MODAL EDITOR */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(4,30,20,.6);backdrop-filter:blur(4px);z-index:100;align-items:center;justify-content:center;padding:20px}
-.modal-bg.active{display:flex}
-.modal{background:#fff;border-radius:24px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:30px;position:relative}
-.modal-close{position:absolute;top:15px;right:15px;width:32px;height:32px;border-radius:50%;border:none;background:#f0f0f0;font-size:1.2rem}
-.modal h3{font-family:'Playfair Display',serif;color:var(--hijau-gelap);margin-bottom:20px}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:768px){.modal-grid{grid-template-columns:1fr}}
-
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--hijau-gelap);color:#fff;padding:12px 24px;border-radius:99px;font-size:.85rem;font-weight:700;z-index:200;opacity:0;transition:.3s;pointer-events:none}
-#toast.show{opacity:1;transform:translateX(-50%) translateY(-10px)}
+aside{width:252px;flex-shrink:0;background:var(--hijau-gelap);color:#cfe3d9;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+aside .brand{padding:22px;font-weight:800;color:#fff;font-size:1.08rem;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Playfair Display',serif}
+aside .brand small{display:block;font-weight:700;color:var(--emas);font-size:.66rem;letter-spacing:2px;text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif;margin-top:3px}
+aside nav{padding:14px 12px;flex:1}
+aside nav button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:none;border:none;color:#cfe3d9;padding:11px 14px;border-radius:12px;font-size:.87rem;font-weight:600;margin-bottom:3px;transition:.2s}
+aside nav button:hover{background:rgba(255,255,255,.08);color:#fff}
+aside nav button.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800}
+aside .side-foot{padding:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
+main{flex:1;min-width:0}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e2ebe6;padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topbar h2{font-size:1.12rem;color:var(--hijau-gelap);margin-right:auto}
+.chip{font-size:.7rem;font-weight:800;padding:6px 14px;border-radius:99px}
+.chip-ok{background:#e8f8ee;color:#0c7a54}.chip-warn{background:#fff4e0;color:#a97613}
+.btn-ad{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:10px;padding:9px 16px;font-weight:700;font-size:.8rem;transition:.25s;text-decoration:none}
+.btn-ad.gold{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08}
+.btn-ad.hijau{background:var(--hijau);color:#fff}
+.btn-ad.ghost{background:#fff;border:1.5px solid #dfe9e4;color:var(--teks)}
+.btn-ad.bahaya{background:#fdecea;color:#c0392b}
+.btn-ad:hover{transform:translateY(-2px)}
+.admin-strip{max-width:1290px;margin:20px auto 0;padding:0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-strip .tip{font-size:.76rem;color:var(--teks-2);background:#fff;border:1px dashed var(--emas);border-radius:99px;padding:6px 14px}
+/* browser frame */
+.bf{max-width:1290px;margin:14px auto 40px;background:#fff;border:1px solid #dfe9e4;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.bf-bar{display:flex;align-items:center;gap:12px;background:#f2f6f4;padding:10px 16px;border-bottom:1px solid #e2ebe6}
+.bf-dots i{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:5px}
+.bf-url{flex:1;background:#fff;border:1px solid #e2ebe6;border-radius:99px;font-size:.74rem;color:var(--teks-2);padding:6px 16px}
+.cv-sec{padding:60px 0}
+.cv-dark{background:linear-gradient(180deg,var(--hijau-gelap),var(--hijau-tua))}
+.cv-dark .section-title h2{color:#fff}.cv-dark .section-title p{color:rgba(255,255,255,.75)}
+.cv-dark .section-title .kicker{background:rgba(212,169,78,.2);color:var(--emas)}
+.cv-white{background:#fff}
+.cv-faq{background:linear-gradient(180deg,#fff,var(--hijau-muda))}
+/* drawer editor */
+#drawerBackdrop{position:fixed;inset:0;background:rgba(4,47,33,.4);z-index:70;opacity:0;pointer-events:none;transition:.3s}
+#drawerBackdrop.show{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:430px;max-width:95vw;background:#fff;z-index:80;box-shadow:-18px 0 50px rgba(4,47,33,.3);transform:translateX(105%);transition:.35s cubic-bezier(.22,.68,0,1);display:flex;flex-direction:column}
+#drawer.open{transform:none}
+.dw-head{padding:16px 22px;border-bottom:1px solid #eef3f0;display:flex;align-items:center;gap:10px}
+.dw-head h3{font-size:1rem;color:var(--hijau-gelap);margin-right:auto}
+.dw-live{font-size:.62rem;font-weight:800;letter-spacing:1px;background:#e8f8ee;color:#0c7a54;border:1px solid #bfe8d2;padding:4px 10px;border-radius:99px;display:inline-flex;align-items:center;gap:5px}
+.dw-live i{width:7px;height:7px;border-radius:50%;background:#2ecc71;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.25}}
+.dw-body{flex:1;overflow-y:auto;padding:6px 22px 22px}
+.dw-foot{padding:14px 22px;border-top:1px solid #eef3f0;display:flex;gap:10px}
+.dw-foot .btn-ad{flex:1;justify-content:center;padding:12px}
+.dw-close{width:32px;height:32px;border-radius:50%;border:none;background:#f0f5f2;font-size:1rem}
+/* dashboard & settings */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:22px}
+.stat{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;display:flex;gap:14px;align-items:center}
+.stat .ic{width:46px;height:46px;border-radius:14px;background:var(--hijau-muda);display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.stat b{font-size:1.3rem;color:var(--hijau);display:block;line-height:1.2}
+.stat small{color:var(--teks-2);font-size:.74rem;font-weight:700}
+.panel{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
+.panel h3{font-size:1rem;color:var(--hijau-gelap);margin-bottom:14px}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px}
+.steps li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:.87rem;color:var(--teks-2)}
+.steps li::before{counter-increment:s;content:counter(s);width:28px;height:28px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+/* identitas preview */
+.id-prev{background:var(--hijau-gelap);border-radius:16px;padding:14px 20px;color:#b9cfc4;font-size:.8rem;display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.id-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.id-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;font-size:.85rem}
+.id-card b{color:var(--hijau-gelap);display:block;margin-bottom:4px}
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--hijau-gelap);color:#fff;padding:12px 26px;border-radius:99px;font-size:.84rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.35s;z-index:200;opacity:0}
+#toast.show{transform:translateX(-50%);opacity:1}
+@media(max-width:900px){
+  #app.active{flex-direction:column}
+  aside{width:100%;height:auto;position:static}
+  aside nav{display:flex;flex-wrap:wrap;gap:4px}
+  aside nav button{width:auto}
+  aside .side-foot{flex-direction:row}
+  .alur-grid{grid-template-columns:1fr 1fr}.alur-grid::before{display:none}
+  .galeri-grid{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
@@ -106,46 +209,49 @@ main{flex:1;padding:0}
 <!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
-    <h1>🕋 CMS Visual</h1>
-    <p style="color:var(--teks-2);margin-bottom:20px">Kelola konten dengan tampilan asli website</p>
-    <input type="password" id="inPass" placeholder="Kata Sandi Admin" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn btn-hijau" style="width:100%;margin-top:15px" onclick="doLogin()">Masuk</button>
-    <p class="hint">Default: admin123</p>
+    <div class="logo">🕋</div>
+    <h1>CMS Visual Al-Barokah</h1>
+    <p>Edit konten dengan tampilan asli website</p>
+    <label>Kata Sandi Admin</label>
+    <input type="password" id="inPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-ad hijau" style="width:100%;justify-content:center;margin-top:16px;padding:13px" onclick="doLogin()">🔐 Masuk Dashboard</button>
+    <div class="hint" style="margin-top:12px">Sandi bawaan: <b>admin123</b> (ganti di menu Pengaturan)</div>
   </div>
 </div>
 
 <!-- APP -->
 <div id="app">
   <aside>
-    <div class="brand">Al-Barokah <small style="display:block;font-size:.7rem;opacity:.7;font-family:sans-serif">CMS Panel</small></div>
+    <div class="brand">🕋 Al-Barokah CMS<small>Visual Content Editor</small></div>
     <nav id="sideNav"></nav>
-    <div class="foot">
-      <a href="index.html" target="_blank">🌐 Lihat Website</a>
-      <button onclick="logout()" style="width:100%;background:none;border:none;color:#ffcccc;margin-top:10px;cursor:pointer">🚪 Keluar</button>
+    <div class="side-foot">
+      <a href="index.html" target="_blank" class="btn-ad ghost" style="justify-content:center">🌐 Lihat Website</a>
+      <button class="btn-ad ghost" style="justify-content:center" onclick="logout()">🚪 Keluar</button>
     </div>
   </aside>
   <main>
     <div class="topbar">
       <h2 id="topTitle">Dashboard</h2>
-      <div style="display:flex;gap:10px;align-items:center">
-        <span class="chip chip-ok" id="pubChip">✓ Sinkron</span>
-        <button class="btn btn-gold btn-sm" onclick="unduhData()">🚀 Unduh data.js</button>
-      </div>
+      <span class="chip chip-ok" id="pubChip">✓ Sinkron</span>
+      <button class="btn-ad ghost" onclick="salinData()">📋 Salin data.js</button>
+      <button class="btn-ad gold" onclick="unduhData()">🚀 Publish (Unduh data.js)</button>
     </div>
-    <div class="content" id="host"></div>
+    <div id="host"></div>
   </main>
 </div>
 
-<!-- MODAL EDITOR -->
-<div class="modal-bg" id="modalBg">
-  <div class="modal">
-    <button class="modal-close" onclick="tutupModal()">×</button>
-    <h3 id="modalTitle">Edit Data</h3>
-    <div id="modalForm"></div>
-    <div style="margin-top:20px;text-align:right">
-      <button class="btn btn-ghost" onclick="tutupModal()">Batal</button>
-      <button class="btn btn-hijau" id="btnSimpan">💾 Simpan</button>
-    </div>
+<!-- DRAWER EDITOR (ala WordPress Customizer) -->
+<div id="drawerBackdrop" onclick="batalEditor()"></div>
+<div id="drawer">
+  <div class="dw-head">
+    <h3 id="dwTitle">Edit</h3>
+    <span class="dw-live"><i></i> PREVIEW LIVE</span>
+    <button class="dw-close" onclick="batalEditor()">✕</button>
+  </div>
+  <div class="dw-body" id="dwBody"></div>
+  <div class="dw-foot">
+    <button class="btn-ad ghost" onclick="batalEditor()">↩ Batal</button>
+    <button class="btn-ad hijau" onclick="simpanEditor()">✅ Simpan Perubahan</button>
   </div>
 </div>
 
@@ -153,282 +259,310 @@ main{flex:1;padding:0}
 
 <script>
 /* ================================================================
-   LOGIKA CMS VISUAL
+   DATA & UTIL
 ================================================================ */
 const LS_DRAFT='ab_cms_draft', LS_PASS='ab_cms_pass', SS_AUTH='ab_cms_auth';
-let DB=null, viewAktif='dashboard', editCtx=null;
-
-// Helper
+let DB=null, BASELINE=null, view='dash', OV=null, META=null, saveTimer=null;
 const clone=o=>JSON.parse(JSON.stringify(o));
 const rp=n=>'Rp '+(+n||0).toLocaleString('id-ID');
-const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
-const nextId=()=>Date.now();
+const tglID=s=>{try{return new Date(s).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})}catch(e){return s||'-'}};
+const getPath=(o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
+const setPath=(o,p,v)=>{const k=p.split('.');let t=o;k.slice(0,-1).forEach(x=>t=t[x]=t[x]||{});t[k[k.length-1]]=v;};
+const LABEL_JENIS={'umroh-reguler':'Umroh Reguler','umroh-plus':'Umroh Plus','umroh-vip':'Umroh VIP','haji-khusus':'Haji Khusus'};
 
-// Data Fallback
-const FALLBACK={KONFIGURASI:{namaTravel:'Al-Barokah',nomorWA:'6281234567890'},SLIDES:[],PAKET:[],TESTIMONI:[],FAQ:[]};
+const DEFAULT={KONFIGURASI:{namaTravel:"Al-Barokah Travel",nomorWA:"6281234567890",pesanWADefault:"Assalamu'alaikum, saya ingin konsultasi paket umroh. 🙏",alamat:"Jl. Raya Ibadah No. 88, Jakarta Selatan",telepon:"021-1234567",email:"info@albarokah.travel",jamOperasional:"Senin–Sabtu: 08.00–17.00 WIB",izinKemenag:"🛂 PPIU Resmi Kemenag No. U-123/2023",sosmed:{facebook:"https://facebook.com/albarokahtravel",instagram:"https://instagram.com/albarokahtravel",youtube:"https://youtube.com/@albarokahtravel",tiktok:"https://tiktok.com/@albarokahtravel"}},
+SLIDES:[{foto:"https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1920&q=80",kicker:"✨ PPIU Resmi Berizin Kemenag",judul:"Wujudkan Niat Suci ke <em>Baitullah</em>",sub:"Perjalanan umroh penuh kekhusyukan bersama pembimbing bersertifikat dan hotel bintang 5 langkah dari Masjidil Haram.",cta1:{teks:"Lihat Paket ✈️",href:"#paket",style:"btn-gold"},cta2:{teks:"Konsultasi Gratis",href:"#daftar",style:"btn-ghost"}}],
+PAKET:[],ALUR:[{icon:"💬",judul:"Konsultasi Gratis",ket:"Chat WhatsApp atau isi form — tim kami bantu pilih paket & jadwal terbaik sesuai budget Anda."}],GALERI:[],TESTIMONI:[],ARTIKEL:[],FAQ:[]};
 
 async function muatData(){
-  const draft=localStorage.getItem(LS_DRAFT);
-  if(draft){try{DB=JSON.parse(draft);return;}catch(e){}}
-  if(window.SITE_DATA){DB=clone(window.SITE_DATA);return;}
-  DB=clone(FALLBACK);
+  const d=localStorage.getItem(LS_DRAFT);
+  if(d){try{DB=JSON.parse(d);BASELINE=window.SITE_DATA?clone(window.SITE_DATA):null;return}catch(e){}}
+  if(window.SITE_DATA){DB=clone(window.SITE_DATA);BASELINE=clone(window.SITE_DATA);return}
+  try{
+    const txt=await(await fetch('index.html')).text();
+    const a=txt.indexOf('KONFIGURASI_DEFAULT'),b=txt.indexOf('LOGIKA WEBSITE — INISIALISASI');
+    if(a>-1&&b>a){BASELINE=new Function(txt.slice(txt.indexOf('const KONFIGURASI_DEFAULT'),b)+';return {KONFIGURASI:KONFIGURASI_DEFAULT,SLIDES:SLIDES_DEFAULT,PAKET:PAKET_DEFAULT,ALUR:ALUR_DEFAULT,GALERI:GALERI_DEFAULT,TESTIMONI:TESTIMONI_DEFAULT,ARTIKEL:ARTIKEL_DEFAULT,FAQ:FAQ_DEFAULT};')();DB=clone(BASELINE);return}
+  }catch(e){}
+  BASELINE=clone(DEFAULT);DB=clone(DEFAULT);
 }
-
-function saveDraft(){localStorage.setItem(LS_DRAFT,JSON.stringify(DB));updateChip();}
+function saveDraft(){localStorage.setItem(LS_DRAFT,JSON.stringify(DB));updateChip()}
+function saveDebounced(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{saveDraft();toast('💾 Draf tersimpan otomatis')},500)}
 function updateChip(){
-  const ref=window.SITE_DATA||FALLBACK;
+  const ref=window.SITE_DATA||BASELINE, c=document.getElementById('pubChip');
   const dirty=JSON.stringify(DB)!==JSON.stringify(ref);
-  const chip=document.getElementById('pubChip');
-  chip.className='chip '+(dirty?'chip-warn':'chip-ok');
-  chip.textContent=dirty?'⚠️ Belum Publish':'✓ Sinkron';
+  c.className='chip '+(dirty?'chip-warn':'chip-ok');
+  c.textContent=dirty?'⚠️ Perubahan belum dipublish':'✓ Sinkron dengan website';
 }
 
-/* AUTH */
+/* ================================================================
+   SKEMA EDITOR (field per jenis konten)
+================================================================ */
+const F=(key,label,type='text',extra={})=>Object.assign({key,label,type},extra);
+const ENTITAS={
+SLIDES:{label:'Slide Hero',schema:[
+  F('foto','URL Foto Latar','url'),F('kicker','Teks Badge Kecil'),F('judul','Judul Slide','text',{hint:'Pakai <em>kata</em> untuk teks berwarna emas'}),F('sub','Subjudul','textarea'),
+  F('c1teks','Tombol 1 — Teks'),F('c1href','Tombol 1 — Tujuan','select',{options:[['#paket','Katalog Paket'],['#daftar','Form Pendaftaran']]}),
+  F('c2teks','Tombol 2 — Teks'),F('c2href','Tombol 2 — Tujuan','select',{options:[['#daftar','Form Pendaftaran'],['#paket','Katalog Paket'],['WA','Chat WhatsApp']]})],
+  map:s=>({foto:s.foto,kicker:s.kicker,judul:s.judul,sub:s.sub,c1teks:s.cta1?.teks||'',c1href:s.cta1?.href||'#paket',c2teks:s.cta2?.teks||'',c2href:s.cta2?.wa?'WA':(s.cta2?.href||'#daftar')}),
+  unmap:f=>({foto:f.foto,kicker:f.kicker,judul:f.judul,sub:f.sub,cta1:{teks:f.c1teks,href:f.c1href,style:'btn-gold'},cta2:{teks:f.c2teks,href:f.c2href==='WA'?'#':f.c2href,style:'btn-ghost',wa:f.c2href==='WA'}})},
+PAKET:{label:'Paket',schema:[
+  F('nama','Nama Paket'),F('jenis','Jenis Paket','select',{options:Object.entries(LABEL_JENIS)}),F('foto','URL Foto Paket','url'),
+  F('harga','Harga Normal (Rp)','number'),F('hargaPromo','Harga Promo (Rp)','number',{hint:'Kosongkan / 0 jika tanpa promo'}),F('durasi','Durasi (Hari)','number'),
+  F('tanggalBerangkat','Tanggal Berangkat','date'),F('maskapai','Maskapai'),
+  F('hmNama','Hotel Makkah — Nama'),F('hmBintang','Bintang','number'),F('hmJarak','Jarak ke Haram'),
+  F('hdNama','Hotel Madinah — Nama'),F('hdBintang','Bintang','number'),F('hdJarak','Jarak ke Masjid Nabawi'),
+  F('kuota','Total Kuota','number'),F('sisaKuota','Sisa Kuota','number'),F('status','Status','select',{options:[['open','Pendaftaran Dibuka'],['full','Kuota Habis']]}),
+  F('fasilitas','Fasilitas','lines',{hint:'Satu fasilitas per baris'}),F('perlengkapan','Perlengkapan','lines',{hint:'Satu item per baris'}),
+  F('itinerary','Itinerary','lines',{hint:'Per baris: Hari | Judul | Keterangan. Contoh: 1 | Jakarta — Madinah | Berkumpul di bandara.'})],
+  map:p=>({nama:p.nama,jenis:p.jenis,foto:p.foto,harga:p.harga,hargaPromo:p.hargaPromo||'',durasi:p.durasi,tanggalBerangkat:p.tanggalBerangkat,maskapai:p.maskapai,hmNama:p.hotelMakkah?.nama||'',hmBintang:p.hotelMakkah?.bintang||'',hmJarak:p.hotelMakkah?.jarak||'',hdNama:p.hotelMadinah?.nama||'',hdBintang:p.hotelMadinah?.bintang||'',hdJarak:p.hotelMadinah?.jarak||'',kuota:p.kuota,sisaKuota:p.sisaKuota,status:p.status,fasilitas:(p.fasilitas||[]).join('\n'),perlengkapan:(p.perlengkapan||[]).join('\n'),itinerary:(p.itinerary||[]).map(i=>`${i.hari} | ${i.judul} | ${i.ket}`).join('\n')}),
+  unmap:(f,id)=>({id:id||0,nama:f.nama,jenis:f.jenis,labelJenis:LABEL_JENIS[f.jenis],foto:f.foto,harga:+f.harga||0,hargaPromo:+f.hargaPromo||null,durasi:+f.durasi||0,tanggalBerangkat:f.tanggalBerangkat,maskapai:f.maskapai,hotelMakkah:{nama:f.hmNama,bintang:+f.hmBintang||0,jarak:f.hmJarak},hotelMadinah:{nama:f.hdNama,bintang:+f.hdBintang||0,jarak:f.hdJarak},kuota:+f.kuota||0,sisaKuota:+f.sisaKuota||0,status:f.status,fasilitas:lines(f.fasilitas),perlengkapan:lines(f.perlengkapan),itinerary:lines(f.itinerary).map(l=>{const p=l.split('|').map(x=>x.trim());return{hari:+p[0]||0,judul:p[1]||'',ket:p[2]||''}})})},
+ALUR:{label:'Langkah Alur',schema:[F('icon','Ikon (Emoji)'),F('judul','Judul Langkah'),F('ket','Keterangan','textarea')]},
+GALERI:{label:'Foto Galeri',schema:[F('foto','URL Foto','url'),F('cap','Keterangan Foto'),F('cls','Ukuran Tile','select',{options:[['','Normal'],['tall','Tinggi (2 baris)'],['wide','Lebar (2 kolom)']]})]},
+TESTIMONI:{label:'Testimoni',schema:[F('nama','Nama Jamaah'),F('kota','Kota'),F('paket','Paket Diambil'),F('inisial','Inisial (2 huruf)'),F('teks','Isi Testimoni','textarea')]},
+ARTIKEL:{label:'Artikel',schema:[F('emoji','Ikon (Emoji)'),F('kategori','Kategori'),F('judul','Judul Artikel'),F('tanggal','Tanggal Terbit','text',{hint:'Contoh: 5 Sep 2026'}),F('ringkas','Ringkasan','textarea')]},
+FAQ:{label:'FAQ',schema:[F('q','Pertanyaan'),F('a','Jawaban','textarea')]},
+IDENTITAS:{label:'Identitas',schema:[
+  F('namaTravel','Nama Travel'),F('nomorWA','Nomor WhatsApp (62xxx)'),F('alamat','Alamat Kantor'),F('telepon','Telepon Kantor'),
+  F('email','Email'),F('jamOperasional','Jam Operasional'),F('izinKemenag','Teks Badge Izin Kemenag'),F('pesanWADefault','Pesan WA Bawaan','textarea'),
+  F('sosmed.facebook','URL Facebook','url'),F('sosmed.instagram','URL Instagram','url'),F('sosmed.youtube','URL YouTube','url'),F('sosmed.tiktok','URL TikTok','url')],
+  map:k=>{const o={};ENTITAS.IDENTITAS.schema.forEach(f=>o[f.key]=getPath(k,f.key)??'');return o},
+  unmap:r=>r}
+};
+
+/* ================================================================
+   AUTH
+================================================================ */
 const getPass=()=>localStorage.getItem(LS_PASS)||'admin123';
-function doLogin(){
-  if(document.getElementById('inPass').value===getPass()){sessionStorage.setItem(SS_AUTH,'1');masuk();}
-  else alert('Sandi salah');
-}
-function logout(){sessionStorage.removeItem(SS_AUTH);location.reload();}
-function masuk(){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('app').classList.add('active');
-  buildNav();show('dashboard');
-}
+function doLogin(){if(document.getElementById('inPass').value===getPass()){sessionStorage.setItem(SS_AUTH,'1');masuk()}else toast('❌ Sandi salah!')}
+function logout(){sessionStorage.removeItem(SS_AUTH);location.reload()}
+function masuk(){document.getElementById('loginScreen').style.display='none';document.getElementById('app').classList.add('active');buildNav();show('dash')}
 
-/* NAVIGATION */
-const MENU=[['dashboard',' Dashboard'],['paket','🕋 Semua Paket'],['slides','🖼️ Slide Hero'],['testimoni','💬 Testimoni'],['faq','❓ FAQ'],['identitas',' Identitas']];
-function buildNav(){
-  document.getElementById('sideNav').innerHTML=MENU.map(([k,l])=>`<button data-v="${k}" onclick="show('${k}')">${l}</button>`).join('');
-}
-
+/* ================================================================
+   NAVIGASI
+================================================================ */
+const MENU=[['dash','📊','Dashboard'],['SLIDES','🖼️','Slide Hero'],['PAKET','🕋','Paket Umroh & Haji'],['ALUR','🛤️','Alur Pendaftaran'],['GALERI','📸','Galeri Jamaah'],['TESTIMONI','💬','Testimoni'],['ARTIKEL','📰','Artikel'],['FAQ','❓','FAQ'],['IDENTITAS','🏢','Identitas & Kontak'],['set','⚙️','Pengaturan']];
+function buildNav(){document.getElementById('sideNav').innerHTML=MENU.map(([k,i,l])=>`<button data-v="${k}" onclick="show('${k}')">${i} ${l}</button>`).join('')}
 function show(v){
-  viewAktif=v;
+  view=v;OV=null;tutupDrawer();
   document.querySelectorAll('#sideNav button').forEach(b=>b.classList.toggle('active',b.dataset.v===v));
-  document.getElementById('topTitle').textContent=MENU.find(m=>m[0]===v)[1].split(' ')[1];
-  const host=document.getElementById('host');
-  
-  if(v==='dashboard') host.innerHTML=`<div style="text-align:center;padding:50px;color:var(--teks-2)">Selamat datang di CMS Visual. Pilih menu di sidebar untuk mulai mengedit konten secara langsung.</div>`;
-  else if(v==='paket') host.innerHTML=vPaket();
-  else if(v==='slides') host.innerHTML=vGeneric('slides');
-  else if(v==='testimoni') host.innerHTML=vGeneric('testimoni');
-  else if(v==='faq') host.innerHTML=vGeneric('faq');
-  else if(v==='identitas') host.innerHTML=vIdentitas();
+  document.getElementById('topTitle').textContent=(MENU.find(m=>m[0]===v)||[])[2]||'';
+  const h=document.getElementById('host');
+  if(v==='dash')h.innerHTML=vDash();
+  else if(v==='set')h.innerHTML=vSet();
+  else h.innerHTML=vCanvas(v);
+  updateChip();
 }
 
 /* ================================================================
-   RENDER VISUAL CARDS (PAKET)
+   CANVAS: RENDER VIEW ASLI WEBSITE + PENSIL
 ================================================================ */
-function vPaket(){
-  const grid=DB.PAKET.map(p=>{
-    const harga=p.hargaPromo||p.harga;
-    return `
-    <div class="card-cms">
-      <div class="card-actions-overlay">
-        <button class="act-btn act-edit" onclick="bukaEditor('paket',${p.id})" title="Edit">✏️</button>
-        <button class="act-btn act-del" onclick="hapusItem('PAKET',${p.id})" title="Hapus">🗑</button>
-      </div>
-      <div class="c-img">
-        <img src="${p.foto||'https://via.placeholder.com/400'}" alt="${p.nama}">
-        <span class="c-badge">${p.status==='open'?'✅ Buka':'❌ Penuh'}</span>
-      </div>
-      <div class="c-price">
-        <span>Mulai</span>
-        <div><b>${rp(harga)}</b>${p.hargaPromo?`<s style="font-size:.7rem;margin-left:5px">${rp(p.harga)}</s>`:''}</div>
-      </div>
-      <div class="c-body">
-        <h3>${p.nama}</h3>
-        <div class="c-meta">
-          <span>📅 ${p.durasi} Hari</span>
-          <span>✈️ ${p.maskapai||'-'}</span>
-          <span> ${p.hotelMakkah.bintang}⭐</span>
-        </div>
-      </div>
-    </div>`;
+const getItem=(t,i)=>(OV&&OV.type===t&&OV.idx===i)?OV.obj:DB[t][i];
+const wrap=(html,t,i,isNew)=>`<div class="ed-wrap${isNew?' ed-new':''}">${html}
+  <div class="ed-tools">
+    <button class="ed-btn" title="Edit konten ini" onclick="bukaEditor('${t}',${i})">✏️</button>
+    ${i>-1?`<button class="ed-btn hapus" title="Hapus" onclick="hapusItem('${t}',${i})">🗑️</button>`:''}
+  </div></div>`;
+const frame=(url,inner)=>`<div class="bf"><div class="bf-bar"><span class="bf-dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span><span class="bf-url">🔒 https://albarokah.travel/${url}</span></div>${inner}</div>`;
+const strip=(label,addType,addLabel)=>`<div class="admin-strip"><b style="color:var(--hijau-gelap)">${label}</b><span class="tip">💡 Arahkan kursor ke konten → klik ✏️ untuk edit (preview live sebelum disimpan)</span>${addType?`<button class="btn-ad hijau" style="margin-left:auto" onclick="bukaEditor('${addType}',-1)">➕ ${addLabel}</button>`:''}</div>`;
+
+function vCanvas(v){
+  if(v==='SLIDES'){
+    const items=DB.SLIDES.map((_,i)=>{const s=getItem('SLIDES',i);return wrap(`
+      <div class="slide-prev" style="background-image:url('${esc(s.foto)}')"><div class="slide-overlay"></div>
+        <div class="slide-content"><span class="kicker">${s.kicker}</span><h1>${s.judul}</h1><p>${s.sub}</p>
+        <div class="cta-row"><span class="btn btn-gold">${s.cta1?.teks||''}</span><span class="btn btn-ghost">${s.cta2?.teks||''}</span></div></div>
+      </div>`,'SLIDES',i)}).join('');
+    const extra=(OV&&OV.type==='SLIDES'&&OV.idx===-1)?wrap(`<div class="slide-prev" style="background-image:url('${esc(OV.obj.foto)}')"><div class="slide-overlay"></div><div class="slide-content"><span class="kicker">${OV.obj.kicker}</span><h1>${OV.obj.judul}</h1><p>${OV.obj.sub}</p><div class="cta-row"><span class="btn btn-gold">${OV.obj.cta1?.teks||''}</span><span class="btn btn-ghost">${OV.obj.cta2?.teks||''}</span></div></div></div>`,'SLIDES',-1,true):'';
+    return strip('🖼️ Slide Hero — tampil seperti banner utama website','SLIDES','Tambah Slide')+
+      frame('index.html#home',`<div class="cv-sec cv-dark"><div class="container">${items}${extra}</div></div>`);
+  }
+  if(v==='PAKET'){
+    const card=p=>{const ht=p.hargaPromo??p.harga,terisi=Math.max((p.kuota||0)-(p.sisaKuota||0),0),persen=p.kuota?Math.round(terisi/p.kuota*100):0,penuh=p.status==='full';return `
+      <div class="card"><div class="card-img"><img src="${esc(p.foto)}" alt=""><div class="img-overlay"></div>
+        <span class="badge ${penuh?'badge-full':'badge-open'}">${penuh?'❌ Kuota Habis':'✅ Pendaftaran Dibuka'}</span>
+        ${p.hargaPromo?'<span class="badge badge-promo">PROMO 🔥</span>':''}
+        <span class="jenis-tag">${p.labelJenis||LABEL_JENIS[p.jenis]||''} · ${p.durasi} Hari</span></div>
+        <div class="card-body"><div class="price-float"><span class="pf-label">Mulai dari</span><span class="pf-mid"><b>${rp(ht)}</b>${p.hargaPromo?`<s>${rp(p.harga)}</s>`:''}</span><small>/jamaah</small></div>
+        <h3>${p.nama}</h3><div class="meta-grid">
+          <div class="meta-item"><span class="mi">📅</span><span class="mt">${tglID(p.tanggalBerangkat)}</span></div>
+          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai||'-'}</span></div>
+          <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah?.nama||'-'}</b> ⭐${p.hotelMakkah?.bintang||0}</span></div>
+          <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah?.nama||'-'}</b> ⭐${p.hotelMadinah?.bintang||0}</span></div></div>
+        <div class="kuota-wrap"><div class="kuota-label"><span>Kuota terisi ${persen}%</span>${penuh?'<span class="penuh-txt">PENUH</span>':(p.sisaKuota<=10?`<span class="sisa">⚠️ Sisa ${p.sisaKuota} kursi!</span>`:`<span>Sisa ${p.sisaKuota} kursi</span>`)}</div>
+        <div class="kuota-bar"><div class="kuota-fill ${penuh?'penuh':''}" style="width:${persen}%"></div></div></div></div></div>`};
+    const items=DB.PAKET.map((_,i)=>wrap(card(getItem('PAKET',i)),'PAKET',i)).join('');
+    const extra=(OV&&OV.type==='PAKET'&&OV.idx===-1)?wrap(card(OV.obj),'PAKET',-1,true):'';
+    return strip('🕋 Katalog Paket — tampil seperti kartu paket di website','PAKET','Tambah Paket')+
+      frame('index.html#paket',`<div class="cv-sec"><div class="container">
+        <div class="section-title"><span class="kicker">Pilihan Terbaik</span><h2>Paket Umroh & Haji Khusus</h2><p>Temukan paket yang sesuai dengan budget, jadwal, dan kenyamanan ibadah Anda</p></div>
+        <div class="grid-paket">${items}${extra}</div></div></div>`);
+  }
+  if(v==='ALUR'){
+    const step=(s,i)=>`<div class="alur-step"><div class="alur-num">${s.icon}<span class="step-no">${i+1}</span></div><h3>${s.judul}</h3><p>${s.ket}</p></div>`;
+    const items=DB.ALUR.map((_,i)=>wrap(step(getItem('ALUR',i),i),'ALUR',i)).join('');
+    const extra=(OV&&OV.type==='ALUR'&&OV.idx===-1)?wrap(step(OV.obj,DB.ALUR.length),'ALUR',-1,true):'';
+    return strip('🛤️ Alur Pendaftaran','ALUR','Tambah Langkah')+
+      frame('index.html#alur',`<div class="cv-sec cv-white"><div class="container">
+        <div class="section-title"><span class="kicker">Cara Daftar</span><h2>Alur Pendaftaran Mudah & Transparan</h2><p>Hanya 4 langkah sederhana dari niat hingga berangkat ke Baitullah</p></div>
+        <div class="alur-grid">${items}${extra}</div></div></div>`);
+  }
+  if(v==='GALERI'){
+    const items=DB.GALERI.map((_,i)=>{const g=getItem('GALERI',i);return wrap(`<div class="galeri-item ${g.cls||''}"><img src="${esc(g.foto)}" alt=""><div class="cap">📸 ${g.cap}</div></div>`,'GALERI',i)}).join('');
+    const extra=(OV&&OV.type==='GALERI'&&OV.idx===-1)?wrap(`<div class="galeri-item ${OV.obj.cls||''}"><img src="${esc(OV.obj.foto)}" alt=""><div class="cap">📸 ${OV.obj.cap}</div></div>`,'GALERI',-1,true):'';
+    return strip('📸 Galeri Jamaah','GALERI','Tambah Foto')+
+      frame('index.html#galeri',`<div class="cv-sec"><div class="container">
+        <div class="section-title"><span class="kicker">Dokumentasi Asli</span><h2>Galeri Keberangkatan Jamaah</h2><p>Momen nyata jamaah Al-Barokah Travel di Tanah Suci</p></div>
+        <div class="galeri-grid">${items}${extra}</div></div></div>`);
+  }
+  if(v==='TESTIMONI'){
+    const items=DB.TESTIMONI.map((_,i)=>{const t=getItem('TESTIMONI',i);return wrap(`<div class="testi"><div class="stars">★★★★★</div><p>"${t.teks}"</p><div class="who"><div class="avatar">${t.inisial}</div><div><b>${t.nama} — ${t.kota}</b><small>${t.paket}</small></div></div></div>`,'TESTIMONI',i)}).join('');
+    const extra=(OV&&OV.type==='TESTIMONI'&&OV.idx===-1)?wrap(`<div class="testi"><div class="stars">★★★★★</div><p>"${OV.obj.teks}"</p><div class="who"><div class="avatar">${OV.obj.inisial}</div><div><b>${OV.obj.nama} — ${OV.obj.kota}</b><small>${OV.obj.paket}</small></div></div></div>`,'TESTIMONI',-1,true):'';
+    return strip('💬 Testimoni Jamaah','TESTIMONI','Tambah Testimoni')+
+      frame('index.html#testimoni',`<div class="cv-sec"><div class="container">
+        <div class="section-title"><span class="kicker">Testimoni</span><h2>Kata Jamaah yang Telah Berangkat</h2><p>Kepercayaan ribuan jamaah adalah amanah terbesar kami</p></div>
+        <div class="testi-grid">${items}${extra}</div></div></div>`);
+  }
+  if(v==='ARTIKEL'){
+    const items=DB.ARTIKEL.map((_,i)=>{const a=getItem('ARTIKEL',i);return wrap(`<div class="artikel"><div class="artikel-img">${a.emoji}</div><div class="artikel-body"><span class="tag">${a.kategori} · ${a.tanggal}</span><h3>${a.judul}</h3><p>${a.ringkas}</p><span class="read">Baca Selengkapnya →</span></div></div>`,'ARTIKEL',i)}).join('');
+    const extra=(OV&&OV.type==='ARTIKEL'&&OV.idx===-1)?wrap(`<div class="artikel"><div class="artikel-img">${OV.obj.emoji}</div><div class="artikel-body"><span class="tag">${OV.obj.kategori} · ${OV.obj.tanggal}</span><h3>${OV.obj.judul}</h3><p>${OV.obj.ringkas}</p><span class="read">Baca Selengkapnya →</span></div></div>`,'ARTIKEL',-1,true):'';
+    return strip('📰 Artikel & Panduan','ARTIKEL','Tambah Artikel')+
+      frame('index.html#artikel',`<div class="cv-sec cv-white"><div class="container">
+        <div class="section-title"><span class="kicker">Pusat Informasi</span><h2>Artikel & Panduan Manasik</h2><p>Persiapkan ibadah Anda dengan ilmu yang benar dan terkini</p></div>
+        <div class="artikel-grid">${items}${extra}</div></div></div>`);
+  }
+  if(v==='FAQ'){
+    const items=DB.FAQ.map((_,i)=>{const f=getItem('FAQ',i);return wrap(`<div class="faq-item"><div class="faq-q">${f.q}<span class="faq-icon">+</span></div><div class="faq-a"><p>${f.a}</p></div></div>`,'FAQ',i)}).join('');
+    const extra=(OV&&OV.type==='FAQ'&&OV.idx===-1)?wrap(`<div class="faq-item"><div class="faq-q">${OV.obj.q}<span class="faq-icon">+</span></div><div class="faq-a"><p>${OV.obj.a}</p></div></div>`,'FAQ',-1,true):'';
+    return strip('❓ FAQ (Tanya Jawab)','FAQ','Tambah FAQ')+
+      frame('index.html#daftar',`<div class="cv-sec cv-faq"><div class="container">
+        <div class="section-title"><span class="kicker">Konsultasi & Pendaftaran</span><h2>Tuntaskan Ragu, Wujudkan Berangkat</h2><p>Baca jawaban instan pada FAQ berikut</p></div>
+        <div class="faq-wrap">${items}${extra}</div></div></div>`);
+  }
+  if(v==='IDENTITAS'){
+    const k=(OV&&OV.type==='IDENTITAS')?OV.obj:DB.KONFIGURASI;
+    const g=p=>esc(getPath(k,p)??'');
+    return strip('🏢 Identitas & Kontak — tampil di topbar, footer & link WhatsApp','IDENTITAS',null)+
+      frame('index.html (topbar & footer)',`<div class="cv-sec"><div class="container">
+        ${wrap(`<div class="id-prev"><span>📍 ${g('alamat')}</span><span>📞 ${g('telepon')}</span><span>✉️ ${g('email')}</span><span>🕘 ${g('jamOperasional')}</span><span style="color:var(--emas)">${g('izinKemenag')}</span></div>
+        <div class="id-cards">
+          <div class="id-card"><b>Nama Travel</b>${g('namaTravel')}</div>
+          <div class="id-card"><b>Nomor WhatsApp</b>${g('nomorWA')}</div>
+          <div class="id-card"><b>Pesan WA Bawaan</b>${g('pesanWADefault')}</div>
+          <div class="id-card"><b>Sosial Media</b>FB: ${g('sosmed.facebook')}<br>IG: ${g('sosmed.instagram')}<br>YT: ${g('sosmed.youtube')}<br>TT: ${g('sosmed.tiktok')}</div>
+        </div>`,'IDENTITAS',0)}
+      </div></div>`);
+  }
+  return '';
+}
+
+/* ================================================================
+   DRAWER EDITOR + LIVE PREVIEW
+================================================================ */
+function bukaEditor(type,idx){
+  const E=ENTITAS[type];
+  const src=idx>-1?clone(DB[type][idx]):(type==='IDENTITAS'?clone(DB.KONFIGURASI):kosong(E));
+  META={type,idx};
+  OV={type,idx,obj:clone(src)};
+  document.getElementById('dwTitle').textContent=(idx>-1?'✏️ Edit ':'➕ Tambah ')+E.label;
+  const raw=E.map?E.map(src):src;
+  document.getElementById('dwBody').innerHTML=E.schema.map(f=>{
+    const v=raw[f.key]??'';
+    let inp;
+    if(f.type==='textarea'||f.type==='lines')inp=`<textarea id="f_${f.key}" rows="${f.type==='lines'?5:3}" oninput="formInput()">${esc(v)}</textarea>`;
+    else if(f.type==='select')inp=`<select id="f_${f.key}" onchange="formInput()">${f.options.map(([val,l])=>`<option value="${val}"${String(v)===val?' selected':''}>${l}</option>`).join('')}</select>`;
+    else inp=`<input id="f_${f.key}" type="${f.type}" value="${esc(v)}" oninput="formInput()">`;
+    return `<label>${f.label}</label>${inp}${f.hint?`<div class="hint">${f.hint}</div>`:''}`;
   }).join('');
-
-  return `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-      <h3 style="font-family:'Playfair Display',serif">Daftar Paket Umroh & Haji</h3>
-      <button class="btn btn-hijau btn-sm" onclick="bukaEditor('paket',-1)"> Tambah Paket Baru</button>
-    </div>
-    <div class="grid-paket">${grid||'<div style="color:var(--teks-2)">Belum ada paket.</div>'}</div>
-  `;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBackdrop').classList.add('show');
+  renderCanvasOnly();
+}
+function kosong(E){const o={};E.schema.forEach(f=>o[f.key]=f.type==='select'?f.options[0][0]:(f.type==='number'?'':''));return E.unmap?E.unmap(o,null):o}
+function bacaForm(E){const r={};E.schema.forEach(f=>{const el=document.getElementById('f_'+f.key);r[f.key]=el?el.value:''});return r}
+function formInput(){ // LIVE PREVIEW: update canvas tanpa menyimpan
+  const E=ENTITAS[META.type];
+  const raw=bacaForm(E);
+  const id=META.idx>-1?(META.type==='PAKET'?DB.PAKET[META.idx].id:undefined):undefined;
+  OV.obj=E.unmap?E.unmap(raw,id):raw;
+  renderCanvasOnly();
+}
+function simpanEditor(){
+  const {type,idx}=META,E=ENTITAS[type];
+  if(type==='IDENTITAS'){ENTITAS.IDENTITAS.schema.forEach(f=>setPath(DB.KONFIGURASI,f.key,OV.obj[f.key]??''));}
+  else{
+    const obj=clone(OV.obj);
+    if(type==='PAKET'&&!obj.id)obj.id=DB.PAKET.reduce((m,p)=>Math.max(m,p.id||0),0)+1;
+    if(idx>-1)DB[type][idx]=obj;else DB[type].push(obj);
+  }
+  OV=null;saveDraft();tutupDrawer();show(view);toast('✅ Perubahan disimpan ke draf');
+}
+function batalEditor(){OV=null;tutupDrawer();renderCanvasOnly();toast('↩ Perubahan preview dibuang')}
+function tutupDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawerBackdrop').classList.remove('show')}
+function renderCanvasOnly(){document.getElementById('host').innerHTML=(view==='dash'||view==='set')?document.getElementById('host').innerHTML:vCanvas(view)}
+function hapusItem(type,idx){
+  if(!confirm('Hapus item ini dari draf?'))return;
+  DB[type].splice(idx,1);saveDraft();show(view);toast('🗑 Item dihapus dari draf');
 }
 
 /* ================================================================
-   RENDER GENERIC CARDS (Slides, Testimoni, etc)
+   DASHBOARD & PENGATURAN
 ================================================================ */
-function vGeneric(type){
-  const arr=DB[type.toUpperCase()]||DB[type]||[];
-  const grid=arr.map((item,i)=>{
-    let content='';
-    let bg='';
-    
-    if(type==='slides'){
-      bg=`background-image:url('${item.foto}');background-size:cover;height:150px;border-radius:12px 12px 0 0`;
-      content=`<div style="padding:15px"><b>${item.judul}</b><br><small>${item.kicker}</small></div>`;
-    } else if(type==='testimoni'){
-      content=`<div style="font-style:italic;color:var(--teks-2);margin-bottom:10px">"${item.teks?.substring(0,80)}..."</div>
-               <div style="font-weight:700;color:var(--hijau)">${item.nama} - ${item.kota}</div>`;
-    } else {
-      content=`<pre style="white-space:pre-wrap;font-size:.8rem">${JSON.stringify(item,null,2).substring(0,100)}...</pre>`;
-    }
-
-    return `
-    <div class="item-generic">
-      <div class="g-actions">
-        <button class="act-btn act-edit" style="width:30px;height:30px;font-size:.8rem" onclick="bukaEditor('${type}',${i})">✏️</button>
-        <button class="act-btn act-del" style="width:30px;height:30px;font-size:.8rem" onclick="hapusItem('${type.toUpperCase()}',${i})">🗑</button>
-      </div>
-      ${bg?`<div style="${bg}"></div>`:''}
-      ${content}
-    </div>`;
-  }).join('');
-
-  return `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-      <h3 style="font-family:'Playfair Display',serif">Daftar ${type.charAt(0).toUpperCase()+type.slice(1)}</h3>
-      <button class="btn btn-hijau btn-sm" onclick="bukaEditor('${type}',-1)">➕ Tambah</button>
-    </div>
-    <div class="grid-generic">${grid||'<div style="color:var(--teks-2)">Kosong.</div>'}</div>
-  `;
-}
+function vDash(){return `<div style="padding:26px 24px;max-width:1290px;margin:0 auto">
+  <div class="stat-grid">
+    <div class="stat"><div class="ic">🕋</div><div><b>${DB.PAKET.length}</b><small>Paket Terdaftar</small></div></div>
+    <div class="stat"><div class="ic">🖼️</div><div><b>${DB.SLIDES.length}</b><small>Slide Hero</small></div></div>
+    <div class="stat"><div class="ic">📸</div><div><b>${DB.GALERI.length}</b><small>Foto Galeri</small></div></div>
+    <div class="stat"><div class="ic">💬</div><div><b>${DB.TESTIMONI.length}</b><small>Testimoni</small></div></div>
+    <div class="stat"><div class="ic">📰</div><div><b>${DB.ARTIKEL.length}</b><small>Artikel</small></div></div>
+    <div class="stat"><div class="ic">❓</div><div><b>${DB.FAQ.length}</b><small>FAQ</small></div></div>
+  </div>
+  <div class="panel"><h3>🚀 Alur Kerja Editor (ala WordPress)</h3>
+    <ol class="steps">
+      <li>Pilih menu konten di sidebar → canvas menampilkan <b>tampilan asli section website</b> di dalam bingkai browser.</li>
+      <li>Arahkan kursor ke konten → klik ikon <b>✏️ pensil</b> → panel editor terbuka di kanan.</li>
+      <li>Ketik perubahan → <b>preview live</b> langsung terlihat di canvas (belum tersimpan).</li>
+      <li>Klik <b>✅ Simpan Perubahan</b> untukcommit ke draf, atau <b>↩ Batal</b> untuk membuang preview.</li>
+      <li>Klik <b>🚀 Publish (Unduh data.js)</b> → upload/commit file <b>data.js</b> ke GitHub → ±1 menit website live berubah.</li>
+    </ol>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-ad gold" onclick="unduhData()">🚀 Unduh data.js</button>
+      <button class="btn-ad ghost" onclick="salinData()">📋 Salin kode data.js</button>
+    </div></div></div>`}
+function vSet(){return `<div style="padding:26px 24px;max-width:900px;margin:0 auto">
+  <div class="panel"><h3>🔑 Ganti Sandi Admin</h3>
+    <div class="grid2"><div><label>Sandi Lama</label><input type="password" id="pLama"></div><div><label>Sandi Baru (min 6 karakter)</label><input type="password" id="pBaru"></div></div>
+    <button class="btn-ad hijau" style="margin-top:14px" onclick="gantiPass()">💾 Simpan Sandi</button></div>
+  <div class="panel"><h3>🗄️ Backup & Restore Draf</h3>
+    <p style="font-size:.85rem;color:var(--teks-2);margin-bottom:12px">Cadangkan draf sebagai file JSON atau muat kembali cadangan lama.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-ad ghost" onclick="backupJSON()">⬇️ Unduh Backup JSON</button>
+      <label class="btn-ad ghost" style="margin:0">⬆️ Muat Backup<input type="file" accept=".json,application/json" hidden onchange="restoreJSON(this)"></label>
+      <button class="btn-ad bahaya" onclick="resetDraf()">♻️ Reset Draf ke Versi Publish</button>
+    </div></div>
+  <div class="panel"><h3>ℹ️ Tentang CMS Ini</h3>
+    <p style="font-size:.86rem;color:var(--teks-2)">CMS membaca data publish terakhir dari <b>data.js</b>; bila belum ada, otomatis menarik konten default dari <b>index.html</b>. Semua editan tersimpan sebagai draf lokal browser sampai Anda publish.</p></div></div>`}
+function gantiPass(){const l=document.getElementById('pLama').value,b=document.getElementById('pBaru').value;
+  if(l!==getPass())return toast('❌ Sandi lama salah');if(b.length<6)return toast('❌ Sandi baru minimal 6 karakter');
+  localStorage.setItem(LS_PASS,b);toast('🔑 Sandi berhasil diganti')}
+function backupJSON(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(DB,null,2)],{type:'application/json'}));a.download='cms-backup.json';a.click()}
+function restoreJSON(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{DB=JSON.parse(r.result);saveDraft();show(view);toast('✅ Backup dimuat')}catch(e){toast('❌ File tidak valid')}};r.readAsText(f);inp.value=''}
+function resetDraf(){if(!confirm('Buang semua draf & kembalikan ke versi publish/default?'))return;localStorage.removeItem(LS_DRAFT);location.reload()}
 
 /* ================================================================
-   EDITOR MODAL (DYNAMIC FORM)
+   PUBLISH
 ================================================================ */
-function bukaEditor(type, id){
-  editCtx={type, id};
-  const isNew=id===-1;
-  let item=isNew?{}:(DB[type.toUpperCase()]||DB[type])[id];
-  // Deep clone to avoid direct mutation before save
-  item=clone(item);
+const buildJS=()=>'/* Dibuat otomatis oleh CMS Al-Barokah Travel */\nwindow.SITE_DATA = '+JSON.stringify(DB,null,2)+';';
+function unduhData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([buildJS()],{type:'text/javascript'}));a.download='data.js';a.click();URL.revokeObjectURL(a.href);toast('🚀 data.js diunduh — commit ke GitHub ya!')}
+function salinData(){navigator.clipboard.writeText(buildJS()).then(()=>toast('📋 Kode data.js disalin!')).catch(()=>toast('❌ Gagal menyalin'))}
 
-  let form='';
-  if(type==='paket'){
-    form=`
-      <div class="modal-grid">
-        <div><label>Nama Paket</label><input id="e_nama" value="${esc(item.nama||'')}"></div>
-        <div><label>Jenis</label><select id="e_jenis">
-          <option value="umroh-reguler" ${item.jenis==='umroh-reguler'?'selected':''}>Umroh Reguler</option>
-          <option value="umroh-vip" ${item.jenis==='umroh-vip'?'selected':''}>Umroh VIP</option>
-          <option value="haji-khusus" ${item.jenis==='haji-khusus'?'selected':''}>Haji Khusus</option>
-        </select></div>
-        <div><label>Harga Normal</label><input type="number" id="e_harga" value="${item.harga||''}"></div>
-        <div><label>Harga Promo</label><input type="number" id="e_promo" value="${item.hargaPromo||''}"></div>
-        <div><label>Durasi (Hari)</label><input type="number" id="e_durasi" value="${item.durasi||''}"></div>
-        <div><label>Tanggal Berangkat</label><input type="date" id="e_tgl" value="${item.tanggalBerangkat||''}"></div>
-        <div><label>URL Foto</label><input id="e_foto" value="${esc(item.foto||'')}"></div>
-        <div><label>Sisa Kuota</label><input type="number" id="e_sisa" value="${item.sisaKuota||0}"></div>
-      </div>
-      <div style="margin-top:15px"><label>Hotel Makkah (Nama | Bintang)</label>
-        <div class="modal-grid">
-          <input id="e_hm_nama" placeholder="Nama Hotel" value="${esc(item.hotelMakkah?.nama||'')}">
-          <input type="number" id="e_hm_bintang" placeholder="Bintang" value="${item.hotelMakkah?.bintang||''}">
-        </div>
-      </div>
-      <div style="margin-top:15px"><label>Fasilitas (Satu per baris)</label><textarea id="e_fas" rows="4">${(item.fasilitas||[]).join('\n')}</textarea></div>
-    `;
-  } else if(type==='slides'){
-    form=`
-      <div><label>URL Background</label><input id="e_foto" value="${esc(item.foto||'')}"></div>
-      <div><label>Kicker Badge</label><input id="e_kicker" value="${esc(item.kicker||'')}"></div>
-      <div><label>Judul Utama</label><input id="e_judul" value="${esc(item.judul||'')}"></div>
-      <div><label>Subjudul</label><textarea id="e_sub" rows="3">${item.sub||''}</textarea></div>
-    `;
-  } else if(type==='testimoni'){
-    form=`
-      <div class="modal-grid">
-        <div><label>Nama</label><input id="e_nama" value="${esc(item.nama||'')}"></div>
-        <div><label>Kota</label><input id="e_kota" value="${esc(item.kota||'')}"></div>
-      </div>
-      <div><label>Inisial</label><input id="e_inisial" value="${esc(item.inisial||'')}" maxlength="2"></div>
-      <div><label>Isi Testimoni</label><textarea id="e_teks" rows="4">${item.teks||''}</textarea></div>
-    `;
-  } else {
-    form=`<div><label>Edit JSON Manual</label><textarea id="e_json" rows="10">${JSON.stringify(item,null,2)}</textarea></div>`;
-  }
-
-  document.getElementById('modalForm').innerHTML=form;
-  document.getElementById('modalTitle').textContent=(isNew?'Tambah ':'Edit ')+type;
-  document.getElementById('modalBg').classList.add('active');
-  
-  document.getElementById('btnSimpan').onclick=()=>simpanData(type);
-}
-
-function simpanData(type){
-  const getVal=id=>document.getElementById(id)?.value||'';
-  let newItem={};
-  
-  if(type==='paket'){
-    newItem={
-      id: editCtx.id===-1?nextId():editCtx.id,
-      nama:getVal('e_nama'), jenis:getVal('e_jenis'), labelJenis:getVal('e_jenis'),
-      foto:getVal('e_foto'), harga:+getVal('e_harga'), hargaPromo:+getVal('e_promo')||null,
-      durasi:+getVal('e_durasi'), tanggalBerangkat:getVal('e_tgl'),
-      hotelMakkah:{nama:getVal('e_hm_nama'),bintang:+getVal('e_hm_bintang')},
-      sisaKuota:+getVal('e_sisa'), status:+getVal('e_sisa')>0?'open':'full',
-      fasilitas:lines(getVal('e_fas')), itinerary:[], perlengkapan:[]
-    };
-  } else if(type==='slides'){
-    newItem={foto:getVal('e_foto'),kicker:getVal('e_kicker'),judul:getVal('e_judul'),sub:getVal('e_sub'),cta1:{teks:'Lihat',href:'#'},cta2:{teks:'Chat',href:'#'}};
-  } else if(type==='testimoni'){
-    newItem={nama:getVal('e_nama'),kota:getVal('e_kota'),inisial:getVal('e_inisial'),teks:getVal('e_teks'),stars:'★★★★★'};
-  } else {
-    try{newItem=JSON.parse(getVal('e_json'));}catch(e){alert('Format JSON salah');return;}
-  }
-
-  const arr=DB[type.toUpperCase()]||DB[type];
-  if(editCtx.id===-1) arr.push(newItem); else arr[editCtx.id]=newItem;
-  
-  saveDraft();
-  tutupModal();
-  show(viewAktif);
-  toast('✅ Data disimpan ke draf');
-}
-
-function hapusItem(type, id){
-  if(!confirm('Yakin hapus item ini?'))return;
-  if(type==='PAKET') DB.PAKET=DB.PAKET.filter(p=>p.id!==id);
-  else {
-    const key=type.toLowerCase();
-    const arr=DB[key.toUpperCase()]||DB[key];
-    arr.splice(id,1);
-  }
-  saveDraft();
-  show(viewAktif);
-  toast('🗑 Item dihapus');
-}
-
-function tutupModal(){document.getElementById('modalBg').classList.remove('active');}
-
-/* UTILS */
-function unduhData(){
-  const blob=new Blob(['window.SITE_DATA = '+JSON.stringify(DB,null,2)+';'],{type:'text/javascript'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='data.js';a.click();
-  toast('🚀 data.js diunduh');
-}
-function vIdentitas(){
-  return `<div style="max-width:600px;background:#fff;padding:30px;border-radius:20px">
-    <h3>🏢 Identitas Travel</h3>
-    <label>Nama Travel</label><input value="${DB.KONFIGURASI.namaTravel}" onchange="DB.KONFIGURASI.namaTravel=this.value;saveDraft()">
-    <label>No. WhatsApp</label><input value="${DB.KONFIGURASI.nomorWA}" onchange="DB.KONFIGURASI.nomorWA=this.value;saveDraft()">
-    <p class="hint">Perubahan identitas tersimpan otomatis.</p>
-  </div>`;
-}
-
+/* ================================================================
+   TOAST & INIT
+================================================================ */
 let toastTimer;
-function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
-}
-
-(async function init(){
-  await muatData();
-  if(sessionStorage.getItem(SS_AUTH)==='1')masuk();
-})();
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+(async function(){await muatData();if(sessionStorage.getItem(SS_AUTH)==='1')masuk()})();
 </script>
 </body>
 </html>
