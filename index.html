@@ -65,9 +65,10 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 @media(max-width:1024px){ .topbar-left .alamat,.topbar-right .jam{display:none} }
 @media(max-width:640px){ .topbar{height:38px;font-size:.7rem} .topbar-left .email{display:none} .topbar .izin{font-size:.65rem;padding:2px 9px} }
 
-/* ==================== NAVBAR (DESKTOP — PERSIS ACUAN) ==================== */
+/* ==================== NAVBAR (DESKTOP) ==================== */
 nav{position:fixed;top:42px;left:0;right:0;z-index:100;transition:.35s;padding:18px 0}
-nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:10px 0;top:0}
+/* CATATAN: tanpa backdrop-filter di nav.scrolled agar tidak menjebak fixed-children */
+nav.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:10px 0;top:0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;transition:opacity .3s}
 .logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:#fff;transition:.3s}
 .logo span{color:var(--emas)}
@@ -83,11 +84,11 @@ nav.scrolled .nav-links a{color:var(--teks)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;z-index:110;padding:0}
 .nav-links .sb-head,.nav-links .sb-foot{display:none}
 .nav-overlay{display:none}
-/* KUNCI: saat sidebar terbuka → nav di atas overlay & transparan (anti pita putih) */
-body.nav-open nav{z-index:130;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
+/* KUNCI: saat sidebar terbuka → nav di atas overlay & transparan */
+body.nav-open nav{z-index:130;background:transparent!important;box-shadow:none!important}
 body.nav-open .nav-inner{opacity:0;pointer-events:none}
 
-/* ==================== MOBILE SIDEBAR ==================== */
+/* ==================== MOBILE SIDEBAR (TANPA BLUR SAMA SEKALI) ==================== */
 @media(max-width:900px){
   .hamburger{
     display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;
@@ -115,20 +116,21 @@ body.nav-open .nav-inner{opacity:0;pointer-events:none}
   .nav-links.open{right:0}
   .nav-links li{width:100%;border-bottom:1px solid rgba(255,255,255,.06)}
   .nav-links li:last-child{border-bottom:none}
-  .nav-links a{display:flex;align-items:center;gap:14px;padding:16px 18px;color:rgba(255,255,255,.85)!important;border-radius:12px;transition:.3s;position:relative;font-weight:600}
+  .nav-links a{display:flex;align-items:center;gap:14px;padding:16px 18px;color:rgba(255,255,255,.9)!important;border-radius:12px;transition:.3s;position:relative;font-weight:600}
   .nav-links a::after{display:none}
   .nav-links a::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:4px;height:60%;background:var(--emas);border-radius:0 4px 4px 0;transition:.3s}
   .nav-links a:not(.btn-nav):hover{background:rgba(255,255,255,.06);color:#fff!important;padding-left:24px}
   .nav-links a:not(.btn-nav):hover::before{transform:translateY(-50%) scaleY(1)}
   .nav-links .btn-nav{justify-content:center;margin-top:8px;padding:16px 24px}
-  .nav-links .sb-head{display:flex;position:absolute;top:0;left:0;right:0;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,.08);align-items:center;justify-content:space-between;background:rgba(4,47,33,.6);backdrop-filter:blur(10px)}
+  .nav-links .sb-head{display:flex;position:absolute;top:0;left:0;right:0;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,.08);align-items:center;justify-content:space-between;background:rgba(4,47,33,.92)}
   .nav-links .sb-logo{font-family:'Playfair Display',serif;font-weight:800;font-size:1.15rem;color:#fff}
   .nav-links .sb-logo span{color:var(--emas)}
   .nav-links .sb-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
   .nav-links .sb-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
-  .nav-links .sb-foot{display:block;margin-top:auto;padding:18px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.15);border-radius:14px;font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;text-align:center}
+  .nav-links .sb-foot{display:block;margin-top:auto;padding:18px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.15);border-radius:14px;font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.6;text-align:center}
   .nav-links .sb-foot b{color:var(--emas);font-weight:700;display:block;margin-bottom:4px}
-  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,20,.65);backdrop-filter:blur(6px);z-index:120}
+  /* Overlay: tint gelap POLA tanpa backdrop-filter (anti blur) */
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,20,.72);z-index:120}
   .nav-overlay.active{display:block;animation:fadeIn .3s ease}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   body.nav-open{overflow:hidden}
