@@ -67,7 +67,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 /* ==================== NAVBAR (DASAR / DESKTOP) ==================== */
 nav{position:fixed;top:42px;left:0;right:0;z-index:100;transition:.35s;padding:18px 0}
 nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:10px 0;top:0}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;transition:opacity .3s}
 .logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:#fff;transition:.3s}
 .logo span{color:var(--emas)}
 nav.scrolled .logo{color:var(--hijau-gelap)}
@@ -79,9 +79,13 @@ nav.scrolled .logo{color:var(--hijau-gelap)}
 nav.scrolled .nav-links a{color:var(--teks)}
 .nav-links .btn-nav{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08!important;padding:10px 24px;border-radius:99px}
 /* Hamburger & elemen sidebar: SEMBUNYI di desktop */
-.hamburger{display:none;background:none;border:none;cursor:pointer;z-index:120;padding:0}
+.hamburger{display:none;background:none;border:none;cursor:pointer;z-index:110;padding:0}
 .nav-links .sb-head,.nav-links .sb-foot{display:none}
 .nav-overlay{display:none}
+/* KUNCI ANTI-BLUR: saat sidebar terbuka, nav naik DI ATAS overlay & isi navbar fade out */
+body.nav-open nav{z-index:130;top:0;padding:0;background:transparent;backdrop-filter:none;box-shadow:none}
+body.nav-open .nav-inner{opacity:0;pointer-events:none}
+body.nav-open .wa-float{opacity:0;pointer-events:none}
 
 /* ==================== MOBILE SIDEBAR INDAH ==================== */
 @media(max-width:900px){
@@ -145,7 +149,7 @@ nav.scrolled .nav-links a{color:var(--teks)}
   .nav-links .sb-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
   .nav-links .sb-foot{display:block;margin-top:auto;padding:18px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.15);border-radius:14px;font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;text-align:center}
   .nav-links .sb-foot b{color:var(--emas);font-weight:700;display:block;margin-bottom:4px}
-  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,20,.65);backdrop-filter:blur(6px);z-index:110}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,20,.65);backdrop-filter:blur(6px);z-index:120}
   .nav-overlay.active{display:block;animation:fadeIn .3s ease}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   body.nav-open{overflow:hidden}
