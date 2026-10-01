@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Al-Barokah Travel — Umroh & Haji Khusus Resmi Berizin Kemenag</title>
 <meta name="description" content="Travel Umroh & Haji Khusus terpercaya. Paket umroh reguler, VIP, haji furoda dengan hotel bintang 5 dekat Haram. Izin resmi PPIU Kemenag.">
+<meta property="og:title" content="Al-Barokah Travel — Umroh & Haji Resmi Kemenag">
+<meta property="og:description" content="Paket Umroh & Haji terpercaya, hotel dekat Haram, pembimbing bersertifikat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- MUAT DATA DARI CMS (Jika ada) -->
 <script src="data.js"></script>
 <style>
 /* ==================== VARIABEL & RESET ==================== */
@@ -27,7 +28,6 @@ img{max-width:100%;display:block}
 section{padding:90px 0}
 h1,h2,h3{font-family:'Playfair Display',serif}
 
-/* Utility: Judul 1 baris */
 .nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%}
 
 .section-title{text-align:center;max-width:900px;margin:0 auto 54px}
@@ -35,7 +35,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .section-title h2{font-size:clamp(1.6rem, 4vw, 2.3rem);color:var(--hijau-gelap);line-height:1.25}
 .section-title p{color:var(--teks-2);margin-top:10px}
 
-/* KHUSUS SECTION ALUR: Badge di atas judul */
 #alur .section-title{display:flex;flex-direction:column;align-items:center}
 #alur .section-title .kicker{margin-bottom:12px}
 #alur .section-title p{margin-top:16px}
@@ -79,6 +78,186 @@ nav.scrolled .logo{color:var(--hijau-gelap)}
 .nav-links a:not(.btn-nav):hover::after{width:100%}
 nav.scrolled .nav-links a{color:var(--teks)}
 .nav-links .btn-nav{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08!important;padding:10px 24px;border-radius:99px}
+
+/* ==================== MOBILE SIDEBAR INDAH ==================== */
+@media(max-width:900px){
+  .hamburger{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:44px;
+    height:44px;
+    background:linear-gradient(135deg,var(--hijau),var(--hijau-tua));
+    border:1.5px solid rgba(212,169,78,.4);
+    border-radius:12px;
+    cursor:pointer;
+    z-index:120;
+    transition:.3s;
+    box-shadow:0 4px 14px rgba(4,47,33,.25);
+    padding:0;
+    position:relative;
+  }
+  .hamburger:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 20px rgba(212,169,78,.4);
+    border-color:var(--emas);
+  }
+  .hamburger span{
+    display:block;
+    width:20px;
+    height:2px;
+    background:var(--emas);
+    border-radius:2px;
+    transition:all .35s cubic-bezier(.22,.68,0,1);
+    transform-origin:center;
+  }
+  .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0);}
+  .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .nav-links{
+    display:flex;
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:85%;
+    max-width:340px;
+    height:100vh;
+    background:linear-gradient(160deg,var(--hijau-gelap) 0%,var(--hijau-tua) 100%);
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
+    gap:0;
+    padding:80px 24px 30px;
+    font-size:1rem;
+    z-index:115;
+    box-shadow:-10px 0 40px rgba(0,0,0,.3);
+    transition:right .45s cubic-bezier(.22,.68,0,1);
+    overflow-y:auto;
+  }
+  .nav-links::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23d4a94e' stroke-opacity='0.08'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  .nav-links.open{right:0;}
+  .nav-links li{width:100%;border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav-links li:last-child{border-bottom:none;margin-top:20px;}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    color:rgba(255,255,255,.85)!important;
+    border-radius:12px;
+    transition:.3s;
+    position:relative;
+    font-weight:600;
+  }
+  .nav-links a::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%) scaleY(0);
+    width:4px;
+    height:60%;
+    background:var(--emas);
+    border-radius:0 4px 4px 0;
+    transition:.3s;
+  }
+  .nav-links a:not(.btn-nav):hover{
+    background:rgba(255,255,255,.06);
+    color:#fff!important;
+    padding-left:24px;
+  }
+  .nav-links a:not(.btn-nav):hover::before{transform:translateY(-50%) scaleY(1);}
+  .nav-links a:not(.btn-nav)::after{display:none}
+  .nav-links .btn-nav{
+    background:linear-gradient(135deg,#e8c268,var(--emas));
+    color:#3d2e08!important;
+    justify-content:center;
+    margin-top:8px;
+    padding:16px 24px;
+    box-shadow:0 8px 20px rgba(212,169,78,.4);
+  }
+  .nav-links .btn-nav:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(212,169,78,.55);
+  }
+  .nav-links .sb-head{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    padding:22px 24px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(4,47,33,.4);
+    backdrop-filter:blur(10px);
+  }
+  .nav-links .sb-logo{
+    font-family:'Playfair Display',serif;
+    font-weight:800;
+    font-size:1.15rem;
+    color:#fff;
+  }
+  .nav-links .sb-logo span{color:var(--emas)}
+  .nav-links .sb-close{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+    font-size:1.1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .nav-links .sb-close:hover{
+    background:rgba(255,255,255,.2);
+    transform:rotate(90deg);
+  }
+  .nav-links .sb-foot{
+    margin-top:auto;
+    padding:18px;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:rgba(0,0,0,.15);
+    border-radius:14px;
+    font-size:.78rem;
+    color:rgba(255,255,255,.6);
+    line-height:1.6;
+    text-align:center;
+  }
+  .nav-links .sb-foot b{
+    color:var(--emas);
+    font-weight:700;
+    display:block;
+    margin-bottom:4px;
+  }
+  .nav-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(4,30,20,.65);
+    backdrop-filter:blur(6px);
+    z-index:110;
+    animation:fadeIn .3s ease;
+  }
+  .nav-overlay.active{display:block}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  body.nav-open{overflow:hidden}
+}
+
 .hamburger{display:none;background:none;border:none;font-size:1.7rem;cursor:pointer;color:#fff;z-index:110}
 nav.scrolled .hamburger{color:var(--hijau-gelap)}
 
@@ -119,7 +298,6 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 .stat-item b{display:block;font-size:1.6rem;color:var(--hijau);font-family:'Playfair Display',serif;line-height:1.2}
 .stat-item small{color:var(--teks-2);font-weight:600;font-size:.78rem}
 
-/* ==================== LEGALITAS ==================== */
 .legal-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
 .legal-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5ece8;border-radius:16px;padding:14px 22px;box-shadow:var(--shadow);font-size:.85rem;font-weight:700;color:var(--hijau-tua)}
 
@@ -148,7 +326,6 @@ nav.scrolled .hamburger{color:var(--hijau-gelap)}
 @keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .card-img .jenis-tag{position:absolute;bottom:16px;left:18px;z-index:3;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.55)}
 
-/* Bar harga emas HORIZONTAL */
 .price-float{width:100%;margin-top:-12px;position:relative;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(135deg,#f2d492,var(--emas));color:#3d2e08;border-radius:14px;padding:10px 18px;box-shadow:0 10px 26px rgba(212,169,78,.45);border:1px solid rgba(255,255,255,.55)}
 .price-float .pf-label{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;white-space:nowrap}
 .price-float .pf-mid{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15}
@@ -377,10 +554,6 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
   .form-card{position:static}
 }
 @media(max-width:900px){
-  .nav-links{display:none;position:fixed;inset:0;background:var(--hijau-gelap);flex-direction:column;justify-content:center;gap:28px;font-size:1.1rem}
-  .nav-links.open{display:flex}
-  .nav-links a{color:#fff!important}
-  .hamburger{display:block}
   .stats-inner{grid-template-columns:1fr 1fr}
   .stat-item:nth-child(2){border-right:none}
   .unggul-grid{grid-template-columns:1fr 1fr}
@@ -445,17 +618,31 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#home" class="logo">Al-Barokah<span> Travel</span></a>
-    <button class="hamburger" id="btnMenu"></button>
+    <button class="hamburger" id="btnMenu" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Beranda</a></li>
-      <li><a href="#paket">Paket</a></li>
-      <li><a href="#keunggulan">Keunggulan</a></li>
-      <li><a href="#artikel">Artikel</a></li>
-      <li><a href="#tentang">Tentang</a></li>
+      <li class="sb-head">
+        <span class="sb-logo">Al-Barokah<span> Travel</span></span>
+        <button class="sb-close" id="btnClose" aria-label="Tutup">✕</button>
+      </li>
+      <li><a href="#home">🏠 Beranda</a></li>
+      <li><a href="#paket">🕋 Paket</a></li>
+      <li><a href="#keunggulan">✨ Keunggulan</a></li>
+      <li><a href="#artikel">📰 Artikel</a></li>
+      <li><a href="#tentang">🏢 Tentang</a></li>
       <li><a href="#daftar" class="btn-nav">Daftar Sekarang</a></li>
+      <li class="sb-foot">
+        <b>🕋 PPIU Resmi Kemenag</b>
+        No. U-123/2023<br>
+        📱 WA: 0812-3456-7890
+      </li>
     </ul>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ================= HERO SLIDER ================= -->
 <header class="hero" id="home">
@@ -539,7 +726,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
         <h3>Legalitas Terjamin</h3>
         <p>PPIU resmi berizin Kemenag RI, anggota asosiasi travel haji umroh nasional, dana jamaah aman.</p>
         <div class="ug-chips">
-          <span>🛂 PPIU U-123/2023</span><span> HIMPUH</span><span> AMPHURI</span><span> ISO 9001:2015</span>
+          <span>🛂 PPIU U-123/2023</span><span>🏅 HIMPUH</span><span>🤝 AMPHURI</span><span>📜 ISO 9001:2015</span>
         </div>
       </div>
       <div class="unggul-item ug-wide reveal">
@@ -800,7 +987,7 @@ const SLIDES_DEFAULT = [
   },
   {
     foto: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&q=80",
-    kicker: " PROMO EARLY BIRD 2026",
+    kicker: "🌙 PROMO EARLY BIRD 2026",
     judul: "Berangkat Umroh Lebih <em>Hemat & Nyaman</em>",
     sub: "Potongan hingga Rp 3 juta untuk pendaftaran rombongan keluarga. Kuota terbatas — amankan kursi Anda sekarang!",
     cta1: { teks: "Amankan Promo 🔥", href: "#daftar", style: "btn-gold" },
@@ -961,11 +1148,9 @@ const FAQ_DEFAULT = [
 /* ================================================================
    ⚙️ LOGIKA WEBSITE — INISIALISASI DATA
 ================================================================ */
-// Cek apakah ada data dari CMS (window.SITE_DATA dari data.js)
 let KONFIGURASI, SLIDES, PAKET, ALUR, GALERI, TESTIMONI, ARTIKEL, FAQ;
 
 if (window.SITE_DATA && window.SITE_DATA.KONFIGURASI) {
-  // Gunakan data dari CMS
   KONFIGURASI = window.SITE_DATA.KONFIGURASI;
   SLIDES = window.SITE_DATA.SLIDES || [];
   PAKET = window.SITE_DATA.PAKET || [];
@@ -975,7 +1160,6 @@ if (window.SITE_DATA && window.SITE_DATA.KONFIGURASI) {
   ARTIKEL = window.SITE_DATA.ARTIKEL || [];
   FAQ = window.SITE_DATA.FAQ || [];
 } else {
-  // Gunakan data Default (Hardcoded)
   KONFIGURASI = KONFIGURASI_DEFAULT;
   SLIDES = SLIDES_DEFAULT;
   PAKET = PAKET_DEFAULT;
@@ -996,7 +1180,6 @@ const waLink = p => `https://wa.me/${KONFIGURASI.nomorWA}?text=${encodeURICompon
 document.getElementById("waFloat").href = waLink(KONFIGURASI.pesanWADefault);
 document.getElementById("fdHelpWa").href = waLink("Assalamu'alaikum, saya ingin bertanya seputar paket umroh & haji. 🙏");
 
-// ── Isi konten topbar dari KONFIGURASI ───
 tbAlamat.textContent = KONFIGURASI.alamat;
 tbTelp.textContent = KONFIGURASI.telepon;
 tbTelp.href = "tel:" + KONFIGURASI.telepon;
@@ -1054,10 +1237,31 @@ window.addEventListener("scroll", () => {
   document.getElementById("navbar").classList.toggle("scrolled", turun);
   document.getElementById("topbar").classList.toggle("hide", turun);
 });
-document.getElementById("btnMenu").onclick = () =>
-  document.getElementById("navLinks").classList.toggle("open");
+
+/* ---------- MOBILE SIDEBAR LOGIC ---------- */
+const btnMenu = document.getElementById("btnMenu");
+const btnClose = document.getElementById("btnClose");
+const navLinks = document.getElementById("navLinks");
+const navOverlay = document.getElementById("navOverlay");
+
+function toggleSidebar(buka){
+  const isOpen = buka ?? !navLinks.classList.contains("open");
+  navLinks.classList.toggle("open", isOpen);
+  navOverlay.classList.toggle("active", isOpen);
+  btnMenu.classList.toggle("active", isOpen);
+  document.body.classList.toggle("nav-open", isOpen);
+}
+
+btnMenu.onclick = () => toggleSidebar();
+btnClose.onclick = () => toggleSidebar(false);
+navOverlay.onclick = () => toggleSidebar(false);
+
 document.querySelectorAll("#navLinks a").forEach(a =>
-  a.onclick = () => document.getElementById("navLinks").classList.remove("open"));
+  a.onclick = () => toggleSidebar(false));
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape" && navLinks.classList.contains("open")) toggleSidebar(false);
+});
 
 /* ---------- SCROLL REVEAL + COUNTER ---------- */
 const observer = new IntersectionObserver(entries => {
@@ -1123,7 +1327,7 @@ function renderPaket(){
         <h3>${p.nama}</h3>
         <div class="meta-grid">
           <div class="meta-item"><span class="mi">📅</span><span class="mt">${tanggalID(p.tanggalBerangkat)}</span></div>
-          <div class="meta-item"><span class="mi">️</span><span class="mt">${p.maskapai}</span></div>
+          <div class="meta-item"><span class="mi">✈️</span><span class="mt">${p.maskapai}</span></div>
           <div class="meta-item"><span class="mi">🕋</span><span class="mt"><b>${p.hotelMakkah.nama}</b> ⭐${p.hotelMakkah.bintang}</span></div>
           <div class="meta-item"><span class="mi">🕌</span><span class="mt"><b>${p.hotelMadinah.nama}</b> ⭐${p.hotelMadinah.bintang}</span></div>
         </div>
@@ -1138,7 +1342,7 @@ function renderPaket(){
         </div>
       </div>
       <div class="card-actions">
-        <button class="btn btn-detail" onclick="bukaModal(${p.id})"> Detail Paket</button>
+        <button class="btn btn-detail" onclick="bukaModal(${p.id})">🔍 Detail Paket</button>
         <a class="btn btn-wa-card" target="_blank" href="${waLink(`Assalamu'alaikum, saya tertarik paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon info lebih lanjut 🙏`)}">📲 Booking</a>
       </div>
     </div>`;
@@ -1182,7 +1386,7 @@ function bukaModal(id){
       <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
         <a class="btn btn-wa" style="flex:1;min-width:200px" target="_blank"
           href="${waLink(`Assalamu'alaikum, saya ingin *booking* paket *${p.nama}* (berangkat ${tanggalID(p.tanggalBerangkat)}). Mohon dibantu prosesnya 🙏`)}">
-           Booking via WhatsApp</a>
+          📲 Booking via WhatsApp</a>
         <button class="btn btn-detail" style="flex:1;min-width:200px" onclick="pilihPaketForm('${p.nama.replace(/'/g,"\\'")}')">📝 Isi Form</button>
       </div>
     </div>`;
@@ -1274,9 +1478,9 @@ function kirimWA(e){
 👤 Nama: ${inNama.value.trim()}
 📱 WA: ${inWA.value.trim()}
 🏙️ Kota: ${inKota.value.trim() || "-"}
- Paket: ${inPaket.value || "Belum ditentukan"}
+📦 Paket: ${inPaket.value || "Belum ditentukan"}
 👥 Jumlah Jamaah: ${inJml.value} orang
- Pesan: ${inPesan.value.trim() || "-"}
+💬 Pesan: ${inPesan.value.trim() || "-"}
 
 Mohon dibantu prosesnya. Terima kasih 🙏`;
   window.open(waLink(teks), "_blank");
