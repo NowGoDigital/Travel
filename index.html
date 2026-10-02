@@ -86,7 +86,8 @@ nav.scrolled .nav-links a{color:var(--teks)}
 .nav-overlay{display:none}
 /* KUNCI: saat sidebar terbuka → nav di atas overlay & transparan */
 body.nav-open nav{z-index:130;background:transparent!important;box-shadow:none!important}
-body.nav-open .nav-inner{opacity:0;pointer-events:none}
+body.nav-open .nav-inner>.logo,
+body.nav-open .nav-inner>.hamburger{opacity:0;pointer-events:none}
 
 /* ==================== MOBILE SIDEBAR (TANPA BLUR SAMA SEKALI) ==================== */
 @media(max-width:900px){
@@ -1007,7 +1008,7 @@ const ARTIKEL_DEFAULT = [
 
 const FAQ_DEFAULT = [
   { q:"Apakah Al-Barokah Travel resmi dan terpercaya?",
-    a:"Ya. Kami adalah PPIU resmi berizin Kementerian Agama RI No. U-123 Tahun 2023, anggota HIMPUH & AMPHURI, serta bersertifikat ISO 9001:2015. Legalitas kami dapat Anda verifikasi langsung melalui situs resmi Kemenag (simpu.kemenag.go.id)." },
+    a:"Ya. Kami adalah PPIU resmi berizin Kementerian Agama RI No. U-123 Tahun 2023, anggota HIMPUH & AMPHURI, serta bersertifikat ISO 9001:2015. Legalitas kami dapat Anda verifikasi langsung melalui situs resmi Kemenag (simpo.kemenag.go.id)." },
   { q:"Berapa uang muka (DP) untuk mengunci kursi?",
     a:"Cukup Rp 5.000.000 untuk paket umroh dan Rp 25.000.000 untuk haji khusus. Setelah DP masuk, harga paket terkunci — tidak akan ada kenaikan biaya meskipun harga tiket atau hotel naik." },
   { q:"Apakah bisa membayar dengan cicilan tanpa kartu kredit?",
