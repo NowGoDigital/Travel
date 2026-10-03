@@ -333,14 +333,15 @@ body.nav-open .nav-inner>.hamburger{opacity:0;pointer-events:none}
 
 /* ==================== ARTIKEL ==================== */
 .artikel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
-.artikel{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;cursor:pointer}
+.artikel{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;cursor:pointer;display:block}
 .artikel:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
 .artikel-img{height:170px;background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));display:flex;align-items:center;justify-content:center;font-size:3.4rem}
 .artikel-body{padding:24px}
 .artikel-body .tag{font-size:.7rem;font-weight:800;color:var(--emas);letter-spacing:1.5px;text-transform:uppercase}
 .artikel-body h3{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:1.02rem;font-weight:800;margin:8px 0;color:var(--hijau-gelap);line-height:1.45}
 .artikel-body p{font-size:.86rem;color:var(--teks-2)}
-.artikel-body .read{margin-top:14px;font-size:.83rem;font-weight:800;color:var(--hijau)}
+.artikel-body .read{margin-top:14px;font-size:.83rem;font-weight:800;color:var(--hijau);display:inline-flex;align-items:center;gap:6px;transition:.3s}
+.artikel:hover .read{gap:12px;color:#0a5c3f}
 
 /* ==================== CTA BANNER (MEPET KIRI-KANAN) ==================== */
 .sec-cta .container{max-width:100%;padding:0 16px}
@@ -814,7 +815,7 @@ footer .logo{color:#fff;font-size:1.4rem;margin-bottom:14px;display:block}
         <h4>Navigasi</h4>
         <div class="f-links">
           <a href="#paket">Katalog Paket</a><a href="#keunggulan">Keunggulan</a>
-          <a href="#artikel">Artikel Manasik</a><a href="#tentang">Tentang Kami</a>
+          <a href="blog.html">Blog & Panduan</a><a href="#tentang">Tentang Kami</a>
         </div>
       </div>
       <div>
@@ -1310,7 +1311,7 @@ document.getElementById("gridGaleri").innerHTML = GALERI.map(g => `
     <div class="cap">📸 ${g.cap}</div>
   </div>`).join("");
 
-/* ---------- TESTIMONI & ARTIKEL ---------- */
+/* ---------- TESTIMONI ---------- */
 document.getElementById("gridTesti").innerHTML = TESTIMONI.map(t => `
   <div class="testi">
     <div class="stars">★★★★★</div>
@@ -1321,8 +1322,18 @@ document.getElementById("gridTesti").innerHTML = TESTIMONI.map(t => `
     </div>
   </div>`).join("");
 
-document.getElementById("gridArtikel").innerHTML = ARTIKEL.map(a => `
-  <div class="artikel">
+/* ---------- ARTIKEL (LINK KE BLOG) ---------- */
+const artikelSlug = [
+  "manasik-umroh-pemula",
+  "kesehatan-sebelum-keberangkatan",
+  "checklist-perlengkapan-umroh",
+  "adab-masjidil-haram-nabawi",
+  "menabung-biaya-umroh",
+  "update-visa-umroh-2026"
+];
+
+document.getElementById("gridArtikel").innerHTML = ARTIKEL.map((a, i) => `
+  <a href="blog.html#${artikelSlug[i] || ''}" class="artikel">
     <div class="artikel-img">${a.emoji}</div>
     <div class="artikel-body">
       <span class="tag">${a.kategori} · ${a.tanggal}</span>
@@ -1330,7 +1341,7 @@ document.getElementById("gridArtikel").innerHTML = ARTIKEL.map(a => `
       <p>${a.ringkas}</p>
       <span class="read">Baca Selengkapnya →</span>
     </div>
-  </div>`).join("");
+  </a>`).join("");
 
 /* ---------- FAQ ACCORDION ---------- */
 document.getElementById("faqWrap").innerHTML = FAQ.map(f => `
