@@ -1,1 +1,871 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Panduan — Al-Barokah Travel</title>
+<meta name="description" content="Artikel manasik, tips kesehatan, panduan perlengkapan, dan informasi terbaru seputar umroh & haji dari Al-Barokah Travel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hijau:#0c7a54; --hijau-tua:#064e35; --hijau-gelap:#042f21;
+  --hijau-muda:#eaf6f0; --emas:#d4a94e; --emas-muda:#f3e3bd;
+  --teks:#16211c; --teks-2:#5f6f68; --bg:#f7faf8; --putih:#fff;
+  --shadow:0 8px 30px rgba(4,47,33,.08);
+  --shadow-lg:0 20px 50px rgba(4,47,33,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--teks);background:var(--bg);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Playfair Display',Georgia,'Times New Roman',serif}
 
+/* ===== TOPBAR ===== */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:101;height:42px;background:var(--hijau-gelap);color:#b9cfc4;font-size:.78rem;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+.topbar a{color:#b9cfc4;transition:.25s}
+.topbar a:hover{color:var(--emas)}
+.topbar .izin{background:rgba(212,169,78,.15);border:1px solid rgba(212,169,78,.4);color:var(--emas);padding:3px 12px;border-radius:99px;font-weight:700;font-size:.72rem}
+
+/* ===== NAVBAR ===== */
+nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,255,.98);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 22px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:800;color:var(--hijau-gelap)}
+.logo span{color:var(--emas)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;font-weight:700;font-size:.88rem}
+.nav-links a{color:var(--teks);transition:.25s;position:relative}
+.nav-links a:hover{color:var(--emas)}
+.nav-links .btn-nav{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08!important;padding:10px 24px;border-radius:99px}
+
+/* ===== HERO BLOG ===== */
+.blog-hero{position:relative;padding:160px 0 80px;background:linear-gradient(160deg,var(--hijau-gelap) 0%,#05372a 55%,var(--hijau-tua) 100%);color:#fff;text-align:center;overflow:hidden}
+.blog-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.18),transparent 70%)}
+.blog-hero::after{content:"";position:absolute;inset:0;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4a94e' stroke-opacity='0.06'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.blog-hero .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:9px 22px;border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1}
+.blog-hero h1{font-size:2.2rem;font-size:clamp(1.8rem,4vw,3rem);max-width:700px;margin:0 auto;line-height:1.25;position:relative;z-index:1}
+.blog-hero h1 em{font-style:normal;color:var(--emas)}
+.blog-hero p{max-width:560px;margin:16px auto 0;color:rgba(255,255,255,.75);position:relative;z-index:1}
+.blog-hero .breadcrumb{margin-top:24px;font-size:.82rem;color:rgba(255,255,255,.6);position:relative;z-index:1}
+.blog-hero .breadcrumb a{color:var(--emas);transition:.25s}
+.blog-hero .breadcrumb a:hover{text-decoration:underline}
+
+/* ===== GRID ARTIKEL ===== */
+.blog-section{padding:70px 0 90px}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
+.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s;cursor:pointer;border:1px solid #eef3f0}
+.blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.blog-card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.blog-card-img .cat-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:5px 14px;border-radius:99px;font-size:.68rem;font-weight:800;color:var(--hijau-tua);letter-spacing:.5px}
+.blog-card-body{padding:24px}
+.blog-card-body .meta{font-size:.75rem;color:var(--teks-2);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.blog-card-body h3{font-size:1.15rem;color:var(--hijau-gelap);line-height:1.4;margin-bottom:10px;transition:.3s}
+.blog-card:hover h3{color:var(--hijau)}
+.blog-card-body p{font-size:.88rem;color:var(--teks-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blog-card-body .read-more{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.84rem;font-weight:800;color:var(--emas);transition:.3s}
+.blog-card:hover .read-more{gap:12px;color:#b8892e}
+
+/* ===== READING MODE ===== */
+.article-wrap{display:none}
+.article-wrap.active{display:block}
+.article-header{max-width:780px;margin:0 auto;padding:0 22px;text-align:center}
+.article-header .cat-badge{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:18px}
+.article-header h1{font-size:2rem;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--hijau-gelap);line-height:1.3;margin-bottom:16px}
+.article-header .meta-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.82rem;color:var(--teks-2)}
+.article-header .meta-row span{display:flex;align-items:center;gap:6px}
+.article-hero{max-width:860px;margin:36px auto 0;border-radius:24px;overflow:hidden;height:340px;display:flex;align-items:center;justify-content:center;font-size:7rem;box-shadow:var(--shadow-lg)}
+.article-content{max-width:740px;margin:0 auto;padding:44px 22px 80px}
+.article-content h2{font-size:1.45rem;color:var(--hijau-gelap);margin:40px 0 16px;padding-left:18px;border-left:4px solid var(--emas);line-height:1.35}
+.article-content h3{font-size:1.15rem;color:var(--hijau-tua);margin:30px 0 12px}
+.article-content p{font-size:.95rem;color:#3d4a44;margin-bottom:16px}
+.article-content ul,.article-content ol{margin:16px 0 20px 24px}
+.article-content li{font-size:.93rem;color:#3d4a44;margin-bottom:10px;line-height:1.7}
+.article-content li::marker{color:var(--emas);font-weight:700}
+.article-content .highlight-box{background:linear-gradient(135deg,var(--hijau-muda),#fff);border:1.5px solid #c8e6d8;border-radius:16px;padding:22px 26px;margin:28px 0}
+.article-content .highlight-box b{color:var(--hijau);display:block;margin-bottom:6px;font-size:.9rem}
+.article-content .highlight-box p{margin:0;font-size:.88rem}
+.article-content .quote{border-left:4px solid var(--emas);background:var(--emas-muda);padding:20px 26px;border-radius:0 16px 16px 0;margin:28px 0;font-style:italic;color:#6b5a2e;font-size:.95rem}
+.article-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.85rem;border-radius:12px;overflow:hidden}
+.article-content th{background:var(--hijau);color:#fff;padding:12px 16px;text-align:left;font-weight:700}
+.article-content td{padding:12px 16px;border-bottom:1px solid #eef3f0;color:#3d4a44}
+.article-content tr:nth-child(even) td{background:#f8fbf9}
+.back-btn{display:inline-flex;align-items:center;gap:8px;margin-bottom:30px;padding:12px 24px;background:#fff;border:1.5px solid #e2eae6;border-radius:99px;font-size:.84rem;font-weight:700;color:var(--hijau-tua);transition:.3s;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.back-btn:hover{background:var(--hijau);color:#fff;border-color:var(--hijau);transform:translateX(-4px)}
+.article-cta{background:linear-gradient(135deg,var(--hijau-gelap),var(--hijau-tua));border-radius:20px;padding:36px;text-align:center;color:#fff;margin-top:40px}
+.article-cta h3{font-size:1.3rem;margin-bottom:10px}
+.article-cta p{color:rgba(255,255,255,.75);font-size:.9rem;margin-bottom:20px}
+.article-cta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;padding:14px 32px;border-radius:99px;font-weight:800;font-size:.9rem;transition:.3s}
+.article-cta a:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(212,169,78,.5)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--hijau-gelap);color:#b9cfc4;padding:50px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px}
+footer h4{color:#fff;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem}
+footer p,footer a{font-size:.84rem}
+footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
+.f-links{display:flex;flex-direction:column;gap:9px}
+.f-links a:hover{color:var(--emas)}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;text-align:center;font-size:.78rem;opacity:.65}
+
+/* ===== WA FLOAT ===== */
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:150;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(37,211,102,.55);transition:.3s;background:#25d366}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+.wa-float::before{content:"";position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;border:2px solid #25d366;animation:pulse 2s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35);opacity:0}}
+.wa-float:hover{transform:scale(1.1)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .blog-hero{padding:140px 0 60px}
+  .blog-grid{grid-template-columns:1fr}
+  .article-hero{height:240px;font-size:5rem;margin-top:28px}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:640px){
+  .article-content h2{font-size:1.25rem}
+  .article-header h1{font-size:1.5rem}
+  .article-hero{height:200px;font-size:4rem;border-radius:16px}
+  .topbar .alamat{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>📱 WA: 0812-3456-7890</span>
+    <span class="izin">🛂 PPIU Resmi Kemenag No. U-123/2023</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Al-Barokah<span> Travel</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="index.html#paket">Paket</a></li>
+      <li><a href="blog.html" style="color:var(--emas)">Blog</a></li>
+      <li><a href="index.html#tentang">Tentang</a></li>
+      <li><a href="index.html#daftar" class="btn-nav">Daftar Sekarang</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="blog-hero">
+  <span class="kicker">📚 Pusat Ilmu & Inspirasi</span>
+  <h1 id="heroTitle">Blog & Panduan <em>Manasik</em></h1>
+  <p id="heroSub">Persiapkan perjalanan suci Anda dengan ilmu yang benar, tips praktis, dan informasi terkini dari tim Al-Barokah Travel.</p>
+  <div class="breadcrumb"><a href="index.html">Beranda</a> &nbsp;›&nbsp; <span id="breadText">Blog</span></div>
+</header>
+
+<!-- GRID MODE -->
+<section class="blog-section" id="gridMode">
+  <div class="container">
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- READING MODE -->
+<section class="blog-section article-wrap" id="readMode">
+  <div class="article-header">
+    <span class="cat-badge" id="artCat"></span>
+    <h1 id="artTitle"></h1>
+    <div class="meta-row">
+      <span>📅 <b id="artDate"></b></span>
+      <span>⏱️ <b id="artRead"></b></span>
+      <span>✍️ Tim Al-Barokah</span>
+    </div>
+  </div>
+  <div class="article-hero" id="artHero"></div>
+  <div class="article-content">
+    <button class="back-btn" onclick="kembaliKeGrid()">← Kembali ke Semua Artikel</button>
+    <div id="artBody"></div>
+    <div class="article-cta">
+      <h3>🕋 Siap Wujudkan Niat ke Baitullah?</h3>
+      <p>Konsultasikan rencana umroh Anda secara gratis. Tim kami siap membantu memilih paket terbaik sesuai budget & jadwal Anda.</p>
+      <a href="index.html#daftar">Konsultasi Gratis Sekarang →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="logo">Al-Barokah<span style="color:var(--emas)"> Travel</span></span>
+        <p>PPIU Resmi Kemenag No. U-123/2023. Melayani Umroh, Haji Khusus & Wisata Halal dengan amanah sejak 2010.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <div class="f-links">
+          <a href="index.html">Beranda</a>
+          <a href="index.html#paket">Katalog Paket</a>
+          <a href="blog.html">Blog & Panduan</a>
+          <a href="index.html#daftar">Pendaftaran</a>
+        </div>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <p>📍 Jl. Raya Ibadah No. 88, Jakarta<br>📞 021-1234567<br>📱 WA: 0812-3456-7890<br>✉️ info@albarokah.travel</p>
+      </div>
+    </div>
+    <div class="copy">© 2026 Al-Barokah Travel. Seluruh hak cipta dilindungi.</div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/6281234567890?text=Assalamu'alaikum,%20saya%20ingin%20konsultasi%20paket%20umroh.%20🙏" target="_blank" aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.7-.4z"/></svg>
+</a>
+
+<script>
+/* ================================================================
+   📝 DATA ARTIKEL LENGKAP
+================================================================ */
+const ARTIKEL_BLOG = [
+  {
+    slug: "manasik-umroh-pemula",
+    emoji: "📖",
+    kategori: "Manasik",
+    warna: "linear-gradient(135deg,#0c7a54,#064e35)",
+    judul: "Panduan Lengkap Manasik Umroh untuk Pemula",
+    tanggal: "5 September 2026",
+    baca: "8 menit baca",
+    ringkas: "Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah.",
+    konten: `
+      <p>Alhamdulillah, Anda telah memantapkan niat untuk berkunjung ke Baitullah. Bagi jamaah yang pertama kali melaksanakan umroh, memahami urutan dan rukun ibadah adalah kunci agar pelaksanaan berjalan khusyuk dan sesuai tuntunan. Artikel ini akan membahas secara lengkap rangkaian manasik umroh dari awal hingga akhir.</p>
+
+      <h2>Apa Itu Umroh?</h2>
+      <p>Umroh secara bahasa berarti "berkunjung". Secara istilah syar'i, umroh adalah berkunjung ke Ka'bah di Masjidil Haram untuk melaksanakan serangkaian ibadah dengan syarat dan rukun tertentu. Berbeda dengan haji, umroh dapat dilaksanakan kapan saja sepanjang tahun dan tidak terikat waktu tertentu.</p>
+
+      <div class="quote">"Umroh ke umroh berikutnya adalah penghapus dosa di antara keduanya, dan haji yang mabrur tidak ada balasannya kecuali surga." — HR. Bukhari & Muslim</div>
+
+      <h2>Rukun Umroh yang Wajib Dipenuhi</h2>
+      <p>Rukun adalah bagian dari ibadah yang <b>tidak boleh ditinggalkan</b>. Jika salah satu rukun tidak dilaksanakan, maka umroh tidak sah. Berikut 5 rukun umroh:</p>
+      <ol>
+        <li><b>Ihram</b> — Niat memasuki ritual umroh dari miqat</li>
+        <li><b>Thawaf</b> — Mengelilingi Ka'bah sebanyak 7 putaran</li>
+        <li><b>Sa'i</b> — Berjalan antara Bukit Shafa dan Marwah sebanyak 7 kali</li>
+        <li><b>Tahallul</b> — Mencukur atau memotong rambut</li>
+        <li><b>Tertib</b> — Melaksanakan sesuai urutan</li>
+      </ol>
+
+      <h2>Langkah 1: Ihram dari Miqat</h2>
+      <p>Ihram adalah keadaan suci yang ditandai dengan niat dan pemakaian pakaian ihram. Bagi jamaah dari Indonesia yang tiba di Madinah terlebih dahulu, miqat biasanya dilakukan di <b>Bir Ali (Dzul Hulaifah)</b>. Sementara yang langsung ke Makkah, miqat bisa di pesawat pada titik tertentu atau di <b>Rabigh</b>.</p>
+
+      <div class="highlight-box">
+        <b>💡 Tips Penting Saat Ihram:</b>
+        <p>Mandi sunnah sebelum ihram, potong kuku & bulu yang perlu, pakai wewangian di badan (sebelum niat), lalu ucapkan niat: <i>"Labbaik 'Umrah"</i>. Setelah niat, berlaku larangan ihram seperti tidak boleh memakai pakaian berjahit (pria), tidak boleh memakai wewangian, tidak boleh memotong kuku/rambut.</p>
+      </div>
+
+      <h2>Langkah 2: Thawaf Mengelilingi Ka'bah</h2>
+      <p>Setibanya di Masjidil Haram, laksanakan thawaf sebanyak <b>7 putaran</b> dengan Ka'bah di sebelah kiri. Dimulai dari <b>Hajar Aswad</b> dan berakhir di Hajar Aswad pula.</p>
+
+      <h3>Syarat Sah Thawaf:</h3>
+      <ul>
+        <li>Suci dari hadats (punya wudhu)</li>
+        <li>Menutup aurat</li>
+        <li>Ka'bah berada di sebelah kiri</li>
+        <li>Dimulai dan diakhiri di Hajar Aswad</li>
+        <li>7 putaran sempurna</li>
+        <li>Dilakukan di dalam Masjidil Haram</li>
+      </ul>
+
+      <h3>Doa Utama Saat Thawaf:</h3>
+      <p>Tidak ada doa khusus yang wajib di setiap putaran. Anda boleh berdoa apa saja, berdzikir, atau membaca Al-Quran. Namun yang paling utama adalah doa sapu jagat:</p>
+      <div class="quote">"Rabbana aatina fid-dunya hasanah wa fil-aakhirati hasanah wa qinaa 'adzaaban-naar."<br><small>(Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka)</small></div>
+
+      <h2>Langkah 3: Shalat di Belakang Maqam Ibrahim</h2>
+      <p>Setelah thawaf, disunnahkan shalat 2 rakaat di belakang <b>Maqam Ibrahim</b> jika memungkinkan. Jika ramai, boleh shalat di area mana saja dalam Masjidil Haram. Rakaat pertama baca Al-Fatihah + Al-Kafirun, rakaat kedua baca Al-Fatihah + Al-Ikhlas.</p>
+
+      <h2>Langkah 4: Sa'i antara Shafa dan Marwah</h2>
+      <p>Sa'i dilaksanakan dengan berjalan dari <b>Bukit Shafa</b> ke <b>Bukit Marwah</b> sebanyak 7 kali perjalanan. Perjalanan dari Shafa ke Marwah dihitung 1 kali, dan sebaliknya juga 1 kali. Total jarak sekitar 450 meter sekali jalan.</p>
+
+      <div class="highlight-box">
+        <b>🏃 Tips Sa'i Nyaman:</b>
+        <p>Gunakan sepatu/sandal yang nyaman, pastikan wudhu tetap terjaga (ada toilet di area sa'i), dan tidak perlu terburu-buru. Di antara dua lampu hijau, jamaah pria disunnahkan berlari kecil. Perbanyak dzikir dan doa selama sa'i.</p>
+      </div>
+
+      <h2>Langkah 5: Tahallul (Bercukur)</h2>
+      <p>Rukun terakhir adalah <b>tahallul</b>, yaitu mencukur atau memotong rambut minimal 3 helai. Bagi pria, lebih utama mencukur habis (halq). Bagi wanita, cukup memotong ujung rambut sepanjang ruas jari. Setelah tahallul, seluruh larangan ihram telah halal kembali.</p>
+
+      <h2>Kesalahan Umum yang Perlu Dihindari</h2>
+      <table>
+        <tr><th>Kesalahan</th><th>Solusi</th></tr>
+        <tr><td>Thawaf tanpa wudhu</td><td>Pastikan wudhu sebelum mulai, jika batal segera perbarui</td></tr>
+        <tr><td>Sa'i kurang dari 7 kali</td><td>Hitung dengan teliti, gunakan tasbih atau jari</td></tr>
+        <tr><td>Melanggar larangan ihram</td><td>Segera istighfar, konsultasi pembimbing untuk fidyah</td></tr>
+        <tr><td>Terlalu fokus foto</td><td>Utamakan ibadah, foto seperlunya saja</td></tr>
+      </table>
+
+      <h2>Penutup: Niatkan dengan Ikhlas</h2>
+      <p>Umroh bukan sekadar perjalanan fisik, tapi perjalanan hati. Persiapkan ilmu, luruskan niat, dan serahkan segala urusan kepada Allah. Semoga umroh Anda mabrur dan diterima di sisi-Nya. Aamiin.</p>
+    `
+  },
+  {
+    slug: "kesehatan-sebelum-keberangkatan",
+    emoji: "💪",
+    kategori: "Kesehatan",
+    warna: "linear-gradient(135deg,#2980b9,#1a5276)",
+    judul: "Tips Menjaga Kesehatan Fisik Sebelum Keberangkatan",
+    tanggal: "28 Agustus 2026",
+    baca: "6 menit baca",
+    ringkas: "Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah.",
+    konten: `
+      <p>Ibadah umroh menuntut stamina fisik yang prima. Thawaf, sa'i, ziarah, dan ibadah di masjid membutuhkan energi besar, terutama di tengah cuaca Arab Saudi yang berbeda jauh dengan Indonesia. Berikut panduan lengkap menjaga kesehatan sebelum keberangkatan.</p>
+
+      <h2>Mulai Persiapan 2-3 Bulan Sebelum Berangkat</h2>
+      <p>Tubuh butuh waktu untuk beradaptasi dengan peningkatan aktivitas fisik. Jangan menunggu seminggu sebelum berangkat baru mulai olahraga. Mulailah program latihan ringan secara konsisten:</p>
+
+      <h3>Program Latihan Ringan yang Disarankan:</h3>
+      <ol>
+        <li><b>Jalan kaki</b> — Mulai 20 menit/hari, tingkatkan bertahap hingga 45-60 menit</li>
+        <li><b>Naik turun tangga</b> — Melatih otot kaki untuk sa'i dan thawaf</li>
+        <li><b>Stretching ringan</b> — Peregangan pagi & malam untuk kelenturan</li>
+        <li><b>Latihan pernapasan</b> — Membantu mengatur napas saat berjalan jauh</li>
+      </ol>
+
+      <div class="highlight-box">
+        <b>🎯 Target Realistis:</b>
+        <p>Di Tanah Suci, Anda bisa berjalan 10.000-20.000 langkah per hari. Jika saat ini Anda jarang bergerak, mulai dari 3.000 langkah dan tambah 1.000 langkah setiap minggu hingga terbiasa.</p>
+      </div>
+
+      <h2>Vaksinasi Wajib & Sunnah</h2>
+      <p>Pemerintah Arab Saudi mewajibkan beberapa vaksin bagi jamaah umroh:</p>
+      <ul>
+        <li><b>Vaksin Meningitis (ACWY)</b> — Wajib, dilakukan minimal 10 hari sebelum berangkat</li>
+        <li><b>Vaksin Influenza</b> — Sangat disarankan, mengingat jamaah berkumpul dari berbagai negara</li>
+        <li><b>Vaksin Covid-19</b> — Sesuai ketentuan terbaru Saudi</li>
+      </ul>
+
+      <p>Tim Al-Barokah Travel akan membantu koordinasi jadwal vaksinasi dan pengurusan sertifikat vaksin (ICV) yang diperlukan untuk pengajuan visa.</p>
+
+      <h2>Pola Makan & Hidrasi</h2>
+      <h3>2 Minggu Sebelum Berangkat:</h3>
+      <ul>
+        <li>Perbanyak sayur & buah untuk daya tahan tubuh</li>
+        <li>Kurangi makanan berminyak & terlalu pedas</li>
+        <li>Minum air putih minimal 2 liter/hari</li>
+        <li>Tidur cukup 7-8 jam untuk menjaga imunitas</li>
+      </ul>
+
+      <h3>Saat di Tanah Suci:</h3>
+      <ul>
+        <li>Minum air zamzam & air mineral secara rutin (jangan tunggu haus)</li>
+        <li>Makan teratur 3x sehari dari katering</li>
+        <li>Hindari minuman terlalu dingin jika tenggorokan sensitif</li>
+        <li>Bawa kurma sebagai energi cepat saat ibadah</li>
+      </ul>
+
+      <h2>Obat-obatan Pribadi yang Perlu Dibawa</h2>
+      <table>
+        <tr><th>Kategori</th><th>Contoh</th></tr>
+        <tr><td>Demam & nyeri</td><td>Paracetamol, ibuprofen</td></tr>
+        <tr><td>Flu & batuk</td><td>Obat flu, permen pelega tenggorokan</td></tr>
+        <tr><td>Lambung</td><td>Antasida, obat maag</td></tr>
+        <tr><td>Diare</td><td>Oralit, attapulgite</td></tr>
+        <tr><td>Luka & iritasi</td><td>Plester, antiseptik, salep luka</td></tr>
+        <tr><td>Alergi</td><td>Antihistamin (jika punya riwayat alergi)</td></tr>
+      </table>
+
+      <div class="quote">"Sesungguhnya tubuhmu memiliki hak atas dirimu." — HR. Bukhari & Muslim</div>
+
+      <h2>Pemeriksaan Kesehatan Pra-Keberangkatan</h2>
+      <p>Al-Barokah Travel menyediakan <b>medical check-up ringan</b> sebelum keberangkatan yang meliputi: tekanan darah, gula darah, dan konsultasi dokter. Bagi jamaah dengan kondisi khusus (diabetes, hipertensi, jantung), kami pastikan ada pendampingan khusus selama perjalanan.</p>
+
+      <h2>Menghadapi Cuaca Arab Saudi</h2>
+      <p>Suhu di Makkah & Madinah bisa mencapai 40-45°C di musim panas, atau 15-25°C di musim dingin. Tips adaptasi:</p>
+      <ul>
+        <li>Gunakan sunscreen SPF 50+ saat beraktivitas di luar</li>
+        <li>Pakai kacamata hitam & payung saat city tour</li>
+        <li>Gunakan pelembap bibir & kulit (udara sangat kering)</li>
+        <li>Bawa semprotan air wajah untuk kesegaran</li>
+      </ul>
+
+      <h2>Penutup</h2>
+      <p>Tubuh yang sehat adalah modal utama untuk beribadah dengan khusyuk. Persiapkan fisik Anda dari sekarang, dan biarkan kami mengurus sisanya. Tim medis Al-Barokah siap mendampingi Anda selama perjalanan. Semoga sehat selalu hingga hari keberangkatan! 🤲</p>
+    `
+  },
+  {
+    slug: "checklist-perlengkapan-umroh",
+    emoji: "🧳",
+    kategori: "Persiapan",
+    warna: "linear-gradient(135deg,#8e44ad,#6c3483)",
+    judul: "Checklist Perlengkapan Umroh yang Wajib Dibawa",
+    tanggal: "20 Agustus 2026",
+    baca: "7 menit baca",
+    ringkas: "Daftar lengkap pakaian ihram, obat-obatan pribadi, hingga dokumen penting.",
+    konten: `
+      <p>Packing untuk umroh berbeda dengan packing liburan biasa. Ada barang-barang esensial yang wajib dibawa, dan ada juga barang yang sebaiknya tidak dibawa. Berikut checklist lengkap yang bisa Anda gunakan sebagai panduan.</p>
+
+      <h2>📋 Dokumen Penting (Jangan Sampai Tertinggal!)</h2>
+      <ul>
+        <li>✅ Paspor asli (masa berlaku minimal 7 bulan)</li>
+        <li>✅ Fotokopi paspor 3 lembar (simpan terpisah dari asli)</li>
+        <li>✅ KTP & Kartu Keluarga</li>
+        <li>✅ Buku nikah (untuk pasangan suami istri)</li>
+        <li>✅ Sertifikat vaksin meningitis</li>
+        <li>✅ Pas foto 4x6 latar putih (4 lembar)</li>
+        <li>✅ Tiket & voucher travel (disediakan Al-Barokah)</li>
+      </ul>
+
+      <div class="highlight-box">
+        <b>🔐 Tips Keamanan Dokumen:</b>
+        <p>Simpan semua dokumen dalam tas paspor khusus yang selalu menempel di badan. Scan/foto semua dokumen dan simpan di email atau cloud sebagai backup. Al-Barokah juga menyimpan salinan digital seluruh dokumen jamaah.</p>
+      </div>
+
+      <h2>👕 Pakaian & Perlengkapan Ibadah</h2>
+
+      <h3>Untuk Jamaah Pria:</h3>
+      <ul>
+        <li>Kain ihram 2 set (1 dipakai, 1 cadangan)</li>
+        <li>Sabuk ihram untuk mengikat kain</li>
+        <li>Sandal jepit / sandal gunung yang nyaman</li>
+        <li>Gamis/jubah putih 2-3 buah (untuk di hotel)</li>
+        <li>Pakaian dalam yang cukup</li>
+        <li>Kaos kaki tebal untuk tidur (AC hotel dingin)</li>
+      </ul>
+
+      <h3>Untuk Jamaah Wanita:</h3>
+      <ul>
+        <li>Gamis/mukena 3-4 set (bahan adem, tidak menerawang)</li>
+        <li>Khimar/jilbab lebar yang menutupi dada</li>
+        <li>Inner/jilbab dalaman</li>
+        <li>Kaos kaki tebal 3-4 pasang</li>
+        <li>Sandal nyaman untuk ke masjid</li>
+        <li>Pakaian tidur yang sopan & nyaman</li>
+      </ul>
+
+      <h2>🧴 Perlengkapan Mandi & Perawatan</h2>
+      <ul>
+        <li>Sabun & shampoo (travel size)</li>
+        <li>Sikat gigi & pasta gigi</li>
+        <li>Sunscreen SPF 50+</li>
+        <li>Pelembap kulit & bibir (udara Saudi sangat kering)</li>
+        <li>Hand sanitizer</li>
+        <li>Tissue basah & kering</li>
+        <li>Gunting kecil (untuk tahallul mandiri, simpan di bagasi)</li>
+      </ul>
+
+      <div class="highlight-box">
+        <b>⚠️ Perhatikan Aturan Cairan Kabin:</b>
+        <p>Cairan di tas kabin maksimal 100ml per botol. Simpan cairan >100ml di koper bagasi. Al-Barokah menyediakan koper kabin & bagasi dengan ukuran sesuai standar maskapai.</p>
+      </div>
+
+      <h2>💊 Obat-obatan & Kesehatan</h2>
+      <ul>
+        <li>Obat pribadi (dengan resep dokter jika perlu)</li>
+        <li>Paracetamol & obat flu</li>
+        <li>Oralit & obat diare</li>
+        <li>Vitamin C / multivitamin</li>
+        <li>Minyak kayu putih / aromaterapi</li>
+        <li>Plester & betadine</li>
+        <li>Masker (bawa 10-15 pcs)</li>
+      </ul>
+
+      <h2>🔌 Elektronik & Gadget</h2>
+      <ul>
+        <li>Smartphone + charger</li>
+        <li>Power bank (maks 20.000 mAh untuk penerbangan)</li>
+        <li>Universal travel adapter (Saudi pakai tipe G/British)</li>
+        <li>Kamera (opsional)</li>
+        <li>Earphone untuk mendengarkan kajian selama penerbangan</li>
+      </ul>
+
+      <h2>💰 Keuangan & Uang Saku</h2>
+      <ul>
+        <li>Riyal Saudi (SAR) secukupnya untuk oleh-oleh & sedekah</li>
+        <li>Kartu debit/kredit berlogo Visa/Mastercard</li>
+        <li>Dompet kecil untuk harian</li>
+      </ul>
+
+      <div class="quote">"Persiapan yang baik adalah separuh dari kesuksesan." — Pepatah Arab</div>
+
+      <h2>🎁 Perlengkapan yang Disediakan Al-Barokah Travel</h2>
+      <p>Anda tidak perlu membeli semua sendiri. Kami sudah menyiapkan:</p>
+      <ul>
+        <li>🧳 Koper bagasi & koper kabin</li>
+        <li>👜 Tas paspor eksklusif</li>
+        <li>📖 Buku doa & panduan manasik</li>
+        <li>🧕 Kain ihram premium (pria) / Mukena premium (wanita)</li>
+        <li>👕 Seragam batik Al-Barokah</li>
+        <li>🏷️ ID Card jamaah</li>
+        <li>💧 Air Zamzam 5 liter (saat pulang)</li>
+      </ul>
+
+      <h2>❌ Barang yang Sebaiknya Tidak Dibawa</h2>
+      <ul>
+        <li>Perhiasan berlebihan (risiko hilang)</li>
+        <li>Barang elektronik mahal yang tidak perlu</li>
+        <li>Makanan basah dalam jumlah besar</li>
+        <li>Obat-obatan terlarang / suplemen tanpa label jelas</li>
+      </ul>
+
+      <h2>Penutup</h2>
+      <p>Dengan persiapan yang matang, Anda bisa fokus pada ibadah tanpa khawatir ada yang tertinggal. Gunakan checklist ini saat packing, dan jangan ragu bertanya kepada tim kami jika ada yang membingungkan. Sampai jumpa di Baitullah! 🕋</p>
+    `
+  },
+  {
+    slug: "adab-masjidil-haram-nabawi",
+    emoji: "🕌",
+    kategori: "Adab",
+    warna: "linear-gradient(135deg,#c0392b,#922b21)",
+    judul: "Adab Beribadah di Masjidil Haram & Masjid Nabawi",
+    tanggal: "12 Agustus 2026",
+    baca: "6 menit baca",
+    ringkas: "Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci.",
+    konten: `
+      <p>Masjidil Haram dan Masjid Nabawi adalah dua masjid paling mulia di muka bumi. Beribadah di dalamnya memiliki keutamaan luar biasa — satu shalat di Masjidil Haram setara 100.000 shalat di masjid lain. Namun, keutamaan besar ini juga menuntut adab yang tinggi. Berikut panduan adab yang perlu diperhatikan setiap jamaah.</p>
+
+      <div class="quote">"Shalat di masjidku ini (Nabawi) lebih utama dari 1.000 shalat di masjid lainnya, kecuali Masjidil Haram. Dan shalat di Masjidil Haram lebih utama dari 100.000 shalat di masjid lainnya." — HR. Ahmad & Ibnu Majah</div>
+
+      <h2>Adab Sebelum Masuk Masjid</h2>
+      <ol>
+        <li><b>Berwudhu dengan sempurna</b> dari hotel agar tidak perlu antre di tempat wudhu masjid</li>
+        <li><b>Memakai pakaian terbaik</b> yang bersih, sopan, dan menutup aurat</li>
+        <li><b>Membaca doa masuk masjid:</b><br>
+        <i>"Allahummaftahli abwaba rahmatik"</i><br>
+        <small>(Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu)</small></li>
+        <li><b>Mendahulukan kaki kanan</b> saat melangkah masuk</li>
+        <li><b>Tidak terburu-buru</b> — berjalan dengan tenang dan khusyuk</li>
+      </ol>
+
+      <h2>Adab di Dalam Masjid</h2>
+
+      <h3>1. Jaga Kekhusyukan</h3>
+      <ul>
+        <li>Rendahkan suara, hindari obrolan yang tidak perlu</li>
+        <li>Fokus pada ibadah: shalat, thawaf, tilawah, atau dzikir</li>
+        <li>Hindari bermain ponsel untuk media sosial</li>
+        <li>Jika perlu berbicara, gunakan suara pelan</li>
+      </ul>
+
+      <h3>2. Hormati Jamaah Lain</h3>
+      <ul>
+        <li>Tidak menyerobot shaf atau tempat orang lain</li>
+        <li>Berikan ruang bagi jamaah yang baru datang</li>
+        <li>Tidak melangkahi pundak orang yang sedang duduk (terutama saat Jumat)</li>
+        <li>Sabar dalam antrean (wudhu, lift, pintu keluar)</li>
+      </ul>
+
+      <h3>3. Jaga Kebersihan Masjid</h3>
+      <ul>
+        <li>Tidak membuang sampah sembarangan</li>
+        <li>Tidak meludah di lantai masjid</li>
+        <li>Jika membawa makanan ringan, pastikan tidak mengotori</li>
+        <li>Gunakan toilet dengan bersih</li>
+      </ul>
+
+      <div class="highlight-box">
+        <b>📸 Tentang Foto & Video:</b>
+        <p>Foto seperlunya saja. Jangan menghabiskan waktu ibadah untuk berfoto. Hindari selfie dengan membelakangi Ka'bah atau mengganggu jamaah lain. Di Raudhah, dilarang mengambil foto/video oleh petugas. Hormati aturan ini.</p>
+      </div>
+
+      <h2>Adab Khusus di Masjidil Haram</h2>
+      <ul>
+        <li><b>Saat Thawaf:</b> Tidak berbicara kecuali dzikir/doa, tidak menyerobot orang lain, jaga pandangan dari aurat lawan jenis</li>
+        <li><b>Saat melihat Ka'bah:</b> Berhenti sejenak, angkat tangan, dan berdoa karena ini waktu mustajab</li>
+        <li><b>Di Multazam:</b> Jika memungkinkan, tempelkan dada, pipi, dan tangan sambil berdoa. Namun jangan memaksakan diri jika sangat ramai</li>
+        <li><b>Di Hijr Ismail:</b> Jika bisa masuk, shalat 2 rakaat. Tapi jangan berebut hingga menyakiti orang lain</li>
+      </ul>
+
+      <h2>Adab Khusus di Masjid Nabawi</h2>
+      <ul>
+        <li><b>Salam kepada Rasulullah ﷺ:</b> Saat melewati Raudhah/makam, ucapkan salam dengan sopan dan tidak berteriak</li>
+        <li><b>Di Raudhah:</b> Shalat & berdoa di area ini sangat utama. Bergantianlah dengan jamaah lain, jangan terlalu lama jika ramai</li>
+        <li><b>Jangan berdesakan:</b> Petugas mengatur jadwal masuk Raudhah. Ikuti arahan mereka</li>
+        <li><b>Wanita:</b> Ada pintu & area khusus untuk jamaah wanita. Gunakan sesuai petunjuk</li>
+      </ul>
+
+      <h2>Adab Saat Keluar Masjid</h2>
+      <ol>
+        <li>Dahulukan kaki kiri</li>
+        <li>Baca doa keluar:<br>
+        <i>"Allahumma inni as'aluka min fadhlik"</i><br>
+        <small>(Ya Allah, sesungguhnya aku memohon karunia dari-Mu)</small></li>
+        <li>Tidak berdesakan di pintu keluar</li>
+        <li>Jaga kekhusyukan hingga sampai hotel</li>
+      </ol>
+
+      <h2>Hal yang Harus Dihindari</h2>
+      <table>
+        <tr><th>❌ Hindari</th><th>✅ Ganti Dengan</th></tr>
+        <tr><td>Mengobrol keras di dalam masjid</td><td>Dzikir atau membaca Al-Quran</td></tr>
+        <tr><td>Tidur di area ibadah</td><td>Istirahat di area yang diperbolehkan</td></tr>
+        <tr><td>Merebut tempat shalat orang lain</td><td>Cari shaf yang masih kosong</td></tr>
+        <tr><td>Menjual/membeli di dalam masjid</td><td>Lakukan di luar area masjid</td></tr>
+        <tr><td>Mengambil barang temuan sembarangan</td><td>Serahkan ke petugas keamanan</td></tr>
+      </table>
+
+      <h2>Penutup</h2>
+      <p>Adab adalah cerminan iman. Dengan menjaga adab di Tanah Suci, ibadah Anda akan lebih khusyuk, hati lebih tenang, dan pahala insya Allah lebih sempurna. Jadilah tamu Allah yang beradab, dan semoga kita semua termasuk golongan yang dirindukan Baitullah. Aamiin. 🤲</p>
+    `
+  },
+  {
+    slug: "menabung-biaya-umroh",
+    emoji: "💰",
+    kategori: "Finansial",
+    warna: "linear-gradient(135deg,#27ae60,#1e8449)",
+    judul: "Cara Cerdas Menabung untuk Biaya Umroh",
+    tanggal: "5 Agustus 2026",
+    baca: "7 menit baca",
+    ringkas: "Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial.",
+    konten: `
+      <p>Niat ke Baitullah adalah niat mulia yang Allah mudahkan bagi siapa saja yang bersungguh-sungguh. Banyak jamaah yang berhasil berangkat bukan karena kaya, tapi karena konsisten menabung dan pintar mengatur strategi keuangan. Berikut panduan lengkap merencanakan biaya umroh.</p>
+
+      <div class="quote">"Dan sempurnakanlah ibadah haji dan umroh karena Allah." — QS. Al-Baqarah: 196</div>
+
+      <h2>1. Tentukan Target & Timeline</h2>
+      <p>Langkah pertama adalah menentukan kapan Anda ingin berangkat dan berapa biaya yang dibutuhkan.</p>
+
+      <table>
+        <tr><th>Jenis Paket</th><th>Kisaran Biaya</th><th>Target Ideal</th></tr>
+        <tr><td>Umroh Reguler</td><td>Rp 28-35 juta</td><td>2-3 tahun menabung</td></tr>
+        <tr><td>Umroh VIP</td><td>Rp 40-55 juta</td><td>3-4 tahun menabung</td></tr>
+        <tr><td>Umroh Plus Turki</td><td>Rp 35-45 juta</td><td>2-3 tahun menabung</td></tr>
+        <tr><td>Haji Khusus</td><td>Rp 150-300 juta</td><td>5-10 tahun menabung</td></tr>
+      </table>
+
+      <div class="highlight-box">
+        <b>📊 Contoh Simulasi:</b>
+        <p>Target: Umroh Reguler Rp 30 juta dalam 2,5 tahun (30 bulan).<br>
+        Maka Anda perlu menyisihkan: Rp 30.000.000 ÷ 30 = <b>Rp 1.000.000/bulan</b>.<br>
+        Ringan bukan? Kuncinya adalah <b>konsistensi</b>, bukan besarannya.</p>
+      </div>
+
+      <h2>2. Buka Rekening Khusus Umroh</h2>
+      <p>Pisahkan tabungan umroh dari rekening harian. Beberapa bank syariah menyediakan produk khusus:</p>
+      <ul>
+        <li><b>Tabungan Umroh</b> — Setoran rutin bulanan dengan akad mudharabah</li>
+        <li><b>Deposito Syariah</b> — Untuk dana yang sudah terkumpul, agar berkembang</li>
+        <li><b>Reksadana Syariah</b> — Opsi pengembangan dana jangka menengah</li>
+      </ul>
+
+      <p>Dengan rekening terpisah, Anda tidak akan "tidak sengaja" menggunakan dana umroh untuk kebutuhan lain.</p>
+
+      <h2>3. Otomatiskan Tabungan</h2>
+      <p>Gunakan fitur <b>auto-debit</b> dari bank. Begitu gaji masuk, sejumlah uang langsung dipindahkan ke rekening umroh. Ini menghilangkan godaan untuk menunda atau memakai uang tersebut.</p>
+
+      <div class="quote">"Bayar diri Anda terlebih dahulu." — Prinsip keuangan klasik</div>
+
+      <h2>4. Kurangi Pengeluaran yang Tidak Perlu</h2>
+      <p>Identifikasi pengeluaran yang bisa dialihkan ke tabungan umroh:</p>
+      <ul>
+        <li>☕ Kopi kekinian 3x seminggu (Rp 150rb) → bisa jadi Rp 600rb/bulan</li>
+        <li>🛒 Belanja online impulsif → alihkan 50% ke tabungan umroh</li>
+        <li>📱 Langganan streaming yang jarang dipakai → batalkan, alihkan dananya</li>
+        <li>🍔 Makan di luar setiap weekend → kurangi jadi 2x sebulan</li>
+      </ul>
+
+      <h2>5. Cari Penghasilan Tambahan</h2>
+      <p>Jika memungkinkan, tambahkan sumber penghasilan khusus untuk umroh:</p>
+      <ul>
+        <li>Freelance sesuai keahlian</li>
+        <li>Jualan online (reseller/dropship)</li>
+        <li>THR & bonus kerja → masukkan 100% ke tabungan umroh</li>
+        <li>Jual barang yang tidak terpakai</li>
+      </ul>
+
+      <h2>6. Manfaatkan Promo & Early Bird</h2>
+      <p>Travel umroh sering memberikan promo untuk pendaftaran lebih awal:</p>
+      <ul>
+        <li><b>Early Bird</b> — Daftar 6-12 bulan sebelum berangkat, dapat potongan Rp 1-3 juta</li>
+        <li><b>Promo Rombongan</b> — Daftar 3+ orang sekaligus, dapat harga grup</li>
+        <li><b>Off Season</b> — Umroh di luar Ramadhan biasanya lebih hemat 15-25%</li>
+      </ul>
+
+      <div class="highlight-box">
+        <b>💡 Tips dari Al-Barokah:</b>
+        <p>Kami menyediakan program <b>Booking DP Ringan Rp 5 juta</b> untuk mengunci harga. Setelah DP masuk, harga tidak akan naik meskipun kurs dolar naik atau harga tiket pesawat naik. Ini cara cerdas melindungi tabungan Anda dari inflasi.</p>
+      </div>
+
+      <h2>7. Opsi Cicilan Syariah (Tanpa Riba)</h2>
+      <p>Jika dana belum cukup untuk bayar lunas, Al-Barokah bekerja sama dengan lembaga pembiayaan syariah untuk cicilan 3-12 bulan <b>tanpa riba dan tanpa kartu kredit</b>. Skema ini menggunakan akad murabahah yang halal dan transparan.</p>
+
+      <h2>8. Jaga Niat & Doa</h2>
+      <p>Selain ikhtiar finansial, jangan lupakan ikhtiar spiritual:</p>
+      <ul>
+        <li>Shalat hajat & doa khusus memohon dimudahkan ke Baitullah</li>
+        <li>Perbanyak sedekah — Allah ganti dengan berlipat</li>
+        <li>Istighfar & shalawat untuk membuka pintu rezeki</li>
+        <li>Minta doa restu orang tua</li>
+      </ul>
+
+      <div class="quote">"Barangsiapa bertakwa kepada Allah, niscaya Dia akan membukakan jalan keluar baginya, dan memberinya rezeki dari arah yang tidak disangka-sangka." — QS. At-Talaq: 2-3</div>
+
+      <h2>Penutup</h2>
+      <p>Umroh bukan soal mampu atau tidak mampu, tapi soal niat dan ikhtiar. Banyak jamaah kami yang berangkat dari hasil menabung Rp 500 ribu per bulan selama bertahun-tahun. Yang penting mulai sekarang, konsisten, dan serahkan hasilnya kepada Allah. Kami siap membantu Anda mewujudkan niat suci ini. 🤲</p>
+    `
+  },
+  {
+    slug: "update-visa-umroh-2026",
+    emoji: "📰",
+    kategori: "Berita",
+    warna: "linear-gradient(135deg,#e67e22,#d35400)",
+    judul: "Update Aturan Visa Umroh 2026 dari Saudi",
+    tanggal: "1 Agustus 2026",
+    baca: "5 menit baca",
+    ringkas: "Ringkasan kebijakan visa dan syarat kesehatan terbaru bagi calon jamaah.",
+    konten: `
+      <p>Pemerintah Kerajaan Arab Saudi melalui Kementerian Haji dan Umroh terus memperbarui kebijakan visa untuk meningkatkan kenyamanan dan keamanan jamaah. Berikut ringkasan aturan terbaru untuk musim umroh 2026 yang perlu Anda ketahui.</p>
+
+      <h2>Jenis Visa Umroh yang Berlaku</h2>
+      <table>
+        <tr><th>Jenis Visa</th><th>Masa Berlaku</th><th>Keterangan</th></tr>
+        <tr><td>Visa Umroh Reguler</td><td>30 hari</td><td>Diajukan melalui travel berizin (PPIU)</td></tr>
+        <tr><td>Visa Turis (e-Visa)</td><td>90 hari</td><td>Bisa digunakan untuk umroh, multi-entry</td></tr>
+        <tr><td>Visa Transit</td><td>96 jam</td><td>Untuk transit, bisa umroh singkat</td></tr>
+        <tr><td>Visa Furoda (Haji)</td><td>Musim haji</td><td>Kuota khusus, tanpa antre</td></tr>
+      </table>
+
+      <div class="highlight-box">
+        <b>📌 Penting:</b>
+        <p>Al-Barokah Travel menggunakan <b>visa umroh resmi</b> yang diproses melalui sistem Kemenag & platform Saudi. Seluruh proses pengajuan visa di-handle oleh tim kami — jamaah cukup siapkan dokumen, sisanya kami urus.</p>
+      </div>
+
+      <h2>Syarat Dokumen untuk Pengajuan Visa</h2>
+      <ul>
+        <li>Paspor dengan masa berlaku minimal <b>7 bulan</b> dari tanggal keberangkatan</li>
+        <li>Nama di paspor minimal <b>2 kata</b> (disarankan 3 kata sesuai KTP)</li>
+        <li>Pas foto 4x6 latar putih (format digital)</li>
+        <li>Sertifikat vaksin <b>Meningitis ACWY</b></li>
+        <li>Tiket pesawat PP (disediakan travel)</li>
+        <li>Booking hotel di Makkah & Madinah (disediakan travel)</li>
+      </ul>
+
+      <h2>Kebijakan Kesehatan Terbaru 2026</h2>
+      <ul>
+        <li><b>Vaksin Meningitis</b> tetap wajib bagi seluruh jamaah umroh</li>
+        <li>Tidak ada lagi syarat vaksin Covid-19 untuk masuk Saudi (per update terakhir)</li>
+        <li>Jamaah dengan penyakit kronis disarankan membawa surat keterangan dokter</li>
+        <li>Asuransi perjalanan wajib mencakup coverage kesehatan di Saudi</li>
+      </ul>
+
+      <h2>Perubahan Penting yang Perlu Diketahui</h2>
+
+      <h3>1. Digitalisasi Penuh</h3>
+      <p>Seluruh proses visa kini dilakukan secara digital melalui platform <b>Nusuk</b> dan sistem Kemenag. Tidak ada lagi pengurusan manual di kedutaan. Ini mempercepat proses dari 2-3 minggu menjadi <b>5-7 hari kerja</b>.</p>
+
+      <h3>2. Kuota Lebih Fleksibel</h3>
+      <p>Saudi telah menghapus batasan kuota ketat untuk umroh reguler. Travel dapat mengajukan visa sesuai kebutuhan selama memenuhi syarat akomodasi & transportasi.</p>
+
+      <h3>3. Raudhah Permit</h3>
+      <p>Untuk masuk <b>Raudhah</b> di Masjid Nabawi, jamaah perlu mendaftar melalui aplikasi <b>Nusuk</b>. Tim Al-Barokah membantu pendaftaran tasreh Raudhah untuk seluruh jamaah sesuai jadwal yang tersedia.</p>
+
+      <h3>4. Musim Umroh Lebih Panjang</h3>
+      <p>Visa umroh kini dapat diajukan hampir sepanjang tahun, kecuali menjelang musim haji (sekitar 1 bulan sebelum & sesudah). Ini memberi lebih banyak pilihan waktu keberangkatan.</p>
+
+      <div class="quote">"Kerajaan Arab Saudi berkomitmen melayani tamu Allah dengan standar terbaik. Visi 2030 kami menargetkan 30 juta jamaah umroh per tahun." — Kementerian Haji & Umroh Saudi</div>
+
+      <h2>Biaya Visa & Apa yang Termasuk</h2>
+      <p>Dalam paket Al-Barokah, biaya visa sudah termasuk dalam harga paket. Anda tidak perlu membayar tambahan untuk:</p>
+      <ul>
+        <li>✅ Biaya pengajuan visa</li>
+        <li>✅ Asuransi perjalanan & kesehatan</li>
+        <li>✅ Pendaftaran tasreh Raudhah</li>
+        <li>✅ Handling bandara di Saudi</li>
+      </ul>
+
+      <h2>Tips Agar Visa Lancar</h2>
+      <ol>
+        <li>Serahkan dokumen <b>minimal 1 bulan</b> sebelum tanggal berangkat</li>
+        <li>Pastikan nama di paspor & KTP konsisten</li>
+        <li>Lakukan vaksin meningitis minimal 10 hari sebelum pengajuan visa</li>
+        <li>Percayakan proses kepada travel resmi yang berpengalaman</li>
+      </ol>
+
+      <div class="highlight-box">
+        <b>🛡️ Jaminan Al-Barokah:</b>
+        <p>Jika visa ditolak oleh pihak Saudi (kasus sangat jarang), kami memberikan <b>refund 100%</b> atau penjadwalan ulang tanpa biaya tambahan. Dana jamaah aman dan terlindungi.</p>
+      </div>
+
+      <h2>Penutup</h2>
+      <p>Aturan visa umroh semakin mudah dan terdigitalisasi. Ini kabar baik bagi calon jamaah yang ingin segera berangkat. Pastikan Anda memilih travel resmi yang memahami proses ini dengan baik agar perjalanan ibadah berjalan lancar tanpa kendala administratif. Ada pertanyaan? Tim konsultan kami siap membantu! 🤲</p>
+    `
+  }
+];
+
+/* ================================================================
+   ⚙️ RENDER LOGIC
+================================================================ */
+const gridMode = document.getElementById("gridMode");
+const readMode = document.getElementById("readMode");
+const blogGrid = document.getElementById("blogGrid");
+const heroTitle = document.getElementById("heroTitle");
+const heroSub = document.getElementById("heroSub");
+const breadText = document.getElementById("breadText");
+
+function renderGrid(){
+  gridMode.style.display = "block";
+  readMode.classList.remove("active");
+  heroTitle.innerHTML = 'Blog & Panduan <em>Manasik</em>';
+  heroSub.textContent = 'Persiapkan perjalanan suci Anda dengan ilmu yang benar, tips praktis, dan informasi terkini dari tim Al-Barokah Travel.';
+  breadText.textContent = "Blog";
+  document.title = "Blog & Panduan — Al-Barokah Travel";
+
+  blogGrid.innerHTML = ARTIKEL_BLOG.map(a => `
+    <a class="blog-card" href="blog.html#${a.slug}">
+      <div class="blog-card-img" style="background:${a.warna}">
+        ${a.emoji}
+        <span class="cat-badge">${a.kategori}</span>
+      </div>
+      <div class="blog-card-body">
+        <div class="meta"><span>📅 ${a.tanggal}</span><span>⏱️ ${a.baca}</span></div>
+        <h3>${a.judul}</h3>
+        <p>${a.ringkas}</p>
+        <span class="read-more">Baca Selengkapnya →</span>
+      </div>
+    </a>
+  `).join("");
+}
+
+function renderArticle(slug){
+  const art = ARTIKEL_BLOG.find(x => x.slug === slug);
+  if(!art){ renderGrid(); return; }
+
+  gridMode.style.display = "none";
+  readMode.classList.add("active");
+
+  heroTitle.innerHTML = '<em>Blog</em> Al-Barokah';
+  heroSub.textContent = art.judul;
+  breadText.innerHTML = `<a href="blog.html">Blog</a> › ${art.kategori}`;
+  document.title = art.judul + " — Al-Barokah Travel";
+
+  document.getElementById("artCat").textContent = art.kategori;
+  document.getElementById("artTitle").textContent = art.judul;
+  document.getElementById("artDate").textContent = art.tanggal;
+  document.getElementById("artRead").textContent = art.baca;
+  document.getElementById("artHero").style.background = art.warna;
+  document.getElementById("artHero").textContent = art.emoji;
+  document.getElementById("artBody").innerHTML = art.konten;
+
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function kembaliKeGrid(){
+  window.location.hash = "";
+  renderGrid();
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function handleRoute(){
+  const hash = window.location.hash.replace("#","");
+  if(hash){
+    renderArticle(hash);
+  } else {
+    renderGrid();
+  }
+}
+
+window.addEventListener("hashchange", handleRoute);
+handleRoute();
+</script>
+</body>
+</html>
