@@ -52,11 +52,23 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .blog-hero .breadcrumb a{color:var(--emas);transition:.25s}
 .blog-hero .breadcrumb a:hover{text-decoration:underline}
 
+/* ===== FILTER KATEGORI ===== */
+.filter-section{padding:40px 0 0}
+.filter-bar{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.filter-chip{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:99px;border:1.5px solid #e2eae6;background:#fff;font-size:.84rem;font-weight:700;color:var(--teks-2);cursor:pointer;transition:all .3s cubic-bezier(.22,.68,0,1);font-family:inherit}
+.filter-chip:hover{border-color:var(--emas);color:var(--hijau-tua);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,169,78,.2)}
+.filter-chip.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;border-color:var(--emas);box-shadow:0 6px 24px rgba(212,169,78,.4)}
+.filter-chip .chip-count{background:rgba(0,0,0,.08);padding:2px 8px;border-radius:99px;font-size:.7rem;font-weight:800}
+.filter-chip.active .chip-count{background:rgba(0,0,0,.12)}
+.filter-result{ text-align:center;margin-top:20px;font-size:.85rem;color:var(--teks-2)}
+.filter-result b{color:var(--hijau)}
+
 /* ===== GRID ARTIKEL ===== */
-.blog-section{padding:70px 0 90px}
+.blog-section{padding:50px 0 90px}
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
-.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s;cursor:pointer;border:1px solid #eef3f0;display:block}
+.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s,opacity .4s;cursor:pointer;border:1px solid #eef3f0;display:block}
 .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.blog-card.hidden{display:none}
 .blog-card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
 .blog-card-img .cat-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:5px 14px;border-radius:99px;font-size:.68rem;font-weight:800;color:var(--hijau-tua);letter-spacing:.5px}
 .blog-card-body{padding:24px}
@@ -66,6 +78,13 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .blog-card-body p{font-size:.88rem;color:var(--teks-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .blog-card-body .read-more{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.84rem;font-weight:800;color:var(--emas);transition:.3s}
 .blog-card:hover .read-more{gap:12px;color:#b8892e}
+
+/* ===== EMPTY STATE ===== */
+.empty-state{display:none;text-align:center;padding:60px 20px}
+.empty-state.show{display:block}
+.empty-state .empty-icon{font-size:4rem;margin-bottom:16px}
+.empty-state h3{font-size:1.3rem;color:var(--hijau-gelap);margin-bottom:8px}
+.empty-state p{color:var(--teks-2);font-size:.9rem}
 
 /* ===== READING MODE + SIDEBAR ===== */
 .article-wrap{display:none}
@@ -161,6 +180,8 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   .sidebar-item{padding:14px 18px}
   .article-hero{height:240px;font-size:5rem;margin-bottom:32px}
   .footer-grid{grid-template-columns:1fr;gap:30px}
+  .filter-bar{justify-content:flex-start;overflow-x:auto;padding-bottom:10px;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .filter-chip{flex-shrink:0}
 }
 @media(max-width:640px){
   .article-content h2{font-size:1.25rem}
@@ -168,6 +189,7 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   .article-hero{height:200px;font-size:4rem;border-radius:16px}
   .topbar .alamat{display:none}
   .read-layout{padding:0 16px}
+  .filter-chip{padding:9px 16px;font-size:.78rem}
 }
 </style>
 </head>
@@ -204,9 +226,21 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
 </header>
 
 <!-- GRID MODE -->
+<section class="filter-section" id="filterSection">
+  <div class="container">
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="filter-result" id="filterResult"></div>
+  </div>
+</section>
+
 <section class="blog-section" id="gridMode">
   <div class="container">
     <div class="blog-grid" id="blogGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🔍</div>
+      <h3>Artikel Tidak Ditemukan</h3>
+      <p>Belum ada artikel untuk kategori ini. Coba pilih kategori lainnya.</p>
+    </div>
   </div>
 </section>
 
@@ -852,34 +886,97 @@ const ARTIKEL_BLOG = [
 ================================================================ */
 const gridMode = document.getElementById("gridMode");
 const readMode = document.getElementById("readMode");
+const filterSection = document.getElementById("filterSection");
 const blogGrid = document.getElementById("blogGrid");
 const sidebarList = document.getElementById("sidebarList");
+const filterBar = document.getElementById("filterBar");
+const filterResult = document.getElementById("filterResult");
+const emptyState = document.getElementById("emptyState");
 const heroTitle = document.getElementById("heroTitle");
 const heroSub = document.getElementById("heroSub");
 const breadText = document.getElementById("breadText");
 
-function renderGrid(){
-  gridMode.style.display = "block";
-  readMode.classList.remove("active");
-  heroTitle.innerHTML = 'Blog & Panduan <em>Manasik</em>';
-  heroSub.textContent = 'Persiapkan perjalanan suci Anda dengan ilmu yang benar, tips praktis, dan informasi terkini dari tim Al-Barokah Travel.';
-  breadText.textContent = "Blog";
-  document.title = "Blog & Panduan — Al-Barokah Travel";
+let filterAktif = "all";
 
-  blogGrid.innerHTML = ARTIKEL_BLOG.map(a => `
-    <a class="blog-card" href="blog.html#${a.slug}">
-      <div class="blog-card-img" style="background:${a.warna}">
-        ${a.emoji}
-        <span class="cat-badge">${a.kategori}</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="meta"><span>📅 ${a.tanggal}</span><span>⏱️ ${a.baca}</span></div>
-        <h3>${a.judul}</h3>
-        <p>${a.ringkas}</p>
-        <span class="read-more">Baca Selengkapnya →</span>
-      </div>
-    </a>
-  `).join("");
+// Ekstrak kategori unik
+const KATEGORI_LIST = [...new Set(ARTIKEL_BLOG.map(a => a.kategori))];
+
+// Emoji mapping untuk kategori
+const KATEGORI_EMOJI = {
+  "Manasik": "📖",
+  "Kesehatan": "💪",
+  "Persiapan": "🧳",
+  "Adab": "🕌",
+  "Finansial": "💰",
+  "Berita": "📰"
+};
+
+function getJumlahByKategori(kat){
+  if(kat === "all") return ARTIKEL_BLOG.length;
+  return ARTIKEL_BLOG.filter(a => a.kategori === kat).length;
+}
+
+function renderFilterBar(){
+  let html = `
+    <button class="filter-chip ${filterAktif === 'all' ? 'active' : ''}" onclick="setFilter('all')">
+      🗂️ Semua <span class="chip-count">${ARTIKEL_BLOG.length}</span>
+    </button>
+  `;
+  
+  KATEGORI_LIST.forEach(kat => {
+    const emoji = KATEGORI_EMOJI[kat] || "📄";
+    const jumlah = getJumlahByKategori(kat);
+    html += `
+      <button class="filter-chip ${filterAktif === kat ? 'active' : ''}" onclick="setFilter('${kat}')">
+        ${emoji} ${kat} <span class="chip-count">${jumlah}</span>
+      </button>
+    `;
+  });
+  
+  filterBar.innerHTML = html;
+}
+
+function setFilter(kategori){
+  filterAktif = kategori;
+  renderFilterBar();
+  renderGrid();
+}
+
+function renderGrid(){
+  let artikel = ARTIKEL_BLOG;
+  
+  if(filterAktif !== "all"){
+    artikel = ARTIKEL_BLOG.filter(a => a.kategori === filterAktif);
+  }
+  
+  // Update result text
+  if(filterAktif === "all"){
+    filterResult.innerHTML = `Menampilkan <b>${artikel.length}</b> artikel terbaru`;
+  } else {
+    filterResult.innerHTML = `Menampilkan <b>${artikel.length}</b> artikel dalam kategori <b>${filterAktif}</b>`;
+  }
+  
+  // Show/hide empty state
+  if(artikel.length === 0){
+    emptyState.classList.add("show");
+    blogGrid.innerHTML = "";
+  } else {
+    emptyState.classList.remove("show");
+    blogGrid.innerHTML = artikel.map(a => `
+      <a class="blog-card" href="blog.html#${a.slug}">
+        <div class="blog-card-img" style="background:${a.warna}">
+          ${a.emoji}
+          <span class="cat-badge">${a.kategori}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="meta"><span>📅 ${a.tanggal}</span><span>⏱️ ${a.baca}</span></div>
+          <h3>${a.judul}</h3>
+          <p>${a.ringkas}</p>
+          <span class="read-more">Baca Selengkapnya →</span>
+        </div>
+      </a>
+    `).join("");
+  }
 }
 
 function renderSidebar(activeSlug){
@@ -900,6 +997,7 @@ function renderArticle(slug){
   if(!art){ renderGrid(); return; }
 
   gridMode.style.display = "none";
+  filterSection.style.display = "none";
   readMode.classList.add("active");
 
   heroTitle.innerHTML = '<em>Blog</em> Al-Barokah';
@@ -930,6 +1028,14 @@ function handleRoute(){
   if(hash){
     renderArticle(hash);
   } else {
+    gridMode.style.display = "block";
+    filterSection.style.display = "block";
+    readMode.classList.remove("active");
+    heroTitle.innerHTML = 'Blog & Panduan <em>Manasik</em>';
+    heroSub.textContent = 'Persiapkan perjalanan suci Anda dengan ilmu yang benar, tips praktis, dan informasi terkini dari tim Al-Barokah Travel.';
+    breadText.textContent = "Blog";
+    document.title = "Blog & Panduan — Al-Barokah Travel";
+    renderFilterBar();
     renderGrid();
   }
 }
