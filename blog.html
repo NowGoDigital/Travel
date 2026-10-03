@@ -43,7 +43,7 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 /* ===== HERO BLOG ===== */
 .blog-hero{position:relative;padding:160px 0 80px;background:linear-gradient(160deg,var(--hijau-gelap) 0%,#05372a 55%,var(--hijau-tua) 100%);color:#fff;text-align:center;overflow:hidden}
 .blog-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.18),transparent 70%)}
-.blog-hero::after{content:"";position:absolute;inset:0;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4a94e' stroke-opacity='0.06'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.blog-hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4a94e' stroke-opacity='0.06'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
 .blog-hero .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:9px 22px;border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1}
 .blog-hero h1{font-size:2.2rem;font-size:clamp(1.8rem,4vw,3rem);max-width:700px;margin:0 auto;line-height:1.25;position:relative;z-index:1}
 .blog-hero h1 em{font-style:normal;color:var(--emas)}
@@ -55,7 +55,7 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 /* ===== GRID ARTIKEL ===== */
 .blog-section{padding:70px 0 90px}
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
-.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s;cursor:pointer;border:1px solid #eef3f0}
+.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s;cursor:pointer;border:1px solid #eef3f0;display:block}
 .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
 .blog-card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
 .blog-card-img .cat-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:5px 14px;border-radius:99px;font-size:.68rem;font-weight:800;color:var(--hijau-tua);letter-spacing:.5px}
@@ -67,16 +67,47 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .blog-card-body .read-more{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.84rem;font-weight:800;color:var(--emas);transition:.3s}
 .blog-card:hover .read-more{gap:12px;color:#b8892e}
 
-/* ===== READING MODE ===== */
+/* ===== READING MODE + SIDEBAR ===== */
 .article-wrap{display:none}
 .article-wrap.active{display:block}
-.article-header{max-width:780px;margin:0 auto;padding:0 22px;text-align:center}
+
+.read-layout{display:grid;grid-template-columns:290px 1fr;gap:36px;max-width:1200px;margin:0 auto;padding:0 22px;align-items:start}
+
+/* --- Sidebar Kiri --- */
+.read-sidebar{position:sticky;top:110px;background:#fff;border-radius:20px;box-shadow:var(--shadow);border:1px solid #eef3f0;overflow:hidden;max-height:calc(100vh - 140px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(212,169,78,.3) transparent}
+.read-sidebar::-webkit-scrollbar{width:4px}
+.read-sidebar::-webkit-scrollbar-track{background:transparent}
+.read-sidebar::-webkit-scrollbar-thumb{background:rgba(212,169,78,.3);border-radius:10px}
+.read-sidebar .sb-header{padding:20px 22px 16px;border-bottom:1px solid #eef3f0;background:linear-gradient(135deg,var(--hijau-gelap),var(--hijau-tua))}
+.read-sidebar .sb-header h4{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.read-sidebar .sb-header h4::before{content:"📚";font-size:1rem}
+.read-sidebar .sb-header p{color:rgba(255,255,255,.6);font-size:.72rem;margin-top:4px}
+.sidebar-item{display:flex;align-items:flex-start;gap:12px;padding:16px 20px;border-bottom:1px solid #f2f6f4;cursor:pointer;transition:all .3s cubic-bezier(.22,.68,0,1);position:relative}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3.5px;height:55%;background:linear-gradient(180deg,var(--emas),#e8c268);border-radius:0 4px 4px 0;transition:.3s;box-shadow:0 0 12px rgba(212,169,78,.5)}
+.sidebar-item:hover{background:var(--hijau-muda);padding-left:26px}
+.sidebar-item:hover::before{transform:translateY(-50%) scaleY(1)}
+.sidebar-item.active{background:linear-gradient(135deg,var(--hijau-muda),#fff);border-left:none}
+.sidebar-item.active::before{transform:translateY(-50%) scaleY(1)}
+.sidebar-item .sb-emoji{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:.3s}
+.sidebar-item:hover .sb-emoji{transform:scale(1.1) rotate(-5deg)}
+.sidebar-item.active .sb-emoji{box-shadow:0 4px 14px rgba(212,169,78,.35)}
+.sidebar-item .sb-info{flex:1;min-width:0}
+.sidebar-item .sb-cat{font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--emas);display:block;margin-bottom:3px}
+.sidebar-item .sb-title{font-size:.82rem;font-weight:700;color:var(--hijau-gelap);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:.3s}
+.sidebar-item:hover .sb-title{color:var(--hijau)}
+.sidebar-item.active .sb-title{color:var(--hijau)}
+.sidebar-item .sb-date{font-size:.68rem;color:var(--teks-2);margin-top:4px;display:block}
+
+/* --- Konten Artikel --- */
+.read-content{min-width:0}
+.article-header{text-align:center;margin-bottom:36px}
 .article-header .cat-badge{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:18px}
-.article-header h1{font-size:2rem;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--hijau-gelap);line-height:1.3;margin-bottom:16px}
+.article-header h1{font-size:2rem;font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--hijau-gelap);line-height:1.3;margin-bottom:16px}
 .article-header .meta-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.82rem;color:var(--teks-2)}
 .article-header .meta-row span{display:flex;align-items:center;gap:6px}
-.article-hero{max-width:860px;margin:36px auto 0;border-radius:24px;overflow:hidden;height:340px;display:flex;align-items:center;justify-content:center;font-size:7rem;box-shadow:var(--shadow-lg)}
-.article-content{max-width:740px;margin:0 auto;padding:44px 22px 80px}
+.article-hero{border-radius:24px;overflow:hidden;height:320px;display:flex;align-items:center;justify-content:center;font-size:7rem;box-shadow:var(--shadow-lg);margin-bottom:40px}
+.article-content{max-width:740px;margin:0 auto}
 .article-content h2{font-size:1.45rem;color:var(--hijau-gelap);margin:40px 0 16px;padding-left:18px;border-left:4px solid var(--emas);line-height:1.35}
 .article-content h3{font-size:1.15rem;color:var(--hijau-tua);margin:30px 0 12px}
 .article-content p{font-size:.95rem;color:#3d4a44;margin-bottom:16px}
@@ -117,11 +148,18 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
 .wa-float:hover{transform:scale(1.1)}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .read-layout{grid-template-columns:250px 1fr;gap:24px}
+}
 @media(max-width:900px){
   .nav-links{display:none}
   .blog-hero{padding:140px 0 60px}
   .blog-grid{grid-template-columns:1fr}
-  .article-hero{height:240px;font-size:5rem;margin-top:28px}
+  .read-layout{grid-template-columns:1fr;gap:0}
+  .read-sidebar{position:relative;top:0;max-height:none;margin-bottom:32px;border-radius:16px}
+  .read-sidebar .sb-header{padding:16px 20px 12px}
+  .sidebar-item{padding:14px 18px}
+  .article-hero{height:240px;font-size:5rem;margin-bottom:32px}
   .footer-grid{grid-template-columns:1fr;gap:30px}
 }
 @media(max-width:640px){
@@ -129,6 +167,7 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   .article-header h1{font-size:1.5rem}
   .article-hero{height:200px;font-size:4rem;border-radius:16px}
   .topbar .alamat{display:none}
+  .read-layout{padding:0 16px}
 }
 </style>
 </head>
@@ -171,26 +210,42 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   </div>
 </section>
 
-<!-- READING MODE -->
+<!-- READING MODE (dengan Sidebar) -->
 <section class="blog-section article-wrap" id="readMode">
-  <div class="article-header">
-    <span class="cat-badge" id="artCat"></span>
-    <h1 id="artTitle"></h1>
-    <div class="meta-row">
-      <span>📅 <b id="artDate"></b></span>
-      <span>⏱️ <b id="artRead"></b></span>
-      <span>✍️ Tim Al-Barokah</span>
+  <div class="read-layout">
+    
+    <!-- SIDEBAR KIRI -->
+    <aside class="read-sidebar" id="readSidebar">
+      <div class="sb-header">
+        <h4>Daftar Artikel</h4>
+        <p>Pilih artikel lainnya untuk dibaca</p>
+      </div>
+      <div id="sidebarList"></div>
+    </aside>
+
+    <!-- KONTEN ARTIKEL -->
+    <div class="read-content">
+      <div class="article-header">
+        <span class="cat-badge" id="artCat"></span>
+        <h1 id="artTitle"></h1>
+        <div class="meta-row">
+          <span>📅 <b id="artDate"></b></span>
+          <span>⏱️ <b id="artRead"></b></span>
+          <span>✍️ Tim Al-Barokah</span>
+        </div>
+      </div>
+      <div class="article-hero" id="artHero"></div>
+      <div class="article-content">
+        <button class="back-btn" onclick="kembaliKeGrid()">← Kembali ke Semua Artikel</button>
+        <div id="artBody"></div>
+        <div class="article-cta">
+          <h3>🕋 Siap Wujudkan Niat ke Baitullah?</h3>
+          <p>Konsultasikan rencana umroh Anda secara gratis. Tim kami siap membantu memilih paket terbaik sesuai budget & jadwal Anda.</p>
+          <a href="index.html#daftar">Konsultasi Gratis Sekarang →</a>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="article-hero" id="artHero"></div>
-  <div class="article-content">
-    <button class="back-btn" onclick="kembaliKeGrid()">← Kembali ke Semua Artikel</button>
-    <div id="artBody"></div>
-    <div class="article-cta">
-      <h3>🕋 Siap Wujudkan Niat ke Baitullah?</h3>
-      <p>Konsultasikan rencana umroh Anda secara gratis. Tim kami siap membantu memilih paket terbaik sesuai budget & jadwal Anda.</p>
-      <a href="index.html#daftar">Konsultasi Gratis Sekarang →</a>
-    </div>
+
   </div>
 </section>
 
@@ -798,6 +853,7 @@ const ARTIKEL_BLOG = [
 const gridMode = document.getElementById("gridMode");
 const readMode = document.getElementById("readMode");
 const blogGrid = document.getElementById("blogGrid");
+const sidebarList = document.getElementById("sidebarList");
 const heroTitle = document.getElementById("heroTitle");
 const heroSub = document.getElementById("heroSub");
 const breadText = document.getElementById("breadText");
@@ -826,6 +882,19 @@ function renderGrid(){
   `).join("");
 }
 
+function renderSidebar(activeSlug){
+  sidebarList.innerHTML = ARTIKEL_BLOG.map(a => `
+    <a href="blog.html#${a.slug}" class="sidebar-item ${a.slug === activeSlug ? 'active' : ''}">
+      <div class="sb-emoji" style="background:${a.warna}">${a.emoji}</div>
+      <div class="sb-info">
+        <span class="sb-cat">${a.kategori}</span>
+        <span class="sb-title">${a.judul}</span>
+        <span class="sb-date">📅 ${a.tanggal}</span>
+      </div>
+    </a>
+  `).join("");
+}
+
 function renderArticle(slug){
   const art = ARTIKEL_BLOG.find(x => x.slug === slug);
   if(!art){ renderGrid(); return; }
@@ -846,6 +915,7 @@ function renderArticle(slug){
   document.getElementById("artHero").textContent = art.emoji;
   document.getElementById("artBody").innerHTML = art.konten;
 
+  renderSidebar(slug);
   window.scrollTo({top: 0, behavior: "smooth"});
 }
 
