@@ -23,14 +23,12 @@ img{max-width:100%;display:block}
 .container{max-width:1180px;margin:0 auto;padding:0 22px}
 h1,h2,h3{font-family:'Playfair Display',Georgia,'Times New Roman',serif}
 
-/* ===== TOPBAR ===== */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:101;height:42px;background:var(--hijau-gelap);color:#b9cfc4;font-size:.78rem;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
 .topbar a{color:#b9cfc4;transition:.25s}
 .topbar a:hover{color:var(--emas)}
 .topbar .izin{background:rgba(212,169,78,.15);border:1px solid rgba(212,169,78,.4);color:var(--emas);padding:3px 12px;border-radius:99px;font-weight:700;font-size:.72rem}
 
-/* ===== NAVBAR ===== */
 nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,255,.98);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:12px 0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 22px}
 .logo{font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:800;color:var(--hijau-gelap)}
@@ -40,7 +38,6 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .nav-links a:hover{color:var(--emas)}
 .nav-links .btn-nav{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08!important;padding:10px 24px;border-radius:99px}
 
-/* ===== HERO BLOG ===== */
 .blog-hero{position:relative;padding:160px 0 80px;background:linear-gradient(160deg,var(--hijau-gelap) 0%,#05372a 55%,var(--hijau-tua) 100%);color:#fff;text-align:center;overflow:hidden}
 .blog-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,78,.18),transparent 70%)}
 .blog-hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4a94e' stroke-opacity='0.06'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
@@ -52,7 +49,6 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .blog-hero .breadcrumb a{color:var(--emas);transition:.25s}
 .blog-hero .breadcrumb a:hover{text-decoration:underline}
 
-/* ===== FILTER KATEGORI ===== */
 .filter-section{padding:40px 0 0}
 .filter-bar{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 .filter-chip{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:99px;border:1.5px solid #e2eae6;background:#fff;font-size:.84rem;font-weight:700;color:var(--teks-2);cursor:pointer;transition:all .3s cubic-bezier(.22,.68,0,1);font-family:inherit}
@@ -60,15 +56,13 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .filter-chip.active{background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;border-color:var(--emas);box-shadow:0 6px 24px rgba(212,169,78,.4)}
 .filter-chip .chip-count{background:rgba(0,0,0,.08);padding:2px 8px;border-radius:99px;font-size:.7rem;font-weight:800}
 .filter-chip.active .chip-count{background:rgba(0,0,0,.12)}
-.filter-result{ text-align:center;margin-top:20px;font-size:.85rem;color:var(--teks-2)}
+.filter-result{text-align:center;margin-top:20px;font-size:.85rem;color:var(--teks-2)}
 .filter-result b{color:var(--hijau)}
 
-/* ===== GRID ARTIKEL ===== */
 .blog-section{padding:50px 0 90px}
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
-.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s,opacity .4s;cursor:pointer;border:1px solid #eef3f0;display:block}
+.blog-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.68,0,1),box-shadow .4s;cursor:pointer;border:1px solid #eef3f0;display:block}
 .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
-.blog-card.hidden{display:none}
 .blog-card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
 .blog-card-img .cat-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:5px 14px;border-radius:99px;font-size:.68rem;font-weight:800;color:var(--hijau-tua);letter-spacing:.5px}
 .blog-card-body{padding:24px}
@@ -79,20 +73,16 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .blog-card-body .read-more{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.84rem;font-weight:800;color:var(--emas);transition:.3s}
 .blog-card:hover .read-more{gap:12px;color:#b8892e}
 
-/* ===== EMPTY STATE ===== */
 .empty-state{display:none;text-align:center;padding:60px 20px}
 .empty-state.show{display:block}
 .empty-state .empty-icon{font-size:4rem;margin-bottom:16px}
 .empty-state h3{font-size:1.3rem;color:var(--hijau-gelap);margin-bottom:8px}
 .empty-state p{color:var(--teks-2);font-size:.9rem}
 
-/* ===== READING MODE + SIDEBAR ===== */
 .article-wrap{display:none}
 .article-wrap.active{display:block}
-
 .read-layout{display:grid;grid-template-columns:290px 1fr;gap:36px;max-width:1200px;margin:0 auto;padding:0 22px;align-items:start}
 
-/* --- Sidebar Kiri --- */
 .read-sidebar{position:sticky;top:110px;background:#fff;border-radius:20px;box-shadow:var(--shadow);border:1px solid #eef3f0;overflow:hidden;max-height:calc(100vh - 140px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(212,169,78,.3) transparent}
 .read-sidebar::-webkit-scrollbar{width:4px}
 .read-sidebar::-webkit-scrollbar-track{background:transparent}
@@ -106,7 +96,7 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .sidebar-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3.5px;height:55%;background:linear-gradient(180deg,var(--emas),#e8c268);border-radius:0 4px 4px 0;transition:.3s;box-shadow:0 0 12px rgba(212,169,78,.5)}
 .sidebar-item:hover{background:var(--hijau-muda);padding-left:26px}
 .sidebar-item:hover::before{transform:translateY(-50%) scaleY(1)}
-.sidebar-item.active{background:linear-gradient(135deg,var(--hijau-muda),#fff);border-left:none}
+.sidebar-item.active{background:linear-gradient(135deg,var(--hijau-muda),#fff)}
 .sidebar-item.active::before{transform:translateY(-50%) scaleY(1)}
 .sidebar-item .sb-emoji{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:.3s}
 .sidebar-item:hover .sb-emoji{transform:scale(1.1) rotate(-5deg)}
@@ -118,7 +108,6 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .sidebar-item.active .sb-title{color:var(--hijau)}
 .sidebar-item .sb-date{font-size:.68rem;color:var(--teks-2);margin-top:4px;display:block}
 
-/* --- Konten Artikel --- */
 .read-content{min-width:0}
 .article-header{text-align:center;margin-bottom:36px}
 .article-header .cat-badge{display:inline-block;background:var(--emas-muda);color:#8a6a1f;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:18px}
@@ -149,7 +138,6 @@ nav{position:fixed;top:42px;left:0;right:0;z-index:100;background:rgba(255,255,2
 .article-cta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#e8c268,var(--emas));color:#3d2e08;padding:14px 32px;border-radius:99px;font-weight:800;font-size:.9rem;transition:.3s}
 .article-cta a:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(212,169,78,.5)}
 
-/* ===== FOOTER ===== */
 footer{background:var(--hijau-gelap);color:#b9cfc4;padding:50px 0 0}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px}
 footer h4{color:#fff;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem}
@@ -159,14 +147,12 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
 .f-links a:hover{color:var(--emas)}
 .copy{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;text-align:center;font-size:.78rem;opacity:.65}
 
-/* ===== WA FLOAT ===== */
 .wa-float{position:fixed;bottom:26px;right:26px;z-index:150;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(37,211,102,.55);transition:.3s;background:#25d366}
 .wa-float svg{width:28px;height:28px;fill:#fff}
 .wa-float::before{content:"";position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;border-radius:50%;border:2px solid #25d366;animation:pulse 2s infinite}
 @keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35);opacity:0}}
 .wa-float:hover{transform:scale(1.1)}
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .read-layout{grid-template-columns:250px 1fr;gap:24px}
 }
@@ -225,7 +211,7 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   <div class="breadcrumb"><a href="index.html">Beranda</a> &nbsp;›&nbsp; <span id="breadText">Blog</span></div>
 </header>
 
-<!-- GRID MODE -->
+<!-- FILTER KATEGORI -->
 <section class="filter-section" id="filterSection">
   <div class="container">
     <div class="filter-bar" id="filterBar"></div>
@@ -233,6 +219,7 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   </div>
 </section>
 
+<!-- GRID ARTIKEL -->
 <section class="blog-section" id="gridMode">
   <div class="container">
     <div class="blog-grid" id="blogGrid"></div>
@@ -244,11 +231,10 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
   </div>
 </section>
 
-<!-- READING MODE (dengan Sidebar) -->
+<!-- READING MODE + SIDEBAR -->
 <section class="blog-section article-wrap" id="readMode">
   <div class="read-layout">
     
-    <!-- SIDEBAR KIRI -->
     <aside class="read-sidebar" id="readSidebar">
       <div class="sb-header">
         <h4>Daftar Artikel</h4>
@@ -257,7 +243,6 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
       <div id="sidebarList"></div>
     </aside>
 
-    <!-- KONTEN ARTIKEL -->
     <div class="read-content">
       <div class="article-header">
         <span class="cat-badge" id="artCat"></span>
@@ -313,7 +298,6 @@ footer .logo{color:#fff;font-size:1.3rem;margin-bottom:12px;display:block}
 <a class="wa-float" href="https://wa.me/6281234567890?text=Assalamu'alaikum,%20saya%20ingin%20konsultasi%20paket%20umroh.%20🙏" target="_blank" aria-label="Chat WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.7-.4z"/></svg>
 </a>
-
 <script>
 /* ================================================================
    📝 DATA ARTIKEL LENGKAP
@@ -329,15 +313,15 @@ const ARTIKEL_BLOG = [
     baca: "8 menit baca",
     ringkas: "Urutan thawaf, sa'i, dan tahallul disertai doa-doa utama yang perlu dihafal jamaah.",
     konten: `
-      <p>Alhamdulillah, Anda telah memantapkan niat untuk berkunjung ke Baitullah. Bagi jamaah yang pertama kali melaksanakan umroh, memahami urutan dan rukun ibadah adalah kunci agar pelaksanaan berjalan khusyuk dan sesuai tuntunan. Artikel ini akan membahas secara lengkap rangkaian manasik umroh dari awal hingga akhir.</p>
+      <p>Alhamdulillah, Anda telah memantapkan niat untuk berkunjung ke Baitullah. Bagi jamaah yang pertama kali melaksanakan umroh, memahami urutan dan rukun ibadah adalah kunci agar pelaksanaan berjalan khusyuk dan sesuai tuntunan.</p>
 
       <h2>Apa Itu Umroh?</h2>
-      <p>Umroh secara bahasa berarti "berkunjung". Secara istilah syar'i, umroh adalah berkunjung ke Ka'bah di Masjidil Haram untuk melaksanakan serangkaian ibadah dengan syarat dan rukun tertentu. Berbeda dengan haji, umroh dapat dilaksanakan kapan saja sepanjang tahun dan tidak terikat waktu tertentu.</p>
+      <p>Umroh secara bahasa berarti "berkunjung". Secara istilah syar'i, umroh adalah berkunjung ke Ka'bah di Masjidil Haram untuk melaksanakan serangkaian ibadah dengan syarat dan rukun tertentu. Berbeda dengan haji, umroh dapat dilaksanakan kapan saja sepanjang tahun.</p>
 
       <div class="quote">"Umroh ke umroh berikutnya adalah penghapus dosa di antara keduanya, dan haji yang mabrur tidak ada balasannya kecuali surga." — HR. Bukhari & Muslim</div>
 
       <h2>Rukun Umroh yang Wajib Dipenuhi</h2>
-      <p>Rukun adalah bagian dari ibadah yang <b>tidak boleh ditinggalkan</b>. Jika salah satu rukun tidak dilaksanakan, maka umroh tidak sah. Berikut 5 rukun umroh:</p>
+      <p>Rukun adalah bagian dari ibadah yang <b>tidak boleh ditinggalkan</b>. Berikut 5 rukun umroh:</p>
       <ol>
         <li><b>Ihram</b> — Niat memasuki ritual umroh dari miqat</li>
         <li><b>Thawaf</b> — Mengelilingi Ka'bah sebanyak 7 putaran</li>
@@ -347,11 +331,11 @@ const ARTIKEL_BLOG = [
       </ol>
 
       <h2>Langkah 1: Ihram dari Miqat</h2>
-      <p>Ihram adalah keadaan suci yang ditandai dengan niat dan pemakaian pakaian ihram. Bagi jamaah dari Indonesia yang tiba di Madinah terlebih dahulu, miqat biasanya dilakukan di <b>Bir Ali (Dzul Hulaifah)</b>. Sementara yang langsung ke Makkah, miqat bisa di pesawat pada titik tertentu atau di <b>Rabigh</b>.</p>
+      <p>Ihram adalah keadaan suci yang ditandai dengan niat dan pemakaian pakaian ihram. Bagi jamaah dari Indonesia yang tiba di Madinah terlebih dahulu, miqat biasanya dilakukan di <b>Bir Ali (Dzul Hulaifah)</b>.</p>
 
       <div class="highlight-box">
         <b>💡 Tips Penting Saat Ihram:</b>
-        <p>Mandi sunnah sebelum ihram, potong kuku & bulu yang perlu, pakai wewangian di badan (sebelum niat), lalu ucapkan niat: <i>"Labbaik 'Umrah"</i>. Setelah niat, berlaku larangan ihram seperti tidak boleh memakai pakaian berjahit (pria), tidak boleh memakai wewangian, tidak boleh memotong kuku/rambut.</p>
+        <p>Mandi sunnah sebelum ihram, potong kuku & bulu yang perlu, pakai wewangian di badan (sebelum niat), lalu ucapkan niat: <i>"Labbaik 'Umrah"</i>. Setelah niat, berlaku larangan ihram.</p>
       </div>
 
       <h2>Langkah 2: Thawaf Mengelilingi Ka'bah</h2>
@@ -364,34 +348,32 @@ const ARTIKEL_BLOG = [
         <li>Ka'bah berada di sebelah kiri</li>
         <li>Dimulai dan diakhiri di Hajar Aswad</li>
         <li>7 putaran sempurna</li>
-        <li>Dilakukan di dalam Masjidil Haram</li>
       </ul>
 
       <h3>Doa Utama Saat Thawaf:</h3>
-      <p>Tidak ada doa khusus yang wajib di setiap putaran. Anda boleh berdoa apa saja, berdzikir, atau membaca Al-Quran. Namun yang paling utama adalah doa sapu jagat:</p>
       <div class="quote">"Rabbana aatina fid-dunya hasanah wa fil-aakhirati hasanah wa qinaa 'adzaaban-naar."<br><small>(Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka)</small></div>
 
       <h2>Langkah 3: Shalat di Belakang Maqam Ibrahim</h2>
-      <p>Setelah thawaf, disunnahkan shalat 2 rakaat di belakang <b>Maqam Ibrahim</b> jika memungkinkan. Jika ramai, boleh shalat di area mana saja dalam Masjidil Haram. Rakaat pertama baca Al-Fatihah + Al-Kafirun, rakaat kedua baca Al-Fatihah + Al-Ikhlas.</p>
+      <p>Setelah thawaf, disunnahkan shalat 2 rakaat di belakang <b>Maqam Ibrahim</b> jika memungkinkan. Rakaat pertama baca Al-Fatihah + Al-Kafirun, rakaat kedua baca Al-Fatihah + Al-Ikhlas.</p>
 
       <h2>Langkah 4: Sa'i antara Shafa dan Marwah</h2>
-      <p>Sa'i dilaksanakan dengan berjalan dari <b>Bukit Shafa</b> ke <b>Bukit Marwah</b> sebanyak 7 kali perjalanan. Perjalanan dari Shafa ke Marwah dihitung 1 kali, dan sebaliknya juga 1 kali. Total jarak sekitar 450 meter sekali jalan.</p>
+      <p>Sa'i dilaksanakan dengan berjalan dari <b>Bukit Shafa</b> ke <b>Bukit Marwah</b> sebanyak 7 kali perjalanan. Total jarak sekitar 450 meter sekali jalan.</p>
 
       <div class="highlight-box">
         <b>🏃 Tips Sa'i Nyaman:</b>
-        <p>Gunakan sepatu/sandal yang nyaman, pastikan wudhu tetap terjaga (ada toilet di area sa'i), dan tidak perlu terburu-buru. Di antara dua lampu hijau, jamaah pria disunnahkan berlari kecil. Perbanyak dzikir dan doa selama sa'i.</p>
+        <p>Gunakan sepatu/sandal yang nyaman, pastikan wudhu tetap terjaga, dan tidak perlu terburu-buru. Di antara dua lampu hijau, jamaah pria disunnahkan berlari kecil.</p>
       </div>
 
       <h2>Langkah 5: Tahallul (Bercukur)</h2>
-      <p>Rukun terakhir adalah <b>tahallul</b>, yaitu mencukur atau memotong rambut minimal 3 helai. Bagi pria, lebih utama mencukur habis (halq). Bagi wanita, cukup memotong ujung rambut sepanjang ruas jari. Setelah tahallul, seluruh larangan ihram telah halal kembali.</p>
+      <p>Rukun terakhir adalah <b>tahallul</b>, yaitu mencukur atau memotong rambut minimal 3 helai. Bagi pria, lebih utama mencukur habis (halq). Bagi wanita, cukup memotong ujung rambut sepanjang ruas jari.</p>
 
       <h2>Kesalahan Umum yang Perlu Dihindari</h2>
       <table>
         <tr><th>Kesalahan</th><th>Solusi</th></tr>
-        <tr><td>Thawaf tanpa wudhu</td><td>Pastikan wudhu sebelum mulai, jika batal segera perbarui</td></tr>
-        <tr><td>Sa'i kurang dari 7 kali</td><td>Hitung dengan teliti, gunakan tasbih atau jari</td></tr>
-        <tr><td>Melanggar larangan ihram</td><td>Segera istighfar, konsultasi pembimbing untuk fidyah</td></tr>
-        <tr><td>Terlalu fokus foto</td><td>Utamakan ibadah, foto seperlunya saja</td></tr>
+        <tr><td>Thawaf tanpa wudhu</td><td>Pastikan wudhu sebelum mulai</td></tr>
+        <tr><td>Sa'i kurang dari 7 kali</td><td>Hitung dengan teliti</td></tr>
+        <tr><td>Melanggar larangan ihram</td><td>Segera istighfar, konsultasi pembimbing</td></tr>
+        <tr><td>Terlalu fokus foto</td><td>Utamakan ibadah</td></tr>
       </table>
 
       <h2>Penutup: Niatkan dengan Ikhlas</h2>
@@ -408,10 +390,10 @@ const ARTIKEL_BLOG = [
     baca: "6 menit baca",
     ringkas: "Persiapan olahraga ringan, pola makan, dan vaksin meningitis agar tubuh siap beribadah.",
     konten: `
-      <p>Ibadah umroh menuntut stamina fisik yang prima. Thawaf, sa'i, ziarah, dan ibadah di masjid membutuhkan energi besar, terutama di tengah cuaca Arab Saudi yang berbeda jauh dengan Indonesia. Berikut panduan lengkap menjaga kesehatan sebelum keberangkatan.</p>
+      <p>Ibadah umroh menuntut stamina fisik yang prima. Thawaf, sa'i, ziarah, dan ibadah di masjid membutuhkan energi besar, terutama di tengah cuaca Arab Saudi yang berbeda jauh dengan Indonesia.</p>
 
       <h2>Mulai Persiapan 2-3 Bulan Sebelum Berangkat</h2>
-      <p>Tubuh butuh waktu untuk beradaptasi dengan peningkatan aktivitas fisik. Jangan menunggu seminggu sebelum berangkat baru mulai olahraga. Mulailah program latihan ringan secara konsisten:</p>
+      <p>Tubuh butuh waktu untuk beradaptasi dengan peningkatan aktivitas fisik. Mulailah program latihan ringan secara konsisten:</p>
 
       <h3>Program Latihan Ringan yang Disarankan:</h3>
       <ol>
@@ -423,18 +405,16 @@ const ARTIKEL_BLOG = [
 
       <div class="highlight-box">
         <b>🎯 Target Realistis:</b>
-        <p>Di Tanah Suci, Anda bisa berjalan 10.000-20.000 langkah per hari. Jika saat ini Anda jarang bergerak, mulai dari 3.000 langkah dan tambah 1.000 langkah setiap minggu hingga terbiasa.</p>
+        <p>Di Tanah Suci, Anda bisa berjalan 10.000-20.000 langkah per hari. Jika saat ini Anda jarang bergerak, mulai dari 3.000 langkah dan tambah 1.000 langkah setiap minggu.</p>
       </div>
 
       <h2>Vaksinasi Wajib & Sunnah</h2>
       <p>Pemerintah Arab Saudi mewajibkan beberapa vaksin bagi jamaah umroh:</p>
       <ul>
         <li><b>Vaksin Meningitis (ACWY)</b> — Wajib, dilakukan minimal 10 hari sebelum berangkat</li>
-        <li><b>Vaksin Influenza</b> — Sangat disarankan, mengingat jamaah berkumpul dari berbagai negara</li>
+        <li><b>Vaksin Influenza</b> — Sangat disarankan</li>
         <li><b>Vaksin Covid-19</b> — Sesuai ketentuan terbaru Saudi</li>
       </ul>
-
-      <p>Tim Al-Barokah Travel akan membantu koordinasi jadwal vaksinasi dan pengurusan sertifikat vaksin (ICV) yang diperlukan untuk pengajuan visa.</p>
 
       <h2>Pola Makan & Hidrasi</h2>
       <h3>2 Minggu Sebelum Berangkat:</h3>
@@ -445,14 +425,6 @@ const ARTIKEL_BLOG = [
         <li>Tidur cukup 7-8 jam untuk menjaga imunitas</li>
       </ul>
 
-      <h3>Saat di Tanah Suci:</h3>
-      <ul>
-        <li>Minum air zamzam & air mineral secara rutin (jangan tunggu haus)</li>
-        <li>Makan teratur 3x sehari dari katering</li>
-        <li>Hindari minuman terlalu dingin jika tenggorokan sensitif</li>
-        <li>Bawa kurma sebagai energi cepat saat ibadah</li>
-      </ul>
-
       <h2>Obat-obatan Pribadi yang Perlu Dibawa</h2>
       <table>
         <tr><th>Kategori</th><th>Contoh</th></tr>
@@ -461,13 +433,9 @@ const ARTIKEL_BLOG = [
         <tr><td>Lambung</td><td>Antasida, obat maag</td></tr>
         <tr><td>Diare</td><td>Oralit, attapulgite</td></tr>
         <tr><td>Luka & iritasi</td><td>Plester, antiseptik, salep luka</td></tr>
-        <tr><td>Alergi</td><td>Antihistamin (jika punya riwayat alergi)</td></tr>
       </table>
 
       <div class="quote">"Sesungguhnya tubuhmu memiliki hak atas dirimu." — HR. Bukhari & Muslim</div>
-
-      <h2>Pemeriksaan Kesehatan Pra-Keberangkatan</h2>
-      <p>Al-Barokah Travel menyediakan <b>medical check-up ringan</b> sebelum keberangkatan yang meliputi: tekanan darah, gula darah, dan konsultasi dokter. Bagi jamaah dengan kondisi khusus (diabetes, hipertensi, jantung), kami pastikan ada pendampingan khusus selama perjalanan.</p>
 
       <h2>Menghadapi Cuaca Arab Saudi</h2>
       <p>Suhu di Makkah & Madinah bisa mencapai 40-45°C di musim panas, atau 15-25°C di musim dingin. Tips adaptasi:</p>
@@ -479,7 +447,7 @@ const ARTIKEL_BLOG = [
       </ul>
 
       <h2>Penutup</h2>
-      <p>Tubuh yang sehat adalah modal utama untuk beribadah dengan khusyuk. Persiapkan fisik Anda dari sekarang, dan biarkan kami mengurus sisanya. Tim medis Al-Barokah siap mendampingi Anda selama perjalanan. Semoga sehat selalu hingga hari keberangkatan! 🤲</p>
+      <p>Tubuh yang sehat adalah modal utama untuk beribadah dengan khusyuk. Persiapkan fisik Anda dari sekarang, dan biarkan kami mengurus sisanya. Tim medis Al-Barokah siap mendampingi Anda selama perjalanan. 🤲</p>
     `
   },
   {
@@ -507,7 +475,7 @@ const ARTIKEL_BLOG = [
 
       <div class="highlight-box">
         <b>🔐 Tips Keamanan Dokumen:</b>
-        <p>Simpan semua dokumen dalam tas paspor khusus yang selalu menempel di badan. Scan/foto semua dokumen dan simpan di email atau cloud sebagai backup. Al-Barokah juga menyimpan salinan digital seluruh dokumen jamaah.</p>
+        <p>Simpan semua dokumen dalam tas paspor khusus yang selalu menempel di badan. Scan/foto semua dokumen dan simpan di email atau cloud sebagai backup.</p>
       </div>
 
       <h2>👕 Pakaian & Perlengkapan Ibadah</h2>
@@ -529,7 +497,6 @@ const ARTIKEL_BLOG = [
         <li>Inner/jilbab dalaman</li>
         <li>Kaos kaki tebal 3-4 pasang</li>
         <li>Sandal nyaman untuk ke masjid</li>
-        <li>Pakaian tidur yang sopan & nyaman</li>
       </ul>
 
       <h2>🧴 Perlengkapan Mandi & Perawatan</h2>
@@ -542,11 +509,6 @@ const ARTIKEL_BLOG = [
         <li>Tissue basah & kering</li>
         <li>Gunting kecil (untuk tahallul mandiri, simpan di bagasi)</li>
       </ul>
-
-      <div class="highlight-box">
-        <b>⚠️ Perhatikan Aturan Cairan Kabin:</b>
-        <p>Cairan di tas kabin maksimal 100ml per botol. Simpan cairan >100ml di koper bagasi. Al-Barokah menyediakan koper kabin & bagasi dengan ukuran sesuai standar maskapai.</p>
-      </div>
 
       <h2>💊 Obat-obatan & Kesehatan</h2>
       <ul>
@@ -564,15 +526,7 @@ const ARTIKEL_BLOG = [
         <li>Smartphone + charger</li>
         <li>Power bank (maks 20.000 mAh untuk penerbangan)</li>
         <li>Universal travel adapter (Saudi pakai tipe G/British)</li>
-        <li>Kamera (opsional)</li>
         <li>Earphone untuk mendengarkan kajian selama penerbangan</li>
-      </ul>
-
-      <h2>💰 Keuangan & Uang Saku</h2>
-      <ul>
-        <li>Riyal Saudi (SAR) secukupnya untuk oleh-oleh & sedekah</li>
-        <li>Kartu debit/kredit berlogo Visa/Mastercard</li>
-        <li>Dompet kecil untuk harian</li>
       </ul>
 
       <div class="quote">"Persiapan yang baik adalah separuh dari kesuksesan." — Pepatah Arab</div>
@@ -611,7 +565,7 @@ const ARTIKEL_BLOG = [
     baca: "6 menit baca",
     ringkas: "Etika masuk masjid dan menjaga kekhusyukan selama beribadah di Tanah Suci.",
     konten: `
-      <p>Masjidil Haram dan Masjid Nabawi adalah dua masjid paling mulia di muka bumi. Beribadah di dalamnya memiliki keutamaan luar biasa — satu shalat di Masjidil Haram setara 100.000 shalat di masjid lain. Namun, keutamaan besar ini juga menuntut adab yang tinggi. Berikut panduan adab yang perlu diperhatikan setiap jamaah.</p>
+      <p>Masjidil Haram dan Masjid Nabawi adalah dua masjid paling mulia di muka bumi. Beribadah di dalamnya memiliki keutamaan luar biasa — satu shalat di Masjidil Haram setara 100.000 shalat di masjid lain.</p>
 
       <div class="quote">"Shalat di masjidku ini (Nabawi) lebih utama dari 1.000 shalat di masjid lainnya, kecuali Masjidil Haram. Dan shalat di Masjidil Haram lebih utama dari 100.000 shalat di masjid lainnya." — HR. Ahmad & Ibnu Majah</div>
 
@@ -619,9 +573,7 @@ const ARTIKEL_BLOG = [
       <ol>
         <li><b>Berwudhu dengan sempurna</b> dari hotel agar tidak perlu antre di tempat wudhu masjid</li>
         <li><b>Memakai pakaian terbaik</b> yang bersih, sopan, dan menutup aurat</li>
-        <li><b>Membaca doa masuk masjid:</b><br>
-        <i>"Allahummaftahli abwaba rahmatik"</i><br>
-        <small>(Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu)</small></li>
+        <li><b>Membaca doa masuk masjid:</b><br><i>"Allahummaftahli abwaba rahmatik"</i><br><small>(Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu)</small></li>
         <li><b>Mendahulukan kaki kanan</b> saat melangkah masuk</li>
         <li><b>Tidak terburu-buru</b> — berjalan dengan tenang dan khusyuk</li>
       </ol>
@@ -633,14 +585,12 @@ const ARTIKEL_BLOG = [
         <li>Rendahkan suara, hindari obrolan yang tidak perlu</li>
         <li>Fokus pada ibadah: shalat, thawaf, tilawah, atau dzikir</li>
         <li>Hindari bermain ponsel untuk media sosial</li>
-        <li>Jika perlu berbicara, gunakan suara pelan</li>
       </ul>
 
       <h3>2. Hormati Jamaah Lain</h3>
       <ul>
         <li>Tidak menyerobot shaf atau tempat orang lain</li>
         <li>Berikan ruang bagi jamaah yang baru datang</li>
-        <li>Tidak melangkahi pundak orang yang sedang duduk (terutama saat Jumat)</li>
         <li>Sabar dalam antrean (wudhu, lift, pintu keluar)</li>
       </ul>
 
@@ -648,39 +598,33 @@ const ARTIKEL_BLOG = [
       <ul>
         <li>Tidak membuang sampah sembarangan</li>
         <li>Tidak meludah di lantai masjid</li>
-        <li>Jika membawa makanan ringan, pastikan tidak mengotori</li>
         <li>Gunakan toilet dengan bersih</li>
       </ul>
 
       <div class="highlight-box">
         <b>📸 Tentang Foto & Video:</b>
-        <p>Foto seperlunya saja. Jangan menghabiskan waktu ibadah untuk berfoto. Hindari selfie dengan membelakangi Ka'bah atau mengganggu jamaah lain. Di Raudhah, dilarang mengambil foto/video oleh petugas. Hormati aturan ini.</p>
+        <p>Foto seperlunya saja. Jangan menghabiskan waktu ibadah untuk berfoto. Hindari selfie dengan membelakangi Ka'bah atau mengganggu jamaah lain. Di Raudhah, dilarang mengambil foto/video oleh petugas.</p>
       </div>
 
       <h2>Adab Khusus di Masjidil Haram</h2>
       <ul>
-        <li><b>Saat Thawaf:</b> Tidak berbicara kecuali dzikir/doa, tidak menyerobot orang lain, jaga pandangan dari aurat lawan jenis</li>
+        <li><b>Saat Thawaf:</b> Tidak berbicara kecuali dzikir/doa, tidak menyerobot orang lain</li>
         <li><b>Saat melihat Ka'bah:</b> Berhenti sejenak, angkat tangan, dan berdoa karena ini waktu mustajab</li>
-        <li><b>Di Multazam:</b> Jika memungkinkan, tempelkan dada, pipi, dan tangan sambil berdoa. Namun jangan memaksakan diri jika sangat ramai</li>
-        <li><b>Di Hijr Ismail:</b> Jika bisa masuk, shalat 2 rakaat. Tapi jangan berebut hingga menyakiti orang lain</li>
+        <li><b>Di Multazam:</b> Jika memungkinkan, tempelkan dada, pipi, dan tangan sambil berdoa</li>
       </ul>
 
       <h2>Adab Khusus di Masjid Nabawi</h2>
       <ul>
-        <li><b>Salam kepada Rasulullah ﷺ:</b> Saat melewati Raudhah/makam, ucapkan salam dengan sopan dan tidak berteriak</li>
-        <li><b>Di Raudhah:</b> Shalat & berdoa di area ini sangat utama. Bergantianlah dengan jamaah lain, jangan terlalu lama jika ramai</li>
+        <li><b>Salam kepada Rasulullah ﷺ:</b> Saat melewati Raudhah/makam, ucapkan salam dengan sopan</li>
+        <li><b>Di Raudhah:</b> Shalat & berdoa di area ini sangat utama. Bergantianlah dengan jamaah lain</li>
         <li><b>Jangan berdesakan:</b> Petugas mengatur jadwal masuk Raudhah. Ikuti arahan mereka</li>
-        <li><b>Wanita:</b> Ada pintu & area khusus untuk jamaah wanita. Gunakan sesuai petunjuk</li>
       </ul>
 
       <h2>Adab Saat Keluar Masjid</h2>
       <ol>
         <li>Dahulukan kaki kiri</li>
-        <li>Baca doa keluar:<br>
-        <i>"Allahumma inni as'aluka min fadhlik"</i><br>
-        <small>(Ya Allah, sesungguhnya aku memohon karunia dari-Mu)</small></li>
+        <li>Baca doa keluar:<br><i>"Allahumma inni as'aluka min fadhlik"</i><br><small>(Ya Allah, sesungguhnya aku memohon karunia dari-Mu)</small></li>
         <li>Tidak berdesakan di pintu keluar</li>
-        <li>Jaga kekhusyukan hingga sampai hotel</li>
       </ol>
 
       <h2>Hal yang Harus Dihindari</h2>
@@ -690,11 +634,10 @@ const ARTIKEL_BLOG = [
         <tr><td>Tidur di area ibadah</td><td>Istirahat di area yang diperbolehkan</td></tr>
         <tr><td>Merebut tempat shalat orang lain</td><td>Cari shaf yang masih kosong</td></tr>
         <tr><td>Menjual/membeli di dalam masjid</td><td>Lakukan di luar area masjid</td></tr>
-        <tr><td>Mengambil barang temuan sembarangan</td><td>Serahkan ke petugas keamanan</td></tr>
       </table>
 
       <h2>Penutup</h2>
-      <p>Adab adalah cerminan iman. Dengan menjaga adab di Tanah Suci, ibadah Anda akan lebih khusyuk, hati lebih tenang, dan pahala insya Allah lebih sempurna. Jadilah tamu Allah yang beradab, dan semoga kita semua termasuk golongan yang dirindukan Baitullah. Aamiin. 🤲</p>
+      <p>Adab adalah cerminan iman. Dengan menjaga adab di Tanah Suci, ibadah Anda akan lebih khusyuk, hati lebih tenang, dan pahala insya Allah lebih sempurna. Jadilah tamu Allah yang beradab. Aamiin. 🤲</p>
     `
   },
   {
@@ -707,7 +650,7 @@ const ARTIKEL_BLOG = [
     baca: "7 menit baca",
     ringkas: "Strategi menabung bertahap dan memilih paket sesuai kemampuan finansial.",
     konten: `
-      <p>Niat ke Baitullah adalah niat mulia yang Allah mudahkan bagi siapa saja yang bersungguh-sungguh. Banyak jamaah yang berhasil berangkat bukan karena kaya, tapi karena konsisten menabung dan pintar mengatur strategi keuangan. Berikut panduan lengkap merencanakan biaya umroh.</p>
+      <p>Niat ke Baitullah adalah niat mulia yang Allah mudahkan bagi siapa saja yang bersungguh-sungguh. Banyak jamaah yang berhasil berangkat bukan karena kaya, tapi karena konsisten menabung dan pintar mengatur strategi keuangan.</p>
 
       <div class="quote">"Dan sempurnakanlah ibadah haji dan umroh karena Allah." — QS. Al-Baqarah: 196</div>
 
@@ -724,9 +667,7 @@ const ARTIKEL_BLOG = [
 
       <div class="highlight-box">
         <b>📊 Contoh Simulasi:</b>
-        <p>Target: Umroh Reguler Rp 30 juta dalam 2,5 tahun (30 bulan).<br>
-        Maka Anda perlu menyisihkan: Rp 30.000.000 ÷ 30 = <b>Rp 1.000.000/bulan</b>.<br>
-        Ringan bukan? Kuncinya adalah <b>konsistensi</b>, bukan besarannya.</p>
+        <p>Target: Umroh Reguler Rp 30 juta dalam 2,5 tahun (30 bulan).<br>Maka Anda perlu menyisihkan: Rp 30.000.000 ÷ 30 = <b>Rp 1.000.000/bulan</b>.<br>Ringan bukan? Kuncinya adalah <b>konsistensi</b>, bukan besarannya.</p>
       </div>
 
       <h2>2. Buka Rekening Khusus Umroh</h2>
@@ -736,8 +677,6 @@ const ARTIKEL_BLOG = [
         <li><b>Deposito Syariah</b> — Untuk dana yang sudah terkumpul, agar berkembang</li>
         <li><b>Reksadana Syariah</b> — Opsi pengembangan dana jangka menengah</li>
       </ul>
-
-      <p>Dengan rekening terpisah, Anda tidak akan "tidak sengaja" menggunakan dana umroh untuk kebutuhan lain.</p>
 
       <h2>3. Otomatiskan Tabungan</h2>
       <p>Gunakan fitur <b>auto-debit</b> dari bank. Begitu gaji masuk, sejumlah uang langsung dipindahkan ke rekening umroh. Ini menghilangkan godaan untuk menunda atau memakai uang tersebut.</p>
@@ -772,7 +711,7 @@ const ARTIKEL_BLOG = [
 
       <div class="highlight-box">
         <b>💡 Tips dari Al-Barokah:</b>
-        <p>Kami menyediakan program <b>Booking DP Ringan Rp 5 juta</b> untuk mengunci harga. Setelah DP masuk, harga tidak akan naik meskipun kurs dolar naik atau harga tiket pesawat naik. Ini cara cerdas melindungi tabungan Anda dari inflasi.</p>
+        <p>Kami menyediakan program <b>Booking DP Ringan Rp 5 juta</b> untuk mengunci harga. Setelah DP masuk, harga tidak akan naik meskipun kurs dolar naik atau harga tiket pesawat naik.</p>
       </div>
 
       <h2>7. Opsi Cicilan Syariah (Tanpa Riba)</h2>
@@ -790,7 +729,7 @@ const ARTIKEL_BLOG = [
       <div class="quote">"Barangsiapa bertakwa kepada Allah, niscaya Dia akan membukakan jalan keluar baginya, dan memberinya rezeki dari arah yang tidak disangka-sangka." — QS. At-Talaq: 2-3</div>
 
       <h2>Penutup</h2>
-      <p>Umroh bukan soal mampu atau tidak mampu, tapi soal niat dan ikhtiar. Banyak jamaah kami yang berangkat dari hasil menabung Rp 500 ribu per bulan selama bertahun-tahun. Yang penting mulai sekarang, konsisten, dan serahkan hasilnya kepada Allah. Kami siap membantu Anda mewujudkan niat suci ini. 🤲</p>
+      <p>Umroh bukan soal mampu atau tidak mampu, tapi soal niat dan ikhtiar. Banyak jamaah kami yang berangkat dari hasil menabung Rp 500 ribu per bulan selama bertahun-tahun. Yang penting mulai sekarang, konsisten, dan serahkan hasilnya kepada Allah. 🤲</p>
     `
   },
   {
@@ -898,10 +837,8 @@ const breadText = document.getElementById("breadText");
 
 let filterAktif = "all";
 
-// Ekstrak kategori unik
 const KATEGORI_LIST = [...new Set(ARTIKEL_BLOG.map(a => a.kategori))];
 
-// Emoji mapping untuk kategori
 const KATEGORI_EMOJI = {
   "Manasik": "📖",
   "Kesehatan": "💪",
@@ -949,14 +886,12 @@ function renderGrid(){
     artikel = ARTIKEL_BLOG.filter(a => a.kategori === filterAktif);
   }
   
-  // Update result text
   if(filterAktif === "all"){
     filterResult.innerHTML = `Menampilkan <b>${artikel.length}</b> artikel terbaru`;
   } else {
     filterResult.innerHTML = `Menampilkan <b>${artikel.length}</b> artikel dalam kategori <b>${filterAktif}</b>`;
   }
   
-  // Show/hide empty state
   if(artikel.length === 0){
     emptyState.classList.add("show");
     blogGrid.innerHTML = "";
@@ -1043,5 +978,6 @@ function handleRoute(){
 window.addEventListener("hashchange", handleRoute);
 handleRoute();
 </script>
+
 </body>
 </html>
